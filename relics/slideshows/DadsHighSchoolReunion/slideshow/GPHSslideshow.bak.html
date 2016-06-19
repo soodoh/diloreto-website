@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>Class of 1969 Photos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+input.runZone {width:50px}   // run slides
+input.playZone {width:100px} // play audio
+</style>
+<script language="JavaScript" type="text/JavaScript">
+/*slideshow initialization */
+delay = 7;     // delay time in seconds
+thisAd = -1;   // slide counter
+timeoutid = 0; // delay time counter
+var musicFile = "BrownEyedGirl.mp3";
+
+adImages = new Array(
+    "Birthday63.jpg",
+    "Birthday63a.jpg",
+	"ChristmasCarols63.jpg",
+    "BeckyLake(9th).jpg",
+    "AdrianPisula(9th).jpg",
+    "BillAllen.jpg",
+    "BobSweeney.jpg",
+	"BobVoigt.jpg",
+	"Bonnie.jpg",
+	"DebbieKitchen.jpg",
+	"GaryEnzmann.jpg",
+	"GeorgeMandich.jpg",
+	"IreneCotzias(9th).jpg",
+	"IrvIngraham.jpg",
+	"JimFrede.jpg",
+	"JohnFountain(9th).jpg",
+	"JohnWalters(9th).jpg",
+	"JulieChildress(9th).jpg",
+	"KarenWilson.jpg",
+	"KathyDeitrich.jpg",
+	"LarryGriffin(6th,9th).jpg",
+	"MarkFossee(5th,9th).jpg",
+	"MaryMcCleod(9th).jpg",
+	"PattyMatujec(9th).jpg",
+	"TerryCrockatt(9th).jpg",
+	"TomCartmillGigiGraham(9th).jpg");
+adCaptions = new Array(
+    "Larry Griffin, Mark Fossee, Steve Renas, Bruce Anderson, me, Dan Wilk",
+	"12th birthday fun with Mark Fossee, Larry Griffin",
+    "Christmas Carols in 7th grade with Larry Griffin and John Walters",
+    "Becky Lake (9th gr.) - wonderfully intelligent, great wit",
+    "Adrian Pisula - charitably flirtatious",
+	"Bill Allen - quiet, but fun, standup guy",
+    "Bob Sweeney - fun guy, very self-assured",
+	"Bob Voigt - good friend",
+    "Bonnie - from honors French, lovely gal, our Dads went to HS together",
+	"Debbie Kitchen - totally enchanting",
+    "Gary Enzmann - overabundantly intelligent",
+    "George Mandich - a real bud!",
+    "Irene Cotzias (9th gr.) - down to earth, sweet",
+    "Irving Ingraham - best science student, really?!?",
+    "Jim Frede - fellow trumpet player",
+    "John Fountain (9th gr.) - quiet guy with a good attitude",
+    "John Walters (9th gr.) - good swimmer, friend",
+    "Julie Childress (9th gr.) - very smart, stylish and popular",
+    "Karen Wilson - loyal Tri-Science Club member",
+    "Kathy Dietrich - Valedictorian, too slick for this techie",
+    "Larry Griffin (6th, 9th gr.) - good friend, great ballplayer",
+    "Mark Fossee (5th, 9th gr.) - suave guy, good friend",
+    "Mary McCleod (9th gr.) - shy, but brilliant",
+    "Patty Matujec (9th gr.) - nice girl in accelerated math",
+    "Terry Crockatt (9th gr.) - tennis player, BMOC in HS",
+	"Tom Cartmill, Gigi Graham (9th gr.) - she was the best!");
+	
+/*ALTER THE PLAYLIST FROM THIS LINE UPWARD.
+  DONT FORGET TO REMOVE FINAL COMMA AND ADD ); AT END OF LAST SLIDE.*/
+
+// initialze features of this page
+var toggled;   // flag for toggle mode, 1 = playing
+var flip;      // toggle for music, 1 = playing
+function init() {
+    playAds(); // start slide show
+	turnon();  // start audio
+	flip = 1;      // toggle for music, 1 = playing
+	toggled = 1;   // flag for toggle mode, 1 = playing
+};
+
+// This function toggles between Play and Pause
+function toggle2() {
+	if (toggled == 0) {
+   		toggled = 1;
+   		text ='<input class="runZone" name="star" type="button"';
+   		text+=' value="Pause" onClick="toggle2()">';
+   		document.getElementById('runZone').innerHTML=text;
+   		playAds();
+   } else {
+   		toggled = 0;
+   		text ='<input class="runZone" name="star" type="button"';
+  		text+=' value="Play" onClick="toggle2()">';
+   		document.getElementById('runZone').innerHTML=text;
+   		stopAds();
+   };
+};
+
+//show slides function
+function showAd() {
+ //  document.slide.tit.value=adImages[thisAd];
+	document.adBanner.src = adImages[thisAd];
+	document.caption.adText.value = adCaptions[thisAd];
+};
+
+//play slides function
+function playAds() {
+	thisAd = thisAd + 1;
+	if (thisAd == adImages.length) {
+  		thisAd = 0;
+	};
+	showAd();
+	timeoutid = setTimeout("playAds()", delay*1000);
+};
+
+//stop playing slides
+function stopAds() {
+	if (timeoutid != 0) {
+		clearTimeout(timeoutid);
+		timeoutid = 0;
+	};
+};
+
+//step slides forward function
+function forwAds() {
+	if (toggled == 1) {
+  		toggle2();
+	};
+	thisAd = thisAd + 1;
+	if (thisAd == adImages.length) {
+		thisAd = 0;
+	};
+	showAd();
+};
+
+//step slides backward function
+function backAds() {
+	if (toggled == 1) {
+		toggle2();
+	};
+	thisAd = thisAd - 1;
+	if (thisAd == -1) {
+		thisAd = adImages.length - 1;
+	};
+	showAd();
+}; 
+  
+// turn on music 
+function turnon() {
+	var text;
+	text ='<input class="playZone" name="b" type="button" value="Stop Audio"';
+	text+=' onClick="toggle()">';
+	text+='<embed src="'+musicFile+'" hidden="true" loop="true" autostart="true">';
+	document.getElementById('playZone').innerHTML=text;
+};
+
+if (document.layers) {ns=1} else {ns=0}; // browser sniffed
+
+// toggle between Start and Stop audio
+function toggle() {
+if (flip == 0) {
+   flip = 1;
+   text ='<input class="playZone" name="b" type="button" value="Stop Audio"';
+   text+=' onClick="toggle()">';
+   text+='<embed src="'+musicFile+'" hidden="true" loop="true" autostart="true">';
+   document.getElementById('playZone').innerHTML=text;
+   } else {
+   flip = 0;
+   text ='<input class="playZone" name="b" type="button" value="Start Audio"';
+   text+=' onClick="toggle()">';
+   text+='<embed src="'+musicFile+'" hidden="true" loop="true" autostart="false">';
+   document.getElementById('playZone').innerHTML=text;
+   };
+};
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+</script>
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#6699FF" vlink="#CC66CC" alink="#6699FF" onLoad="init()">
+<div><form name="caption" action="" method="post">
+    <table width="800" cellspacing="0">
+      <tr>
+	    <td height="24" align="center"> <font size="5">G.P.H.S. Classmates of 1969</font> 
+	    </td>
+      </tr>
+      <tr>
+	    <td height="24" align="center" valign="center">
+            <input name="back" type="button" value="&nbsp;<&nbsp;" onclick="backAds()">
+            <span id="runZone" class="runZone">
+				<input class="runZone" name="star" type="button" value="Pause" onClick="toggle2()"> 
+			</span>
+			<input name="forw" type="button" value="&nbsp;>&nbsp;" onclick="forwAds()"> &nbsp;&nbsp;        
+            <span id="playZone" class="playZone"> 
+            	<input class="playZone" name="b" type="button" value="Stop Audio" onClick="toggle()">
+            </span>
+	    </td>
+      </tr>
+	  <tr>
+		<td height="820" align="center" valign="top"><img src="" name="adBanner" id="adBanner" alt="first slide"> 
+          <br>
+          <input name="adText" type="text" size="70" readonly="readonly" align="center" bgcolor="#000000" text="FFFFFF">           
+		</td>
+	  </tr>
+    </table>
+  </form>
+</div>
+<div id="Layer2" style="position:absolute; width:662px; height:24px; z-index:2; left: 71px; top: 684px;"> 
+  <table width="660" height="20">
+    <tr> 
+      <td> 
+	    <div align="center">[ <a href="http://diloreto.com">DiLoreto Home</a> 
+          | <a href="http://diloreto.com/about/about.html">About</a> | <a href="http://diloreto.com/bandwagon/bandwagon.html">Bandwagon</a> 
+          | <a href="http://diloreto.com/links/links.html">Links</a> | <a href="http://diloreto.com/guestbook/addguest.html">Guestbook</a> 
+          | <a href="http://diloreto.com/areyou/areyou.html">Are You a DiLoreto?</a> 
+          | <a href="http://diloreto.com/paul">Paul's Website</a> ]
+		</div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Layer1" style="position:absolute; left:717px; top:96px; width:183px; height:356px; z-index:1"> 
+  <p><font size="4">We hope everyone has a great time at our 35th reunion. Here 
+    are some photos from our past that might offer some laughs, some cherished 
+    memories, and yes, even some embarrassment. </font></p>
+  <p><font size="4">Enjoy!</font></p>
+  <p align="center"><img src="GPS2.jpg"></p>
+</div>
+</body>
+</html>
