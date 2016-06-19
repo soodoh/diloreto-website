@@ -1,3 +1,32 @@
 body {
-
+	background-color: #7d7a61;
+	color: #000000;
+}
+nav a {
+	color: #FFFFFF;
+}
+header {
+	text-align: center;
+	background-image: url("images/CoatofArms.png");
+	background-position: left top;
+	background-repeat: no-repeat;
+	display: block;
+}
+nav i {
+	color: #f05185;
+}
+h1 {
+	color: #5d6db3;
+	padding-bottom: 20px;
+}
+.content {
+	background-color: #e6e6e6;
+	color: #000000;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.titleRow {
+	background-color: #5d6db3;
+	color: #FFFFFF;
+	font-size: 20px;
 }
