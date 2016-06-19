@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Happy Holidays!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+
+<body><EMBED SRC="http://www.diloreto.com/ChristmasCard/sleighbellsfixed.wav" hidden="TRUE" AUTOSTART=true LOOP="TRUE">
+<div id="Layer1" style="position:absolute; left:8px; top:57px; width:598px; height:450px; z-index:1"> 
+  <div align="center"> 
+    <div align="center"> 
+      <p><font color="#FFFFFF" size="6" face="Comic Sans MS, American Typewriter">Happy 
+        Holidays</font></p>
+      <p align="left">&nbsp;</p>
+      <p align="left">&nbsp;</p>
+      <p align="left"><font color="#FFFFFF" size="3" face="Comic Sans MS, American Typewriter">We 
+        wish you a Merry Christmas and a Happy New Year!</font></p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center"> 
+        <script language="JavaScript1.2">
+<!--
+//Original script by Altan (Snow@altan.hr), copyright 1999 Altan d.o.o.
+// http://www.altan.hr/snow/index.html 
+// Modified by Paul Anderson, copyright 2001 CNET Builder.com
+
+var snowflake = "LightSnowflake.gif"
+var no = 9; // number of snowflakes on the screen
+var speed = 12; // smaller numbers make the snow fall faster
+var dx, xp, yp; // coordinate and position variables
+var am, stx, sty; // amplitude and step variables
+var obj, i, doc_width = 600, doc_height = 450;
+
+function winSize() {
+doc_width = window.innerWidth?window.innerWidth:document.body.clientWidth;
+doc_height = window.innerHeight?window.innerHeight:document.body.clientHeight;
+}
+
+dx = new Array();
+xp = new Array();
+yp = new Array();
+am = new Array();
+stx = new Array();
+sty = new Array();
+winSize();
+document.write("<STYLE type=\"text/css\">.flake {position:absolute;top:-200;}</STYLE>");
+for (i = 0; i < no; i++) { 
+dx[i] = 0; // set coordinate variables
+xp[i] = Math.random()*(doc_width-30) +10; // set position variables
+yp[i] = Math.random()*doc_height;
+am[i] = Math.random()*20; // set amplitude variables
+stx[i] = 0.02 + Math.random()/10; // set step variables
+sty[i] = 0.7 + Math.random(); // set step variables
+document.write("<div id=\"dot"+ i +"\" class=\"flake\"><img src=\"");
+document.write(snowflake + "\" border=\"0\"></div>");
+}
+
+function snowMove(id,left,top) {
+obj = document.getElementById?document.getElementById(id).style:
+document.all?document.all[id].style:
+document.layers?document.layers[id]:null;
+if (obj) {
+obj.left=left;
+obj.top=top;
+}
+}
+
+function snow() {
+winSize();
+doc_scroll = (window.pageYOffset!=null)?window.pageYOffset:document.body.scrollTop;
+for (i = 0; i < no; ++ i) { // iterate for every dot
+yp[i] += sty[i];
+if (yp[i] > doc_height+doc_scroll-50) {
+xp[i] = Math.random()*(doc_width-am[i]-30);
+yp[i] = doc_scroll;
+stx[i] = 0.02 + Math.random()/10;
+sty[i] = 0.7 + Math.random();
+}
+dx[i] += stx[i];
+snowMove("dot"+i,xp[i]+am[i]*Math.sin(dx[i]),yp[i]);
+}
+setTimeout("snow()", speed);
+}
+
+window.onload=snow;
+// -->
+</script>
+      </p>
+      <p align="left"><font color="#FFFFFF" size="3" face="Comic Sans 
+MS, American Typewriter">- 
+        DiLoreto Family -</font></p>
+      <p align="left"><font color="#FFFFFF" size="3" face="Comic Sans MS, American Typewriter">By, 
+        Paul DiLoreto <a href="http://www.diloreto.com/">http://www.diloreto.com/</a></font></p>
+      <p align="center">&nbsp;</p>
+    </div>
+  </div>
+</div>
+<p align="left"><img src="springstormwithfamily.jpg" width="600" height="450"> 
+</p>
+<p align="center">&nbsp; </p>
+</body>
+</html>

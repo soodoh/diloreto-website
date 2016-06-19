@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>Reunion Slideshow No. 2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+input.runZone {width:50px}   // run slides
+input.playZone {width:100px} // play audio
+</style>
+<script language="JavaScript" type="text/JavaScript">
+/*slideshow initialization */
+delay = 10;     // delay time in seconds
+thisAd = -1;   // slide counter
+timeoutid = 0; // delay time counter
+var musicFile = "BuildMeUpButtercup.mp3";
+
+adImages = new Array(
+	"LaPonsey.jpg",
+    "CampfireGirls.gif",
+    "BrownellSewing.jpg",
+	"Sewing.jpg",
+    "GPWMSkiClub.jpg",
+    "3PromCouples.jpg",
+	"SophomoreNight.gif",
+	"LaurieScrimgeour.jpg",
+	"BillWorzniak.jpg",
+	"Lock-Spada.jpg",
+	"TomLuftyMikeReno.jpg",
+	"GPHS.gif",
+	"2001Reunion.jpg");
+adCaptions = new Array(
+    "Denise LaPonsey (9th, 12th gr.)",
+    "Campfire Girls Fundraiser in 1964",
+	"Brownell Sewing Days",
+    "Sue Imhoff, Denise, Carol Mercea, Pat Autunn",
+    "GPWM Ski Club",
+    "Bill Worzniak,,Mark Scott,,Linda Rockhold, David - 1968",
+    "Sophomore Nights with 'The Jacques'",
+    "John Zimmerman, Laurie Scrimgeour - Homecoming 1967",
+    "Denise and Bill Worzniak - GPYC Regatta Dance 1968",
+    "Sue Lock and Bill, Tony Spada and best friend Nina Pollina - 1967",
+    "Tom Lufty, Mike Reno - Senior Prom 1969",
+    "1988 ink drawing of Grosse Pointe South by Wolme W. Urban",
+    "Attendees pose at the 2001 Reunion Picnic at Stony Creek");
+	
+/*ALTER THE PLAYLIST FROM THIS LINE UPWARD.
+  DONT FORGET TO REMOVE FINAL COMMA AND ADD ); AT END OF LAST SLIDE.*/
+
+// initialze features of this page
+var toggled;   // flag for toggle mode, 1 = playing
+var flip;      // toggle for music, 1 = playing
+function init() {
+    playAds(); // start slide show
+	turnon();  // start audio
+	flip = 1;      // toggle for music, 1 = playing
+	toggled = 1;   // flag for toggle mode, 1 = playing
+};
+
+// This function toggles between Play and Pause
+function toggle2() {
+	if (toggled == 0) {
+   		toggled = 1;
+   		text ='<input class="runZone" name="star" type="button"';
+   		text+=' value="Pause" onClick="toggle2()">';
+   		document.getElementById('runZone').innerHTML=text;
+   		playAds();
+   } else {
+   		toggled = 0;
+   		text ='<input class="runZone" name="star" type="button"';
+  		text+=' value="Play" onClick="toggle2()">';
+   		document.getElementById('runZone').innerHTML=text;
+   		stopAds();
+   };
+};
+
+//show slides function
+function showAd() {
+ //  document.slide.tit.value=adImages[thisAd];
+	document.adBanner.src = adImages[thisAd];
+	document.caption.adText.value = adCaptions[thisAd];
+};
+
+//play slides function
+function playAds() {
+	thisAd = thisAd + 1;
+	if (thisAd == adImages.length) {
+  		thisAd = 0;
+	};
+	showAd();
+	timeoutid = setTimeout("playAds()", delay*1000);
+};
+
+//stop playing slides
+function stopAds() {
+	if (timeoutid != 0) {
+		clearTimeout(timeoutid);
+		timeoutid = 0;
+	};
+};
+
+//step slides forward function
+function forwAds() {
+	if (toggled == 1) {
+  		toggle2();
+	};
+	thisAd = thisAd + 1;
+	if (thisAd == adImages.length) {
+		thisAd = 0;
+	};
+	showAd();
+};
+
+//step slides backward function
+function backAds() {
+	if (toggled == 1) {
+		toggle2();
+	};
+	thisAd = thisAd - 1;
+	if (thisAd == -1) {
+		thisAd = adImages.length - 1;
+	};
+	showAd();
+}; 
+  
+// turn on music 
+function turnon() {
+	var text;
+	text ='<input class="playZone" name="b" type="button" value="Stop Audio"';
+	text+=' onClick="toggle()">';
+	text+='<embed src="'+musicFile+'" hidden="true" loop="true" autostart="true">';
+	document.getElementById('playZone').innerHTML=text;
+};
+
+if (document.layers) {ns=1} else {ns=0}; // browser sniffed
+
+// toggle between Start and Stop audio
+function toggle() {
+if (flip == 0) {
+   flip = 1;
+   text ='<input class="playZone" name="b" type="button" value="Stop Audio"';
+   text+=' onClick="toggle()">';
+   text+='<embed src="'+musicFile+'" hidden="true" loop="true" autostart="true">';
+   document.getElementById('playZone').innerHTML=text;
+   } else {
+   flip = 0;
+   text ='<input class="playZone" name="b" type="button" value="Start Audio"';
+   text+=' onClick="toggle()">';
+   text+='<embed src="'+musicFile+'" hidden="true" loop="true" autostart="false">';
+   document.getElementById('playZone').innerHTML=text;
+   };
+};
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+</script>
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#6699FF" vlink="#CC66CC" alink="#6699FF" onLoad="init()">
+<div><form name="caption" action="" method="post">
+    <table width="660" cellspacing="0">
+      <tr> 
+        <td height="24" align="center"> <font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          GPSHS </font><font size="5">Reunion Greetings <font size="4">Slideshow 
+          No. 2</font>&nbsp;&nbsp;&nbsp; </font><a href="../OldDetroit/Detslideshow.html">[Old 
+          Detroit Slideshow]</a> </td>
+      </tr>
+      <tr> 
+        <td height="24" align="center" valign="center"> <input name="back" type="button" value="&nbsp;<&nbsp;" onClick="backAds()"> 
+          <span id="runZone" class="runZone"> 
+          <input class="runZone" name="star" type="button" value="Pause" onClick="toggle2()">
+          </span> <input name="forw" type="button" value="&nbsp;>&nbsp;" onClick="forwAds()"> 
+          &nbsp;&nbsp; <span id="playZone" class="playZone"> 
+          <input class="playZone" name="b" type="button" value="Stop Audio" onClick="toggle()">
+          </span> </td>
+      </tr>
+      <tr> 
+        <td height="530" align="center" valign="top"><img src="" name="adBanner" id="adBanner" alt="first slide"> 
+          <br> <input name="adText" type="text" size="70" readonly="readonly" align="center" bgcolor="#000000" text="FFFFFF"> 
+        </td>
+      </tr>
+      <tr>
+        <td height="30" align="center" valign="top"><font size="2">[ <a href="http://diloreto.com">DiLoreto.com 
+          Home</a> | <a href="http://diloreto.com/about/about.html">About</a> 
+          | <a href="http://diloreto.com/bandwagon/bandwagon.html">Bandwagon</a> 
+          | <a href="http://diloreto.com/links/links.html">Links</a> | <a href="http://diloreto.com/guestbook/addguest.html">Guestbook</a> 
+          | <a href="http://diloreto.com/areyou/areyou.html">Are You a DiLoreto?</a> 
+          | <a href="http://diloreto.com/paul">Paul's Website</a> ] </font></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div id="Layer1" style="position:absolute; left:666px; top:13px; width:270px; height:593px; z-index:1"> 
+  <table width="276" height="569" border="0" cellpadding="6" cellspacing="0">
+    <tr valign="top"> 
+      <td height="495" colspan="2"> 
+        <p><font size="4">Denise (LaPonsey) Daughetee, offers these treasured 
+          momentos of her days in high school and jr. high. While admitting she 
+          </font>
+        <div align="center"><img src="majored.gif" width="109" height="121"></div>
+        <div align="left"><font size="4">she seems to have excelled at it!</font></div>
+        </p> <br>
+        In a fundraising effort for the 35th reunion she is sold these lapel pins. 
+        <div align="center"><img src="lapelpin.gif" width="123" height="164"><br>
+          <font size="2">Unfortunately they are on longer available.</font></div>
+        <p align="center"><a href="../reunion.html">Back to Reunion Greetings</a></p>
+        </td>
+    </tr>
+    <tr align="center"> 
+      <td width="80"><div align="right"><a href="../../guestbook/addguest.html"><img src="../../guestbook.gif" width="58" height="58" border="1"></a></div></td>
+      <td width="81"><div align="left"><a href="../../guestbook/addguest.html">Sign 
+          the <br>
+          DiLoreto.com Guestbook</a></div></td>
+    </tr>
+  </table>
+  
+</div>
+</body>
+</html>
