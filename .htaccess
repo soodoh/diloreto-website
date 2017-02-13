@@ -1,4 +1,0 @@
-DirectoryIndex index.html index.webc home.html index.htm index.shtml home.htm index.cgi home.cgi index.php4 index.php5 index.php default.htm default.html index.phtml
-AddType application/x-httpd-php .php .phtml .php3 .php5 .php4
-AddType application/x-httpd-php .php .phtml .php3 .php5 .php4
-AddHandler php5-script .php
