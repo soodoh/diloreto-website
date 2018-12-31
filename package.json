@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.7.1",
+    "@material-ui/icons": "^3.0.1",
     "classnames": "^2.2.6",
     "detect-it": "^3.0.5",
     "dotenv": "^6.2.0",
     "gatsby": "^2.0.77",
     "gatsby-image": "^2.0.25",
-    "mdi-material-ui": "^5.7.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

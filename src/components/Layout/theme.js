@@ -15,6 +15,12 @@ const rawTheme = {
   },
   typography: {
     useNextVariants: true,
+    fontFamily: '\'Baskerville\', serif',
+    h1: {
+      fontFamily: '\'Baskerville\', cursive',
+      fontSize: '3rem',
+      fontStyle: 'italic',
+    },
   },
 };
 
