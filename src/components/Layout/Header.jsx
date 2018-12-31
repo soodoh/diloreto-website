@@ -52,9 +52,6 @@ const styles = theme => ({
   logo: {
     cursor: 'pointer',
     color: theme.palette.primary.contrastText,
-    fontFamily: '\'Baskerville\', cursive',
-    fontSize: '3rem',
-    fontStyle: 'italic',
   },
 });
 

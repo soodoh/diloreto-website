@@ -1,32 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { StaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { StaticQuery, graphql, navigate } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
+import People from '../components/Home/People';
+import Tile from '../components/Home/Tile';
 
 const HomePageCore = (props) => {
-  const { classes } = props;
+  const { classes, people } = props;
 
   return (
     <Grid className={classes.container} container>
-      <Grid item xs={6} md={4}>1</Grid>
-      <Grid item xs={6} md={4}>2</Grid>
-      <Grid item xs={6} md={4}>3</Grid>
-      <Grid item xs={6} md={4}>4</Grid>
-      <Grid item xs={6} md={4}>5</Grid>
-      <Grid item xs={6} md={4}>6</Grid>
+      <People data={people} />
+
+      {/* <Tile
+        image={{}}
+        label="Photos"
+        onClick={() => {}}
+      />
+      <Tile
+        image={{}}
+        label="Family History"
+        onClick={() => navigate('/areyou')}
+      />
+      <Tile
+        image={{}}
+        label="Contact"
+        onClick={() => {}}
+      /> */}
     </Grid>
   );
 };
 
 HomePageCore.propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  people: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      fullName: PropTypes.string.isRequired,
+      bio: PropTypes.object.isRequired,
+      link: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 const styles = theme => ({
   container: {
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
+    padding: theme.spacing.unit * 2,
   },
 });
 const HomePage = withStyles(styles)(HomePageCore);
@@ -35,14 +55,17 @@ export default () => (
   <StaticQuery
     query={graphql`
       query HomeQuery {
-        allContentfulPeople(order: {fields: [order], sort: ASC}) {
+        allContentfulPeople(sort: {fields: [order], order: ASC}) {
           edges {
             node {
-              id
               order
+              firstName
+              fullName
+              link
               portrait {
+                title
                 fluid(maxWidth: 1000) {
-                  src
+                  ...GatsbyContentfulFluid_withWebp
                 }
               }
               bio {
