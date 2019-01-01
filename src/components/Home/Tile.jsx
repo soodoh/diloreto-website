@@ -39,7 +39,7 @@ class Tile extends React.Component {
           })}
           onClick={onClick}
           onKeyPress={(event) => {
-            if (event.keyCode === 13) {
+            if (event.charCode === 13) {
               onClick();
             }
           }}
