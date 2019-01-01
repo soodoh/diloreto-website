@@ -57,7 +57,10 @@ const styles = theme => ({
   logo: {
     cursor: 'pointer',
     color: theme.palette.primary.contrastText,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
   },
+  // TODO add mediaquery to make logo text smaller on small screensizes
 });
 
 export default withStyles(styles)(HeaderCore);

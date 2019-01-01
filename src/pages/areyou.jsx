@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
+import { withStyles } from '@material-ui/core/styles';
+import Metadata from '../components/Layout/Metadata';
 
-class FamilyHistory extends React.Component {
+class FamilyHistoryCore extends React.Component {
   constructor(props) {
     super(props);
 
@@ -9,19 +12,73 @@ class FamilyHistory extends React.Component {
   }
 
   render() {
-    const { historyRecords } = this.props;
+    const { classes, data } = this.props;
     const { imagesActive } = this.state;
+    console.log(imagesActive, data);
 
     return (
-      <div>Family History page</div>
+      <React.Fragment>
+        <Metadata
+          title="Are You a DiLoreto?"
+          description=""
+        />
+
+        <div className={classes.darkContainer}>
+        Family History page
+        </div>
+      </React.Fragment>
     );
   }
 }
 
-FamilyHistory.propTypes = {
-  historyRecords: PropTypes.arrayOf(
-    PropTypes.object,
+FamilyHistoryCore.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      year: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.object.isRequired,
+    }),
   ).isRequired,
 };
 
-export default FamilyHistory;
+const styles = theme => ({
+  lightContainer: {
+    padding: theme.spacing.unit * 2,
+  },
+  darkContainer: {
+    backgroundColor: theme.palette.background.dark,
+    padding: theme.spacing.unit * 2,
+  },
+});
+
+const FamilyHistoryWithStyles = withStyles(styles)(FamilyHistoryCore);
+
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query HistoryQuery {
+        allContentfulFamilyHistory(sort: {fields: [year], order: ASC}) {
+          edges {
+            node {
+              year
+              title
+              content {
+                childMarkdownRemark {
+                  html
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <FamilyHistoryWithStyles
+        data={data.allContentfulFamilyHistory.edges.map(item => (
+          item.node
+        ))}
+      />
+    )}
+  />
+);
