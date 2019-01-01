@@ -93,16 +93,19 @@ export default () => (
         }
         contentfulHomePage {
           contactThumbnail {
+            title
             fluid(maxWidth: 1000) {
               ...GatsbyContentfulFluid_withWebp
             }
           }
           familyHistoryThumbnail {
+            title
             fluid(maxWidth: 1000) {
               ...GatsbyContentfulFluid_withWebp
             }
           }
           photosThumbnail {
+            title
             fluid(maxWidth: 1000) {
               ...GatsbyContentfulFluid_withWebp
             }
