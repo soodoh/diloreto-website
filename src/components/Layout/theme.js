@@ -21,6 +21,12 @@ const rawTheme = {
       fontSize: '3rem',
       fontStyle: 'italic',
     },
+    h2: {
+      fontSize: '2.5rem',
+    },
+    h3: {
+      fontSize: '2rem',
+    },
   },
 };
 

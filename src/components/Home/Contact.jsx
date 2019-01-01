@@ -35,7 +35,7 @@ class ContactCore extends React.Component {
                   </Typography>
                 </Grid>
                 <Grid item xs={6} sm={8}>
-                  <Typography variant="h5">
+                  <Typography variant="h5" align="right">
                     {person.email}
                   </Typography>
                 </Grid>
