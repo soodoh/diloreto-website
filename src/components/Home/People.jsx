@@ -4,7 +4,7 @@ import { uid } from 'react-uid';
 import Button from '@material-ui/core/Button';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Tile from './Tile';
-import PersonModal from './Modal';
+import PersonModal from '../common/Modal';
 
 class People extends React.Component {
   constructor(props) {

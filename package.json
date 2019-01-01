@@ -1,10 +1,10 @@
 {
-  "name": "carolyn-portfolio",
+  "name": "diloreto-website",
   "version": "1.0.0",
   "private": true,
   "author": "Paul DiLoreto <paul.diloreto@gmail.com>",
   "bugs": {
-    "url": "https://github.com/paulmichaelxd/carolyn-portfolio/issues"
+    "url": "https://github.com/paulmichaelxd/diloreto-website/issues"
   },
   "dependencies": {
     "@material-ui/core": "^3.7.1",
@@ -42,7 +42,7 @@
     "gatsby-transformer-remark": "^2.1.17",
     "gatsby-transformer-sharp": "^2.1.9"
   },
-  "homepage": "https://github.com/contentful-userland/gatsby-contentful-starter#readme",
+  "homepage": "https://diloreto.com",
   "keywords": [
     "gatsby",
     "contentful",
@@ -55,7 +55,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paulmichaelxd/carolyn-portfolio.git"
+    "url": "git+https://github.com/paulmichaelxd/diloreto-website.git"
   },
   "scripts": {
     "dev": "gatsby develop",
