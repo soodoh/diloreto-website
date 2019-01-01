@@ -16,6 +16,7 @@ const HeaderCore = (props) => {
       color="primary"
       className={classNames({
         [classes.bottomAppBar]: location.pathname === '/',
+        [classes.appBar]: location.pathname !== '/',
       })}
     >
       <Toolbar className={classes.content}>
@@ -40,6 +41,10 @@ HeaderCore.propTypes = {
 };
 
 const styles = theme => ({
+  appBar: {
+    position: 'sticky',
+    top: 0,
+  },
   bottomAppBar: {
     top: 'auto',
     bottom: 0,
