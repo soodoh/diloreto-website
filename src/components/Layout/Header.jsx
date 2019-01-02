@@ -60,7 +60,11 @@ const styles = theme => ({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   },
-  // TODO add mediaquery to make logo text smaller on small screensizes
+  [`@media (max-width: ${theme.breakpoints.values.sm}px)`]: {
+    logo: {
+      fontSize: '2rem',
+    },
+  },
 });
 
 export default withStyles(styles)(HeaderCore);
