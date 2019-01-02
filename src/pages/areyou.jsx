@@ -20,7 +20,7 @@ class FamilyHistoryCore extends React.Component {
       <React.Fragment>
         <Metadata
           title="Are You a DiLoreto?"
-          description=""
+          description="Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed."
         />
 
         <div className={classes.darkContainer}>
