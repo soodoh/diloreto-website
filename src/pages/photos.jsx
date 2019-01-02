@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { uid } from 'react-uid';
 import { StaticQuery, graphql } from 'gatsby';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Metadata from '../components/Layout/Metadata';
+import Gallery from '../components/Photos/Gallery';
 
 class PhotosCore extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { galleryActive: false };
+    this.state = {
+      currentAlbum: 0,
+    };
   }
 
   render() {
     const { classes, albums } = this.props;
-    const { galleryActive } = this.state;
-    console.log(galleryActive, albums);
+    const { currentAlbum } = this.state;
 
     return (
       <React.Fragment>
@@ -25,12 +29,24 @@ class PhotosCore extends React.Component {
         />
 
         <div className={classes.container}>
-          <Typography variant="h2" align="center" gutterBottom>
-          Photos Page is still in progress!
-          </Typography>
-          <Typography variant="h3" align="center">
-          Coming soon!
-          </Typography>
+          <div className={classes.filters}>
+            <Tabs
+              value={currentAlbum}
+              onChange={(event, value) => this.setState({ currentAlbum: value })}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+            >
+              {albums.map(album => (
+                <Tab
+                  key={uid(album)}
+                  label={album.title}
+                />
+              ))}
+            </Tabs>
+          </div>
+
+          <Gallery photos={albums[currentAlbum].photos} />
         </div>
       </React.Fragment>
     );
@@ -51,6 +67,9 @@ const styles = theme => ({
   container: {
     padding: theme.spacing.unit * 2,
     width: '100%',
+  },
+  filters: {
+    marginBottom: theme.spacing.unit,
   },
 });
 
