@@ -26,6 +26,7 @@ const PersonModal = (props) => {
       )}
 
       <DialogContentText
+        variant="body1"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: data && data.bio.childMarkdownRemark.html }}
       />

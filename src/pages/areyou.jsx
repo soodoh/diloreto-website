@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { uid } from 'react-uid';
 import { StaticQuery, graphql } from 'gatsby';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Metadata from '../components/Layout/Metadata';
 import ContactModal from '../components/Home/ContactModal';
 
@@ -32,9 +35,35 @@ class FamilyHistoryCore extends React.Component {
           people={people}
         />
 
-        <div className={classes.darkContainer}>
-        Family History page
+        <div className={classes.lightContainer} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Typography variant="subtitle1" align="center" gutterBottom>
+          A genealogical record of the DiLoreto lineage is maintained, and we would love to hear from any relatives with updates. An updated copy of the complete family tree can be sent as a PDF to family members.
+          </Typography>
+          <Button
+            variant="outlined"
+            onClick={() => this.setState({ contactActive: true })}
+          >
+          Contact Us
+          </Button>
         </div>
+
+        {data.map((record, index) => (
+          <div
+            className={index % 2 === 0
+              ? classes.lightContainer
+              : classes.darkContainer
+            }
+            key={uid(record)}
+          >
+            <Typography variant="h1" align="center">{record.title}</Typography>
+
+            <Typography
+              variant="body1"
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{ __html: record.content.childMarkdownRemark.html }}
+            />
+          </div>
+        ))}
       </React.Fragment>
     );
   }
