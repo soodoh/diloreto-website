@@ -16,6 +16,9 @@ const rawTheme = {
   typography: {
     useNextVariants: true,
     fontFamily: '\'Baskerville\', serif',
+    body1: {
+      textIndent: '2rem',
+    },
     h1: {
       fontFamily: '\'Baskerville\', cursive',
       fontSize: '3rem',

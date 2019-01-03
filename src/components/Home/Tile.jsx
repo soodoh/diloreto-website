@@ -109,7 +109,7 @@ const styles = theme => ({
       height: 'auto',
     },
     label: {
-      fontSize: '2rem',
+      fontSize: '1.5rem',
     },
   },
 });
