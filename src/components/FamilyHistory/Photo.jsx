@@ -29,11 +29,13 @@ const PhotoCore = (props) => {
       <Typography variant="caption" align="center">
         {data.description}
       </Typography>
-
+      {/* <div style={{ maxWidth: 300 }}> */}
       <Img
         fluid={data.thumbnail}
         alt={data.title}
+        style={{ maxWidth: 300, margin: '0 auto' }}
       />
+      {/* </div> */}
     </div>
   );
 
