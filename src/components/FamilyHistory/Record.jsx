@@ -36,9 +36,9 @@ const RecordCore = (props) => {
           }
 
         <Grid item xs={12} sm={hasGallery || !data.photos ? 12 : 8}>
-          <Typography
-            variant="body1"
-              // eslint-disable-next-line react/no-danger
+          <div
+            className={classes.markdown}
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: data.content.childMarkdownRemark.html }}
           />
         </Grid>
@@ -106,6 +106,9 @@ const styles = theme => ({
   darkContainer: {
     backgroundColor: theme.palette.background.dark,
     padding: theme.spacing.unit * 2,
+  },
+  markdown: {
+    ...theme.typography.body1,
   },
 });
 
