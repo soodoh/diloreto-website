@@ -17,7 +17,12 @@ const rawTheme = {
     useNextVariants: true,
     fontFamily: '\'Baskerville\', serif',
     body1: {
-      textIndent: '2rem',
+      '& h2': {
+        textAlign: 'center',
+      },
+      '& p': {
+        textIndent: '2rem',
+      },
     },
     h1: {
       fontFamily: '\'Baskerville\', cursive',
