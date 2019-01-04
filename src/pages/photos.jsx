@@ -87,7 +87,7 @@ export default () => (
               photos {
                 title
                 description
-                thumbnail: fluid(maxWidth: 600) {
+                thumbnail: fluid(maxHeight: 600) {
                   ...GatsbyContentfulFluid_withWebp
                 }
                 fullSize: fluid(maxWidth: 1920) {

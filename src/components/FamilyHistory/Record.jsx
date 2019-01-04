@@ -66,7 +66,7 @@ const RecordCore = (props) => {
                 <Grid item xs={12}>
                   <Grid container spacing={16}>
                     {data.photos.slice(0, 3).map(photo => (
-                      <Grid item xs={6} md={4} key={uid(photo)}>
+                      <Grid item xs={6} sm={4} key={uid(photo)}>
                         <Photo
                           data={photo}
                           link={data.link}
