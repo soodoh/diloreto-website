@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uid } from 'react-uid';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Modal from '../common/Modal';
 
-const ContactModalCore = (props) => {
+const useStyles = makeStyles(theme => ({
+  personInfo: {
+    marginBottom: theme.spacing(4),
+  },
+}));
+
+const ContactModal = (props) => {
+  const classes = useStyles();
   const {
-    classes, open, onClose, people,
+    open, onClose, people,
   } = props;
 
   return (
@@ -55,8 +62,7 @@ const ContactModalCore = (props) => {
   );
 };
 
-ContactModalCore.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
+ContactModal.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   people: PropTypes.arrayOf(
@@ -68,10 +74,4 @@ ContactModalCore.propTypes = {
   ).isRequired,
 };
 
-const styles = theme => ({
-  personInfo: {
-    marginBottom: theme.spacing.unit * 4,
-  },
-});
-
-export default withStyles(styles)(ContactModalCore);
+export default ContactModal;
