@@ -1,101 +1,100 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { uid } from 'react-uid';
 import Lightbox from 'react-images';
 import { StaticQuery, graphql } from 'gatsby';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Metadata from '../components/Layout/Metadata';
 import ContactModal from '../components/Home/ContactModal';
 import Record from '../components/FamilyHistory/Record';
 
-class FamilyHistoryCore extends React.Component {
-  constructor(props) {
-    super(props);
+const useStyles = makeStyles(theme => ({
+  info: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}));
 
-    this.allPhotos = props.data.reduce((acc, cur) => {
-      // We don't want to add to the photo gallery if its a link thumbnail
-      if (cur.link) {
-        return acc;
-      }
-      return [...acc, ...cur.photos || []];
-    }, []).filter(photo => photo);
+const FamilyHistory = (props) => {
+  const classes = useStyles();
+  const { data, people } = props;
+  const allPhotos = data.reduce((acc, cur) => {
+    // We don't want to add to the photo gallery if its a link thumbnail
+    if (cur.link) {
+      return acc;
+    }
+    return [...acc, ...cur.photos || []];
+  }, []).filter(photo => photo);
+  const [contactActive, setContact] = useState(false);
+  const [imagesActive, setImage] = useState(false);
+  const [currentPhoto, setPhoto] = useState(0);
 
-    this.state = {
-      contactActive: false,
-      imagesActive: false,
-      currentPhoto: 0,
-    };
-  }
+  return (
+    <React.Fragment>
+      <Metadata
+        title="Are You a DiLoreto?"
+        description="Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed."
+      />
 
-  render() {
-    const { classes, data, people } = this.props;
-    const { contactActive, imagesActive, currentPhoto } = this.state;
+      <ContactModal
+        open={contactActive}
+        onClose={() => setContact(false)}
+        people={people}
+      />
 
-    return (
-      <React.Fragment>
-        <Metadata
-          title="Are You a DiLoreto?"
-          description="Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed."
+      <Lightbox
+        images={allPhotos.map(photo => ({
+          src: photo.fullSize.src,
+          srcSet: photo.fullSize.srcSet,
+          caption: photo.description,
+          alt: photo.title,
+        }))}
+        isOpen={imagesActive}
+        backdropClosesModal
+        currentImage={currentPhoto}
+        onClickPrev={() => setPhoto(currentPhoto - 1)}
+        onClickNext={() => setPhoto(currentPhoto + 1)}
+        onClose={() => setImage(false)}
+      />
+
+      <div className={classes.info}>
+        <Typography variant="subtitle1" align="center" gutterBottom>
+        A genealogical record of the DiLoreto lineage is maintained,
+        and we would love to hear from any relatives with updates.
+        An updated copy of the complete family tree can be sent as a PDF to family members.
+        </Typography>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => setContact(true)}
+        >
+        Contact Us
+        </Button>
+      </div>
+
+      {data.map((record, index) => (
+        <Record
+          key={uid(record)}
+          data={record}
+          isEven={index % 2 === 0}
+          openPhoto={(id) => {
+            const photoIndex = allPhotos.findIndex(photo => (
+              photo.id === id
+            ));
+            setImage(true);
+            setPhoto(photoIndex);
+          }}
         />
+      ))}
+    </React.Fragment>
+  );
+};
 
-        <ContactModal
-          open={contactActive}
-          onClose={() => this.setState({ contactActive: false })}
-          people={people}
-        />
-
-        <Lightbox
-          images={this.allPhotos.map(photo => ({
-            src: photo.fullSize.src,
-            srcSet: photo.fullSize.srcSet,
-            caption: photo.description,
-            alt: photo.title,
-          }))}
-          isOpen={imagesActive}
-          backdropClosesModal
-          currentImage={currentPhoto}
-          onClickPrev={() => this.setState({ currentPhoto: currentPhoto - 1 })}
-          onClickNext={() => this.setState({ currentPhoto: currentPhoto + 1 })}
-          onClose={() => this.setState({ imagesActive: false })}
-        />
-
-        <div className={classes.info}>
-          <Typography variant="subtitle1" align="center" gutterBottom>
-          A genealogical record of the DiLoreto lineage is maintained,
-          and we would love to hear from any relatives with updates.
-          An updated copy of the complete family tree can be sent as a PDF to family members.
-          </Typography>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => this.setState({ contactActive: true })}
-          >
-          Contact Us
-          </Button>
-        </div>
-
-        {data.map((record, index) => (
-          <Record
-            key={uid(record)}
-            data={record}
-            isEven={index % 2 === 0}
-            openPhoto={id => this.setState({
-              imagesActive: true,
-              currentPhoto: this.allPhotos.findIndex(photo => (
-                photo.id === id
-              )),
-            })}
-          />
-        ))}
-      </React.Fragment>
-    );
-  }
-}
-
-FamilyHistoryCore.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
+FamilyHistory.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       year: PropTypes.number.isRequired,
@@ -119,17 +118,6 @@ FamilyHistoryCore.propTypes = {
     }),
   ).isRequired,
 };
-
-const styles = theme => ({
-  info: {
-    padding: theme.spacing.unit * 2,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-});
-
-const FamilyHistoryWithStyles = withStyles(styles)(FamilyHistoryCore);
 
 export default () => (
   <StaticQuery
@@ -174,7 +162,7 @@ export default () => (
       }
     `}
     render={data => (
-      <FamilyHistoryWithStyles
+      <FamilyHistory
         people={data.allContentfulPeople.edges.map(item => (
           item.node
         ))}

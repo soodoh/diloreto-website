@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
@@ -8,14 +8,29 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
+const Transition = React.forwardRef((props, ref) => (
+  <Slide direction="up" ref={ref} {...props} />
+));
 
-const ModalCore = (props) => {
+const useStyles = makeStyles(theme => ({
+  title: {
+    padding: theme.spacing(3),
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  close: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    margin: theme.spacing(1),
+  },
+}));
+
+const Modal = (props) => {
   const {
-    classes, open, title, onClose, children,
+    open, title, onClose, children,
   } = props;
+  const classes = useStyles();
 
   return (
     <Dialog
@@ -46,30 +61,15 @@ const ModalCore = (props) => {
   );
 };
 
-ModalCore.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
+Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   open: PropTypes.bool,
 };
-ModalCore.defaultProps = {
+Modal.defaultProps = {
   title: '',
   open: false,
 };
 
-const styles = theme => ({
-  title: {
-    padding: theme.spacing.unit * 3,
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  close: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    margin: theme.spacing.unit,
-  },
-});
-
-export default withStyles(styles)(ModalCore);
+export default Modal;

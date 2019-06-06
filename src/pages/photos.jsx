@@ -1,79 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { uid } from 'react-uid';
 import { StaticQuery, graphql } from 'gatsby';
-import { withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { makeStyles } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
 import Metadata from '../components/Layout/Metadata';
-import Gallery from '../components/Photos/Gallery';
 
-class PhotosCore extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentAlbum: 0,
-    };
-  }
-
-  render() {
-    const { classes, albums } = this.props;
-    const { currentAlbum } = this.state;
-
-    return (
-      <React.Fragment>
-        <Metadata
-          title="DiLoreto Photos"
-          description="The DiLoreto Family's photo gallery with images of John, Donna, Paul and Carolyn. View various photo albums from past holidays and family events."
-        />
-
-        <div className={classes.container}>
-          <div className={classes.filters}>
-            <Tabs
-              value={currentAlbum}
-              onChange={(event, value) => this.setState({ currentAlbum: value })}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="fullWidth"
-            >
-              {albums.map(album => (
-                <Tab
-                  key={uid(album)}
-                  label={album.title}
-                />
-              ))}
-            </Tabs>
-          </div>
-
-          <Gallery photos={albums[currentAlbum].photos} />
-        </div>
-      </React.Fragment>
-    );
-  }
-}
-
-PhotosCore.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
-  albums: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      photos: PropTypes.array.isRequired,
-    }),
-  ).isRequired,
-};
-
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   container: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     width: '100%',
   },
-  filters: {
-    marginBottom: theme.spacing.unit,
-  },
-});
+}));
 
-const PhotosWithStyles = withStyles(styles)(PhotosCore);
+const Photos = () => {
+  const classes = useStyles();
+
+  return (
+    <React.Fragment>
+      <Metadata
+        title="DiLoreto Photos"
+        description="The DiLoreto Family's photo gallery with images of John, Donna, Paul and Carolyn. View various photo albums from past holidays and family events."
+      />
+
+      <div className={classes.container}>
+        <Typography variant="h3" align="center" color="primary">
+          Under Construction
+        </Typography>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default () => (
   <StaticQuery
@@ -100,7 +55,7 @@ export default () => (
       }
     `}
     render={data => (
-      <PhotosWithStyles
+      <Photos
         albums={data.allContentfulPhotoAlbums.edges.map(item => (
           item.node
         ))}
