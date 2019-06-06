@@ -1,15 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import Img from 'gatsby-image';
 import Typography from '@material-ui/core/Typography';
 
-const PhotoCore = (props) => {
-  const {
-    classes, data, link, openPhoto,
-  } = props;
+const useStyles = makeStyles(theme => ({
+  container: {
+    cursor: 'pointer',
+    marginTop: theme.spacing(3),
+  },
+  link: {
+    textDecoration: 'none',
+    fontStyle: 'italic',
+  },
+}));
 
-  const Photo = (
+const Photo = (props) => {
+  const {
+    data, link, openPhoto,
+  } = props;
+  const classes = useStyles();
+
+  const Component = (
     <div
       className={classes.container}
       role="button"
@@ -41,15 +53,14 @@ const PhotoCore = (props) => {
   if (link) {
     return (
       <a href={link} className={classes.link}>
-        {Photo}
+        {Component}
       </a>
     );
   }
-  return Photo;
+  return Component;
 };
 
-PhotoCore.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
+Photo.propTypes = {
   openPhoto: PropTypes.func.isRequired,
   data: PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -60,19 +71,8 @@ PhotoCore.propTypes = {
   }).isRequired,
   link: PropTypes.string,
 };
-PhotoCore.defaultProps = {
+Photo.defaultProps = {
   link: null,
 };
 
-const styles = theme => ({
-  container: {
-    cursor: 'pointer',
-    marginTop: theme.spacing.unit * 3,
-  },
-  link: {
-    textDecoration: 'none',
-    fontStyle: 'italic',
-  },
-});
-
-export default withStyles(styles)(PhotoCore);
+export default Photo;
