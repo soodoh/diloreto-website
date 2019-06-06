@@ -13,9 +13,14 @@ if (!spaceId || !accessToken) {
   );
 }
 
+const siteUrl = 'https://diloreto.com';
+
 module.exports = {
+  siteMetadata: {
+    siteUrl,
+  },
   plugins: [
-    // 'gatsby-plugin-eslint',
+    'gatsby-plugin-eslint',
     'gatsby-plugin-layout',
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-transformer-remark',
@@ -24,6 +29,26 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-remove-serviceworker',
     // 'gatsby-plugin-offline',
+    'gatsby-plugin-sitemap',
+    // {
+    //   resolve: 'gatsby-plugin-material-ui',
+    // },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-141361857-1',
+        head: true,
+        anonymize: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
@@ -33,17 +58,13 @@ module.exports = {
       },
     },
     {
-      resolve: '@wapps/gatsby-plugin-material-ui',
-      options: { theme },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Sarabeth Belon Portfolio',
-        short_name: 'SB Portfolio',
+        name: 'DiLoreto Family Website',
+        short_name: 'DiLoreto Family',
         start_url: '/',
-        background_color: '#1A1A1A',
-        theme_color: '#C66470',
+        background_color: '#d1d1d1',
+        theme_color: '#7d89c1',
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: 'standalone',
