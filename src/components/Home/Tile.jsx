@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import detectIt from 'detect-it';
 import { makeStyles } from '@material-ui/styles';
@@ -50,7 +51,7 @@ const Tile = (props) => {
   const classes = useStyles();
   const [labelActive, setActive] = useState(detectIt.deviceType === 'touchOnly');
   const {
-    image, label, onClick,
+    image, label, onClick, link,
   } = props;
 
   return (
@@ -59,6 +60,8 @@ const Tile = (props) => {
       xs={6}
       md={4}
       className={classes.container}
+      component={link ? Link : 'div'}
+      to={link}
     >
       <div
         role="button"
@@ -98,12 +101,17 @@ const Tile = (props) => {
 };
 
 Tile.propTypes = {
+  link: PropTypes.string,
   image: PropTypes.shape({
     fluid: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
   label: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+Tile.defaultProps = {
+  link: null,
+  onClick: null,
 };
 
 export default Tile;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { uid } from 'react-uid';
 import { makeStyles } from '@material-ui/styles';
-import { StaticQuery, graphql, navigate } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
 import Metadata from '../components/Layout/Metadata';
 import PersonModal from '../components/Home/PersonModal';
@@ -60,12 +60,12 @@ const HomePage = (props) => {
           <Tile
             image={data.photosThumbnail}
             label="Photos"
-            onClick={() => navigate('/photos')}
+            link="/photos"
           />
           <Tile
             image={data.familyHistoryThumbnail}
             label="Family History"
-            onClick={() => navigate('/areyou')}
+            link="/areyou"
           />
           <Tile
             image={data.contactThumbnail}

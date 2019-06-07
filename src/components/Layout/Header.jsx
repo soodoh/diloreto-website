@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.contrastText,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
+    textDecoration: 'none',
   },
   [theme.breakpoints.down('sm')]: {
     logo: {
@@ -52,7 +53,8 @@ const Header = (props) => {
           variant="h1"
           align="center"
           className={classes.logo}
-          onClick={() => navigate('/')}
+          component={Link}
+          to="/"
         >
           The DiLoreto Family
         </Typography>

@@ -35,7 +35,7 @@ const Record = (props) => {
     >
       <Typography variant="h1" color="primary" align="center">{data.title}</Typography>
 
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         {isEven && data.photos && !hasGallery
             && (
               <Grid item xs={12} sm={4}>
@@ -77,7 +77,7 @@ const Record = (props) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Grid container spacing={16}>
+                  <Grid container spacing={2}>
                     {data.photos.slice(0, 3).map(photo => (
                       <Grid item xs={6} sm={4} key={uid(photo)}>
                         <Photo

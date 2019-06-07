@@ -17,9 +17,8 @@ const PersonModal = (props) => {
       <Button
         variant="outlined"
         color="primary"
-        onClick={() => {
-          window.location.href = data.link;
-        }}
+        component="a"
+        href={data.link}
       >
         View Portfolio
       </Button>
