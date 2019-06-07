@@ -46,9 +46,8 @@ const ContactModal = (props) => {
                 <Button
                   variant="outlined"
                   color="primary"
-                  onClick={() => {
-                    window.location.href = person.link;
-                  }}
+                  component="a"
+                  href={person.link}
                 >
                 View Portfolio
                 </Button>
