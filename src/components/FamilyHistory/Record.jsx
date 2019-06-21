@@ -1,98 +1,89 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uid } from 'react-uid';
 import { makeStyles } from '@material-ui/styles';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Photo from './Photo';
+import HistoryGallery from './HistoryGallery';
 
 const useStyles = makeStyles(theme => ({
-  lightContainer: {
+  container: {
+    backgroundColor: ({ isEven }) => (
+      isEven ? theme.palette.background.default : theme.palette.background.dark
+    ),
     padding: theme.spacing(2),
   },
-  darkContainer: {
-    backgroundColor: theme.palette.background.dark,
-    padding: theme.spacing(2),
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
   },
   markdown: {
     ...theme.typography.body1,
+    gridRow: 1,
+    gridColumn: ({ data, isEven }) => {
+      const isFullRow = !data.photos || (Array.isArray(data.photos) && data.photos.length > 1);
+
+      if (isFullRow) return '1 / 4';
+      if (isEven) return '2 / 4';
+      return '1 / 3';
+    },
+
+    [theme.breakpoints.down('xs')]: {
+      gridColumn: '1 / 4',
+    },
+  },
+  photo: {
+    gridRow: 1,
+    gridColumn: ({ isEven }) => (isEven ? '1 / 2' : '3 / 4'),
+
+    [theme.breakpoints.down('xs')]: {
+      gridColumn: '1 / 4',
+    },
+  },
+  gallery: {
+    gridColumn: '1 / 4',
   },
 }));
 
 const Record = (props) => {
-  const classes = useStyles();
   const {
-    data, isEven, openPhoto,
+    data, openPhoto, isEven,
   } = props;
+  const classes = useStyles({ data, isEven });
   const hasGallery = Array.isArray(data.photos) && data.photos.length > 1;
 
   return (
-    <div
-      className={isEven
-        ? classes.lightContainer
-        : classes.darkContainer
-      }
-    >
+    <div className={classes.container}>
       <Typography variant="h1" color="primary" align="center">{data.title}</Typography>
 
-      <Grid container spacing={2}>
-        {isEven && data.photos && !hasGallery
+      <div className={classes.grid}>
+        {data.photos && !hasGallery
             && (
-              <Grid item xs={12} sm={4}>
+              <div className={classes.photo}>
                 <Photo
                   data={data.photos[0]}
                   link={data.link}
                   openPhoto={openPhoto}
                 />
-              </Grid>
+              </div>
             )
           }
 
-        <Grid item xs={12} sm={hasGallery || !data.photos ? 12 : 8}>
-          <div
-            className={classes.markdown}
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: data.content.childMarkdownRemark.html }}
-          />
-        </Grid>
-
-        {!isEven && data.photos && !hasGallery
-            && (
-              <Grid item xs={12} sm={4}>
-                <Photo
-                  data={data.photos[0]}
-                  link={data.link}
-                  openPhoto={openPhoto}
-                />
-              </Grid>
-            )
-          }
+        <div
+          className={classes.markdown}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: data.content.childMarkdownRemark.html }}
+        />
 
         {data.photos && hasGallery
             && (
-              <React.Fragment>
-                <Grid item xs={12}>
-                  <Typography variant="caption" align="center">
-                  Click any photo to view full gallery
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Grid container spacing={2}>
-                    {data.photos.slice(0, 3).map(photo => (
-                      <Grid item xs={6} sm={4} key={uid(photo)}>
-                        <Photo
-                          data={photo}
-                          link={data.link}
-                          openPhoto={openPhoto}
-                        />
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Grid>
-              </React.Fragment>
+              <HistoryGallery
+                className={classes.gallery}
+                data={data}
+                openPhoto={openPhoto}
+              />
             )
           }
-      </Grid>
+      </div>
     </div>
   );
 };

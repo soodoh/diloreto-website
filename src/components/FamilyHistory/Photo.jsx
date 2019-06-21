@@ -6,12 +6,18 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    cursor: 'pointer',
     marginTop: theme.spacing(3),
+    // Using flexbox here breaks Gatsby-image
+    textAlign: 'center',
   },
   link: {
     textDecoration: 'none',
     fontStyle: 'italic',
+  },
+  image: {
+    maxWidth: 300,
+    margin: '0 auto',
+    cursor: 'pointer',
   },
 }));
 
@@ -20,44 +26,31 @@ const Photo = (props) => {
     data, link, openPhoto,
   } = props;
   const classes = useStyles();
+  const LinkWrapper = link ? 'a' : 'div';
 
-  const Component = (
-    <div
-      className={classes.container}
-      role="button"
-      aria-label={`Open Photo: ${data.title}`}
-      tabIndex={0}
-      onKeyPress={(event) => {
-        if (event.charCode === 13) {
-          openPhoto(data.id);
-        }
-      }}
-      onClick={() => {
-        if (!link) {
-          openPhoto(data.id);
-        }
-      }}
-    >
-      <Typography variant="caption" align="center">
+  return (
+    <div className={classes.container}>
+      <Typography
+        component={link ? 'a' : null}
+        href={link}
+        variant="caption"
+      >
         {data.description}
       </Typography>
 
-      <Img
-        fluid={data.thumbnail}
-        alt={data.title}
-        style={{ maxWidth: 300, margin: '0 auto' }}
-      />
+      <LinkWrapper
+        href={link}
+        onClick={link ? null : () => openPhoto(data.id)}
+
+      >
+        <Img
+          fluid={data.thumbnail}
+          alt={data.title}
+          className={classes.image}
+        />
+      </LinkWrapper>
     </div>
   );
-
-  if (link) {
-    return (
-      <a href={link} className={classes.link}>
-        {Component}
-      </a>
-    );
-  }
-  return Component;
 };
 
 Photo.propTypes = {
