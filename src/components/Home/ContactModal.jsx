@@ -3,13 +3,35 @@ import PropTypes from 'prop-types';
 import { uid } from 'react-uid';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Modal from '../common/Modal';
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'grid',
+    gridTemplateColumns: '30% 1fr',
+
+    [theme.breakpoints.down('xs')]: {
+      gridTemplateColumns: '1fr',
+    },
+  },
   personInfo: {
     marginBottom: theme.spacing(4),
+    gridColumn: '1 / 3',
+
+    [theme.breakpoints.down('xs')]: {
+      gridColumn: '1 / 2',
+    },
+  },
+  email: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'center',
+      fontSize: '1rem',
+      marginBottom: theme.spacing(2),
+    },
   },
 }));
 
@@ -25,20 +47,18 @@ const ContactModal = (props) => {
       title="Contact Us"
       onClose={onClose}
     >
-      <Grid container>
+      <div className={classes.container}>
         {people.map(person => (
           <React.Fragment key={uid(person)}>
-            <Grid item xs={6} sm={4}>
-              <Typography variant="h5">
-                {`${person.firstName}:`}
-              </Typography>
-            </Grid>
-            <Grid item xs={6} sm={8}>
-              <Typography variant="h5" align="right">
-                {person.email}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} className={classes.personInfo}>
+            <Typography variant="h5">
+              {`${person.firstName}:`}
+            </Typography>
+
+            <Typography variant="h5" className={classes.email}>
+              {person.email}
+            </Typography>
+
+            <div className={classes.personInfo}>
               {person.firstName === 'John' && (
                 <i>For any questions regarding DiLoreto genealogy.</i>
               )}
@@ -52,11 +72,10 @@ const ContactModal = (props) => {
                 View Portfolio
                 </Button>
               )}
-
-            </Grid>
+            </div>
           </React.Fragment>
         ))}
-      </Grid>
+      </div>
     </Modal>
   );
 };

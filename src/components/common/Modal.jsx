@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
     display: 'flex',
     justifyContent: 'space-between',
+
+    [theme.breakpoints.down('xs')]: {
+      fontSize: theme.spacing(5),
+    },
   },
   close: {
     position: 'absolute',

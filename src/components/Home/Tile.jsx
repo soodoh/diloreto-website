@@ -5,15 +5,11 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import detectIt from 'detect-it';
 import { makeStyles } from '@material-ui/styles';
-import Grid from '@material-ui/core/Grid';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Zoom from '@material-ui/core/Zoom';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    padding: '.5rem',
-  },
   imageContainer: {
     position: 'relative',
     cursor: 'pointer',
@@ -53,14 +49,10 @@ const Tile = (props) => {
   const {
     image, label, onClick, link,
   } = props;
+  const Wrapper = link ? Link : 'div';
 
   return (
-    <Grid
-      item
-      xs={6}
-      md={4}
-      className={classes.container}
-      component={link ? Link : 'div'}
+    <Wrapper
       to={link}
     >
       <div
@@ -96,7 +88,7 @@ const Tile = (props) => {
           />
         </Zoom>
       </div>
-    </Grid>
+    </Wrapper>
   );
 };
 
