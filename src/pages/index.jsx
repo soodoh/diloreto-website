@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { uid } from 'react-uid';
 import { makeStyles } from '@material-ui/styles';
 import { StaticQuery, graphql } from 'gatsby';
-import Grid from '@material-ui/core/Grid';
 import Metadata from '../components/Layout/Metadata';
 import PersonModal from '../components/Home/PersonModal';
 import Tile from '../components/Home/Tile';
@@ -11,17 +10,16 @@ import ContactModal from '../components/Home/ContactModal';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  grid: {
+    display: 'grid',
     maxWidth: 1200,
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
+    margin: 'auto',
     marginBottom: theme.spacing(10),
-  },
-  [theme.breakpoints.down('sm')]: {
-    grid: {
-      padding: theme.spacing(1),
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: theme.spacing(1),
+
+    [theme.breakpoints.down('sm')]: {
+      gridTemplateColumns: '1fr 1fr',
     },
   },
 }));
@@ -41,38 +39,33 @@ const HomePage = (props) => {
       />
 
       <div className={classes.container}>
-        <Grid
-          container
-          className={classes.grid}
-        >
-          {people.map(person => (
-            <Tile
-              key={uid(person)}
-              image={person.portrait}
-              label={person.firstName}
-              onClick={() => {
-                setPerson(person);
-                activatePerson(true);
-              }}
-            />
-          ))}
+        {people.map(person => (
+          <Tile
+            key={uid(person)}
+            image={person.portrait}
+            label={person.firstName}
+            onClick={() => {
+              setPerson(person);
+              activatePerson(true);
+            }}
+          />
+        ))}
 
-          <Tile
-            image={data.photosThumbnail}
-            label="Photos"
-            link="/photos"
-          />
-          <Tile
-            image={data.familyHistoryThumbnail}
-            label="Family History"
-            link="/areyou"
-          />
-          <Tile
-            image={data.contactThumbnail}
-            label="Contact"
-            onClick={() => activateContact(true)}
-          />
-        </Grid>
+        <Tile
+          image={data.photosThumbnail}
+          label="Photos"
+          link="/photos"
+        />
+        <Tile
+          image={data.familyHistoryThumbnail}
+          label="Family History"
+          link="/areyou"
+        />
+        <Tile
+          image={data.contactThumbnail}
+          label="Contact"
+          onClick={() => activateContact(true)}
+        />
       </div>
 
       <ContactModal
