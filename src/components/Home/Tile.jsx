@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/styles';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Zoom from '@material-ui/core/Zoom';
 import Typography from '@material-ui/core/Typography';
+import Fade from 'react-reveal/Fade';
 
 const useStyles = makeStyles(theme => ({
   imageContainer: {
@@ -47,7 +48,7 @@ const Tile = (props) => {
   const classes = useStyles();
   const [labelActive, setActive] = useState(detectIt.deviceType === 'touchOnly');
   const {
-    image, label, onClick, link,
+    image, label, onClick, link, delay,
   } = props;
   const Wrapper = link ? Link : 'div';
 
@@ -72,21 +73,23 @@ const Tile = (props) => {
         onMouseEnter={() => setActive(true)}
         onMouseLeave={() => setActive(detectIt.deviceType === 'touchOnly')}
       >
-        <Img
-          fluid={image.fluid}
-          alt={image.title}
-        />
-
-        <Zoom in={labelActive}>
-          <GridListTileBar
-            className={classes.labelContainer}
-            title={(
-              <Typography variant="h3" align="center" className={classes.label}>
-                {label}
-              </Typography>
-            )}
+        <Fade opposite delay={delay}>
+          <Img
+            fluid={image.fluid}
+            alt={image.title}
           />
-        </Zoom>
+
+          <Zoom in={labelActive}>
+            <GridListTileBar
+              className={classes.labelContainer}
+              title={(
+                <Typography variant="h3" align="center" className={classes.label}>
+                  {label}
+                </Typography>
+        )}
+            />
+          </Zoom>
+        </Fade>
       </div>
     </Wrapper>
   );
@@ -94,6 +97,7 @@ const Tile = (props) => {
 
 Tile.propTypes = {
   link: PropTypes.string,
+  delay: PropTypes.number.isRequired,
   image: PropTypes.shape({
     fluid: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,

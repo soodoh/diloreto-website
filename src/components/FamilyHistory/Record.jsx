@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
+import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
 import HistoryGallery from './HistoryGallery';
 
@@ -16,8 +17,7 @@ const useStyles = makeStyles(theme => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
   },
-  markdown: {
-    ...theme.typography.body1,
+  markdownContainer: {
     gridRow: 1,
     gridColumn: ({ data, isEven }) => {
       const isFullRow = !data.photos || (Array.isArray(data.photos) && data.photos.length > 1);
@@ -30,6 +30,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('xs')]: {
       gridColumn: '1 / 4',
     },
+  },
+  markdown: {
+    ...theme.typography.body1,
   },
   photo: {
     gridRow: 1,
@@ -50,30 +53,38 @@ const Record = (props) => {
   } = props;
   const classes = useStyles({ data, isEven });
   const hasGallery = Array.isArray(data.photos) && data.photos.length > 1;
+  const transitionDelay = 500;
 
   return (
     <div className={classes.container}>
-      <Typography variant="h1" color="primary" align="center">{data.title}</Typography>
+      <Fade top opposite>
+        <Typography variant="h1" color="primary" align="center">{data.title}</Typography>
+      </Fade>
 
       <div className={classes.grid}>
         {data.photos && !hasGallery
             && (
               <div className={classes.photo}>
-                <Photo
-                  data={data.photos[0]}
-                  link={data.link}
-                  openPhoto={openPhoto}
-                />
+                <Fade right opposite delay={transitionDelay}>
+                  <Photo
+                    data={data.photos[0]}
+                    link={data.link}
+                    openPhoto={openPhoto}
+                  />
+                </Fade>
               </div>
             )
           }
 
-        <div
-          className={classes.markdown}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: data.content.childMarkdownRemark.html }}
-        />
-
+        <div className={classes.markdownContainer}>
+          <Fade left opposite delay={transitionDelay * 2}>
+            <div
+              className={classes.markdown}
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{ __html: data.content.childMarkdownRemark.html }}
+            />
+          </Fade>
+        </div>
         {data.photos && hasGallery
             && (
               <HistoryGallery

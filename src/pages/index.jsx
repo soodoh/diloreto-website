@@ -30,6 +30,7 @@ const HomePage = (props) => {
   const [personActive, activatePerson] = useState(false);
   const [currentPerson, setPerson] = useState(null);
   const { people, data } = props;
+  const transitionDelay = 300;
 
   return (
     <React.Fragment>
@@ -39,9 +40,10 @@ const HomePage = (props) => {
       />
 
       <div className={classes.container}>
-        {people.map(person => (
+        {people.map((person, index) => (
           <Tile
             key={uid(person)}
+            delay={transitionDelay * (index + 1)}
             image={person.portrait}
             label={person.firstName}
             onClick={() => {
@@ -53,16 +55,19 @@ const HomePage = (props) => {
 
         <Tile
           image={data.photosThumbnail}
+          delay={transitionDelay * (people.length + 1)}
           label="Photos"
           link="/photos"
         />
         <Tile
           image={data.familyHistoryThumbnail}
+          delay={transitionDelay * (people.length + 2)}
           label="Family History"
           link="/areyou"
         />
         <Tile
           image={data.contactThumbnail}
+          delay={transitionDelay * (people.length + 3)}
           label="Contact"
           onClick={() => activateContact(true)}
         />
