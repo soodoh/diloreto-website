@@ -16,6 +16,7 @@ const Layout = ({ children, location }) => (
 
     <div>
       <Header location={location} />
+
       {children}
     </div>
   </ThemeProvider>
