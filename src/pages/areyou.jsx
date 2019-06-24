@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { uid } from 'react-uid';
-import Lightbox from 'react-images';
 import { StaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Metadata from '../components/Layout/Metadata';
 import ContactModal from '../components/Home/ContactModal';
 import Record from '../components/FamilyHistory/Record';
+import ImageModal from '../components/FamilyHistory/ImageModal';
 
 const useStyles = makeStyles(theme => ({
   info: {
@@ -30,8 +30,13 @@ const FamilyHistory = (props) => {
     return [...acc, ...cur.photos || []];
   }, []).filter(photo => photo);
   const [contactActive, setContact] = useState(false);
-  const [imagesActive, setImage] = useState(false);
-  const [currentPhoto, setPhoto] = useState(0);
+  const [currentPhoto, setPhoto] = useState(null);
+  const formattedPhotos = allPhotos.map(photo => ({
+    src: photo.fullSize.src,
+    srcSet: photo.fullSize,
+    caption: photo.description,
+    alt: photo.title,
+  }));
 
   return (
     <React.Fragment>
@@ -46,26 +51,17 @@ const FamilyHistory = (props) => {
         people={people}
       />
 
-      <Lightbox
-        images={allPhotos.map(photo => ({
-          src: photo.fullSize.src,
-          srcSet: photo.fullSize.srcSet,
-          caption: photo.description,
-          alt: photo.title,
-        }))}
-        isOpen={imagesActive}
-        backdropClosesModal
-        currentImage={currentPhoto}
-        onClickPrev={() => setPhoto(currentPhoto - 1)}
-        onClickNext={() => setPhoto(currentPhoto + 1)}
-        onClose={() => setImage(false)}
+      <ImageModal
+        onClose={() => setPhoto(null)}
+        images={formattedPhotos}
+        currentPhoto={currentPhoto}
       />
 
       <div className={classes.info}>
         <Typography variant="subtitle1" align="center" gutterBottom>
-        A genealogical record of the DiLoreto lineage is maintained,
-        and we would love to hear from any relatives with updates.
-        An updated copy of the complete family tree can be sent as a PDF to family members.
+          A genealogical record of the DiLoreto lineage is maintained,
+          and we would love to hear from any relatives with updates.
+          An updated copy of the complete family tree can be sent as a PDF to family members.
         </Typography>
         <Button
           variant="outlined"
@@ -85,7 +81,6 @@ const FamilyHistory = (props) => {
             const photoIndex = allPhotos.findIndex(photo => (
               photo.id === id
             ));
-            setImage(true);
             setPhoto(photoIndex);
           }}
         />
