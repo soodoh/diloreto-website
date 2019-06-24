@@ -20,7 +20,6 @@ module.exports = {
     siteUrl,
   },
   plugins: [
-    'gatsby-plugin-eslint',
     'gatsby-plugin-layout',
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-transformer-remark',
