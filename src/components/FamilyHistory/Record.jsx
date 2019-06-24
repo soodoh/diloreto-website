@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   grid: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: theme.spacing(1),
   },
   markdownContainer: {
     gridRow: 1,
@@ -28,7 +29,8 @@ const useStyles = makeStyles(theme => ({
     },
 
     [theme.breakpoints.down('xs')]: {
-      gridColumn: '1 / 4',
+      gridRow: 2,
+      gridColumn: () => '1 / 4',
     },
   },
   markdown: {
@@ -39,11 +41,16 @@ const useStyles = makeStyles(theme => ({
     gridColumn: ({ isEven }) => (isEven ? '1 / 2' : '3 / 4'),
 
     [theme.breakpoints.down('xs')]: {
-      gridColumn: '1 / 4',
+      gridColumn: () => '1 / 4',
     },
   },
   gallery: {
     gridColumn: '1 / 4',
+    gridRow: 2,
+
+    [theme.breakpoints.down('xs')]: {
+      gridRow: 3,
+    },
   },
 }));
 
@@ -64,7 +71,7 @@ const Record = (props) => {
       <div className={classes.grid}>
         {data.photos && !hasGallery
             && (
-              <div className={classes.photo}>
+              <div className={`${classes.photo} ${classes.mobileRow}`}>
                 <Fade right opposite delay={transitionDelay}>
                   <Photo
                     data={data.photos[0]}
@@ -76,7 +83,7 @@ const Record = (props) => {
             )
           }
 
-        <div className={classes.markdownContainer}>
+        <div className={`${classes.markdownContainer} ${classes.mobileRow}`}>
           <Fade left opposite delay={transitionDelay * 2}>
             <div
               className={classes.markdown}
@@ -85,15 +92,16 @@ const Record = (props) => {
             />
           </Fade>
         </div>
+
         {data.photos && hasGallery
-            && (
-              <HistoryGallery
-                className={classes.gallery}
-                data={data}
-                openPhoto={openPhoto}
-              />
-            )
-          }
+          && (
+            <HistoryGallery
+              className={classes.gallery}
+              data={data}
+              openPhoto={openPhoto}
+            />
+          )
+        }
       </div>
     </div>
   );
@@ -103,6 +111,8 @@ Record.propTypes = {
   isEven: PropTypes.bool.isRequired,
   data: PropTypes.shape({
     link: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired,
     photos: PropTypes.arrayOf(
       PropTypes.shape({
         thumbnail: PropTypes.object.isRequired,
