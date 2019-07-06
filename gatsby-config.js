@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const dotenv = require('dotenv');
-const theme = require('./src/components/Layout/theme');
 
 // Load environment variables from project
 dotenv.config();
@@ -20,6 +19,7 @@ module.exports = {
     siteUrl,
   },
   plugins: [
+    'gatsby-plugin-eslint',
     'gatsby-plugin-layout',
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-transformer-remark',
