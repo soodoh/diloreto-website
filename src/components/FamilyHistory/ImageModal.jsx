@@ -20,11 +20,11 @@ const ImageModal = (props) => {
   const theme = useTheme();
 
   const modalStyles = {
-    positioner: base => ({
+    positioner: (base) => ({
       ...base,
       zIndex: theme.zIndex.appBar + 1,
     }),
-    blanket: base => ({
+    blanket: (base) => ({
       ...base,
       zIndex: theme.zIndex.appBar + 1,
     }),

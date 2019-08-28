@@ -8,11 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 
-const Transition = React.forwardRef((props, ref) => (
-  <Slide direction="up" ref={ref} {...props} />
-));
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   title: {
     padding: theme.spacing(3),
     display: 'flex',
@@ -38,7 +34,7 @@ const Modal = (props) => {
 
   return (
     <Dialog
-      TransitionComponent={Transition}
+      TransitionComponent={Slide}
       fullWidth
       maxWidth="sm"
       open={open}

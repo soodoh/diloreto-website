@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import Img from 'gatsby-image';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: theme.spacing(3),
     // Using flexbox here breaks Gatsby-image
