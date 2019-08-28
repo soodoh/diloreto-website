@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Metadata from '../components/Layout/Metadata';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     padding: theme.spacing(2),
     width: '100%',
@@ -15,7 +15,7 @@ const Photos = () => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <Metadata
         title="DiLoreto Photos"
         description="The DiLoreto Family's photo gallery with images of John, Donna, Paul and Carolyn. View various photo albums from past holidays and family events."
@@ -26,7 +26,7 @@ const Photos = () => {
           Under Construction
         </Typography>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -54,9 +54,9 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Photos
-        albums={data.allContentfulPhotoAlbums.edges.map(item => (
+        albums={data.allContentfulPhotoAlbums.edges.map((item) => (
           item.node
         ))}
       />
