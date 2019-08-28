@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from '../common/Modal';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: 'grid',
     gridTemplateColumns: '30% 1fr',
@@ -48,7 +48,7 @@ const ContactModal = (props) => {
       onClose={onClose}
     >
       <div className={classes.container}>
-        {people.map(person => (
+        {people.map((person) => (
           <React.Fragment key={uid(person)}>
             <Typography variant="h5">
               {`${person.firstName}:`}

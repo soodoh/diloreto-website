@@ -10,7 +10,7 @@ import ContactModal from '../components/Home/ContactModal';
 import Record from '../components/FamilyHistory/Record';
 import ImageModal from '../components/FamilyHistory/ImageModal';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   info: {
     padding: theme.spacing(2),
     display: 'flex',
@@ -28,10 +28,10 @@ const FamilyHistory = (props) => {
       return acc;
     }
     return [...acc, ...cur.photos || []];
-  }, []).filter(photo => photo);
+  }, []).filter((photo) => photo);
   const [contactActive, setContact] = useState(false);
   const [currentPhoto, setPhoto] = useState(null);
-  const formattedPhotos = allPhotos.map(photo => ({
+  const formattedPhotos = allPhotos.map((photo) => ({
     src: photo.fullSize.src,
     srcSet: photo.fullSize,
     caption: photo.description,
@@ -39,7 +39,7 @@ const FamilyHistory = (props) => {
   }));
 
   return (
-    <React.Fragment>
+    <>
       <Metadata
         title="Are You a DiLoreto?"
         description="Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed."
@@ -78,14 +78,14 @@ const FamilyHistory = (props) => {
           data={record}
           isEven={index % 2 === 0}
           openPhoto={(id) => {
-            const photoIndex = allPhotos.findIndex(photo => (
+            const photoIndex = allPhotos.findIndex((photo) => (
               photo.id === id
             ));
             setPhoto(photoIndex);
           }}
         />
       ))}
-    </React.Fragment>
+    </>
   );
 };
 
@@ -156,12 +156,12 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <FamilyHistory
-        people={data.allContentfulPeople.edges.map(item => (
+        people={data.allContentfulPeople.edges.map((item) => (
           item.node
         ))}
-        data={data.allContentfulFamilyHistory.edges.map(item => (
+        data={data.allContentfulFamilyHistory.edges.map((item) => (
           item.node
         ))}
       />

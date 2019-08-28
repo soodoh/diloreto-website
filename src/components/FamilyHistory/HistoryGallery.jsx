@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',

@@ -8,7 +8,7 @@ import PersonModal from '../components/Home/PersonModal';
 import Tile from '../components/Home/Tile';
 import ContactModal from '../components/Home/ContactModal';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: 'grid',
     maxWidth: 1200,
@@ -33,7 +33,7 @@ const HomePage = (props) => {
   const transitionDelay = 300;
 
   return (
-    <React.Fragment>
+    <>
       <Metadata
         title="The DiLoreto Family"
         description="The DiLoreto Family's home page. Are you a DiLoreto? View our extensive family history and lineage section, or learn more about John, Donna, Carolyn and Paul."
@@ -86,7 +86,7 @@ const HomePage = (props) => {
         }}
         data={currentPerson}
       />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -154,10 +154,10 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <HomePage
         data={data.contentfulHomePage}
-        people={data.allContentfulPeople.edges.map(item => (
+        people={data.allContentfulPeople.edges.map((item) => (
           item.node
         ))}
       />

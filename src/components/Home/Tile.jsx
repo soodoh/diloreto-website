@@ -10,7 +10,7 @@ import Zoom from '@material-ui/core/Zoom';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   imageContainer: {
     position: 'relative',
     cursor: 'pointer',

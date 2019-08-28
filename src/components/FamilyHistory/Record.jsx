@@ -6,7 +6,7 @@ import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
 import HistoryGallery from './HistoryGallery';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: ({ isEven }) => (
       isEven ? theme.palette.background.default : theme.palette.background.dark
@@ -80,8 +80,7 @@ const Record = (props) => {
                   />
                 </Fade>
               </div>
-            )
-          }
+            )}
 
         <div className={`${classes.markdownContainer} ${classes.mobileRow}`}>
           <Fade left opposite delay={transitionDelay * 2}>
@@ -100,8 +99,7 @@ const Record = (props) => {
               data={data}
               openPhoto={openPhoto}
             />
-          )
-        }
+          )}
       </div>
     </div>
   );
