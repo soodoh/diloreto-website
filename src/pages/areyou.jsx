@@ -68,7 +68,7 @@ const FamilyHistory = (props) => {
           color="primary"
           onClick={() => setContact(true)}
         >
-        Contact Us
+          Contact Us
         </Button>
       </div>
 

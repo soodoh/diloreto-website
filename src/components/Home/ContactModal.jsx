@@ -69,7 +69,7 @@ const ContactModal = (props) => {
                   component="a"
                   href={person.link}
                 >
-                View Portfolio
+                  View Portfolio
                 </Button>
               )}
             </div>

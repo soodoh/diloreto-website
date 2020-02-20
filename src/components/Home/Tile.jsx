@@ -79,16 +79,20 @@ const Tile = (props) => {
             alt={image.title}
           />
 
-          <Zoom in={labelActive}>
-            <GridListTileBar
-              className={classes.labelContainer}
-              title={(
-                <Typography variant="h3" align="center" className={classes.label}>
-                  {label}
-                </Typography>
-        )}
-            />
-          </Zoom>
+          <>
+            {label && (
+              <Zoom in={labelActive}>
+                <GridListTileBar
+                  className={classes.labelContainer}
+                  title={(
+                    <Typography variant="h3" align="center" className={classes.label}>
+                      {label}
+                    </Typography>
+                )}
+                />
+              </Zoom>
+            )}
+          </>
         </Fade>
       </div>
     </Wrapper>
@@ -102,10 +106,11 @@ Tile.propTypes = {
     fluid: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   onClick: PropTypes.func,
 };
 Tile.defaultProps = {
+  label: null,
   link: null,
   onClick: null,
 };
