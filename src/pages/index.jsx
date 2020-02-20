@@ -56,8 +56,6 @@ const HomePage = (props) => {
         <Tile
           image={data.photosThumbnail}
           delay={transitionDelay * (people.length + 1)}
-          label="Photos"
-          link="/photos"
         />
         <Tile
           image={data.familyHistoryThumbnail}
