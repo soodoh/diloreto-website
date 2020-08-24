@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HistoryGallery = (props) => {
+const HistoryGallery = props => {
   const { data, openPhoto, className } = props;
   const classes = useStyles();
   const transitionDelay = 300;
@@ -28,19 +28,13 @@ const HistoryGallery = (props) => {
     <div className={`${classes.container} ${className}`}>
       <div className={classes.title}>
         <Fade opposite>
-          <Typography variant="caption">
-            Click any photo to view full gallery
-          </Typography>
+          <Typography variant="caption">Click any photo to view full gallery</Typography>
         </Fade>
       </div>
 
       {data.photos.slice(0, 3).map((photo, index) => (
         <Fade opposite delay={transitionDelay * (index + 1)} key={uid(photo)}>
-          <Photo
-            data={photo}
-            link={data.link}
-            openPhoto={openPhoto}
-          />
+          <Photo data={photo} link={data.link} openPhoto={openPhoto} />
         </Fade>
       ))}
     </div>

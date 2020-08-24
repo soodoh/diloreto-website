@@ -4,24 +4,15 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from '@material-ui/core/Button';
 import Modal from '../common/Modal';
 
-const PersonModal = (props) => {
+const PersonModal = props => {
   const { open, data, onClose } = props;
 
   return (
-    <Modal
-      open={open}
-      title={data && data.fullName}
-      onClose={onClose}
-    >
+    <Modal open={open} title={data && data.fullName} onClose={onClose}>
       {data && data.link && (
-      <Button
-        variant="outlined"
-        color="primary"
-        component="a"
-        href={data.link}
-      >
-        View Portfolio
-      </Button>
+        <Button variant="outlined" color="primary" component="a" href={data.link}>
+          View Portfolio
+        </Button>
       )}
 
       <DialogContentText

@@ -10,7 +10,7 @@ import Zoom from '@material-ui/core/Zoom';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   imageContainer: {
     position: 'relative',
     cursor: 'pointer',
@@ -44,18 +44,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Tile = (props) => {
+const Tile = props => {
   const classes = useStyles();
   const [labelActive, setActive] = useState(detectIt.deviceType === 'touchOnly');
-  const {
-    image, label, onClick, link, delay,
-  } = props;
+  const { image, label, onClick, link, delay } = props;
   const Wrapper = link ? Link : 'div';
 
   return (
-    <Wrapper
-      to={link}
-    >
+    <Wrapper to={link}>
       <div
         role="button"
         aria-label={`"${image.title}" Action`}
@@ -65,7 +61,7 @@ const Tile = (props) => {
           [classes.active]: labelActive,
         })}
         onClick={onClick}
-        onKeyPress={(event) => {
+        onKeyPress={event => {
           if (event.charCode === 13) {
             onClick();
           }
@@ -74,21 +70,18 @@ const Tile = (props) => {
         onMouseLeave={() => setActive(detectIt.deviceType === 'touchOnly')}
       >
         <Fade opposite delay={delay}>
-          <Img
-            fluid={image.fluid}
-            alt={image.title}
-          />
+          <Img fluid={image.fluid} alt={image.title} />
 
           <>
             {label && (
               <Zoom in={labelActive}>
                 <GridListTileBar
                   className={classes.labelContainer}
-                  title={(
+                  title={
                     <Typography variant="h3" align="center" className={classes.label}>
                       {label}
                     </Typography>
-                )}
+                  }
                 />
               </Zoom>
             )}

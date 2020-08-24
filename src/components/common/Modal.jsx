@@ -8,7 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   title: {
     padding: theme.spacing(3),
     display: 'flex',
@@ -26,27 +26,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Modal = (props) => {
-  const {
-    open, title, onClose, children,
-  } = props;
+const Modal = props => {
+  const { open, title, onClose, children } = props;
   const classes = useStyles();
 
   return (
-    <Dialog
-      TransitionComponent={Slide}
-      fullWidth
-      maxWidth="sm"
-      open={open}
-      onClose={onClose}
-      aria-labelledby="person-modal"
-    >
-      <Typography
-        variant="h1"
-        color="primary"
-        id="person-modal"
-        className={classes.title}
-      >
+    <Dialog TransitionComponent={Slide} fullWidth maxWidth="sm" open={open} onClose={onClose} aria-labelledby="person-modal">
+      <Typography variant="h1" color="primary" id="person-modal" className={classes.title}>
         {title}
       </Typography>
 
@@ -54,9 +40,7 @@ const Modal = (props) => {
         <Close />
       </IconButton>
 
-      <DialogContent>
-        {children}
-      </DialogContent>
+      <DialogContent>{children}</DialogContent>
     </Dialog>
   );
 };

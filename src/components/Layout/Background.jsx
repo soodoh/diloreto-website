@@ -18,17 +18,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Background = (props) => {
+const Background = props => {
   const { sizes } = props;
   const classes = useStyles;
 
   return (
     <div className={classes.container}>
-      <Img
-        fluid={sizes}
-        className={classes.background}
-        alt="Background Image"
-      />
+      <Img fluid={sizes} className={classes.background} alt="Background Image" />
     </div>
   );
 };

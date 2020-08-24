@@ -10,7 +10,7 @@ import ContactModal from '../components/Home/ContactModal';
 import Record from '../components/FamilyHistory/Record';
 import ImageModal from '../components/FamilyHistory/ImageModal';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   info: {
     padding: theme.spacing(2),
     display: 'flex',
@@ -19,19 +19,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FamilyHistory = (props) => {
+const FamilyHistory = props => {
   const classes = useStyles();
   const { data, people } = props;
-  const allPhotos = data.reduce((acc, cur) => {
-    // We don't want to add to the photo gallery if its a link thumbnail
-    if (cur.link) {
-      return acc;
-    }
-    return [...acc, ...cur.photos || []];
-  }, []).filter((photo) => photo);
+  const allPhotos = data
+    .reduce((acc, cur) => {
+      // We don't want to add to the photo gallery if its a link thumbnail
+      if (cur.link) {
+        return acc;
+      }
+      return [...acc, ...(cur.photos || [])];
+    }, [])
+    .filter(photo => photo);
   const [contactActive, setContact] = useState(false);
   const [currentPhoto, setPhoto] = useState(null);
-  const formattedPhotos = allPhotos.map((photo) => ({
+  const formattedPhotos = allPhotos.map(photo => ({
     src: photo.fullSize.src,
     srcSet: photo.fullSize,
     caption: photo.description,
@@ -45,29 +47,16 @@ const FamilyHistory = (props) => {
         description="Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed."
       />
 
-      <ContactModal
-        open={contactActive}
-        onClose={() => setContact(false)}
-        people={people}
-      />
+      <ContactModal open={contactActive} onClose={() => setContact(false)} people={people} />
 
-      <ImageModal
-        onClose={() => setPhoto(null)}
-        images={formattedPhotos}
-        currentPhoto={currentPhoto}
-      />
+      <ImageModal onClose={() => setPhoto(null)} images={formattedPhotos} currentPhoto={currentPhoto} />
 
       <div className={classes.info}>
         <Typography variant="subtitle1" align="center" gutterBottom>
-          A genealogical record of the DiLoreto lineage is maintained,
-          and we would love to hear from any relatives with updates.
-          An updated copy of the complete family tree can be sent as a PDF to family members.
+          A genealogical record of the DiLoreto lineage is maintained, and we would love to hear from any relatives with updates. An updated
+          copy of the complete family tree can be sent as a PDF to family members.
         </Typography>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={() => setContact(true)}
-        >
+        <Button variant="outlined" color="primary" onClick={() => setContact(true)}>
           Contact Us
         </Button>
       </div>
@@ -77,10 +66,8 @@ const FamilyHistory = (props) => {
           key={uid(record)}
           data={record}
           isEven={index % 2 === 0}
-          openPhoto={(id) => {
-            const photoIndex = allPhotos.findIndex((photo) => (
-              photo.id === id
-            ));
+          openPhoto={id => {
+            const photoIndex = allPhotos.findIndex(photo => photo.id === id);
             setPhoto(photoIndex);
           }}
         />
@@ -118,7 +105,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query HistoryQuery {
-        allContentfulFamilyHistory(sort: {fields: [year], order: ASC}) {
+        allContentfulFamilyHistory(sort: { fields: [year], order: ASC }) {
           edges {
             node {
               year
@@ -143,7 +130,7 @@ export default () => (
             }
           }
         }
-        allContentfulPeople(sort: {fields: [order], order: ASC}) {
+        allContentfulPeople(sort: { fields: [order], order: ASC }) {
           edges {
             node {
               order
@@ -156,14 +143,10 @@ export default () => (
         }
       }
     `}
-    render={(data) => (
+    render={data => (
       <FamilyHistory
-        people={data.allContentfulPeople.edges.map((item) => (
-          item.node
-        ))}
-        data={data.allContentfulFamilyHistory.edges.map((item) => (
-          item.node
-        ))}
+        people={data.allContentfulPeople.edges.map(item => item.node)}
+        data={data.allContentfulFamilyHistory.edges.map(item => item.node)}
       />
     )}
   />

@@ -15,16 +15,16 @@ View.propTypes = {
   }).isRequired,
 };
 
-const ImageModal = (props) => {
+const ImageModal = props => {
   const { onClose, images, currentPhoto } = props;
   const theme = useTheme();
 
   const modalStyles = {
-    positioner: (base) => ({
+    positioner: base => ({
       ...base,
       zIndex: theme.zIndex.appBar + 1,
     }),
-    blanket: (base) => ({
+    blanket: base => ({
       ...base,
       zIndex: theme.zIndex.appBar + 1,
     }),
@@ -33,16 +33,9 @@ const ImageModal = (props) => {
   return (
     <ModalGateway>
       {Number.isInteger(currentPhoto) && (
-      <Modal
-        allowFullscreen={false}
-        onClose={onClose}
-        styles={modalStyles}
-      >
-        <Carousel
-          currentIndex={currentPhoto}
-          views={images}
-        />
-      </Modal>
+        <Modal allowFullscreen={false} onClose={onClose} styles={modalStyles}>
+          <Carousel currentIndex={currentPhoto} views={images} />
+        </Modal>
       )}
     </ModalGateway>
   );
@@ -50,9 +43,11 @@ const ImageModal = (props) => {
 
 ImageModal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  images: PropTypes.arrayOf(PropTypes.shape({
-    src: PropTypes.string.isRequired,
-  })).isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   currentPhoto: PropTypes.number,
 };
 ImageModal.defaultProps = {
