@@ -6,11 +6,9 @@ import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
 import HistoryGallery from './HistoryGallery';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
-    backgroundColor: ({ isEven }) => (
-      isEven ? theme.palette.background.default : theme.palette.background.dark
-    ),
+    backgroundColor: ({ isEven }) => (isEven ? theme.palette.background.default : theme.palette.background.dark),
     padding: theme.spacing(2),
   },
   grid: {
@@ -54,10 +52,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Record = (props) => {
-  const {
-    data, openPhoto, isEven,
-  } = props;
+const Record = props => {
+  const { data, openPhoto, isEven } = props;
   const classes = useStyles({ data, isEven });
   const hasGallery = Array.isArray(data.photos) && data.photos.length > 1;
   const transitionDelay = 500;
@@ -65,22 +61,19 @@ const Record = (props) => {
   return (
     <div className={classes.container}>
       <Fade top opposite>
-        <Typography variant="h1" color="primary" align="center">{data.title}</Typography>
+        <Typography variant="h1" color="primary" align="center">
+          {data.title}
+        </Typography>
       </Fade>
 
       <div className={classes.grid}>
-        {data.photos && !hasGallery
-            && (
-              <div className={`${classes.photo} ${classes.mobileRow}`}>
-                <Fade right opposite delay={transitionDelay}>
-                  <Photo
-                    data={data.photos[0]}
-                    link={data.link}
-                    openPhoto={openPhoto}
-                  />
-                </Fade>
-              </div>
-            )}
+        {data.photos && !hasGallery && (
+          <div className={`${classes.photo} ${classes.mobileRow}`}>
+            <Fade right opposite delay={transitionDelay}>
+              <Photo data={data.photos[0]} link={data.link} openPhoto={openPhoto} />
+            </Fade>
+          </div>
+        )}
 
         <div className={`${classes.markdownContainer} ${classes.mobileRow}`}>
           <Fade left opposite delay={transitionDelay * 2}>
@@ -92,14 +85,7 @@ const Record = (props) => {
           </Fade>
         </div>
 
-        {data.photos && hasGallery
-          && (
-            <HistoryGallery
-              className={classes.gallery}
-              data={data}
-              openPhoto={openPhoto}
-            />
-          )}
+        {data.photos && hasGallery && <HistoryGallery className={classes.gallery} data={data} openPhoto={openPhoto} />}
       </div>
     </div>
   );
