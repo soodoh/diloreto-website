@@ -19,7 +19,6 @@ module.exports = {
     siteUrl,
   },
   plugins: [
-    'gatsby-plugin-eslint',
     'gatsby-plugin-layout',
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-transformer-remark',
@@ -27,11 +26,8 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-remove-serviceworker',
-    // 'gatsby-plugin-offline',
     'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-material-ui',
-    },
+    'gatsby-plugin-material-ui',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
