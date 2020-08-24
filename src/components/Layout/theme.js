@@ -15,7 +15,7 @@ const rawTheme = {
   },
   typography: {
     useNextVariants: true,
-    fontFamily: '\'Baskerville\', serif',
+    fontFamily: "'Baskerville', serif",
     body1: {
       '& h2': {
         textAlign: 'center',
@@ -25,7 +25,7 @@ const rawTheme = {
       },
     },
     h1: {
-      fontFamily: '\'Baskerville\', cursive',
+      fontFamily: "'Baskerville', cursive",
       fontSize: '3rem',
       fontStyle: 'italic',
     },

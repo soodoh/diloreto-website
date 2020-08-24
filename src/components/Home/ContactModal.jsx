@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from '../common/Modal';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: 'grid',
     gridTemplateColumns: '30% 1fr',
@@ -35,40 +35,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactModal = (props) => {
+const ContactModal = props => {
   const classes = useStyles();
-  const {
-    open, onClose, people,
-  } = props;
+  const { open, onClose, people } = props;
 
   return (
-    <Modal
-      open={open}
-      title="Contact Us"
-      onClose={onClose}
-    >
+    <Modal open={open} title="Contact Us" onClose={onClose}>
       <div className={classes.container}>
-        {people.map((person) => (
+        {people.map(person => (
           <React.Fragment key={uid(person)}>
-            <Typography variant="h5">
-              {`${person.firstName}:`}
-            </Typography>
+            <Typography variant="h5">{`${person.firstName}:`}</Typography>
 
             <Typography variant="h5" className={classes.email}>
               {person.email}
             </Typography>
 
             <div className={classes.personInfo}>
-              {person.firstName === 'John' && (
-                <i>For any questions regarding DiLoreto genealogy.</i>
-              )}
+              {person.firstName === 'John' && <i>For any questions regarding DiLoreto genealogy.</i>}
               {person.link && (
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  component="a"
-                  href={person.link}
-                >
+                <Button variant="outlined" color="primary" component="a" href={person.link}>
                   View Portfolio
                 </Button>
               )}

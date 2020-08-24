@@ -7,7 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   appBar: {
     position: 'sticky',
     top: 0,
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = (props) => {
+const Header = props => {
   const classes = useStyles();
   const { location } = props;
 
@@ -49,13 +49,7 @@ const Header = (props) => {
       })}
     >
       <Toolbar className={classes.content}>
-        <Typography
-          variant="h1"
-          align="center"
-          className={classes.logo}
-          component={Link}
-          to="/"
-        >
+        <Typography variant="h1" align="center" className={classes.logo} component={Link} to="/">
           The DiLoreto Family
         </Typography>
       </Toolbar>

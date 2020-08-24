@@ -7,9 +7,7 @@ const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_DELIVERY_TOKEN;
 
 if (!spaceId || !accessToken) {
-  throw new Error(
-    'Contentful spaceId and the delivery token need to be provided.',
-  );
+  throw new Error('Contentful spaceId and the delivery token need to be provided.');
 }
 
 const siteUrl = 'https://diloreto.com';
@@ -25,7 +23,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-remove-serviceworker',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-material-ui',
     {

@@ -8,7 +8,7 @@ import PersonModal from '../components/Home/PersonModal';
 import Tile from '../components/Home/Tile';
 import ContactModal from '../components/Home/ContactModal';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: 'grid',
     maxWidth: 1200,
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HomePage = (props) => {
+const HomePage = props => {
   const classes = useStyles();
   const [contactActive, activateContact] = useState(false);
   const [personActive, activatePerson] = useState(false);
@@ -53,16 +53,8 @@ const HomePage = (props) => {
           />
         ))}
 
-        <Tile
-          image={data.photosThumbnail}
-          delay={transitionDelay * (people.length + 1)}
-        />
-        <Tile
-          image={data.familyHistoryThumbnail}
-          delay={transitionDelay * (people.length + 2)}
-          label="Family History"
-          link="/areyou"
-        />
+        <Tile image={data.photosThumbnail} delay={transitionDelay * (people.length + 1)} />
+        <Tile image={data.familyHistoryThumbnail} delay={transitionDelay * (people.length + 2)} label="Family History" link="/areyou" />
         <Tile
           image={data.contactThumbnail}
           delay={transitionDelay * (people.length + 3)}
@@ -71,11 +63,7 @@ const HomePage = (props) => {
         />
       </div>
 
-      <ContactModal
-        open={contactActive}
-        onClose={() => activateContact(false)}
-        people={people}
-      />
+      <ContactModal open={contactActive} onClose={() => activateContact(false)} people={people} />
       <PersonModal
         open={personActive}
         onClose={() => {
@@ -108,7 +96,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query HomeQuery {
-        allContentfulPeople(sort: {fields: [order], order: ASC}) {
+        allContentfulPeople(sort: { fields: [order], order: ASC }) {
           edges {
             node {
               order
@@ -152,13 +140,6 @@ export default () => (
         }
       }
     `}
-    render={(data) => (
-      <HomePage
-        data={data.contentfulHomePage}
-        people={data.allContentfulPeople.edges.map((item) => (
-          item.node
-        ))}
-      />
-    )}
+    render={data => <HomePage data={data.contentfulHomePage} people={data.allContentfulPeople.edges.map(item => item.node)} />}
   />
 );
