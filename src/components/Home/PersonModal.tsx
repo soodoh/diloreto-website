@@ -1,10 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from '@material-ui/core/Button';
 import Modal from '../common/Modal';
+import { Markdown } from '../../types';
 
-const PersonModal = props => {
+interface PersonProps {
+  open: boolean;
+  data: {
+    fullName: string;
+    link?: string;
+    bio: Markdown;
+  };
+  onClose: () => void;
+}
+
+const PersonModal = (props: PersonProps): ReactElement => {
   const { open, data, onClose } = props;
 
   return (
@@ -22,19 +32,6 @@ const PersonModal = props => {
       />
     </Modal>
   );
-};
-
-PersonModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  data: PropTypes.shape({
-    fullName: PropTypes.string.isRequired,
-    link: PropTypes.string,
-    bio: PropTypes.object.isRequired,
-  }),
-};
-PersonModal.defaultProps = {
-  data: null,
 };
 
 export default PersonModal;

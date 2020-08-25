@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -26,7 +25,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Modal = props => {
+interface ModalProps {
+  open: boolean;
+  title: string;
+  children: ReactElement;
+  onClose: () => void;
+}
+
+const Modal = (props: ModalProps): ReactElement => {
   const { open, title, onClose, children } = props;
   const classes = useStyles();
 
@@ -43,17 +49,6 @@ const Modal = props => {
       <DialogContent>{children}</DialogContent>
     </Dialog>
   );
-};
-
-Modal.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string,
-  open: PropTypes.bool,
-};
-Modal.defaultProps = {
-  title: '',
-  open: false,
 };
 
 export default Modal;

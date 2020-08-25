@@ -1,3 +1,5 @@
+import { createMuiTheme } from '@material-ui/core/styles';
+
 const rawTheme = {
   palette: {
     background: {
@@ -38,4 +40,4 @@ const rawTheme = {
   },
 };
 
-module.exports = rawTheme;
+export default createMuiTheme(rawTheme);
