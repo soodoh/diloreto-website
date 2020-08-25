@@ -36,7 +36,7 @@ const FamilyHistory = (props: FamilyHistoryProps): ReactElement => {
     return [...photos, ...morePhotos];
   }, []);
   const [contactActive, setContact] = useState(false);
-  const [currentPhoto, setPhoto] = useState(null);
+  const [photoIndex, setPhoto] = useState(null);
 
   return (
     <>
@@ -47,7 +47,12 @@ const FamilyHistory = (props: FamilyHistoryProps): ReactElement => {
 
       <ContactModal open={contactActive} onClose={() => setContact(false)} people={people} />
 
-      <ImageModal onClose={() => setPhoto(null)} images={allPhotos} currentPhoto={currentPhoto} />
+      <ImageModal
+        onChange={(newIndex: number) => setPhoto(newIndex)}
+        onClose={() => setPhoto(null)}
+        images={allPhotos}
+        photoIndex={photoIndex}
+      />
 
       <div className={classes.info}>
         <Typography variant="subtitle1" align="center" gutterBottom>

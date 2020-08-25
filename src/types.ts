@@ -11,8 +11,8 @@ export interface GalleryPhoto {
   title: string;
   link?: string;
   description?: string;
-  thumbnail: FluidObject | FluidObject[];
-  fullSize: FluidObject | FluidObject[];
+  thumbnail: FluidObject;
+  fullSize: FluidObject;
 }
 
 export interface Person {
