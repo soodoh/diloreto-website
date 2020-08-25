@@ -11,8 +11,8 @@ const rawTheme = {
       contrastText: 'white',
     },
     secondary: {
-      main: '#7d89c1',
-      contrastText: 'white',
+      main: '#d1d1d1',
+      contrastText: 'black',
     },
   },
   typography: {
