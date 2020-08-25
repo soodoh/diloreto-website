@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { ReactElement, useState } from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import detectIt from 'detect-it';
@@ -9,6 +7,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Zoom from '@material-ui/core/Zoom';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
+import { Image } from '../../types';
 
 const useStyles = makeStyles(theme => ({
   imageContainer: {
@@ -44,7 +43,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Tile = props => {
+interface TileProps {
+  image: Image;
+  label: string;
+  onClick?: () => void;
+  link?: string;
+  delay: number;
+}
+
+const Tile = (props: TileProps): ReactElement => {
   const classes = useStyles();
   const [labelActive, setActive] = useState(detectIt.deviceType === 'touchOnly');
   const { image, label, onClick, link, delay } = props;
@@ -56,10 +63,7 @@ const Tile = props => {
         role="button"
         aria-label={`"${image.title}" Action`}
         tabIndex={0}
-        className={classNames({
-          [classes.imageContainer]: true,
-          [classes.active]: labelActive,
-        })}
+        className={`${classes.imageContainer} ${labelActive ? classes.active : ''}`}
         onClick={onClick}
         onKeyPress={event => {
           if (event.charCode === 13) {
@@ -90,22 +94,6 @@ const Tile = props => {
       </div>
     </Wrapper>
   );
-};
-
-Tile.propTypes = {
-  link: PropTypes.string,
-  delay: PropTypes.number.isRequired,
-  image: PropTypes.shape({
-    fluid: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  label: PropTypes.string,
-  onClick: PropTypes.func,
-};
-Tile.defaultProps = {
-  label: null,
-  link: null,
-  onClick: null,
 };
 
 export default Tile;
