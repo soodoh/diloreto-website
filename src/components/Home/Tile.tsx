@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     filter: 'grayscale(100%)',
     transition: 'filter .5s ease-out',
+    width: '100%',
+    border: 'none',
+    padding: 0,
   },
   active: {
     filter: 'none',
@@ -58,17 +61,9 @@ const Tile = (props: TileProps): ReactElement => {
 
   return (
     <Wrapper to={link}>
-      <div
-        role="button"
-        aria-label={`"${image.title}" Action`}
-        tabIndex={0}
+      <button
         className={`${classes.imageContainer} ${labelActive ? classes.active : ''}`}
         onClick={onClick}
-        onKeyPress={event => {
-          if (event.charCode === 13) {
-            onClick();
-          }
-        }}
         onMouseEnter={() => setActive(true)}
         onMouseLeave={() => setActive(detectIt.deviceType === 'touchOnly')}
       >
@@ -90,7 +85,7 @@ const Tile = (props: TileProps): ReactElement => {
             )}
           </>
         </Fade>
-      </div>
+      </button>
     </Wrapper>
   );
 };
