@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
 import HistoryGallery from './HistoryGallery';
+import { HistoryRecord } from '../../types';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -17,11 +18,11 @@ const useStyles = makeStyles(theme => ({
   },
   markdownContainer: {
     gridRow: 1,
-    gridColumn: ({ data, isEven }) => {
-      const isFullRow = !data.photos || (Array.isArray(data.photos) && data.photos.length > 1);
+    gridColumn: (props: RecordProps) => {
+      const isFullRow = props.data?.photos?.length > 1;
 
       if (isFullRow) return '1 / 4';
-      if (isEven) return '2 / 4';
+      if (props.isEven) return '2 / 4';
       return '1 / 3';
     },
 
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
   photo: {
     gridRow: 1,
-    gridColumn: ({ isEven }) => (isEven ? '1 / 2' : '3 / 4'),
+    gridColumn: (props: RecordProps) => (props.isEven ? '1 / 2' : '3 / 4'),
 
     [theme.breakpoints.down('xs')]: {
       gridColumn: () => '1 / 4',
@@ -52,14 +53,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 interface RecordProps {
-  data: any;
+  data: HistoryRecord;
   openPhoto: (id: string) => void;
   isEven: boolean;
 }
 
 const Record = (props: RecordProps): ReactElement => {
-  const { data, openPhoto, isEven } = props;
-  const classes = useStyles({ data, isEven });
+  const { data, openPhoto } = props;
+  const classes = useStyles(props);
   const hasGallery = Array.isArray(data.photos) && data.photos.length > 1;
   const transitionDelay = 500;
 

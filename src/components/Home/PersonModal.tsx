@@ -19,17 +19,19 @@ const PersonModal = (props: PersonProps): ReactElement => {
 
   return (
     <Modal open={open} title={data && data.fullName} onClose={onClose}>
-      {data && data.link && (
-        <Button variant="outlined" color="primary" component="a" href={data.link}>
-          View Portfolio
-        </Button>
-      )}
+      <>
+        {data && data.link && (
+          <Button variant="outlined" color="primary" component="a" href={data.link}>
+            View Portfolio
+          </Button>
+        )}
 
-      <DialogContentText
-        variant="body1"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: data && data.bio.childMarkdownRemark.html }}
-      />
+        <DialogContentText
+          variant="body1"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: data?.bio?.childMarkdownRemark?.html }}
+        />
+      </>
     </Modal>
   );
 };
