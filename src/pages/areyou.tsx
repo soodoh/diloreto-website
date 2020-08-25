@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { uid } from 'react-uid';
+import React, { ReactElement, useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Metadata from '../components/Layout/Metadata';
 import ContactModal from '../components/Home/ContactModal';
-import Record from '../components/FamilyHistory/Record';
+import RecordContainer from '../components/FamilyHistory/Record';
 import ImageModal from '../components/FamilyHistory/ImageModal';
+import { HistoryRecord, Person } from '../types';
 
 const useStyles = makeStyles(theme => ({
   info: {
@@ -19,26 +18,25 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const FamilyHistory = props => {
+interface FamilyHistoryProps {
+  data: HistoryRecord[];
+  people: Person[];
+}
+
+const FamilyHistory = (props: FamilyHistoryProps): ReactElement => {
   const classes = useStyles();
   const { data, people } = props;
-  const allPhotos = data
-    .reduce((acc, cur) => {
-      // We don't want to add to the photo gallery if its a link thumbnail
-      if (cur.link) {
-        return acc;
-      }
-      return [...acc, ...(cur.photos || [])];
-    }, [])
-    .filter(photo => photo);
+  const allPhotos = data.reduce((photos, album) => {
+    // We don't want to add to the photo gallery if its a link thumbnail
+    if (album.link) {
+      return photos;
+    }
+    const morePhotos = album?.photos?.filter(photo => !!photo) || [];
+
+    return [...photos, ...morePhotos];
+  }, []);
   const [contactActive, setContact] = useState(false);
   const [currentPhoto, setPhoto] = useState(null);
-  const formattedPhotos = allPhotos.map(photo => ({
-    src: photo.fullSize.src,
-    srcSet: photo.fullSize,
-    caption: photo.description,
-    alt: photo.title,
-  }));
 
   return (
     <>
@@ -49,7 +47,7 @@ const FamilyHistory = props => {
 
       <ContactModal open={contactActive} onClose={() => setContact(false)} people={people} />
 
-      <ImageModal onClose={() => setPhoto(null)} images={formattedPhotos} currentPhoto={currentPhoto} />
+      <ImageModal onClose={() => setPhoto(null)} images={allPhotos} currentPhoto={currentPhoto} />
 
       <div className={classes.info}>
         <Typography variant="subtitle1" align="center" gutterBottom>
@@ -61,10 +59,10 @@ const FamilyHistory = props => {
         </Button>
       </div>
 
-      {data.map((record, index) => (
-        <Record
-          key={uid(record)}
-          data={record}
+      {data.map((historyRecord, index) => (
+        <RecordContainer
+          key={historyRecord.id}
+          data={historyRecord}
           isEven={index % 2 === 0}
           openPhoto={id => {
             const photoIndex = allPhotos.findIndex(photo => photo.id === id);
@@ -76,38 +74,14 @@ const FamilyHistory = props => {
   );
 };
 
-FamilyHistory.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      year: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      content: PropTypes.object.isRequired,
-      link: PropTypes.string,
-      photos: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          thumbnail: PropTypes.object.isRequired,
-          fullSize: PropTypes.object.isRequired,
-        }),
-      ),
-    }),
-  ).isRequired,
-  people: PropTypes.arrayOf(
-    PropTypes.shape({
-      firstName: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      link: PropTypes.string,
-    }),
-  ).isRequired,
-};
-
-export default () => (
+const PageWithData = (): ReactElement => (
   <StaticQuery
     query={graphql`
       query HistoryQuery {
         allContentfulFamilyHistory(sort: { fields: [year], order: ASC }) {
           edges {
             node {
+              id
               year
               title
               link
@@ -133,6 +107,7 @@ export default () => (
         allContentfulPeople(sort: { fields: [order], order: ASC }) {
           edges {
             node {
+              id
               order
               firstName
               fullName
@@ -145,9 +120,11 @@ export default () => (
     `}
     render={data => (
       <FamilyHistory
-        people={data.allContentfulPeople.edges.map(item => item.node)}
-        data={data.allContentfulFamilyHistory.edges.map(item => item.node)}
+        people={data.allContentfulPeople.edges.map((item: { node: Person }) => item.node)}
+        data={data.allContentfulFamilyHistory.edges.map((item: { node: HistoryRecord }) => item.node)}
       />
     )}
   />
 );
+
+export default PageWithData;

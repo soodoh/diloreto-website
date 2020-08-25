@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { uid } from 'react-uid';
+import React, { ReactElement, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { StaticQuery, graphql } from 'gatsby';
+import { GatsbyImageFluidProps } from 'gatsby-image';
 import Metadata from '../components/Layout/Metadata';
 import PersonModal from '../components/Home/PersonModal';
 import Tile from '../components/Home/Tile';
 import ContactModal from '../components/Home/ContactModal';
+import { Person } from '../types';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -24,7 +24,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const HomePage = props => {
+interface HomePageProps {
+  people: Person[];
+  data: {
+    photosThumbnail: GatsbyImageFluidProps;
+    familyHistoryThumbnail: GatsbyImageFluidProps;
+    contactThumbnail: GatsbyImageFluidProps;
+  };
+}
+
+const HomePage = (props: HomePageProps): ReactElement => {
   const classes = useStyles();
   const [contactActive, activateContact] = useState(false);
   const [personActive, activatePerson] = useState(false);
@@ -42,7 +51,7 @@ const HomePage = props => {
       <div className={classes.container}>
         {people.map((person, index) => (
           <Tile
-            key={uid(person)}
+            key={person.id}
             delay={transitionDelay * (index + 1)}
             image={person.portrait}
             label={person.firstName}
@@ -53,7 +62,7 @@ const HomePage = props => {
           />
         ))}
 
-        <Tile image={data.photosThumbnail} delay={transitionDelay * (people.length + 1)} />
+        <Tile label="Photos" image={data.photosThumbnail} delay={transitionDelay * (people.length + 1)} />
         <Tile image={data.familyHistoryThumbnail} delay={transitionDelay * (people.length + 2)} label="Family History" link="/areyou" />
         <Tile
           image={data.contactThumbnail}
@@ -76,29 +85,14 @@ const HomePage = props => {
   );
 };
 
-HomePage.propTypes = {
-  people: PropTypes.arrayOf(
-    PropTypes.shape({
-      firstName: PropTypes.string.isRequired,
-      fullName: PropTypes.string.isRequired,
-      bio: PropTypes.object.isRequired,
-      link: PropTypes.string,
-    }),
-  ).isRequired,
-  data: PropTypes.shape({
-    contactThumbnail: PropTypes.object.isRequired,
-    familyHistoryThumbnail: PropTypes.object.isRequired,
-    photosThumbnail: PropTypes.object.isRequired,
-  }).isRequired,
-};
-
-export default () => (
+const PageWithData = (): ReactElement => (
   <StaticQuery
     query={graphql`
       query HomeQuery {
         allContentfulPeople(sort: { fields: [order], order: ASC }) {
           edges {
             node {
+              id
               order
               firstName
               fullName
@@ -140,6 +134,10 @@ export default () => (
         }
       }
     `}
-    render={data => <HomePage data={data.contentfulHomePage} people={data.allContentfulPeople.edges.map(item => item.node)} />}
+    render={data => (
+      <HomePage data={data.contentfulHomePage} people={data.allContentfulPeople.edges.map((item: { node: Person }) => item.node)} />
+    )}
   />
 );
+
+export default PageWithData;

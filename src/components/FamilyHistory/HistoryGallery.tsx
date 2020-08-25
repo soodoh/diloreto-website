@@ -1,10 +1,9 @@
 import React, { ReactElement } from 'react';
-import { uid } from 'react-uid';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
-import { GalleryPhoto } from '../../types';
+import { HistoryRecord } from '../../types';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -20,10 +19,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 interface HistoryGalleryProps {
-  data: {
-    link: string;
-    photos: GalleryPhoto[];
-  };
+  data: HistoryRecord;
   openPhoto: (id: string) => void;
   className?: string;
 }
@@ -42,7 +38,7 @@ const HistoryGallery = (props: HistoryGalleryProps): ReactElement => {
       </div>
 
       {data.photos.slice(0, 3).map((photo, index) => (
-        <Fade opposite delay={transitionDelay * (index + 1)} key={uid(photo)}>
+        <Fade opposite delay={transitionDelay * (index + 1)} key={photo.id}>
           <Photo data={photo} link={data.link} openPhoto={openPhoto} />
         </Fade>
       ))}
