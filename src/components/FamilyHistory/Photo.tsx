@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Img from 'gatsby-image';
 import Typography from '@material-ui/core/Typography';
+import { GalleryPhoto } from '../../types';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,7 +21,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Photo = props => {
+interface PhotoProps {
+  openPhoto: (id: string) => void;
+  data: GalleryPhoto;
+  link?: string;
+}
+
+const Photo = (props: PhotoProps): ReactElement => {
   const { data, link, openPhoto } = props;
   const classes = useStyles();
   const LinkWrapper = link ? 'a' : 'div';
@@ -37,21 +43,6 @@ const Photo = props => {
       </LinkWrapper>
     </div>
   );
-};
-
-Photo.propTypes = {
-  openPhoto: PropTypes.func.isRequired,
-  data: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    thumbnail: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired,
-    link: PropTypes.string,
-    description: PropTypes.string,
-  }).isRequired,
-  link: PropTypes.string,
-};
-Photo.defaultProps = {
-  link: null,
 };
 
 export default Photo;

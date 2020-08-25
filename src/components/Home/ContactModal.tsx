@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { uid } from 'react-uid';
+import React, { ReactElement } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Modal from '../common/Modal';
+import { Person } from '../types';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -35,7 +34,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ContactModal = props => {
+interface ContactProps {
+  open: boolean;
+  onClose: () => void;
+  people: Person[];
+}
+
+const ContactModal = (props: ContactProps): ReactElement => {
   const classes = useStyles();
   const { open, onClose, people } = props;
 
@@ -43,7 +48,7 @@ const ContactModal = props => {
     <Modal open={open} title="Contact Us" onClose={onClose}>
       <div className={classes.container}>
         {people.map(person => (
-          <React.Fragment key={uid(person)}>
+          <React.Fragment key={person.firstName}>
             <Typography variant="h5">{`${person.firstName}:`}</Typography>
 
             <Typography variant="h5" className={classes.email}>
@@ -63,18 +68,6 @@ const ContactModal = props => {
       </div>
     </Modal>
   );
-};
-
-ContactModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  people: PropTypes.arrayOf(
-    PropTypes.shape({
-      firstName: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      link: PropTypes.string,
-    }),
-  ).isRequired,
 };
 
 export default ContactModal;

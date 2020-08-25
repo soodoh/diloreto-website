@@ -1,8 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 
-const Metadata = props => {
+interface MetadataProps {
+  title: string;
+  description?: string;
+  robots?: string;
+}
+
+const Metadata = (props: MetadataProps): ReactElement => {
   const { title, description, robots } = props;
 
   return (
@@ -17,13 +22,7 @@ const Metadata = props => {
   );
 };
 
-Metadata.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  robots: PropTypes.string,
-};
 Metadata.defaultProps = {
-  description: null,
   robots: 'index, follow',
 };
 

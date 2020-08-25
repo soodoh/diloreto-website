@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
@@ -52,7 +51,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Record = props => {
+interface RecordProps {
+  data: any;
+  openPhoto: (id: string) => void;
+  isEven: boolean;
+}
+
+const Record = (props: RecordProps): ReactElement => {
   const { data, openPhoto, isEven } = props;
   const classes = useStyles({ data, isEven });
   const hasGallery = Array.isArray(data.photos) && data.photos.length > 1;
@@ -68,14 +73,14 @@ const Record = props => {
 
       <div className={classes.grid}>
         {data.photos && !hasGallery && (
-          <div className={`${classes.photo} ${classes.mobileRow}`}>
+          <div className={classes.photo}>
             <Fade right opposite delay={transitionDelay}>
               <Photo data={data.photos[0]} link={data.link} openPhoto={openPhoto} />
             </Fade>
           </div>
         )}
 
-        <div className={`${classes.markdownContainer} ${classes.mobileRow}`}>
+        <div className={classes.markdownContainer}>
           <Fade left opposite delay={transitionDelay * 2}>
             <div
               className={classes.markdown}
@@ -89,22 +94,6 @@ const Record = props => {
       </div>
     </div>
   );
-};
-
-Record.propTypes = {
-  isEven: PropTypes.bool.isRequired,
-  data: PropTypes.shape({
-    link: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    content: PropTypes.object.isRequired,
-    photos: PropTypes.arrayOf(
-      PropTypes.shape({
-        thumbnail: PropTypes.object.isRequired,
-        title: PropTypes.string.isRequired,
-      }),
-    ),
-  }).isRequired,
-  openPhoto: PropTypes.func.isRequired,
 };
 
 export default Record;

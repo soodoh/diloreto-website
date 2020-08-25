@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import { uid } from 'react-uid';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 import Photo from './Photo';
+import { GalleryPhoto } from '../../types';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -19,13 +19,22 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const HistoryGallery = props => {
+interface HistoryGalleryProps {
+  data: {
+    link: string;
+    photos: GalleryPhoto[];
+  };
+  openPhoto: (id: string) => void;
+  className?: string;
+}
+
+const HistoryGallery = (props: HistoryGalleryProps): ReactElement => {
   const { data, openPhoto, className } = props;
   const classes = useStyles();
   const transitionDelay = 300;
 
   return (
-    <div className={`${classes.container} ${className}`}>
+    <div className={`${classes.container} ${className || ''}`}>
       <div className={classes.title}>
         <Fade opposite>
           <Typography variant="caption">Click any photo to view full gallery</Typography>
@@ -39,23 +48,6 @@ const HistoryGallery = props => {
       ))}
     </div>
   );
-};
-
-HistoryGallery.propTypes = {
-  className: PropTypes.string,
-  openPhoto: PropTypes.func.isRequired,
-  data: PropTypes.shape({
-    link: PropTypes.string,
-    photos: PropTypes.arrayOf(
-      PropTypes.shape({
-        thumbnail: PropTypes.object.isRequired,
-        title: PropTypes.string.isRequired,
-      }),
-    ),
-  }).isRequired,
-};
-HistoryGallery.defaultProps = {
-  className: '',
 };
 
 export default HistoryGallery;

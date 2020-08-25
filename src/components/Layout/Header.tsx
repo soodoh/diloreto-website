@@ -1,7 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import { Link } from 'gatsby';
-import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -35,19 +33,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Header = props => {
+interface HeaderProps {
+  location: {
+    pathname: string;
+  };
+}
+
+const Header = (props: HeaderProps): ReactElement => {
   const classes = useStyles();
   const { location } = props;
+  const appBarClasses = [];
+  if (location.pathname === '/') {
+    appBarClasses.push(classes.bottomAppBar);
+  } else {
+    appBarClasses.push(classes.appBar);
+  }
 
   return (
-    <AppBar
-      position="fixed"
-      color="primary"
-      className={classNames({
-        [classes.bottomAppBar]: location.pathname === '/',
-        [classes.appBar]: location.pathname !== '/',
-      })}
-    >
+    <AppBar position="fixed" color="primary" className={appBarClasses.join(' ')}>
       <Toolbar className={classes.content}>
         <Typography variant="h1" align="center" className={classes.logo} component={Link} to="/">
           The DiLoreto Family
@@ -55,12 +58,6 @@ const Header = props => {
       </Toolbar>
     </AppBar>
   );
-};
-
-Header.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default Header;

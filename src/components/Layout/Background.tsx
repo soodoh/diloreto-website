@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 import Img from 'gatsby-image';
 import { makeStyles } from '@material-ui/styles';
 
@@ -18,18 +17,19 @@ const useStyles = makeStyles({
   },
 });
 
-const Background = props => {
+interface BackgroundProps {
+  sizes: any;
+}
+
+const Background = (props: BackgroundProps): ReactElement => {
   const { sizes } = props;
-  const classes = useStyles;
+  const classes = useStyles();
 
   return (
     <div className={classes.container}>
       <Img fluid={sizes} className={classes.background} alt="Background Image" />
     </div>
   );
-};
-Background.propTypes = {
-  sizes: PropTypes.shape({}).isRequired,
 };
 
 export default Background;
