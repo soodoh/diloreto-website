@@ -20,7 +20,7 @@ const Layout = (props: LayoutProps): ReactElement => (
     </Helmet>
 
     <div>
-      <Header location={location} />
+      <Header location={props.location} />
       {props.children}
     </div>
   </ThemeProvider>
