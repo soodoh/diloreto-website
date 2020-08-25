@@ -1,13 +1,8 @@
 import React, { ReactElement } from 'react';
 import { useTheme } from '@material-ui/styles';
-import Carousel, { Modal, ModalGateway } from 'react-images';
+import Carousel, { Modal, ModalGateway, ViewType } from 'react-images';
 // import Img from 'gatsby-image';
 import { Image } from '../../types';
-
-// interface ViewProps {
-//   data: Image;
-// }
-// const View = (props: ViewProps): ReactElement => <Img fluid={props.data.srcSet} alt={props.data.title} />;
 
 interface ModalProps {
   onClose: () => void;
@@ -18,6 +13,12 @@ interface ModalProps {
 const ImageModal = (props: ModalProps): ReactElement => {
   const { onClose, images, currentPhoto } = props;
   const theme = useTheme();
+  const formattedImages: any[] = images.map(photo => ({
+    src: photo.fullSize.src,
+    srcSet: photo.fullSize,
+    caption: photo.description,
+    alt: photo.title,
+  }));
 
   const modalStyles = {
     positioner: (base: any) => ({
@@ -34,7 +35,7 @@ const ImageModal = (props: ModalProps): ReactElement => {
     <ModalGateway>
       {Number.isInteger(currentPhoto) && (
         <Modal allowFullscreen={false} onClose={onClose} styles={modalStyles}>
-          <Carousel currentIndex={currentPhoto || 0} views={images} />
+          <Carousel currentIndex={currentPhoto || 0} views={formattedImages} />
         </Modal>
       )}
     </ModalGateway>
