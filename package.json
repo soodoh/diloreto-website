@@ -1,10 +1,30 @@
 {
   "name": "diloreto-website",
   "version": "1.0.0",
+  "homepage": "https://diloreto.com",
   "private": true,
-  "author": "Paul DiLoreto <paul.diloreto@gmail.com>",
+  "author": "Paul DiLoreto <soodohh@pm.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soodoh/diloreto-website.git"
+  },
   "bugs": {
     "url": "https://github.com/soodoh/diloreto-website/issues"
+  },
+  "keywords": [
+    "gatsby",
+    "contentful",
+    "react",
+    "aws",
+    "netlify",
+    "serverless"
+  ],
+  "scripts": {
+    "dev": "gatsby develop",
+    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "build": "gatsby build",
+    "setup": "node ./bin/setup.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -50,26 +70,5 @@
     "gatsby-transformer-sharp": "^2.5.13",
     "prettier": "^2.1.0",
     "prettier-eslint": "^11.0.0"
-  },
-  "homepage": "https://diloreto.com",
-  "keywords": [
-    "gatsby",
-    "contentful",
-    "react",
-    "aws",
-    "netlify",
-    "serverless"
-  ],
-  "license": "MIT",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/soodoh/diloreto-website.git"
-  },
-  "scripts": {
-    "dev": "gatsby develop",
-    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
-    "build": "gatsby build",
-    "setup": "node ./bin/setup.js"
   }
 }
