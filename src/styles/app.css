@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital@0;1&family=Karla&display=swap');
+@import "tailwindcss" source("../");
+
+@theme {
+  --color-primary: #7d89c1;
+  --color-primary-contrast: #ffffff;
+  --color-secondary: #d1d1d1;
+  --color-secondary-contrast: #000000;
+  --color-bg-dark: #d1d1d1;
+  --font-serif: 'Old Standard TT', 'Baskerville', serif;
+  --font-sans: 'Karla', sans-serif;
+}
+
+/* Base styles */
+html {
+  font-family: var(--font-serif);
+}
+
+body {
+  margin: 0;
+  background-color: white;
+}
+
+/* Animation keyframes */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dialog backdrop */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog[open] {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Markdown content styles */
+.markdown-content h2 {
+  text-align: center;
+}
+
+.markdown-content p {
+  text-indent: 2rem;
+}
