@@ -7,14 +7,14 @@ interface TileProps {
   label: string
   onClick?: () => void
   link?: string
-  delay: number
+  delay?: number
 }
 
-export default function Tile({ image, label, onClick, link, delay }: TileProps) {
+export default function Tile({ image, label, onClick, link, delay = 0 }: TileProps) {
   const content = (
     <button
       onClick={onClick}
-      className="group relative cursor-pointer overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-black"
+      className="group relative cursor-pointer overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-black animate-fade-in"
       style={{ animationDelay: `${delay}ms` }}
     >
       <Image
