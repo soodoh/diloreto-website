@@ -1,36 +1,41 @@
-import { FluidObject, GatsbyImageFluidProps } from 'gatsby-image';
-
-export interface Markdown {
-  childMarkdownRemark: {
-    html: string;
-  };
+export interface ContentfulImage {
+  url: string
+  title: string
+  width: number
+  height: number
 }
 
 export interface GalleryPhoto {
-  id: string;
-  title: string;
-  link?: string;
-  description?: string;
-  thumbnail: FluidObject;
-  fullSize: FluidObject;
+  id: string
+  title: string
+  link?: string
+  description?: string
+  thumbnail: ContentfulImage
+  fullSize: ContentfulImage
 }
 
 export interface Person {
-  id: string;
-  order: number;
-  firstName: string;
-  fullName: string;
-  email: string;
-  link?: string;
-  portrait: GatsbyImageFluidProps;
-  bio?: Markdown;
+  id: string
+  order: number
+  firstName: string
+  fullName: string
+  email: string
+  link?: string
+  portrait: ContentfulImage
+  bio?: string
 }
 
 export interface HistoryRecord {
-  id: string;
-  year: number;
-  title: string;
-  content: Markdown;
-  link?: string;
-  photos: GalleryPhoto[];
+  id: string
+  year: number
+  title: string
+  content: string
+  link?: string
+  photos: GalleryPhoto[]
+}
+
+export interface HomePageData {
+  contactThumbnail: ContentfulImage
+  familyHistoryThumbnail: ContentfulImage
+  photosThumbnail: ContentfulImage
 }

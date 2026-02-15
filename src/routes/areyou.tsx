@@ -1,0 +1,84 @@
+import { useState } from 'react'
+import { createFileRoute } from '@tanstack/react-router'
+import { createServerFn } from '@tanstack/react-start'
+import ContactModal from '~/components/ContactModal'
+import Record from '~/components/Record'
+import ImageModal from '~/components/ImageModal'
+import { fetchFamilyHistory, fetchPeople } from '~/lib/contentful'
+import type { GalleryPhoto } from '~/types'
+
+const getHistoryData = createServerFn({ method: 'GET' }).handler(async () => {
+  const [history, people] = await Promise.all([fetchFamilyHistory(), fetchPeople()])
+  return { history, people }
+})
+
+export const Route = createFileRoute('/areyou')({
+  loader: () => getHistoryData(),
+  head: () => ({
+    meta: [
+      { title: 'Are You a DiLoreto?' },
+      {
+        name: 'description',
+        content:
+          'Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed.',
+      },
+    ],
+  }),
+  component: FamilyHistory,
+})
+
+function FamilyHistory() {
+  const { history, people } = Route.useLoaderData()
+
+  const allPhotos: GalleryPhoto[] = history.reduce<GalleryPhoto[]>((photos, album) => {
+    if (album.link) return photos
+    const morePhotos = album.photos?.filter(photo => !!photo) || []
+    return [...photos, ...morePhotos]
+  }, [])
+
+  const [contactActive, setContact] = useState(false)
+  const [photoIndex, setPhoto] = useState<number | null>(null)
+
+  return (
+    <>
+      <ContactModal
+        open={contactActive}
+        onClose={() => setContact(false)}
+        people={people}
+      />
+
+      <ImageModal
+        onChange={(newIndex: number) => setPhoto(newIndex)}
+        onClose={() => setPhoto(null)}
+        images={allPhotos}
+        photoIndex={photoIndex}
+      />
+
+      <div className="p-4 flex flex-col items-center">
+        <p className="font-serif text-center max-w-3xl mb-4">
+          A genealogical record of the DiLoreto lineage is maintained, and we would love to hear from any
+          relatives with updates. An updated copy of the complete family tree can be sent as a PDF to family
+          members.
+        </p>
+        <button
+          className="border border-primary text-primary bg-transparent px-6 py-2 rounded font-sans cursor-pointer hover:bg-primary hover:text-primary-contrast transition-colors"
+          onClick={() => setContact(true)}
+        >
+          Contact Us
+        </button>
+      </div>
+
+      {history.map((record, index) => (
+        <Record
+          key={record.id}
+          data={record}
+          isEven={index % 2 === 0}
+          openPhoto={id => {
+            const idx = allPhotos.findIndex(photo => photo.id === id)
+            setPhoto(idx)
+          }}
+        />
+      ))}
+    </>
+  )
+}
