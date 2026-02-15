@@ -21,7 +21,7 @@ export default function Record({ data, openPhoto, isEven }: RecordProps) {
 
   return (
     <div className={`p-4 ${isEven ? 'bg-white' : 'bg-bg-dark'}`}>
-      <h1 className="font-serif italic text-primary text-5xl text-center animate-[fadeIn_0.6s_ease-out]">
+      <h1 className="font-serif italic text-primary text-5xl text-center animate-fade-in">
         {data.title}
       </h1>
 

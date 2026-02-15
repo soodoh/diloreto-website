@@ -25,7 +25,7 @@ export default function Modal({ open, title, onClose, children }: ModalProps) {
     <dialog
       ref={dialogRef}
       onClose={onClose}
-      className="w-full max-w-xl rounded-lg p-0 backdrop:bg-black/50"
+      className="w-full max-w-xl rounded-lg p-0 backdrop:bg-black/50 open:animate-slide-up"
     >
       <div className="relative p-6">
         <h1 className="font-serif italic text-primary text-4xl max-sm:text-2xl pr-10">
