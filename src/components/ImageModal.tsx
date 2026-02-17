@@ -1,5 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { Image } from '@unpic/react'
+import { Dialog as DialogPrimitive } from 'radix-ui'
+import {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogTitle,
+} from '~/components/ui/dialog'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from '~/components/ui/carousel'
 import type { GalleryPhoto } from '~/types'
 
 interface ImageModalProps {
@@ -11,108 +26,109 @@ interface ImageModalProps {
 
 export default function ImageModal({ onChange, onClose, images, photoIndex }: ImageModalProps) {
   const currentPhoto = photoIndex !== null ? images[photoIndex] : null
-  const [windowAspectRatio, setWindowRatio] = useState(1)
+  const apiRef = useRef<CarouselApi>(null)
 
+  const handleSetApi = useCallback(
+    (api: CarouselApi) => {
+      if (!api) return
+      apiRef.current = api
+      api.on('select', () => {
+        onChange(api.selectedScrollSnap())
+      })
+    },
+    [onChange],
+  )
+
+  // Sync carousel position when photoIndex changes externally
   useEffect(() => {
-    if (typeof window === 'undefined') return
-    setWindowRatio(window.innerWidth / window.innerHeight)
-  }, [])
+    const api = apiRef.current
+    if (!api || photoIndex === null) return
+    if (api.selectedScrollSnap() !== photoIndex) {
+      api.scrollTo(photoIndex, true)
+    }
+  }, [photoIndex])
 
+  // Arrow key navigation at document level (carousel's built-in handler requires focus on its div)
   useEffect(() => {
     if (photoIndex === null) return
 
-    const handleKeys = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose()
-      } else if (event.key === 'ArrowLeft' && photoIndex > 0) {
-        onChange(photoIndex - 1)
-      } else if (event.key === 'ArrowRight' && photoIndex <= images.length - 2) {
-        onChange(photoIndex + 1)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const api = apiRef.current
+      if (!api) return
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        api.scrollPrev()
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        api.scrollNext()
       }
     }
 
-    const handleResize = () => {
-      setWindowRatio(window.innerWidth / window.innerHeight)
-    }
-
-    window.addEventListener('keydown', handleKeys)
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('keydown', handleKeys)
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [photoIndex, images.length, onChange, onClose])
-
-  if (!currentPhoto || photoIndex === null) return null
-
-  const imageAspectRatio = currentPhoto.fullSize.width / currentPhoto.fullSize.height
-  const useFullWidth = windowAspectRatio < imageAspectRatio && ((windowAspectRatio > 1 && imageAspectRatio > 1) || imageAspectRatio < 1)
-  const width = useFullWidth ? '100%' : `calc(90vh * ${imageAspectRatio})`
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [photoIndex])
 
   return (
-    <div
-      className="fixed inset-0 z-[1300] bg-black/80 flex items-center"
-      onClick={onClose}
-    >
-      <button
-        className="p-2 text-secondary disabled:opacity-30 bg-transparent border-none cursor-pointer"
-        disabled={photoIndex < 1}
-        onClick={e => {
-          e.stopPropagation()
-          onChange(photoIndex - 1)
-        }}
-        aria-label="Previous photo"
-      >
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      </button>
+    <Dialog open={photoIndex !== null} onOpenChange={(isOpen) => !isOpen && onClose()}>
+      <DialogPortal>
+        <DialogOverlay className="bg-black/80" />
+        <DialogPrimitive.Content
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center outline-none"
+        >
+          <DialogTitle className="sr-only">
+            {currentPhoto?.title || 'Photo'}
+          </DialogTitle>
 
-      <div className="flex-1 my-4 flex flex-col items-center">
-        <div className="flex w-full items-center justify-between" style={{ width }}>
-          <span className="text-secondary text-base">
-            {`${photoIndex + 1} / ${images.length}`}
-          </span>
-          <button
-            className="p-2 text-secondary bg-transparent border-none cursor-pointer"
-            onClick={onClose}
-            aria-label="Close"
-          >
+          {/* Close button */}
+          <DialogPrimitive.Close className="absolute top-4 right-4 z-10 p-2 text-white opacity-80 hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
-          </button>
-        </div>
+            <span className="sr-only">Close</span>
+          </DialogPrimitive.Close>
 
-        <div style={{ width }} onClick={e => e.stopPropagation()}>
-          <Image
-            src={currentPhoto.fullSize.url}
-            alt={currentPhoto.title}
-            layout="constrained"
-            width={currentPhoto.fullSize.width}
-            height={currentPhoto.fullSize.height}
-          />
-        </div>
+          <Carousel
+            className="w-full h-full"
+            opts={{ startIndex: photoIndex ?? 0 }}
+            setApi={handleSetApi}
+          >
+            <CarouselContent className="-ml-0 h-full">
+              {images.map((photo) => (
+                <CarouselItem
+                  key={photo.id}
+                  className="flex flex-col items-center justify-center pl-0 h-full"
+                >
+                  <div className="flex items-center justify-center" style={{ width: '85vw', height: '80vh' }}>
+                    <Image
+                      src={photo.fullSize.url}
+                      alt={photo.title}
+                      layout="constrained"
+                      width={photo.fullSize.width}
+                      height={photo.fullSize.height}
+                      className="max-w-full max-h-full w-auto h-auto object-contain"
+                    />
+                  </div>
+                  {photo.description && (
+                    <p className="text-white text-center text-sm mt-2 px-4 max-w-2xl">
+                      {photo.description}
+                    </p>
+                  )}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
 
-        <p className="text-secondary text-center text-base mt-2" style={{ width }}>
-          {currentPhoto.description}
-        </p>
-      </div>
+            <CarouselPrevious className="left-4 bg-black/50 border-none text-white hover:bg-black/70 hover:text-white disabled:opacity-30 size-10" />
+            <CarouselNext className="right-4 bg-black/50 border-none text-white hover:bg-black/70 hover:text-white disabled:opacity-30 size-10" />
+          </Carousel>
 
-      <button
-        className="p-2 text-secondary disabled:opacity-30 bg-transparent border-none cursor-pointer"
-        disabled={photoIndex >= images.length - 1}
-        onClick={e => {
-          e.stopPropagation()
-          onChange(photoIndex + 1)
-        }}
-        aria-label="Next photo"
-      >
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </button>
-    </div>
+          {currentPhoto && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm">
+              {(photoIndex ?? 0) + 1} / {images.length}
+            </div>
+          )}
+        </DialogPrimitive.Content>
+      </DialogPortal>
+    </Dialog>
   )
 }
