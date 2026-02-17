@@ -1,4 +1,9 @@
-import Modal from './Modal'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '~/components/ui/dialog'
 import type { Person } from '~/types'
 
 interface PersonModalProps {
@@ -9,12 +14,18 @@ interface PersonModalProps {
 
 export default function PersonModal({ open, data, onClose }: PersonModalProps) {
   return (
-    <Modal open={open} title={data?.fullName || ''} onClose={onClose}>
-      <>
+    <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle className="font-serif italic text-primary text-4xl max-sm:text-2xl">
+            {data?.fullName || ''}
+          </DialogTitle>
+        </DialogHeader>
+
         {data?.link && (
           <a
             href={data.link}
-            className="inline-block border border-primary text-primary px-4 py-2 rounded no-underline font-sans hover:bg-primary hover:text-primary-contrast transition-colors mb-4"
+            className="inline-block border border-primary text-primary px-4 py-2 rounded no-underline font-sans hover:bg-primary hover:text-primary-contrast transition-colors w-fit"
           >
             View Portfolio
           </a>
@@ -26,7 +37,7 @@ export default function PersonModal({ open, data, onClose }: PersonModalProps) {
             dangerouslySetInnerHTML={{ __html: data.bio }}
           />
         )}
-      </>
-    </Modal>
+      </DialogContent>
+    </Dialog>
   )
 }

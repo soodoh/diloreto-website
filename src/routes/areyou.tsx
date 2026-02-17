@@ -4,6 +4,7 @@ import { createServerFn } from '@tanstack/react-start'
 import ContactModal from '~/components/ContactModal'
 import Record from '~/components/Record'
 import ImageModal from '~/components/ImageModal'
+import { Button } from '~/components/ui/button'
 import { fetchFamilyHistory, fetchPeople } from '~/lib/contentful'
 import type { GalleryPhoto } from '~/types'
 
@@ -60,12 +61,13 @@ function FamilyHistory() {
           relatives with updates. An updated copy of the complete family tree can be sent as a PDF to family
           members.
         </p>
-        <button
-          className="border border-primary text-primary bg-transparent px-6 py-2 rounded font-sans cursor-pointer hover:bg-primary hover:text-primary-contrast transition-colors"
+        <Button
+          variant="outline"
+          className="border-primary text-primary font-sans hover:bg-primary hover:text-primary-contrast"
           onClick={() => setContact(true)}
         >
           Contact Us
-        </button>
+        </Button>
       </div>
 
       {history.map((record, index) => (
