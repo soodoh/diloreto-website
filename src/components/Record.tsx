@@ -9,10 +9,11 @@ interface RecordProps {
 }
 
 export default function Record({ data, openPhoto, isEven }: RecordProps) {
-  const hasGallery = Array.isArray(data.photos) && data.photos.length > 1
+  const hasPhotos = Array.isArray(data.photos) && data.photos.length > 0
+  const hasGallery = hasPhotos && data.photos.length > 1
 
   const markdownColSpan = (() => {
-    if (hasGallery) return 'col-span-3'
+    if (hasGallery || !hasPhotos) return 'col-span-3'
     if (isEven) return 'col-start-2 col-span-2'
     return 'col-start-1 col-span-2'
   })()
@@ -26,7 +27,7 @@ export default function Record({ data, openPhoto, isEven }: RecordProps) {
       </h1>
 
       <div className="grid grid-cols-3 gap-2">
-        {data.photos && !hasGallery && (
+        {hasPhotos && !hasGallery && (
           <div className={`row-start-1 ${photoCol} max-sm:row-start-auto max-sm:col-span-3`}>
             <Photo data={data.photos[0]} link={data.link} openPhoto={openPhoto} />
           </div>
@@ -39,7 +40,7 @@ export default function Record({ data, openPhoto, isEven }: RecordProps) {
           />
         </div>
 
-        {data.photos && hasGallery && (
+        {hasPhotos && hasGallery && (
           <HistoryGallery
             className="col-span-3 row-start-2 max-sm:row-start-auto"
             data={data}
