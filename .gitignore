@@ -22,8 +22,5 @@ dist/
 # TanStack generated
 .tanstack
 
-# Contentful config file
-.contentful.json
-
 # eslint cache
 .eslintcache

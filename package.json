@@ -22,8 +22,6 @@
     "@tanstack/react-router": "^1",
     "@tanstack/react-start": "^1",
     "@unpic/react": "^1",
-    "contentful": "^11",
-    "marked": "^17",
     "react": "^19",
     "react-dom": "^19"
   },
