@@ -1,18 +1,20 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Image } from '@unpic/react'
-import { Dialog as DialogPrimitive } from 'radix-ui'
+import { XIcon } from 'lucide-react'
 import {
+  DialogClose,
+  DialogContent,
+  DialogDescription,
   Dialog,
-  DialogPortal,
-  DialogOverlay,
   DialogTitle,
 } from '~/components/ui/dialog'
+import { Button } from '~/components/ui/button'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
   type CarouselApi,
 } from '~/components/ui/carousel'
 import type { GalleryPhoto } from '~/types'
@@ -25,80 +27,75 @@ interface ImageModalProps {
 }
 
 export default function ImageModal({ onChange, onClose, images, photoIndex }: ImageModalProps) {
-  const currentPhoto = photoIndex !== null ? images[photoIndex] : null
-  const apiRef = useRef<CarouselApi>(null)
+  const [api, setApi] = useState<CarouselApi>()
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const isOpen = photoIndex !== null
+  const currentPhoto = images[currentIndex]
+  const carouselOpts = useMemo(() => ({ watchDrag: true }), [])
 
-  const handleSetApi = useCallback(
-    (api: CarouselApi) => {
-      if (!api) return
-      apiRef.current = api
-      api.on('select', () => {
-        onChange(api.selectedScrollSnap())
-      })
-    },
-    [onChange],
-  )
+  const handleSetApi = useCallback((carouselApi: CarouselApi) => {
+    setApi(carouselApi)
+  }, [])
 
-  // Sync carousel position when photoIndex changes externally
   useEffect(() => {
-    const api = apiRef.current
-    if (!api || photoIndex === null) return
-    if (api.selectedScrollSnap() !== photoIndex) {
-      api.scrollTo(photoIndex, true)
-    }
-  }, [photoIndex])
+    if (!api) return
 
-  // Arrow key navigation at document level (carousel's built-in handler requires focus on its div)
-  useEffect(() => {
-    if (photoIndex === null) return
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const api = apiRef.current
-      if (!api) return
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault()
-        api.scrollPrev()
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault()
-        api.scrollNext()
+    const handleSelect = () => {
+      const selectedIndex = api.selectedScrollSnap()
+      setCurrentIndex(selectedIndex)
+      if (selectedIndex !== photoIndex) {
+        onChange(selectedIndex)
       }
     }
 
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [photoIndex])
+    api.on('select', handleSelect)
+    return () => {
+      api.off('select', handleSelect)
+    }
+  }, [api, onChange, photoIndex])
+
+  useEffect(() => {
+    if (!isOpen || !api || photoIndex === null) return
+
+    if (api.selectedScrollSnap() !== photoIndex) {
+      api.scrollTo(photoIndex, true)
+    }
+
+    setCurrentIndex(api.selectedScrollSnap())
+  }, [api, isOpen, photoIndex])
 
   return (
-    <Dialog open={photoIndex !== null} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DialogPortal>
-        <DialogOverlay className="bg-black/80" />
-        <DialogPrimitive.Content
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center outline-none"
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        overlayClassName="bg-black/80"
+        className="inset-0 top-0 left-0 translate-x-0 translate-y-0 max-w-none sm:max-w-none max-h-screen h-full w-full overflow-hidden rounded-none border-none bg-black/95 p-0 shadow-none gap-0 flex flex-col data-[state=open]:zoom-in-100 data-[state=closed]:zoom-out-100"
+      >
+        <DialogTitle className="sr-only">{currentPhoto?.title || 'Image Gallery'}</DialogTitle>
+        <DialogDescription className="sr-only">
+          Viewing image {currentIndex + 1} of {images.length}
+        </DialogDescription>
+
+        <Carousel
+          className="flex-1 min-h-0 flex flex-col"
+          opts={carouselOpts}
+          setApi={handleSetApi}
         >
-          <DialogTitle className="sr-only">
-            {currentPhoto?.title || 'Photo'}
-          </DialogTitle>
+          <DialogClose asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Close image modal"
+              className="absolute top-3 right-3 z-10 text-white/70 hover:text-white hover:bg-white/10"
+            >
+              <XIcon className="size-5" />
+            </Button>
+          </DialogClose>
 
-          {/* Close button */}
-          <DialogPrimitive.Close className="absolute top-4 right-4 z-10 p-2 text-white opacity-80 hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-none">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-            <span className="sr-only">Close</span>
-          </DialogPrimitive.Close>
-
-          <Carousel
-            className="w-full h-full"
-            opts={{ startIndex: photoIndex ?? 0 }}
-            setApi={handleSetApi}
-          >
-            <CarouselContent className="-ml-0 h-full">
-              {images.map((photo) => (
-                <CarouselItem
-                  key={photo.id}
-                  className="flex flex-col items-center justify-center pl-0 h-full"
-                >
+          <CarouselContent className="h-full">
+            {images.map((photo) => (
+              <CarouselItem key={photo.id} className="h-full p-4">
+                <div className="h-full flex flex-col items-center justify-center">
                   <div className="flex items-center justify-center" style={{ width: '85vw', height: '80vh' }}>
                     <Image
                       src={photo.fullSize.url}
@@ -110,25 +107,29 @@ export default function ImageModal({ onChange, onClose, images, photoIndex }: Im
                     />
                   </div>
                   {photo.description && (
-                    <p className="text-white text-center text-sm mt-2 px-4 max-w-2xl">
+                    <p className="text-white/80 text-center text-sm mt-2 px-4 max-w-2xl">
                       {photo.description}
                     </p>
                   )}
-                </CarouselItem>
-              ))}
-            </CarouselContent>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
 
-            <CarouselPrevious className="left-4 bg-black/50 border-none text-white hover:bg-black/70 hover:text-white disabled:opacity-30 size-10" />
-            <CarouselNext className="right-4 bg-black/50 border-none text-white hover:bg-black/70 hover:text-white disabled:opacity-30 size-10" />
-          </Carousel>
+          <CarouselPrevious
+            variant="ghost"
+            className="left-2 top-1/2 -translate-y-1/2 size-10 border-none text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-0"
+          />
+          <CarouselNext
+            variant="ghost"
+            className="right-2 top-1/2 -translate-y-1/2 size-10 border-none text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-0"
+          />
+        </Carousel>
 
-          {currentPhoto && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm">
-              {(photoIndex ?? 0) + 1} / {images.length}
-            </div>
-          )}
-        </DialogPrimitive.Content>
-      </DialogPortal>
+        <div className="pb-3 text-center text-white/70 text-sm">
+          {currentIndex + 1} / {images.length}
+        </div>
+      </DialogContent>
     </Dialog>
   )
 }
