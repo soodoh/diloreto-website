@@ -1,18 +1,25 @@
-import { Link } from '@tanstack/react-router'
-import { Image } from '@unpic/react'
-import type { ContentfulImage } from '~/types'
+import { Link } from "@tanstack/react-router";
+import { Image } from "@unpic/react";
+import type { ContentfulImage } from "~/types";
 
-interface TileProps {
-  image: ContentfulImage
-  label: string
-  onClick?: () => void
-  link?: string
-  delay?: number
-}
+type TileProps = {
+  image: ContentfulImage;
+  label: string;
+  onClick?: () => void;
+  link?: string;
+  delay?: number;
+};
 
-export default function Tile({ image, label, onClick, link, delay = 0 }: TileProps) {
+export default function Tile({
+  image,
+  label,
+  onClick,
+  link,
+  delay = 0,
+}: TileProps): JSX.Element {
   const content = (
     <button
+      type="button"
       onClick={onClick}
       className="group relative cursor-pointer overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-black animate-fade-in"
       style={{ animationDelay: `${delay}ms` }}
@@ -34,11 +41,11 @@ export default function Tile({ image, label, onClick, link, delay = 0 }: TilePro
         </div>
       )}
     </button>
-  )
+  );
 
   if (link) {
-    return <Link to={link}>{content}</Link>
+    return <Link to={link}>{content}</Link>;
   }
 
-  return content
+  return content;
 }

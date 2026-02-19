@@ -1,38 +1,28 @@
-import { useState } from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import Tile from '~/components/Tile'
-import PersonModal from '~/components/PersonModal'
-import ContactModal from '~/components/ContactModal'
-import { fetchPeople, fetchHomePage } from '~/lib/contentful'
-import type { Person } from '~/types'
+import { useState } from "react";
+import { createFileRoute, useLoaderData } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import Tile from "~/components/tile";
+import PersonModal from "~/components/person-modal";
+import ContactModal from "~/components/contact-modal";
+import { fetchPeople, fetchHomePage } from "~/lib/contentful";
+import type { Person } from "~/types";
 
-const getHomeData = createServerFn({ method: 'GET' }).handler(async () => {
-  const [people, homePage] = await Promise.all([fetchPeople(), fetchHomePage()])
-  return { people, homePage }
-})
+const getHomeData = createServerFn({ method: "GET" }).handler(async () => {
+  const [people, homePage] = await Promise.all([
+    fetchPeople(),
+    fetchHomePage(),
+  ]);
+  return { people, homePage };
+});
 
-export const Route = createFileRoute('/')({
-  loader: () => getHomeData(),
-  head: () => ({
-    meta: [
-      { title: 'The DiLoreto Family' },
-      {
-        name: 'description',
-        content:
-          "The DiLoreto Family's home page. Are you a DiLoreto? View our extensive family history and lineage section, or learn more about John, Donna, Carolyn and Paul.",
-      },
-    ],
-  }),
-  component: HomePage,
-})
-
-function HomePage() {
-  const { people, homePage } = Route.useLoaderData()
-  const [contactActive, setContactActive] = useState(false)
-  const [personActive, setPersonActive] = useState(false)
-  const [currentPerson, setCurrentPerson] = useState<Person | null>(null)
-  const transitionDelay = 300
+export function HomePage(): JSX.Element {
+  const { people, homePage } = useLoaderData({ from: "/" });
+  const [contactActive, setContactActive] = useState(false);
+  const [personActive, setPersonActive] = useState(false);
+  const [currentPerson, setCurrentPerson] = useState<Person | undefined>(
+    undefined,
+  );
+  const transitionDelay = 300;
 
   return (
     <>
@@ -44,8 +34,8 @@ function HomePage() {
             image={person.portrait}
             label={person.firstName}
             onClick={() => {
-              setCurrentPerson(person)
-              setPersonActive(true)
+              setCurrentPerson(person);
+              setPersonActive(true);
             }}
           />
         ))}
@@ -77,11 +67,26 @@ function HomePage() {
       <PersonModal
         open={personActive}
         onClose={() => {
-          setPersonActive(false)
-          setCurrentPerson(null)
+          setPersonActive(false);
+          setCurrentPerson(undefined);
         }}
         data={currentPerson}
       />
     </>
-  )
+  );
 }
+
+export const Route = createFileRoute("/")({
+  loader: () => getHomeData(),
+  head: () => ({
+    meta: [
+      { title: "The DiLoreto Family" },
+      {
+        name: "description",
+        content:
+          "The DiLoreto Family's home page. Are you a DiLoreto? View our extensive family history and lineage section, or learn more about John, Donna, Carolyn and Paul.",
+      },
+    ],
+  }),
+  component: HomePage,
+});

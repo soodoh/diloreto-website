@@ -1,15 +1,15 @@
-import { Link } from '@tanstack/react-router'
+import { Link } from "@tanstack/react-router";
 
-interface HeaderProps {
-  isHome: boolean
-}
+type HeaderProps = {
+  isHome: boolean;
+};
 
-export default function Header({ isHome }: HeaderProps) {
+export default function Header({ isHome }: HeaderProps): JSX.Element {
   return (
     <header
       className={`
         sticky z-50 bg-primary
-        ${isHome ? 'bottom-0' : 'top-0'}
+        ${isHome ? "bottom-0" : "top-0"}
       `}
     >
       <div className="flex justify-center py-4">
@@ -21,5 +21,5 @@ export default function Header({ isHome }: HeaderProps) {
         </Link>
       </div>
     </header>
-  )
+  );
 }
