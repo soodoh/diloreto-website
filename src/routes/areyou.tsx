@@ -1,44 +1,35 @@
-import { useState } from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import ContactModal from '~/components/ContactModal'
-import Record from '~/components/Record'
-import ImageModal from '~/components/ImageModal'
-import { Button } from '~/components/ui/button'
-import { fetchFamilyHistory, fetchPeople } from '~/lib/contentful'
-import type { GalleryPhoto } from '~/types'
+import { useState } from "react";
+import { createFileRoute, useLoaderData } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import ContactModal from "~/components/contact-modal";
+import Record from "~/components/record";
+import ImageModal from "~/components/image-modal";
+import { Button } from "~/components/ui/button";
+import { fetchFamilyHistory, fetchPeople } from "~/lib/contentful";
+import type { GalleryPhoto } from "~/types";
 
-const getHistoryData = createServerFn({ method: 'GET' }).handler(async () => {
-  const [history, people] = await Promise.all([fetchFamilyHistory(), fetchPeople()])
-  return { history, people }
-})
+const getHistoryData = createServerFn({ method: "GET" }).handler(async () => {
+  const [history, people] = await Promise.all([
+    fetchFamilyHistory(),
+    fetchPeople(),
+  ]);
+  return { history, people };
+});
 
-export const Route = createFileRoute('/areyou')({
-  loader: () => getHistoryData(),
-  head: () => ({
-    meta: [
-      { title: 'Are You a DiLoreto?' },
-      {
-        name: 'description',
-        content:
-          'Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed.',
-      },
-    ],
-  }),
-  component: FamilyHistory,
-})
+export function FamilyHistory(): JSX.Element {
+  const { history, people } = useLoaderData({ from: "/areyou" });
+  const allPhotos: GalleryPhoto[] = [];
+  for (const album of history) {
+    if (album.link) {
+      continue;
+    }
+    for (const photo of album.photos ?? []) {
+      allPhotos.push(photo);
+    }
+  }
 
-function FamilyHistory() {
-  const { history, people } = Route.useLoaderData()
-
-  const allPhotos: GalleryPhoto[] = history.reduce<GalleryPhoto[]>((photos, album) => {
-    if (album.link) return photos
-    const morePhotos = album.photos?.filter(photo => !!photo) || []
-    return [...photos, ...morePhotos]
-  }, [])
-
-  const [contactActive, setContact] = useState(false)
-  const [photoIndex, setPhoto] = useState<number | null>(null)
+  const [contactActive, setContact] = useState(false);
+  const [photoIndex, setPhoto] = useState<number | undefined>(undefined);
 
   return (
     <>
@@ -50,16 +41,16 @@ function FamilyHistory() {
 
       <ImageModal
         onChange={(newIndex: number) => setPhoto(newIndex)}
-        onClose={() => setPhoto(null)}
+        onClose={() => setPhoto(undefined)}
         images={allPhotos}
         photoIndex={photoIndex}
       />
 
       <div className="p-4 flex flex-col items-center">
         <p className="font-serif text-center max-w-3xl mb-4">
-          A genealogical record of the DiLoreto lineage is maintained, and we would love to hear from any
-          relatives with updates. An updated copy of the complete family tree can be sent as a PDF to family
-          members.
+          A genealogical record of the DiLoreto lineage is maintained, and we
+          would love to hear from any relatives with updates. An updated copy of
+          the complete family tree can be sent as a PDF to family members.
         </p>
         <Button
           variant="outline"
@@ -75,12 +66,29 @@ function FamilyHistory() {
           key={record.id}
           data={record}
           isEven={index % 2 === 0}
-          openPhoto={id => {
-            const idx = allPhotos.findIndex(photo => photo.id === id)
-            setPhoto(idx)
+          openPhoto={(id) => {
+            const idx = allPhotos.findIndex((photo) => photo.id === id);
+            if (idx !== -1) {
+              setPhoto(idx);
+            }
           }}
         />
       ))}
     </>
-  )
+  );
 }
+
+export const Route = createFileRoute("/areyou")({
+  loader: () => getHistoryData(),
+  head: () => ({
+    meta: [
+      { title: "Are You a DiLoreto?" },
+      {
+        name: "description",
+        content:
+          "Are you a DiLoreto? View the history of the DiLoretos from Alfadena, Italy to Michigan and California. Extensive historical sources, photos and family tree listed.",
+      },
+    ],
+  }),
+  component: FamilyHistory,
+});

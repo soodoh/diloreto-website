@@ -1,24 +1,29 @@
+import ReactMarkdown from "react-markdown";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '~/components/ui/dialog'
-import type { Person } from '~/types'
+} from "~/components/ui/dialog";
+import type { Person } from "~/types";
 
-interface PersonModalProps {
-  open: boolean
-  data: Person | null
-  onClose: () => void
-}
+type PersonModalProps = {
+  open: boolean;
+  data: Person | undefined;
+  onClose: () => void;
+};
 
-export default function PersonModal({ open, data, onClose }: PersonModalProps) {
+export default function PersonModal({
+  open,
+  data,
+  onClose,
+}: PersonModalProps): JSX.Element {
   return (
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="font-serif italic text-primary text-4xl max-sm:text-2xl">
-            {data?.fullName || ''}
+            {data?.fullName || ""}
           </DialogTitle>
         </DialogHeader>
 
@@ -32,12 +37,11 @@ export default function PersonModal({ open, data, onClose }: PersonModalProps) {
         )}
 
         {data?.bio && (
-          <div
-            className="font-serif markdown-content"
-            dangerouslySetInnerHTML={{ __html: data.bio }}
-          />
+          <div className="font-serif markdown-content">
+            <ReactMarkdown>{data.bio}</ReactMarkdown>
+          </div>
         )}
       </DialogContent>
     </Dialog>
-  )
+  );
 }

@@ -3,16 +3,20 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '~/components/ui/dialog'
-import type { Person } from '~/types'
+} from "~/components/ui/dialog";
+import type { Person } from "~/types";
 
-interface ContactModalProps {
-  open: boolean
-  onClose: () => void
-  people: Person[]
-}
+type ContactModalProps = {
+  open: boolean;
+  onClose: () => void;
+  people: Person[];
+};
 
-export default function ContactModal({ open, onClose, people }: ContactModalProps) {
+export default function ContactModal({
+  open,
+  onClose,
+  people,
+}: ContactModalProps): JSX.Element {
   return (
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent>
@@ -23,7 +27,7 @@ export default function ContactModal({ open, onClose, people }: ContactModalProp
         </DialogHeader>
 
         <div className="grid grid-cols-[30%_1fr] max-sm:grid-cols-1 gap-y-1">
-          {people.map(person => (
+          {people.map((person) => (
             <div key={person.firstName} className="contents">
               <h5 className="font-serif text-xl m-0">{`${person.firstName}:`}</h5>
 
@@ -32,7 +36,7 @@ export default function ContactModal({ open, onClose, people }: ContactModalProp
               </h5>
 
               <div className="col-span-2 max-sm:col-span-1 mb-8">
-                {person.firstName === 'John' && (
+                {person.firstName === "John" && (
                   <i>For any questions regarding DiLoreto genealogy.</i>
                 )}
                 {person.link && (
@@ -49,5 +53,5 @@ export default function ContactModal({ open, onClose, people }: ContactModalProp
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

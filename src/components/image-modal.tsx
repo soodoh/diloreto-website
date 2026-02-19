@@ -1,68 +1,77 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Image } from '@unpic/react'
-import { XIcon } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Image } from "@unpic/react";
+import { XIcon } from "lucide-react";
 import {
   DialogClose,
   DialogContent,
   DialogDescription,
   Dialog,
   DialogTitle,
-} from '~/components/ui/dialog'
-import { Button } from '~/components/ui/button'
+} from "~/components/ui/dialog";
+import { Button } from "~/components/ui/button";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
-} from '~/components/ui/carousel'
-import type { GalleryPhoto } from '~/types'
+} from "~/components/ui/carousel";
+import type { CarouselApi } from "~/components/ui/carousel";
+import type { GalleryPhoto } from "~/types";
 
-interface ImageModalProps {
-  onChange: (index: number) => void
-  onClose: () => void
-  images: GalleryPhoto[]
-  photoIndex: number | null
-}
+type ImageModalProps = {
+  onChange: (index: number) => void;
+  onClose: () => void;
+  images: GalleryPhoto[];
+  photoIndex: number | undefined;
+};
 
-export default function ImageModal({ onChange, onClose, images, photoIndex }: ImageModalProps) {
-  const [api, setApi] = useState<CarouselApi>()
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const isOpen = photoIndex !== null
-  const currentPhoto = images[currentIndex]
-  const carouselOpts = useMemo(() => ({ watchDrag: true }), [])
+export default function ImageModal({
+  onChange,
+  onClose,
+  images,
+  photoIndex,
+}: ImageModalProps): JSX.Element {
+  const [api, setApi] = useState<CarouselApi>();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isOpen = photoIndex !== undefined;
+  const currentPhoto = images[currentIndex];
+  const carouselOpts = useMemo(() => ({ watchDrag: true }), []);
 
   const handleSetApi = useCallback((carouselApi: CarouselApi) => {
-    setApi(carouselApi)
-  }, [])
+    setApi(carouselApi);
+  }, []);
 
   useEffect(() => {
-    if (!api) return
+    if (!api) {
+      return;
+    }
 
     const handleSelect = () => {
-      const selectedIndex = api.selectedScrollSnap()
-      setCurrentIndex(selectedIndex)
+      const selectedIndex = api.selectedScrollSnap();
+      setCurrentIndex(selectedIndex);
       if (selectedIndex !== photoIndex) {
-        onChange(selectedIndex)
+        onChange(selectedIndex);
       }
-    }
+    };
 
-    api.on('select', handleSelect)
+    api.on("select", handleSelect);
     return () => {
-      api.off('select', handleSelect)
-    }
-  }, [api, onChange, photoIndex])
+      api.off("select", handleSelect);
+    };
+  }, [api, onChange, photoIndex]);
 
   useEffect(() => {
-    if (!isOpen || !api || photoIndex === null) return
-
-    if (api.selectedScrollSnap() !== photoIndex) {
-      api.scrollTo(photoIndex, true)
+    if (!isOpen || !api || photoIndex === undefined) {
+      return;
     }
 
-    setCurrentIndex(api.selectedScrollSnap())
-  }, [api, isOpen, photoIndex])
+    if (api.selectedScrollSnap() !== photoIndex) {
+      api.scrollTo(photoIndex, true);
+    }
+
+    setCurrentIndex(api.selectedScrollSnap());
+  }, [api, isOpen, photoIndex]);
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -71,7 +80,9 @@ export default function ImageModal({ onChange, onClose, images, photoIndex }: Im
         overlayClassName="bg-black/80"
         className="inset-0 top-0 left-0 translate-x-0 translate-y-0 max-w-none sm:max-w-none max-h-screen h-full w-full overflow-hidden rounded-none border-none bg-black/95 p-0 shadow-none gap-0 flex flex-col data-[state=open]:zoom-in-100 data-[state=closed]:zoom-out-100"
       >
-        <DialogTitle className="sr-only">{currentPhoto?.title || 'Image Gallery'}</DialogTitle>
+        <DialogTitle className="sr-only">
+          {currentPhoto?.title || "Image Gallery"}
+        </DialogTitle>
         <DialogDescription className="sr-only">
           Viewing image {currentIndex + 1} of {images.length}
         </DialogDescription>
@@ -96,7 +107,10 @@ export default function ImageModal({ onChange, onClose, images, photoIndex }: Im
             {images.map((photo) => (
               <CarouselItem key={photo.id} className="h-full p-4">
                 <div className="h-full flex flex-col items-center justify-center">
-                  <div className="flex items-center justify-center" style={{ width: '85vw', height: '80vh' }}>
+                  <div
+                    className="flex items-center justify-center"
+                    style={{ width: "85vw", height: "80vh" }}
+                  >
                     <Image
                       src={photo.fullSize.url}
                       alt={photo.title}
@@ -131,5 +145,5 @@ export default function ImageModal({ onChange, onClose, images, photoIndex }: Im
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
