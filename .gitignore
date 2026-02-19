@@ -22,8 +22,8 @@ dist/
 # TanStack generated
 .tanstack
 
-# eslint cache
-.eslintcache
+# lint cache
+.oxlintcache
 
 # Local Netlify folder
 .netlify
