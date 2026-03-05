@@ -5,18 +5,17 @@ import Tile from "~/components/tile";
 import PersonModal from "~/components/person-modal";
 import ContactModal from "~/components/contact-modal";
 import { fetchPeople, fetchHomePage } from "~/lib/contentful";
-import type { Person } from "~/types";
+import type { Person, HomePageData } from "~/types";
 
-const getHomeData = createServerFn({ method: "GET" }).handler(async () => {
-  const [people, homePage] = await Promise.all([
-    fetchPeople(),
-    fetchHomePage(),
-  ]);
+const getHomeData = createServerFn({ method: "GET" }).handler(() => {
+  const people = fetchPeople();
+  const homePage = fetchHomePage();
   return { people, homePage };
 });
 
 export function HomePage(): JSX.Element {
-  const { people, homePage } = useLoaderData({ from: "/" });
+  const { people, homePage }: { people: Person[]; homePage: HomePageData } =
+    useLoaderData({ from: "/" });
   const [contactActive, setContactActive] = useState(false);
   const [personActive, setPersonActive] = useState(false);
   const [currentPerson, setCurrentPerson] = useState<Person | undefined>(
@@ -77,7 +76,7 @@ export function HomePage(): JSX.Element {
 }
 
 export const Route = createFileRoute("/")({
-  loader: () => getHomeData(),
+  loader: async () => getHomeData(),
   head: () => ({
     meta: [
       { title: "The DiLoreto Family" },

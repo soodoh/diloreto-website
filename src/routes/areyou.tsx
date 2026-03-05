@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { createFileRoute, useLoaderData } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import ContactModal from "~/components/contact-modal";
@@ -6,27 +6,29 @@ import Record from "~/components/record";
 import ImageModal from "~/components/image-modal";
 import { Button } from "~/components/ui/button";
 import { fetchFamilyHistory, fetchPeople } from "~/lib/contentful";
-import type { GalleryPhoto } from "~/types";
+import type { GalleryPhoto, HistoryRecord, Person } from "~/types";
 
-const getHistoryData = createServerFn({ method: "GET" }).handler(async () => {
-  const [history, people] = await Promise.all([
-    fetchFamilyHistory(),
-    fetchPeople(),
-  ]);
+const getHistoryData = createServerFn({ method: "GET" }).handler(() => {
+  const history = fetchFamilyHistory();
+  const people = fetchPeople();
   return { history, people };
 });
 
 export function FamilyHistory(): JSX.Element {
-  const { history, people } = useLoaderData({ from: "/areyou" });
-  const allPhotos: GalleryPhoto[] = [];
-  for (const album of history) {
-    if (album.link) {
-      continue;
+  const { history, people }: { history: HistoryRecord[]; people: Person[] } =
+    useLoaderData({ from: "/areyou" });
+  const allPhotos = useMemo(() => {
+    const photos: GalleryPhoto[] = [];
+    for (const album of history) {
+      if (album.link) {
+        continue;
+      }
+      for (const photo of album.photos ?? []) {
+        photos.push(photo);
+      }
     }
-    for (const photo of album.photos ?? []) {
-      allPhotos.push(photo);
-    }
-  }
+    return photos;
+  }, [history]);
 
   const [contactActive, setContact] = useState(false);
   const [photoIndex, setPhoto] = useState<number | undefined>(undefined);
@@ -79,7 +81,7 @@ export function FamilyHistory(): JSX.Element {
 }
 
 export const Route = createFileRoute("/areyou")({
-  loader: () => getHistoryData(),
+  loader: async () => getHistoryData(),
   head: () => ({
     meta: [
       { title: "Are You a DiLoreto?" },

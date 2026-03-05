@@ -23,7 +23,7 @@ export default function PersonModal({
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="font-serif italic text-primary text-4xl max-sm:text-2xl">
-            {data?.fullName || ""}
+            {data?.fullName ?? ""}
           </DialogTitle>
         </DialogHeader>
 
