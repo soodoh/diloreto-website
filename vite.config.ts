@@ -6,19 +6,19 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  server: {
-    port: 3000,
-  },
-  plugins: [
-    tanstackStart({
-      prerender: {
-        enabled: true,
-        crawlLinks: true,
-      },
-    }),
-    netlifyPlugin(),
-    tailwindcss(),
-    tsconfigPaths(),
-    viteReact(),
-  ],
+	server: {
+		port: 3000,
+	},
+	plugins: [
+		tanstackStart({
+			prerender: {
+				enabled: true,
+				crawlLinks: true,
+			},
+		}),
+		netlifyPlugin(),
+		tailwindcss(),
+		tsconfigPaths(),
+		viteReact(),
+	],
 });
