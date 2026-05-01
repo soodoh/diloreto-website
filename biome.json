@@ -8,13 +8,7 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": [
-			"**",
-			"!!**/node_modules",
-			"!!**/.output",
-			"!!**/dist",
-			"!!**/src/routeTree.gen.ts"
-		]
+		"includes": ["**", "!!src/routeTree.gen.ts"]
 	},
 	"assist": {
 		"actions": {
