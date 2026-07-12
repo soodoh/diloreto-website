@@ -1,6 +1,6 @@
 import { Image } from "@unpic/react";
 import type { JSX } from "react";
-import type { GalleryPhoto } from "~/types";
+import type { GalleryPhoto } from "~/content/family-history";
 
 type PhotoProps = {
 	data: GalleryPhoto;

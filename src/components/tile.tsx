@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Image } from "@unpic/react";
 import type { JSX } from "react";
-import type { ContentfulImage } from "~/types";
+import type { SiteImage } from "~/content/image";
 
 type TileProps = {
-	image: ContentfulImage;
+	image: SiteImage;
 	label: string;
 	onClick?: () => void;
 	link?: string;

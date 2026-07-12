@@ -1,36 +1,18 @@
-import { createFileRoute, useLoaderData } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
+import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import ContactModal from "~/components/contact-modal";
 import ImageModal from "~/components/image-modal";
 import Record from "~/components/record";
 import { Button } from "~/components/ui/button";
-import { fetchFamilyHistory, fetchPeople } from "~/lib/contentful";
-import type { GalleryPhoto, HistoryRecord, Person } from "~/types";
+import { familyHistory, type GalleryPhoto } from "~/content/family-history";
+import { people } from "~/content/people";
 
-const getHistoryData = createServerFn({ method: "GET" }).handler(() => {
-	const history = fetchFamilyHistory();
-	const people = fetchPeople();
-	return { history, people };
-});
+const allPhotos: GalleryPhoto[] = familyHistory.flatMap((album) =>
+	album.link ? [] : album.photos,
+);
 
 function FamilyHistory(): JSX.Element {
-	const { history, people }: { history: HistoryRecord[]; people: Person[] } =
-		useLoaderData({ from: "/areyou" });
-	const allPhotos = useMemo(() => {
-		const photos: GalleryPhoto[] = [];
-		for (const album of history) {
-			if (album.link) {
-				continue;
-			}
-			for (const photo of album.photos ?? []) {
-				photos.push(photo);
-			}
-		}
-		return photos;
-	}, [history]);
-
 	const [contactActive, setContact] = useState(false);
 	const [photoIndex, setPhoto] = useState<number | undefined>(undefined);
 
@@ -64,7 +46,7 @@ function FamilyHistory(): JSX.Element {
 				</Button>
 			</div>
 
-			{history.map((record, index) => (
+			{familyHistory.map((record, index) => (
 				<Record
 					key={record.id}
 					data={record}
@@ -82,7 +64,6 @@ function FamilyHistory(): JSX.Element {
 }
 
 export const Route = createFileRoute("/areyou")({
-	loader: async () => getHistoryData(),
 	head: () => ({
 		meta: [
 			{ title: "Are You a DiLoreto?" },

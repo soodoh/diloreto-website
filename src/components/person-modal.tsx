@@ -6,7 +6,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "~/components/ui/dialog";
-import type { Person } from "~/types";
+import type { Person } from "~/content/people";
 
 type PersonModalProps = {
 	open: boolean;
