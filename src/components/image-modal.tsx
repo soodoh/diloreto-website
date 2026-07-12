@@ -106,7 +106,7 @@ export default function ImageModal({
 
 					<CarouselContent className="ml-0 h-full">
 						{images.map((photo) => (
-							<CarouselItem key={photo.id} className="h-full p-4">
+							<CarouselItem key={photo.image.asset.src} className="h-full p-4">
 								<div className="h-full min-h-0 flex flex-col items-center">
 									<div className="min-h-0 w-full flex-1">
 										<Image

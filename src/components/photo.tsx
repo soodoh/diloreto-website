@@ -5,7 +5,7 @@ import type { GalleryPhoto } from "~/content/family-history";
 type PhotoProps = {
 	data: GalleryPhoto;
 	link?: string;
-	openPhoto: (id: string) => void;
+	openPhoto: (photo: GalleryPhoto) => void;
 };
 
 export default function Photo({
@@ -28,7 +28,7 @@ export default function Photo({
 
 			<Wrapper
 				href={link}
-				onClick={link ? undefined : () => openPhoto(data.id)}
+				onClick={link ? undefined : () => openPhoto(data)}
 				className="block max-w-[300px] mx-auto cursor-pointer"
 			>
 				<Image

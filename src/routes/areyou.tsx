@@ -55,13 +55,13 @@ function FamilyHistory(): JSX.Element {
 
 			{familyHistory.map((record, index) => (
 				<Record
-					key={record.id}
+					key={record.title}
 					data={record}
 					isEven={index % 2 === 0}
-					openPhoto={(id) => {
-						const idx = allPhotos.findIndex((photo) => photo.id === id);
-						if (idx !== -1) {
-							setPhoto(idx);
+					openPhoto={(selectedPhoto) => {
+						const selectedIndex = allPhotos.indexOf(selectedPhoto);
+						if (selectedIndex !== -1) {
+							setPhoto(selectedIndex);
 						}
 					}}
 				/>
