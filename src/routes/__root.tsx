@@ -7,7 +7,7 @@ import {
 	Scripts,
 	useRouterState,
 } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 import Header from "~/components/header";
 import appCss from "~/styles/app.css?url";
 

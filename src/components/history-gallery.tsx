@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import type { HistoryRecord } from "~/types";
 import Photo from "./photo";
 

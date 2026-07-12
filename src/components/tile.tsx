@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Image } from "@unpic/react";
+import type { JSX } from "react";
 import type { ContentfulImage } from "~/types";
 
 type TileProps = {
