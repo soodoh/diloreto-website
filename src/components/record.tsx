@@ -1,12 +1,12 @@
 import type { JSX } from "react";
 import ReactMarkdown from "react-markdown";
-import type { HistoryRecord } from "~/content/family-history";
+import type { GalleryPhoto, HistoryRecord } from "~/content/family-history";
 import HistoryGallery from "./history-gallery";
 import Photo from "./photo";
 
 type RecordProps = {
 	data: HistoryRecord;
-	openPhoto: (id: string) => void;
+	openPhoto: (photo: GalleryPhoto) => void;
 	isEven: boolean;
 };
 

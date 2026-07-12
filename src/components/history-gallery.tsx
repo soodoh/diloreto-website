@@ -1,10 +1,10 @@
 import type { JSX } from "react";
-import type { HistoryRecord } from "~/content/family-history";
+import type { GalleryPhoto, HistoryRecord } from "~/content/family-history";
 import Photo from "./photo";
 
 type HistoryGalleryProps = {
 	data: HistoryRecord;
-	openPhoto: (id: string) => void;
+	openPhoto: (photo: GalleryPhoto) => void;
 	className?: string;
 };
 
@@ -25,7 +25,7 @@ export default function HistoryGallery({
 			<div className={`grid grid-cols-1 gap-4 ${columnClass}`}>
 				{photos.map((photo) => (
 					<Photo
-						key={photo.id}
+						key={photo.image.asset.src}
 						data={photo}
 						link={data.link}
 						openPhoto={openPhoto}

@@ -7,7 +7,6 @@ import paulBio from "./bios/paul-diloreto.md?raw";
 import { type ContentImage, contentImage } from "./image";
 
 export type Person = {
-	id: string;
 	order: number;
 	firstName: string;
 	fullName: string;
@@ -19,7 +18,6 @@ export type Person = {
 
 export const people: Person[] = [
 	{
-		id: "0e302574-2e3a-55a9-8331-c6f27a3de509",
 		order: 0,
 		firstName: "John",
 		fullName: "John R. DiLoreto",
@@ -28,7 +26,6 @@ export const people: Person[] = [
 		bio: johnBio,
 	},
 	{
-		id: "9276b6bf-fbdf-5147-94a2-3d25b5d1cee9",
 		order: 1,
 		firstName: "Paul",
 		fullName: "Paul Michael DiLoreto",
@@ -38,7 +35,6 @@ export const people: Person[] = [
 		bio: paulBio,
 	},
 	{
-		id: "a1bb5c97-8895-59a0-8599-a54da8bb19a9",
 		order: 2,
 		firstName: "Carolyn",
 		fullName: "Carolyn DiLoreto",

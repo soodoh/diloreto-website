@@ -20,7 +20,7 @@ function HomePage(): JSX.Element {
 			<div className="grid grid-cols-3 max-sm:grid-cols-2 gap-2 max-w-[1200px] p-2 mx-auto mb-20">
 				{people.map((person, index) => (
 					<Tile
-						key={person.id}
+						key={person.fullName}
 						delay={transitionDelay * (index + 1)}
 						image={person.portrait}
 						label={person.firstName}
