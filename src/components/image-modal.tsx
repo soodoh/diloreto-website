@@ -104,14 +104,11 @@ export default function ImageModal({
 						</Button>
 					</DialogClose>
 
-					<CarouselContent className="h-full">
+					<CarouselContent className="ml-0 h-full">
 						{images.map((photo) => (
 							<CarouselItem key={photo.id} className="h-full p-4">
-								<div className="h-full flex flex-col items-center justify-center">
-									<div
-										className="flex items-center justify-center"
-										style={{ width: "85vw", height: "80vh" }}
-									>
+								<div className="h-full min-h-0 flex flex-col items-center">
+									<div className="min-h-0 w-full flex-1">
 										<Image
 											src={photo.image.asset.src}
 											alt={photo.image.title}
@@ -119,11 +116,12 @@ export default function ImageModal({
 											width={photo.image.asset.width}
 											height={photo.image.asset.height}
 											fallback="netlify"
-											className="max-w-full max-h-full w-auto h-auto object-contain"
+											unstyled
+											className="size-full object-contain"
 										/>
 									</div>
 									{photo.description && (
-										<p className="text-white/80 text-center text-sm mt-2 px-4 max-w-2xl">
+										<p className="mt-2 max-w-2xl shrink-0 px-4 text-center text-white/80 text-sm">
 											{photo.description}
 										</p>
 									)}
