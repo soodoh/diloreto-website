@@ -25,9 +25,7 @@ import img0341JPG from "~/assets/images/IMG_0341.JPG?as=metadata";
 import img0346JPG from "~/assets/images/IMG_0346.JPG?as=metadata";
 import img0347JPG from "~/assets/images/IMG_0347.JPG?as=metadata";
 import img0349JPG from "~/assets/images/IMG_0349.JPG?as=metadata";
-import img0363JPG from "~/assets/images/IMG_0363.JPG?as=metadata";
 import img0364JPG from "~/assets/images/IMG_0364.JPG?as=metadata";
-import img0365JPG from "~/assets/images/IMG_0365.JPG?as=metadata";
 import mapAlfGif from "~/assets/images/Map_Alf.gif?as=metadata";
 import nickMariaBoysJpg from "~/assets/images/Nick__Maria__Boys.jpg?as=metadata";
 import oldestFamilyTreeGif from "~/assets/images/oldest_family_tree.gif?as=metadata";
@@ -576,25 +574,11 @@ export const familyHistory: HistoryRecord[] = [
 				image: contentImage("Church Door", img0349JPG),
 			},
 			{
-				id: "img-363",
-				title: "Alfedena View 1",
-				description:
-					"Panorama of Alfedena with the Meta Range in the background.",
-				image: contentImage("Alfedena View 1", img0363JPG),
-			},
-			{
 				id: "img-364",
-				title: "Alfedena View 2",
+				title: "Alfedena View",
 				description:
 					"Panorama of Alfedena with the Meta Range in the background.",
-				image: contentImage("Alfedena View 2", img0364JPG),
-			},
-			{
-				id: "img-365",
-				title: "Alfedena View 3",
-				description:
-					"Panorama of Alfedena with the Meta Range in the background.",
-				image: contentImage("Alfedena View 3", img0365JPG),
+				image: contentImage("Alfedena View", img0364JPG),
 			},
 		],
 	},
