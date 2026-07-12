@@ -66,6 +66,7 @@ import rome46CJpg from "~/assets/images/Rome-_46c.jpg?as=metadata";
 import rome46EJpg from "~/assets/images/Rome-_46e.jpg?as=metadata";
 import rome46FJpg from "~/assets/images/Rome-_46f.jpg?as=metadata";
 import rome46GJpg from "~/assets/images/Rome-_46g.jpg?as=metadata";
+import wedding1911 from "~/assets/images/Wedding-1911.jpg?as=metadata";
 import { type ContentImage, contentImage } from "./image";
 
 export type GalleryPhoto = {
@@ -182,9 +183,30 @@ export const familyHistory: HistoryRecord[] = [
 		],
 	},
 	{
+		id: "asdf",
+		year: 1911,
+		title: "1911-1913 Weddings",
+		content: "",
+		galleryPhotos: [
+			{
+				id: "asdf-1",
+				title: "The wedding of Remo DiLoreto and Marianna D'Amico (1911)",
+				description: "The wedding of Remo DiLoreto and Marianna D'Amico (1911)",
+				image: contentImage("Remo and Marianna Wedding Photo", wedding1911),
+			},
+			{
+				id: "1QWRvhoJlGawIAgaY0i04o",
+				title: "1913 Wedding",
+				description:
+					"The wedding of Gaetano D'Amico and Cleonice DiLoreto with Remo and Marianna (D'Amico) DiLoreto (Aug. 23, 1913).",
+				image: contentImage("1913 Wedding", diloretoDAmicoWeddingJpg),
+			},
+		],
+	},
+	{
 		id: "8a7b896c-bcc3-5d6c-8138-d64f6e91c1a4",
 		year: 1913,
-		title: "1913 - 1923",
+		title: "1913 - 1923 Postcards",
 		content:
 			"## Antique Postcards from Alfedena, Italy\n\nThese postcards were sent between 1913 and 1923, between family members in Alfedena and those who had emigrated to Detroit and Rochester.",
 		galleryPhotos: [
@@ -334,20 +356,6 @@ export const familyHistory: HistoryRecord[] = [
 				image: contentImage("postcard-21", postcard21Gif),
 			},
 		],
-	},
-	{
-		id: "060966ce-3594-5fbd-aa90-70392382e7ca",
-		year: 1913,
-		title: "1913",
-		content:
-			"## Gaetano D'Amico & Cleonice DiLoreto's Wedding\n\nAugust 23, 1913",
-		headerPhoto: {
-			id: "1QWRvhoJlGawIAgaY0i04o",
-			title: "1913 Wedding",
-			description:
-				"The wedding of Gaetano D'Amico and Cleonice DiLoreto with Remo and Marianna (D'Amico) DiLoreto (Aug. 23, 1913).",
-			image: contentImage("1913 Wedding", diloretoDAmicoWeddingJpg),
-		},
 	},
 	{
 		id: "fd714f2f-1de3-5c21-89b2-f304fc53c4f8",
