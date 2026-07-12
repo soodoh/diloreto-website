@@ -8,9 +8,16 @@ import { Button } from "~/components/ui/button";
 import { familyHistory, type GalleryPhoto } from "~/content/family-history";
 import { people } from "~/content/people";
 
-const allPhotos: GalleryPhoto[] = familyHistory.flatMap((album) =>
-	album.link ? [] : album.photos,
-);
+const allPhotos: GalleryPhoto[] = familyHistory.flatMap((record) => {
+	if (record.link) {
+		return [];
+	}
+
+	return [
+		...(record.headerPhoto !== undefined ? [record.headerPhoto] : []),
+		...(record.galleryPhotos ?? []),
+	];
+});
 
 function FamilyHistory(): JSX.Element {
 	const [contactActive, setContact] = useState(false);
