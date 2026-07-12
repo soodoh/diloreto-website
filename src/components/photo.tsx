@@ -32,13 +32,12 @@ export default function Photo({
 				className="block max-w-[300px] mx-auto cursor-pointer"
 			>
 				<Image
-					src={data.thumbnail.url}
-					alt={data.title}
+					src={data.image.asset.src}
+					alt={data.image.title}
 					layout="constrained"
-					width={300}
-					height={Math.round(
-						300 * (data.thumbnail.height / data.thumbnail.width),
-					)}
+					width={data.image.asset.width}
+					height={data.image.asset.height}
+					fallback="netlify"
 				/>
 			</Wrapper>
 		</div>
