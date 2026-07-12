@@ -1,5 +1,6 @@
 import { Image } from "@unpic/react";
 import { XIcon } from "lucide-react";
+import type { JSX } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "~/components/ui/button";
 import type { CarouselApi } from "~/components/ui/carousel";

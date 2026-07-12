@@ -1,4 +1,5 @@
 import { Image } from "@unpic/react";
+import type { JSX } from "react";
 import type { GalleryPhoto } from "~/types";
 
 type PhotoProps = {

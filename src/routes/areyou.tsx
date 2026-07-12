@@ -1,5 +1,6 @@
 import { createFileRoute, useLoaderData } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
+import type { JSX } from "react";
 import { useMemo, useState } from "react";
 import ContactModal from "~/components/contact-modal";
 import ImageModal from "~/components/image-modal";
@@ -14,7 +15,7 @@ const getHistoryData = createServerFn({ method: "GET" }).handler(() => {
 	return { history, people };
 });
 
-export function FamilyHistory(): JSX.Element {
+function FamilyHistory(): JSX.Element {
 	const { history, people }: { history: HistoryRecord[]; people: Person[] } =
 		useLoaderData({ from: "/areyou" });
 	const allPhotos = useMemo(() => {

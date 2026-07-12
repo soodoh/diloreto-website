@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import type { JSX } from "react";
 
 type HeaderProps = {
 	isHome: boolean;

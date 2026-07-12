@@ -1,5 +1,6 @@
 import { createFileRoute, useLoaderData } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
+import type { JSX } from "react";
 import { useState } from "react";
 import ContactModal from "~/components/contact-modal";
 import PersonModal from "~/components/person-modal";
@@ -13,7 +14,7 @@ const getHomeData = createServerFn({ method: "GET" }).handler(() => {
 	return { people, homePage };
 });
 
-export function HomePage(): JSX.Element {
+function HomePage(): JSX.Element {
 	const { people, homePage }: { people: Person[]; homePage: HomePageData } =
 		useLoaderData({ from: "/" });
 	const [contactActive, setContactActive] = useState(false);
