@@ -13,20 +13,25 @@ export default function HistoryGallery({
 	openPhoto,
 	className,
 }: HistoryGalleryProps): JSX.Element {
+	const photos = data.galleryPhotos?.slice(0, 3) ?? [];
+	const columnClass = photos.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3";
+
 	return (
-		<div className={`grid grid-cols-3 gap-4 ${className ?? ""}`}>
-			<div className="col-span-3 flex justify-center">
+		<div className={className}>
+			<div className="flex justify-center">
 				<span className="text-sm">Click any photo to view full gallery</span>
 			</div>
 
-			{data.photos.slice(0, 3).map((photo) => (
-				<Photo
-					key={photo.id}
-					data={photo}
-					link={data.link}
-					openPhoto={openPhoto}
-				/>
-			))}
+			<div className={`grid grid-cols-1 gap-4 ${columnClass}`}>
+				{photos.map((photo) => (
+					<Photo
+						key={photo.id}
+						data={photo}
+						link={data.link}
+						openPhoto={openPhoto}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

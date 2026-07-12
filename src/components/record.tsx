@@ -15,11 +15,11 @@ export default function Record({
 	openPhoto,
 	isEven,
 }: RecordProps): JSX.Element {
-	const hasPhotos = Array.isArray(data.photos) && data.photos.length > 0;
-	const hasGallery = hasPhotos && data.photos.length > 1;
+	const hasGallery =
+		data.galleryPhotos !== undefined && data.galleryPhotos.length > 1;
 
 	const markdownColSpan = (() => {
-		if (hasGallery || !hasPhotos) {
+		if (hasGallery || !data.headerPhoto) {
 			return "col-span-3";
 		}
 		if (isEven) {
@@ -37,17 +37,17 @@ export default function Record({
 			</h1>
 
 			<div className="grid grid-cols-3 gap-2">
-				{hasPhotos && !hasGallery && (
+				{data.headerPhoto !== undefined ? (
 					<div
 						className={`row-start-1 ${photoCol} max-sm:row-start-auto max-sm:col-span-3`}
 					>
 						<Photo
-							data={data.photos[0]}
+							data={data.headerPhoto}
 							link={data.link}
 							openPhoto={openPhoto}
 						/>
 					</div>
-				)}
+				) : null}
 
 				<div
 					className={`row-start-1 ${markdownColSpan} max-sm:row-start-auto max-sm:col-span-3`}
@@ -57,13 +57,13 @@ export default function Record({
 					</div>
 				</div>
 
-				{hasPhotos && hasGallery && (
+				{hasGallery ? (
 					<HistoryGallery
 						className="col-span-3 row-start-2 max-sm:row-start-auto"
 						data={data}
 						openPhoto={openPhoto}
 					/>
-				)}
+				) : null}
 			</div>
 		</div>
 	);

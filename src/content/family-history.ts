@@ -84,7 +84,8 @@ export type HistoryRecord = {
 	title: string;
 	content: string;
 	link?: string;
-	photos: GalleryPhoto[];
+	headerPhoto?: GalleryPhoto;
+	galleryPhotos?: GalleryPhoto[];
 };
 
 export const familyHistory: HistoryRecord[] = [
@@ -95,14 +96,12 @@ export const familyHistory: HistoryRecord[] = [
 		link: "http://www.gens.info/italia/it/turismo-viaggi-e-tradizioni-italia?t=cognomi&cognome=di+loreto&x=33&y=9#.WJD7TrYrLMU",
 		content:
 			"## Historical and Heraldic Information on the DiLoreto Stock\n\nExcerpts from the Istituto Genealogico Italiano:\n\n\"The family descends from D'Aquino stock of Longobard origin, whose forefather was Atenolfo, Lord of Capua in 996. Among the feudal holdings of this important family were L'Aquila, Alvito, Loreto and many others. The branch of the family that became known as DI LORETO presumably took its surname from the town of Loreto, their feudal holding. The first DI LORETO of documented record is one Berardo in 1330.\"",
-		photos: [
-			{
-				id: "6MWMDjUUhOc2A0GQWSwAkw",
-				title: "DiLoreto map",
-				description: "How many DiLoretos live in Italy?",
-				image: contentImage("DiLoreto map", diloretoMapGif),
-			},
-		],
+		headerPhoto: {
+			id: "6MWMDjUUhOc2A0GQWSwAkw",
+			title: "DiLoreto map",
+			description: "How many DiLoretos live in Italy?",
+			image: contentImage("DiLoreto map", diloretoMapGif),
+		},
 	},
 	{
 		id: "90a0403d-80c4-54e2-92e0-9ed3e4ae5a26",
@@ -110,15 +109,13 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1295 - 1528",
 		content:
 			'## Excerpts from "The Historical Research Center"\n\nSubmitted by Joanne Monroe (1993):\n\n"The surname Loreto is of Italian origin, and is a locational name from the famous town of Loreto in the province of Ancona in Italy. Loreto became famous through the legend of the \'Holy House,\' where tradition states that the house where the Virgin Mary lived and was visited by the Angel, was miraculously carried to Loreto in 1295 by angels from the Holy Land."\n\n"In the 14th century, a family named Di Loreto, having originated in the above-named town, became quite prominent. The first documented reference to the name was in 1528, when one Luca di Loreto was recorded. It is from this point in time that the ancestral history of the family began to be carefully followed."',
-		photos: [
-			{
-				id: "2BW7hGmbScQIOswsgW4iqC",
-				title: "Alfedena Homestead",
-				description:
-					"Location of DiLoreto Homestead in Alfedena, L'Aquila, Italy.",
-				image: contentImage("Alfedena Homestead", mapAlfGif),
-			},
-		],
+		headerPhoto: {
+			id: "2BW7hGmbScQIOswsgW4iqC",
+			title: "Alfedena Homestead",
+			description:
+				"Location of DiLoreto Homestead in Alfedena, L'Aquila, Italy.",
+			image: contentImage("Alfedena Homestead", mapAlfGif),
+		},
 	},
 	{
 		id: "0519efcf-f3b4-59f7-b1bb-098307702ffd",
@@ -126,13 +123,11 @@ export const familyHistory: HistoryRecord[] = [
 		title: "Coat of Arms - DiLoreto Family of Genua",
 		content:
 			'## Coat of Arms\n\nBlazon: "Azure, a tree on a grassy plain all proper, overall a fess gules."\n\nThe tree signifies antiquity and knowledge. The fesse represents the military belt of honor. Crest: Three ostrich plumes. Origin: Italy.',
-		photos: [
-			{
-				id: "4WNoguuxpu2QQyuIgYAG4u",
-				title: "DiLoreto Coat of Arms",
-				image: contentImage("DiLoreto Coat of Arms", coatofarmsGif),
-			},
-		],
+		headerPhoto: {
+			id: "4WNoguuxpu2QQyuIgYAG4u",
+			title: "DiLoreto Coat of Arms",
+			image: contentImage("DiLoreto Coat of Arms", coatofarmsGif),
+		},
 	},
 	{
 		id: "6abc310f-778f-5074-b304-66166edf5b1c",
@@ -140,14 +135,12 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1600s",
 		content:
 			"## We Came from Alfedena\n\nAlfedena is a comune (municipality) in the Province of L'Aquila in the Abruzzo region of Italy. A small village of about 700 inhabitants, it sits along the Sangro River in a narrow valley at about 3,000 feet elevation.",
-		photos: [
-			{
-				id: "7CQlbPj5SgqGu2G4cSQu64",
-				title: "Map of Abruzzo",
-				description: "Map of Abruzzo pointing to Alfedena at the bottom",
-				image: contentImage("Map of Abruzzo", abruzziMapJpg),
-			},
-		],
+		headerPhoto: {
+			id: "7CQlbPj5SgqGu2G4cSQu64",
+			title: "Map of Abruzzo",
+			description: "Map of Abruzzo pointing to Alfedena at the bottom",
+			image: contentImage("Map of Abruzzo", abruzziMapJpg),
+		},
 	},
 	{
 		id: "0a464ab4-b7e3-5110-8eab-98d7a89f4d3c",
@@ -156,14 +149,12 @@ export const familyHistory: HistoryRecord[] = [
 		link: "https://www.facebook.com/groups/Alfedena/",
 		content:
 			'## The Loyal Wing Club\n\nMigration from Alfedena to Detroit began in 1886, with about 100 arriving by 1900. By 1960, there were 1,680 Alfedenese in Detroit (compared to 1,430 in Alfedena itself), and by 1979 that number had grown to 2-3 thousand.\n\nThe Loyal Wing Club ("Club Ala Fidente") was founded in 1919 by the Alfedenese community in Detroit. The club\'s name derives from the legend that Alfedena defended the right wing of the army of Rome against Hannibal in 216 BC.',
-		photos: [
-			{
-				id: "1VEKHlk0yMWQG6OeieCcsq",
-				title: "Alfedena View",
-				description: "Loyal Wing Club's Facebook Group",
-				image: contentImage("Alfedena View", alfedenaJpg),
-			},
-		],
+		headerPhoto: {
+			id: "1VEKHlk0yMWQG6OeieCcsq",
+			title: "Alfedena View",
+			description: "Loyal Wing Club's Facebook Group",
+			image: contentImage("Alfedena View", alfedenaJpg),
+		},
 	},
 	{
 		id: "5c08bf87-119e-572b-96fa-cc8c1e9a413b",
@@ -171,7 +162,7 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1909",
 		content:
 			"## Immigration to the U.S.\n\nRemo DiLoreto, one of 13 children of Panfilo and Eufrasia Gigante, emigrated to the United States. He married Marianna D'Amico in 1911 (one of 11 children). They settled in the Eastern Market area of Detroit. Their children were: Panfilo, Oscar, Gilbert, and Emma.",
-		photos: [
+		galleryPhotos: [
 			{
 				id: "6oP8CPUVTq8woyiG6iMG4e",
 				title: "Family Tree",
@@ -198,7 +189,7 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1913 - 1923",
 		content:
 			"## Antique Postcards from Alfedena, Italy\n\nThese postcards were sent between 1913 and 1923, between family members in Alfedena and those who had emigrated to Detroit and Rochester.",
-		photos: [
+		galleryPhotos: [
 			{
 				id: "pc-04a",
 				title: "postcard-04a",
@@ -352,15 +343,13 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1913",
 		content:
 			"## Gaetano D'Amico & Cleonice DiLoreto's Wedding\n\nAugust 23, 1913",
-		photos: [
-			{
-				id: "1QWRvhoJlGawIAgaY0i04o",
-				title: "1913 Wedding",
-				description:
-					"The wedding of Gaetano D'Amico and Cleonice DiLoreto with Remo and Marianna (D'Amico) DiLoreto (Aug. 23, 1913).",
-				image: contentImage("1913 Wedding", diloretoDAmicoWeddingJpg),
-			},
-		],
+		headerPhoto: {
+			id: "1QWRvhoJlGawIAgaY0i04o",
+			title: "1913 Wedding",
+			description:
+				"The wedding of Gaetano D'Amico and Cleonice DiLoreto with Remo and Marianna (D'Amico) DiLoreto (Aug. 23, 1913).",
+			image: contentImage("1913 Wedding", diloretoDAmicoWeddingJpg),
+		},
 	},
 	{
 		id: "fd714f2f-1de3-5c21-89b2-f304fc53c4f8",
@@ -368,14 +357,12 @@ export const familyHistory: HistoryRecord[] = [
 		title: "circa 1919",
 		content:
 			"Photo of DiLoreto children, c. 1919. If you have additional information about this photo, please contact us.",
-		photos: [
-			{
-				id: "1CsIOc1X16i8CsGooCq6gS",
-				title: "DiLoreto Children",
-				description: "DiLoreto children (c. 1919)",
-				image: contentImage("DiLoreto Children", image4DiLoretoS1919Jpg),
-			},
-		],
+		headerPhoto: {
+			id: "1CsIOc1X16i8CsGooCq6gS",
+			title: "DiLoreto Children",
+			description: "DiLoreto children (c. 1919)",
+			image: contentImage("DiLoreto Children", image4DiLoretoS1919Jpg),
+		},
 	},
 	{
 		id: "2553f8cb-62f6-5eed-880e-fa6619959e09",
@@ -383,15 +370,13 @@ export const familyHistory: HistoryRecord[] = [
 		title: "circa 1938",
 		content:
 			"## Nick & Mary's Store in Erie, PA\n\nNick and Mary (Monacelli) DiLoreto with sons William and Julio.",
-		photos: [
-			{
-				id: "3csKu33bNmKAwQoWwi8sOI",
-				title: "Nick & Mary's Store",
-				description:
-					"Nick and Mary (Monacelli) DiLoreto with sons William and Julio in their store in Erie, PA.",
-				image: contentImage("Nick & Mary's Store", nickMariaBoysJpg),
-			},
-		],
+		headerPhoto: {
+			id: "3csKu33bNmKAwQoWwi8sOI",
+			title: "Nick & Mary's Store",
+			description:
+				"Nick and Mary (Monacelli) DiLoreto with sons William and Julio in their store in Erie, PA.",
+			image: contentImage("Nick & Mary's Store", nickMariaBoysJpg),
+		},
 	},
 	{
 		id: "afb11289-7a2c-557c-b341-f439c825e56a",
@@ -399,13 +384,11 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1943 - Detroit Free Press Article",
 		content:
 			"## Remo DiLoreto's Life in America Exemplifies Strength of U.S. System\n\nBy Paul M. Deac, Detroit Free Press, 1943\n\nThe article chronicles Remo DiLoreto's journey from Alfedena, Italy to Detroit, where he built a successful life as a tile setter and raised a family. It details his apprenticeship, difficult early days, path to citizenship, and the achievements of his four children: Oscar (auto worker), Gilbert (soldier), Panfilo (draftsman), and Emma.",
-		photos: [
-			{
-				id: "3tgnMYScl2MCY4MGUEgI4u",
-				title: "1943 Detroit Free Press Article",
-				image: contentImage("1943 Detroit Free Press Article", freePress43Jpg),
-			},
-		],
+		headerPhoto: {
+			id: "3tgnMYScl2MCY4MGUEgI4u",
+			title: "1943 Detroit Free Press Article",
+			image: contentImage("1943 Detroit Free Press Article", freePress43Jpg),
+		},
 	},
 	{
 		id: "a9c5c077-73a8-532a-a3d1-1b71eaf0c490",
@@ -413,7 +396,7 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1946 Landscape Photos",
 		content:
 			"## A G.I.'s Visit to Alfedena\n\nThese photos were taken by Gilbert DiLoreto during his visit to Alfedena in 1946.",
-		photos: [
+		galleryPhotos: [
 			{
 				id: "3bMB7ujmUUcAKgCQ2cg6Sy",
 				title: "Panorama-117",
@@ -467,7 +450,7 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1946 Alfedena Relatives",
 		content:
 			"## A G.I.'s Visit to Alfedena\n\nGilbert DiLoreto visited relatives in Alfedena and Rome after World War II.",
-		photos: [
+		galleryPhotos: [
 			{
 				id: "46a",
 				title: "Woman Sitting on Balcony",
@@ -524,7 +507,7 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1965",
 		content:
 			"## Family Reunion\n\nAbout 150 family members attended the DiLoreto family reunion in Harper Woods, Michigan. A genealogical database of more than 500 descendants has been compiled, tracing ancestors back to the mid-1600s.",
-		photos: [
+		galleryPhotos: [
 			{
 				id: "5jGUjIKozKKCuqGmQmyk6E",
 				title: "1965 Reunion Program",
@@ -545,7 +528,6 @@ export const familyHistory: HistoryRecord[] = [
 		title: "1979",
 		content:
 			"## Armand DiGuilio's Report\n\n\"Where We Came From\" — An extensive historical and archaeological research paper presented at the 1979 DiLoreto family reunion. The report covers the history of Barrea and Alfedena, the Samnite tribes, the Roman conquest, migration patterns, Panfilo's career as City Clerk, the Gigante family origins, and land holdings.",
-		photos: [],
 	},
 	{
 		id: "8498606c-7a6e-564f-9be9-b11d70acee9c",
@@ -553,7 +535,7 @@ export const familyHistory: HistoryRecord[] = [
 		title: "2004",
 		content:
 			"## Photos by Bob Brunetti\n\nJune 2004. Contact: rgbprocare1@americarecorp.com",
-		photos: [
+		galleryPhotos: [
 			{
 				id: "img-339",
 				title: "Garden near Sangro River",
