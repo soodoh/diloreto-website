@@ -113,11 +113,12 @@ export default function ImageModal({
 										style={{ width: "85vw", height: "80vh" }}
 									>
 										<Image
-											src={photo.fullSize.url}
-											alt={photo.title}
+											src={photo.image.asset.src}
+											alt={photo.image.title}
 											layout="constrained"
-											width={photo.fullSize.width}
-											height={photo.fullSize.height}
+											width={photo.image.asset.width}
+											height={photo.image.asset.height}
+											fallback="netlify"
 											className="max-w-full max-h-full w-auto h-auto object-contain"
 										/>
 									</div>

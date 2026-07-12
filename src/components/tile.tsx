@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Image } from "@unpic/react";
 import type { JSX } from "react";
-import type { SiteImage } from "~/content/image";
+import type { ContentImage } from "~/content/image";
 
 type TileProps = {
-	image: SiteImage;
+	image: ContentImage;
 	label: string;
 	onClick?: () => void;
 	link?: string;
@@ -26,11 +26,12 @@ export default function Tile({
 			style={{ animationDelay: `${delay}ms` }}
 		>
 			<Image
-				src={image.url}
+				src={image.asset.src}
 				alt={image.title}
 				layout="constrained"
-				width={400}
-				height={400}
+				width={image.asset.width}
+				height={image.asset.height}
+				fallback="netlify"
 				className="w-full h-full object-cover aspect-square"
 			/>
 

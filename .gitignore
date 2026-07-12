@@ -27,3 +27,6 @@ dist/
 
 # Local Netlify folder
 .netlify
+
+# AI Agents
+.pi-subagents/

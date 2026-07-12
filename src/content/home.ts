@@ -1,28 +1,16 @@
-import type { SiteImage } from "./image";
+import contactImage from "~/assets/images/2017-DiLoreto-Christmas-Photo-9538.jpeg?as=metadata";
+import coatOfArmsImage from "~/assets/images/coatOfArms.jpg?as=metadata";
+import photosThumbnail from "~/assets/images/Thanksgiving2016-9943.jpeg?as=metadata";
+import { type ContentImage, contentImage } from "./image";
 
 export type HomePageData = {
-	contactThumbnail: SiteImage;
-	familyHistoryThumbnail: SiteImage;
-	photosThumbnail: SiteImage;
+	contactThumbnail: ContentImage;
+	familyHistoryThumbnail: ContentImage;
+	photosThumbnail: ContentImage;
 };
 
 export const homePage: HomePageData = {
-	photosThumbnail: {
-		url: "/assets/Thanksgiving2016-9943.jpeg",
-		title: "Photos Thumbnail",
-		width: 3744,
-		height: 3744,
-	},
-	familyHistoryThumbnail: {
-		url: "/assets/coatOfArms.jpg",
-		title: "Coat of Arms",
-		width: 443,
-		height: 443,
-	},
-	contactThumbnail: {
-		url: "/assets/2017-DiLoreto-Christmas-Photo-9538.jpeg",
-		title: "Contact Thumbnail",
-		width: 3651,
-		height: 3651,
-	},
+	photosThumbnail: contentImage("Photos Thumbnail", photosThumbnail),
+	familyHistoryThumbnail: contentImage("Coat of Arms", coatOfArmsImage),
+	contactThumbnail: contentImage("Contact Thumbnail", contactImage),
 };
