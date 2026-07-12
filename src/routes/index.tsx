@@ -1,22 +1,13 @@
-import { createFileRoute, useLoaderData } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
+import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
 import { useState } from "react";
 import ContactModal from "~/components/contact-modal";
 import PersonModal from "~/components/person-modal";
 import Tile from "~/components/tile";
-import { fetchHomePage, fetchPeople } from "~/lib/contentful";
-import type { HomePageData, Person } from "~/types";
-
-const getHomeData = createServerFn({ method: "GET" }).handler(() => {
-	const people = fetchPeople();
-	const homePage = fetchHomePage();
-	return { people, homePage };
-});
+import { homePage } from "~/content/home";
+import { type Person, people } from "~/content/people";
 
 function HomePage(): JSX.Element {
-	const { people, homePage }: { people: Person[]; homePage: HomePageData } =
-		useLoaderData({ from: "/" });
 	const [contactActive, setContactActive] = useState(false);
 	const [personActive, setPersonActive] = useState(false);
 	const [currentPerson, setCurrentPerson] = useState<Person | undefined>(
@@ -77,7 +68,6 @@ function HomePage(): JSX.Element {
 }
 
 export const Route = createFileRoute("/")({
-	loader: async () => getHomeData(),
 	head: () => ({
 		meta: [
 			{ title: "The DiLoreto Family" },

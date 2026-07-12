@@ -6,8 +6,8 @@ This is a TanStack Start + Vite + React 19 TypeScript app.
 
 - `src/routes/`: file-based route definitions (`__root.tsx`, `index.tsx`, etc.).
 - `src/components/`: reusable UI, with primitives in `src/components/ui/`.
-- `src/lib/`: shared helpers and integrations (for example `contentful.ts`).
-- `src/data/`: static content (`site-data.json`).
+- `src/lib/`: shared helpers and integrations.
+- `src/content/`: typed static content organized by domain.
 - `src/styles/`: global styling (`app.css`) with Tailwind v4 and shadcn tokens.
 - `public/`: static files served directly (mostly image assets).
 - Build output: `dist/client`; server output: `.output/server` (generated).
@@ -34,7 +34,7 @@ Code conventions:
 
 - Use TypeScript for app code (`.ts`/`.tsx`).
 - Components and modal/view files use `PascalCase` (for example `ImageModal.tsx`).
-- Utility modules use lower-case names (for example `utils.ts`, `contentful.ts`).
+- Utility modules use lower-case names (for example `utils.ts`).
 - Keep route filenames aligned with URL structure under `src/routes/`.
 
 ## Testing Guidelines

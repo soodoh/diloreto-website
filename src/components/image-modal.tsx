@@ -18,7 +18,7 @@ import {
 	DialogDescription,
 	DialogTitle,
 } from "~/components/ui/dialog";
-import type { GalleryPhoto } from "~/types";
+import type { GalleryPhoto } from "~/content/family-history";
 
 type ImageModalProps = {
 	onChange: (index: number) => void;
