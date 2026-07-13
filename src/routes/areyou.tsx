@@ -5,10 +5,11 @@ import ContactModal from "~/components/contact-modal";
 import ImageModal from "~/components/image-modal";
 import Record from "~/components/record";
 import { Button } from "~/components/ui/button";
-import { familyHistory, type GalleryPhoto } from "~/content/family-history";
+import { familyHistory } from "~/content/family-history";
+import type { ContentImage } from "~/content/image";
 import { people } from "~/content/people";
 
-const allPhotos: GalleryPhoto[] = familyHistory.flatMap((record) => {
+const allPhotos: ContentImage[] = familyHistory.flatMap((record) => {
 	if (record.link) {
 		return [];
 	}

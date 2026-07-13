@@ -1,17 +1,7 @@
-export type ImageMetadata = {
+export type ContentImage = {
+	title: string;
 	src: string;
 	width: number;
 	height: number;
+	format: string;
 };
-
-export type ContentImage = {
-	title: string;
-	asset: ImageMetadata;
-};
-
-export function contentImage(
-	title: string,
-	asset: ImageMetadata,
-): ContentImage {
-	return { title, asset };
-}

@@ -4,7 +4,7 @@ import johnHeadshot from "~/assets/images/JohnDiLoreto-6930.jpeg?as=metadata";
 import carolynBio from "./bios/carolyn-diloreto.md?raw";
 import johnBio from "./bios/john-diloreto.md?raw";
 import paulBio from "./bios/paul-diloreto.md?raw";
-import { type ContentImage, contentImage } from "./image";
+import type { ContentImage } from "./image";
 
 export type Person = {
 	order: number;
@@ -22,7 +22,7 @@ export const people: Person[] = [
 		firstName: "John",
 		fullName: "John R. DiLoreto",
 		email: "john@diloreto.com",
-		portrait: contentImage("John DiLoreto", johnHeadshot),
+		portrait: { title: "John DiLoreto", ...johnHeadshot },
 		bio: johnBio,
 	},
 	{
@@ -31,7 +31,7 @@ export const people: Person[] = [
 		fullName: "Paul Michael DiLoreto",
 		email: "paul@diloreto.com",
 		link: "https://pauldiloreto.com",
-		portrait: contentImage("Paul DiLoreto", paulHeadshot),
+		portrait: { title: "Paul DiLoreto", ...paulHeadshot },
 		bio: paulBio,
 	},
 	{
@@ -40,7 +40,7 @@ export const people: Person[] = [
 		fullName: "Carolyn DiLoreto",
 		email: "carolyn@diloreto.com",
 		link: "https://carolyndiloreto.com",
-		portrait: contentImage("Carolyn DiLoreto", carolynHeadshot),
+		portrait: { title: "Carolyn DiLoreto", ...carolynHeadshot },
 		bio: carolynBio,
 	},
 ];

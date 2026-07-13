@@ -18,12 +18,12 @@ import {
 	DialogDescription,
 	DialogTitle,
 } from "~/components/ui/dialog";
-import type { GalleryPhoto } from "~/content/family-history";
+import type { ContentImage } from "~/content/image";
 
 type ImageModalProps = {
 	onChange: (index: number) => void;
 	onClose: () => void;
-	images: GalleryPhoto[];
+	images: ContentImage[];
 	photoIndex: number | undefined;
 };
 
@@ -106,25 +106,23 @@ export default function ImageModal({
 
 					<CarouselContent className="ml-0 h-full">
 						{images.map((photo) => (
-							<CarouselItem key={photo.image.asset.src} className="h-full p-4">
+							<CarouselItem key={photo.src} className="h-full p-4">
 								<div className="h-full min-h-0 flex flex-col items-center">
 									<div className="min-h-0 w-full flex-1">
 										<Image
-											src={photo.image.asset.src}
-											alt={photo.image.title}
+											src={photo.src}
+											alt={photo.title}
 											layout="constrained"
-											width={photo.image.asset.width}
-											height={photo.image.asset.height}
+											width={photo.width}
+											height={photo.height}
 											fallback="netlify"
 											unstyled
 											className="size-full object-contain"
 										/>
 									</div>
-									{photo.description && (
-										<p className="mt-2 max-w-2xl shrink-0 px-4 text-center text-white/80 text-sm">
-											{photo.description}
-										</p>
-									)}
+									<p className="mt-2 max-w-2xl shrink-0 px-4 text-center text-white/80 text-sm">
+										{photo.title}
+									</p>
 								</div>
 							</CarouselItem>
 						))}
