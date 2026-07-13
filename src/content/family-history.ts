@@ -584,7 +584,7 @@ The roots were unquestionably strong and transplanted in our country with its fr
 		year: 2004,
 		title: "2004",
 		content:
-			"## Photos by Bob Brunetti\n\nJune 2004. Contact: rgbprocare1@americarecorp.com",
+			"## Photos by Bob Brunetti\n\nJune 2004. Contact: [rgbprocare1@americarecorp.com](mailto:rgbprocare1@americarecorp.com)",
 		galleryPhotos: [
 			{
 				title: "Garden near Sangro River",

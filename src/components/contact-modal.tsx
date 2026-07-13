@@ -33,7 +33,9 @@ export default function ContactModal({
 							<h5 className="font-serif text-xl m-0">{`${person.firstName}:`}</h5>
 
 							<h5 className="font-serif text-xl m-0 text-right max-sm:text-center max-sm:text-base max-sm:mb-2">
-								{person.email}
+								<a className="contact-email" href={`mailto:${person.email}`}>
+									{person.email}
+								</a>
 							</h5>
 
 							<div className="col-span-2 max-sm:col-span-1 mb-8">
