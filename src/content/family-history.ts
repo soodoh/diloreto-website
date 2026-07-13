@@ -19,6 +19,7 @@ import diloretoMapGif from "~/assets/images/DiLoreto_map.gif?as=metadata";
 import diloretoDAmicoWeddingJpg from "~/assets/images/DiLoreto-D_Amico_Wedding.jpg?as=metadata";
 import familytreeGif from "~/assets/images/FamilyTree.gif?as=metadata";
 import freePress43Jpg from "~/assets/images/Free_Press-_43.jpg?as=metadata";
+import farm1909 from "~/assets/images/farm1909.png?as=metadata";
 import img0339JPG from "~/assets/images/IMG_0339.JPG?as=metadata";
 import img0340JPG from "~/assets/images/IMG_0340.JPG?as=metadata";
 import img0341JPG from "~/assets/images/IMG_0341.JPG?as=metadata";
@@ -167,13 +168,37 @@ export const familyHistory: HistoryRecord[] = [
 		],
 	},
 	{
+		year: 1909,
+		title: "1909-1910",
+		content: `## Camillo D'Amico's farm, around 1909-1910
+
+Back row: Gaetano, Remo, Marianna, Pasqualino (Pat)
+
+Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephine
+`,
+		headerPhoto: {
+			title: "Family photo at Camillo D'Amico's farm (1909-1910)",
+			description: "Family photo at Camillo D'Amico's farm (1909-1910)",
+			image: contentImage(
+				"Family photo at Camillo D'Amico's farm (1909-1910)",
+				farm1909,
+			),
+		},
+	},
+	{
 		year: 1911,
 		title: "1911-1913 Weddings",
-		content: "",
+		content: `The headline in The Rochester Democratic and Chronicle on 02.13.1911 read: DiLoreto-D’Amico, Largely Attended Wedding in Church in Hulberton, and stated it was one of the largest church weddings in Orleans country in many months. Donatelli’s Orchestra played the wedding march. Over 150 invited guests witnessed the ceremony.
+
+“After the ceremony, a wedding dinner was served to 150 guests at the farm home of the bride’s parents. Forty were seated at the bride’s table, while the other guests were seated at smaller tables in various rooms of the home. The event was made of the occasion of the Passarelli family reunion.
+
+“Following the Italian custom, there will be no honeymoon trip, but several days will be given to entertainment and social gatherings. The bride is well known in this village, where her father formerly conducted a store in East Bank Street, and she is a graduate of the Brockport Normal School (a school to prepare students for careers in education).`,
 		galleryPhotos: [
 			{
-				title: "The wedding of Remo DiLoreto and Marianna D'Amico (1911)",
-				description: "The wedding of Remo DiLoreto and Marianna D'Amico (1911)",
+				title:
+					"The wedding of Remo DiLoreto and Marianna D'Amico (Feb. 12, 1911)",
+				description:
+					"The wedding of Remo DiLoreto and Marianna D'Amico (Feb. 12, 1911)",
 				image: contentImage("Remo and Marianna Wedding Photo", wedding1911),
 			},
 			{
