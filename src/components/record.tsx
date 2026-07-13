@@ -16,7 +16,7 @@ export default function Record({
 	isEven,
 }: RecordProps): JSX.Element {
 	const hasGallery =
-		data.galleryPhotos !== undefined && data.galleryPhotos.length > 1;
+		data.galleryPhotos !== undefined && data.galleryPhotos.length > 0;
 
 	const markdownColSpan = (() => {
 		if (hasGallery || !data.headerPhoto) {
