@@ -69,22 +69,15 @@ import rome46EJpg from "~/assets/images/Rome-_46e.jpg?as=metadata";
 import rome46FJpg from "~/assets/images/Rome-_46f.jpg?as=metadata";
 import rome46GJpg from "~/assets/images/Rome-_46g.jpg?as=metadata";
 import wedding1911 from "~/assets/images/Wedding-1911.jpg?as=metadata";
-import { type ContentImage, contentImage } from "./image";
-
-export type GalleryPhoto = {
-	title: string;
-	link?: string;
-	description?: string;
-	image: ContentImage;
-};
+import type { ContentImage } from "./image";
 
 export type HistoryRecord = {
 	year: number;
 	title: string;
 	content: string;
 	link?: string;
-	headerPhoto?: GalleryPhoto;
-	galleryPhotos?: GalleryPhoto[];
+	headerPhoto?: ContentImage;
+	galleryPhotos?: ContentImage[];
 };
 
 export const familyHistory: HistoryRecord[] = [
@@ -95,9 +88,8 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			"## Historical and Heraldic Information on the DiLoreto Stock\n\nExcerpts from the Istituto Genealogico Italiano:\n\n\"The family descends from D'Aquino stock of Longobard origin, whose forefather was Atenolfo, Lord of Capua in 996. Among the feudal holdings of this important family were L'Aquila, Alvito, Loreto and many others. The branch of the family that became known as DI LORETO presumably took its surname from the town of Loreto, their feudal holding. The first DI LORETO of documented record is one Berardo in 1330.\"",
 		headerPhoto: {
-			title: "DiLoreto map",
-			description: "How many DiLoretos live in Italy?",
-			image: contentImage("DiLoreto map", diloretoMapGif),
+			title: "How many DiLoretos live in Italy?",
+			...diloretoMapGif,
 		},
 	},
 	{
@@ -106,10 +98,8 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			'## Excerpts from "The Historical Research Center"\n\nSubmitted by Joanne Monroe (1993):\n\n"The surname Loreto is of Italian origin, and is a locational name from the famous town of Loreto in the province of Ancona in Italy. Loreto became famous through the legend of the \'Holy House,\' where tradition states that the house where the Virgin Mary lived and was visited by the Angel, was miraculously carried to Loreto in 1295 by angels from the Holy Land."\n\n"In the 14th century, a family named Di Loreto, having originated in the above-named town, became quite prominent. The first documented reference to the name was in 1528, when one Luca di Loreto was recorded. It is from this point in time that the ancestral history of the family began to be carefully followed."',
 		headerPhoto: {
-			title: "Alfedena Homestead",
-			description:
-				"Location of DiLoreto Homestead in Alfedena, L'Aquila, Italy.",
-			image: contentImage("Alfedena Homestead", mapAlfGif),
+			title: "Location of DiLoreto Homestead in Alfedena, L'Aquila, Italy.",
+			...mapAlfGif,
 		},
 	},
 	{
@@ -119,7 +109,7 @@ export const familyHistory: HistoryRecord[] = [
 			'## Coat of Arms\n\nBlazon: "Azure, a tree on a grassy plain all proper, overall a fess gules."\n\nThe tree signifies antiquity and knowledge. The fesse represents the military belt of honor. Crest: Three ostrich plumes. Origin: Italy.',
 		headerPhoto: {
 			title: "DiLoreto Coat of Arms",
-			image: contentImage("DiLoreto Coat of Arms", coatofarmsGif),
+			...coatofarmsGif,
 		},
 	},
 	{
@@ -128,19 +118,16 @@ export const familyHistory: HistoryRecord[] = [
 		content: "",
 		galleryPhotos: [
 			{
-				title: "Family Tree",
-				description: "Hand-drawn family tree (1797-1938)",
-				image: contentImage("Family Tree", familytreeGif),
+				title: "Hand-drawn family tree (1797-1938)",
+				...familytreeGif,
 			},
 			{
-				title: "1600s Family Tree",
-				description: "Family tree dating back to the mid-1600s",
-				image: contentImage("1600s Family Tree", oldestFamilyTreeGif),
+				title: "Family tree dating back to the mid-1600s",
+				...oldestFamilyTreeGif,
 			},
 			{
-				title: "D'Amico Family Tree",
-				description: "D'Amico family tree",
-				image: contentImage("D'Amico Family Tree", damicoFamilyTreeJpg),
+				title: "D'Amico family tree",
+				...damicoFamilyTreeJpg,
 			},
 		],
 	},
@@ -150,9 +137,8 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			"## We Came from Alfedena\n\nAlfedena is a comune (municipality) in the Province of L'Aquila in the Abruzzo region of Italy. A small village of about 700 inhabitants, it sits along the Sangro River in a narrow valley at about 3,000 feet elevation.",
 		headerPhoto: {
-			title: "Map of Abruzzo",
-			description: "Map of Abruzzo pointing to Alfedena at the bottom",
-			image: contentImage("Map of Abruzzo", abruzziMapJpg),
+			title: "Map of Abruzzo pointing to Alfedena at the bottom",
+			...abruzziMapJpg,
 		},
 	},
 	{
@@ -162,9 +148,8 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			'## The Loyal Wing Club\n\nMigration from Alfedena to Detroit began in 1886, with about 100 arriving by 1900. By 1960, there were 1,680 Alfedenese in Detroit (compared to 1,430 in Alfedena itself), and by 1979 that number had grown to 2-3 thousand.\n\nThe Loyal Wing Club ("Club Ala Fidente") was founded in 1919 by the Alfedenese community in Detroit. The club\'s name derives from the legend that Alfedena defended the right wing of the army of Rome against Hannibal in 216 BC.',
 		headerPhoto: {
-			title: "Alfedena View",
-			description: "Loyal Wing Club's Facebook Group",
-			image: contentImage("Alfedena View", alfedenaJpg),
+			title: "Loyal Wing Club's Facebook Group",
+			...alfedenaJpg,
 		},
 	},
 	{
@@ -174,14 +159,12 @@ export const familyHistory: HistoryRecord[] = [
 			"## Immigration to the U.S.\n\nRemo DiLoreto, one of 13 children of Panfilo and Eufrasia Gigante, emigrated to the United States. He married Marianna D'Amico in 1911 (one of 11 children). They settled in the Eastern Market area of Detroit. Their children were: Panfilo, Oscar, Gilbert, and Emma.",
 		galleryPhotos: [
 			{
-				title: "Panfilo and Eufrasia DiLoreto",
-				description: "Panfilo (1847-1920) & Eufrasia (1854-1928)",
-				image: contentImage("Panfilo and Eufrasia DiLoreto", panfEufrJpg),
+				title: "Panfilo (1847-1920) & Eufrasia (1854-1928)",
+				...panfEufrJpg,
 			},
 			{
 				title: "Remo DiLoreto",
-				description: "Remo DiLoreto",
-				image: contentImage("Remo DiLoreto", remoJpg),
+				...remoJpg,
 			},
 		],
 	},
@@ -196,11 +179,7 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 `,
 		headerPhoto: {
 			title: "Family photo at Camillo D'Amico's farm (1909-1910)",
-			description: "Family photo at Camillo D'Amico's farm (1909-1910)",
-			image: contentImage(
-				"Family photo at Camillo D'Amico's farm (1909-1910)",
-				farm1909,
-			),
+			...farm1909,
 		},
 	},
 	{
@@ -215,15 +194,12 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 			{
 				title:
 					"The wedding of Remo DiLoreto and Marianna D'Amico (Feb. 12, 1911)",
-				description:
-					"The wedding of Remo DiLoreto and Marianna D'Amico (Feb. 12, 1911)",
-				image: contentImage("Remo and Marianna Wedding Photo", wedding1911),
+				...wedding1911,
 			},
 			{
-				title: "1913 Wedding",
-				description:
+				title:
 					"The wedding of Gaetano D'Amico and Cleonice DiLoreto with Remo and Marianna (D'Amico) DiLoreto (Aug. 23, 1913).",
-				image: contentImage("1913 Wedding", diloretoDAmicoWeddingJpg),
+				...diloretoDAmicoWeddingJpg,
 			},
 		],
 	},
@@ -235,119 +211,119 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 		galleryPhotos: [
 			{
 				title: "postcard-04a",
-				image: contentImage("postcard-04a", postcard04AGif),
+				...postcard04AGif,
 			},
 			{
 				title: "postcard-04",
-				image: contentImage("postcard-04", postcard04Jpg),
+				...postcard04Jpg,
 			},
 			{
 				title: "postcard-06a",
-				image: contentImage("postcard-06a", postcard06AGif),
+				...postcard06AGif,
 			},
 			{
 				title: "postcard-06",
-				image: contentImage("postcard-06", postcard06Gif),
+				...postcard06Gif,
 			},
 			{
 				title: "postcard-01",
-				image: contentImage("postcard-01", postcard01Gif),
+				...postcard01Gif,
 			},
 			{
 				title: "postcard-01a",
-				image: contentImage("postcard-01a", postcard01AGif),
+				...postcard01AGif,
 			},
 			{
 				title: "postcard-02",
-				image: contentImage("postcard-02", postcard02Gif),
+				...postcard02Gif,
 			},
 			{
 				title: "postcard-03",
-				image: contentImage("postcard-03", postcard03Gif),
+				...postcard03Gif,
 			},
 			{
 				title: "postcard-03a",
-				image: contentImage("postcard-03a", postcard03AGif),
+				...postcard03AGif,
 			},
 			{
 				title: "postcard-03b",
-				image: contentImage("postcard-03b", postcard03BJpg),
+				...postcard03BJpg,
 			},
 			{
 				title: "postcard-05",
-				image: contentImage("postcard-05", postcard05Jpg),
+				...postcard05Jpg,
 			},
 			{
 				title: "postcard-05a",
-				image: contentImage("postcard-05a", postcard05AGif),
+				...postcard05AGif,
 			},
 			{
 				title: "postcard-07",
-				image: contentImage("postcard-07", postcard07Gif),
+				...postcard07Gif,
 			},
 			{
 				title: "postcard-07a",
-				image: contentImage("postcard-07a", postcard07AGif),
+				...postcard07AGif,
 			},
 			{
 				title: "postcard-08",
-				image: contentImage("postcard-08", postcard08Gif),
+				...postcard08Gif,
 			},
 			{
 				title: "postcard-08a",
-				image: contentImage("postcard-08a", postcard08AGif),
+				...postcard08AGif,
 			},
 			{
 				title: "postcard-09",
-				image: contentImage("postcard-09", postcard09Gif),
+				...postcard09Gif,
 			},
 			{
 				title: "postcard-10",
-				image: contentImage("postcard-10", postcard10Gif),
+				...postcard10Gif,
 			},
 			{
 				title: "postcard-11",
-				image: contentImage("postcard-11", postcard11Gif),
+				...postcard11Gif,
 			},
 			{
 				title: "postcard-12",
-				image: contentImage("postcard-12", postcard12Gif),
+				...postcard12Gif,
 			},
 			{
 				title: "postcard-13",
-				image: contentImage("postcard-13", postcard13Gif),
+				...postcard13Gif,
 			},
 			{
 				title: "postcard-14",
-				image: contentImage("postcard-14", postcard14Gif),
+				...postcard14Gif,
 			},
 			{
 				title: "postcard-15",
-				image: contentImage("postcard-15", postcard15Gif),
+				...postcard15Gif,
 			},
 			{
 				title: "postcard-16",
-				image: contentImage("postcard-16", postcard16Gif),
+				...postcard16Gif,
 			},
 			{
 				title: "postcard-17",
-				image: contentImage("postcard-17", postcard17Gif),
+				...postcard17Gif,
 			},
 			{
 				title: "postcard-18",
-				image: contentImage("postcard-18", postcard18Gif),
+				...postcard18Gif,
 			},
 			{
 				title: "postcard-19",
-				image: contentImage("postcard-19", postcard19Gif),
+				...postcard19Gif,
 			},
 			{
 				title: "postcard-20",
-				image: contentImage("postcard-20", postcard20Gif),
+				...postcard20Gif,
 			},
 			{
 				title: "postcard-21",
-				image: contentImage("postcard-21", postcard21Gif),
+				...postcard21Gif,
 			},
 		],
 	},
@@ -357,9 +333,8 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 		content:
 			"Photo of DiLoreto children, c. 1919. If you have additional information about this photo, please contact us.",
 		headerPhoto: {
-			title: "DiLoreto Children",
-			description: "DiLoreto children (c. 1919)",
-			image: contentImage("DiLoreto Children", image4DiLoretoS1919Jpg),
+			title: "DiLoreto children (c. 1919)",
+			...image4DiLoretoS1919Jpg,
 		},
 	},
 	{
@@ -368,10 +343,9 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 		content:
 			"## Nick & Mary's Store in Erie, PA\n\nNick and Mary (Monacelli) DiLoreto with sons William and Julio.",
 		headerPhoto: {
-			title: "Nick & Mary's Store",
-			description:
+			title:
 				"Nick and Mary (Monacelli) DiLoreto with sons William and Julio in their store in Erie, PA.",
-			image: contentImage("Nick & Mary's Store", nickMariaBoysJpg),
+			...nickMariaBoysJpg,
 		},
 	},
 	{
@@ -434,7 +408,7 @@ Oscar, 26, a dentist with offices at 3413 McDougall, volunteered but was turned 
 Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to the officers' training school.`,
 		headerPhoto: {
 			title: "1943 Detroit Free Press Article",
-			image: contentImage("1943 Detroit Free Press Article", freePress43Jpg),
+			...freePress43Jpg,
 		},
 	},
 	{
@@ -445,39 +419,39 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 		galleryPhotos: [
 			{
 				title: "Panorama-117",
-				image: contentImage("Panorama-117", alfedenaPanorama117Jpg),
+				...alfedenaPanorama117Jpg,
 			},
 			{
 				title: "Panorama-118",
-				image: contentImage("Panorama-118", alfedenaPanorama118Jpg),
+				...alfedenaPanorama118Jpg,
 			},
 			{
 				title: "Panorama-119",
-				image: contentImage("Panorama-119", alfedenaPanorama119Jpg),
+				...alfedenaPanorama119Jpg,
 			},
 			{
 				title: "Panorama-120",
-				image: contentImage("Panorama-120", alfedenaPanorama120Jpg),
+				...alfedenaPanorama120Jpg,
 			},
 			{
 				title: "Panorama-121",
-				image: contentImage("Panorama-121", alfedenaPanorama121Jpg),
+				...alfedenaPanorama121Jpg,
 			},
 			{
 				title: "Panorama-122",
-				image: contentImage("Panorama-122", alfedenaPanorama122Jpg),
+				...alfedenaPanorama122Jpg,
 			},
 			{
 				title: "Ruins-111",
-				image: contentImage("Ruins-111", alfedenaRuins111Jpg),
+				...alfedenaRuins111Jpg,
 			},
 			{
 				title: "Ruins-112",
-				image: contentImage("Ruins-112", alfedenaRuins112Jpg),
+				...alfedenaRuins112Jpg,
 			},
 			{
 				title: "Ruins-Apr46",
-				image: contentImage("Ruins-Apr46", alfedenaRuinsApr46Jpg),
+				...alfedenaRuinsApr46Jpg,
 			},
 		],
 	},
@@ -489,42 +463,39 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 		galleryPhotos: [
 			{
 				title: "Group Photo Balcony",
-				image: contentImage("Group Photo Balcony", rome46CJpg),
+				...rome46CJpg,
 			},
 			{
 				title: "Entire Family Photo",
-				image: contentImage("Entire Family Photo", alfedena46DJpg),
+				...alfedena46DJpg,
 			},
 			{
-				title: "Gilbert DiLoreto and Relatives",
-				description: "Gilbert DiLoreto kneeling center with other relatives",
-				image: contentImage("Gilbert DiLoreto and Relatives", alfedena89Jpg),
+				title: "Gilbert DiLoreto kneeling center with other relatives",
+				...alfedena89Jpg,
 			},
 			{
 				title: "Woman Sitting on Balcony",
-				image: contentImage("Woman Sitting on Balcony", rome46AJpg),
+				...rome46AJpg,
 			},
 			{
 				title: "Woman Standing on Balcony",
-				image: contentImage("Woman Standing on Balcony", rome46BJpg),
+				...rome46BJpg,
 			},
 			{
 				title: "Man Behind Desk",
-				image: contentImage("Man Behind Desk", rome46EJpg),
+				...rome46EJpg,
 			},
 			{
 				title: "Old Woman Looking Away",
-				image: contentImage("Old Woman Looking Away", rome46FJpg),
+				...rome46FJpg,
 			},
 			{
 				title: "Parents and Child",
-				image: contentImage("Parents and Child", rome46GJpg),
+				...rome46GJpg,
 			},
 			{
-				title: "Gilbert and Relatives",
-				description:
-					"Gilbert DiLoreto kneeling in center with other relatives.",
-				image: contentImage("Gilbert and Relatives", alfedena46HJpg),
+				title: "Gilbert DiLoreto kneeling in center with other relatives.",
+				...alfedena46HJpg,
 			},
 		],
 	},
@@ -534,9 +505,8 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 		content:
 			"## Family Reunion\n\nAbout 150 family members attended the DiLoreto family reunion in Harper Woods, Michigan. A genealogical database of more than 500 descendants has been compiled, tracing ancestors back to the mid-1600s.",
 		headerPhoto: {
-			title: "1965 Reunion Program",
-			description: "DiLoreto Family Reunion Program (1965)",
-			image: contentImage("1965 Reunion Program", image1965ReunionProgramGif),
+			title: "DiLoreto Family Reunion Program (1965)",
+			...image1965ReunionProgramGif,
 		},
 	},
 	{
@@ -587,43 +557,34 @@ The roots were unquestionably strong and transplanted in our country with its fr
 			"## Photos by Bob Brunetti\n\nJune 2004. Contact: [rgbprocare1@americarecorp.com](mailto:rgbprocare1@americarecorp.com)",
 		galleryPhotos: [
 			{
-				title: "Garden near Sangro River",
-				description:
+				title:
 					"A bridge and garden near the entrance to the village, over a branch of the Sangro River.",
-				image: contentImage("Garden near Sangro River", img0339JPG),
+				...img0339JPG,
 			},
 			{
-				title: "Ancient Ruins",
-				description: "Ancient ruins in Alfedena.",
-				image: contentImage("Ancient Ruins", img0340JPG),
+				title: "Ancient ruins in Alfedena.",
+				...img0340JPG,
 			},
 			{
-				title: "Oldest Homes",
-				description: "Oldest homes in Alfedena on Via Casili.",
-				image: contentImage("Oldest Homes", img0341JPG),
+				title: "Oldest homes in Alfedena on Via Casili.",
+				...img0341JPG,
 			},
 			{
-				title: "Alfedena Stream",
-				description: "Stream descending from mountains above Alfedena.",
-				image: contentImage("Alfedena Stream", img0346JPG),
+				title: "Stream descending from mountains above Alfedena.",
+				...img0346JPG,
 			},
 			{
-				title: "Ancient Post Office Plaque",
-				description:
+				title:
 					"Ancient post office on Ponte D'Achillewhich, renovated in 2002.",
-				image: contentImage("Ancient Post Office Plaque", img0347JPG),
+				...img0347JPG,
 			},
 			{
-				title: "Church Door",
-				description:
-					"13th century portal of the Church of Sts. Pietro e Paolo.",
-				image: contentImage("Church Door", img0349JPG),
+				title: "13th century portal of the Church of Sts. Pietro e Paolo.",
+				...img0349JPG,
 			},
 			{
-				title: "Alfedena View",
-				description:
-					"Panorama of Alfedena with the Meta Range in the background.",
-				image: contentImage("Alfedena View", img0364JPG),
+				title: "Panorama of Alfedena with the Meta Range in the background.",
+				...img0364JPG,
 			},
 		],
 	},

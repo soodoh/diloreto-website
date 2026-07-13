@@ -26,11 +26,11 @@ export default function Tile({
 			style={{ animationDelay: `${delay}ms` }}
 		>
 			<Image
-				src={image.asset.src}
+				src={image.src}
 				alt={image.title}
 				layout="constrained"
-				width={image.asset.width}
-				height={image.asset.height}
+				width={image.width}
+				height={image.height}
 				fallback="netlify"
 				className="w-full h-full object-cover aspect-square"
 			/>
