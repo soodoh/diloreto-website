@@ -17,6 +17,7 @@ import alfedenaJpg from "~/assets/images/alfedena.jpg?as=metadata";
 import coatofarmsGif from "~/assets/images/CoatofArms.gif?as=metadata";
 import diloretoMapGif from "~/assets/images/DiLoreto_map.gif?as=metadata";
 import diloretoDAmicoWeddingJpg from "~/assets/images/DiLoreto-D_Amico_Wedding.jpg?as=metadata";
+import damicoFamilyTreeJpg from "~/assets/images/damico-family-tree.jpg?as=metadata";
 import familytreeGif from "~/assets/images/FamilyTree.gif?as=metadata";
 import freePress43Jpg from "~/assets/images/Free_Press-_43.jpg?as=metadata";
 import farm1909 from "~/assets/images/farm1909.png?as=metadata";
@@ -122,6 +123,28 @@ export const familyHistory: HistoryRecord[] = [
 		},
 	},
 	{
+		year: 1600,
+		title: "Family Trees",
+		content: "",
+		galleryPhotos: [
+			{
+				title: "Family Tree",
+				description: "Hand-drawn family tree (1797-1938)",
+				image: contentImage("Family Tree", familytreeGif),
+			},
+			{
+				title: "1600s Family Tree",
+				description: "Family tree dating back to the mid-1600s",
+				image: contentImage("1600s Family Tree", oldestFamilyTreeGif),
+			},
+			{
+				title: "D'Amico Family Tree",
+				description: "D'Amico family tree",
+				image: contentImage("D'Amico Family Tree", damicoFamilyTreeJpg),
+			},
+		],
+	},
+	{
 		year: 1601,
 		title: "1600s",
 		content:
@@ -150,11 +173,6 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			"## Immigration to the U.S.\n\nRemo DiLoreto, one of 13 children of Panfilo and Eufrasia Gigante, emigrated to the United States. He married Marianna D'Amico in 1911 (one of 11 children). They settled in the Eastern Market area of Detroit. Their children were: Panfilo, Oscar, Gilbert, and Emma.",
 		galleryPhotos: [
-			{
-				title: "Family Tree",
-				description: "Hand-drawn family tree (1797-1938)",
-				image: contentImage("Family Tree", familytreeGif),
-			},
 			{
 				title: "Panfilo and Eufrasia DiLoreto",
 				description: "Panfilo (1847-1920) & Eufrasia (1854-1928)",
@@ -462,18 +480,11 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 		title: "1965",
 		content:
 			"## Family Reunion\n\nAbout 150 family members attended the DiLoreto family reunion in Harper Woods, Michigan. A genealogical database of more than 500 descendants has been compiled, tracing ancestors back to the mid-1600s.",
-		galleryPhotos: [
-			{
-				title: "1965 Reunion Program",
-				description: "DiLoreto Family Reunion Program (1965)",
-				image: contentImage("1965 Reunion Program", image1965ReunionProgramGif),
-			},
-			{
-				title: "1600s Family Tree",
-				description: "Family tree dating back to the mid-1600s",
-				image: contentImage("1600s Family Tree", oldestFamilyTreeGif),
-			},
-		],
+		headerPhoto: {
+			title: "1965 Reunion Program",
+			description: "DiLoreto Family Reunion Program (1965)",
+			image: contentImage("1965 Reunion Program", image1965ReunionProgramGif),
+		},
 	},
 	{
 		year: 1979,
