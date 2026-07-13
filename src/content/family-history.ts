@@ -488,20 +488,25 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 			"## A G.I.'s Visit to Alfedena\n\nGilbert DiLoreto visited relatives in Alfedena and Rome after World War II.",
 		galleryPhotos: [
 			{
-				title: "Woman Sitting on Balcony",
-				image: contentImage("Woman Sitting on Balcony", rome46AJpg),
-			},
-			{
-				title: "Woman Standing on Balcony",
-				image: contentImage("Woman Standing on Balcony", rome46BJpg),
-			},
-			{
 				title: "Group Photo Balcony",
 				image: contentImage("Group Photo Balcony", rome46CJpg),
 			},
 			{
 				title: "Entire Family Photo",
 				image: contentImage("Entire Family Photo", alfedena46DJpg),
+			},
+			{
+				title: "Gilbert DiLoreto and Relatives",
+				description: "Gilbert DiLoreto kneeling center with other relatives",
+				image: contentImage("Gilbert DiLoreto and Relatives", alfedena89Jpg),
+			},
+			{
+				title: "Woman Sitting on Balcony",
+				image: contentImage("Woman Sitting on Balcony", rome46AJpg),
+			},
+			{
+				title: "Woman Standing on Balcony",
+				image: contentImage("Woman Standing on Balcony", rome46BJpg),
 			},
 			{
 				title: "Man Behind Desk",
@@ -520,11 +525,6 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 				description:
 					"Gilbert DiLoreto kneeling in center with other relatives.",
 				image: contentImage("Gilbert and Relatives", alfedena46HJpg),
-			},
-			{
-				title: "Gilbert DiLoreto and Relatives",
-				description: "Gilbert DiLoreto kneeling center with other relatives",
-				image: contentImage("Gilbert DiLoreto and Relatives", alfedena89Jpg),
 			},
 		],
 	},
