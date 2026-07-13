@@ -50,11 +50,34 @@ body {
 
 /* Markdown content styles */
 .markdown-content h2 {
+	margin-block: 0.83em;
+	font-size: 1.5em;
+	font-weight: 700;
+	line-height: 1.2;
 	text-align: center;
 }
 
+.markdown-content h3 {
+	margin-block: 1em;
+	font-size: 1.17em;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
 .markdown-content p {
+	margin-block: 1em;
 	text-indent: 2rem;
+}
+
+.markdown-content hr {
+	margin-block: 0.5em;
+	border: 0;
+	border-top: 1px solid currentColor;
+	opacity: 0.25;
+}
+
+.markdown-content blockquote {
+	margin: 1em 2.5rem;
 }
 
 @theme inline {
