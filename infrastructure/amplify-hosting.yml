@@ -66,7 +66,7 @@ Resources:
     Type: AWS::Amplify::App
     Properties:
       Name: diloreto-website
-      Description: Fully static hosting for diloreto.com, deployed by GitHub Actions.
+      Description: Static origin for diloreto.com, deployed by GitHub Actions.
       Platform: WEB
       EnableBranchAutoDeletion: false
       CustomRules: []
