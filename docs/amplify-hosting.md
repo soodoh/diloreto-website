@@ -22,7 +22,7 @@ CloudFront uses the Amplify branch domain as a custom HTTPS origin. The distribu
 
 - AWS CLI authenticated with `aws login` to the intended account.
 - GitHub CLI authenticated with repository administration access.
-- Bun and project dependencies installed.
+- Bun, Docker, and project dependencies installed.
 - `cfn-lint` available, for example through `uvx cfn-lint`.
 - Public Route 53 zone `Z07741203I5VR48TBSMSA` for `diloreto.com`.
 - The ignored pre-migration DNS snapshot at `.aws-migration/route53-before.json`.
@@ -44,7 +44,7 @@ aws cloudformation validate-template \
   --template-body file://infrastructure/amplify-hosting.yml
 ```
 
-`bun run check` performs linting, TypeScript checks, a production build, static-output assertions, and desktop/mobile Playwright smoke tests. The build must contain root-level `index.html`, `areyou/index.html`, and the script-free `404.html`.
+`bun run check` performs linting, TypeScript checks, a production build, static-output assertions, and the containerized Playwright desktop/mobile visual and gallery interaction suites. The build must contain root-level `index.html`, `areyou/index.html`, and the script-free `404.html`. Use `bun run test:playwright:update` to intentionally regenerate visual baselines in the same container used by CI.
 
 ## 2. Create or update pre-cutover infrastructure
 
@@ -110,8 +110,7 @@ The deploy job:
 4. uploads and starts the Amplify deployment;
 5. polls the bounded Amplify job to completion;
 6. compares the Amplify origin HTML with CloudFront output;
-7. checks edge cache/security headers, assets, routes, and the true custom `404` response;
-8. runs desktop and mobile Playwright tests against CloudFront.
+7. checks edge cache/security headers, assets, routes, and the true custom `404` response.
 
 The archive contents are the root of `dist/client`; the archive must not contain an extra `dist/` or `client/` directory.
 
@@ -129,7 +128,7 @@ EDGE_URL=$(aws cloudformation describe-stacks \
 curl -I "$EDGE_URL/"
 curl -I "$EDGE_URL/areyou"
 curl -i "$EDGE_URL/not-a-real-route"
-PLAYWRIGHT_BASE_URL="$EDGE_URL" bun run test:smoke
+PLAYWRIGHT_BASE_URL="$EDGE_URL" bun run test:playwright
 ```
 
 Required results:
@@ -255,7 +254,7 @@ curl -I https://diloreto.com/
 curl -I https://diloreto.com/areyou
 curl -i https://diloreto.com/not-a-real-route
 curl -I 'https://www.diloreto.com/areyou?source=verification'
-PLAYWRIGHT_BASE_URL=https://diloreto.com bun run test:smoke
+PLAYWRIGHT_BASE_URL=https://diloreto.com bun run test:playwright
 ```
 
 Confirm all of the following:
@@ -265,7 +264,7 @@ Confirm all of the following:
 - `/`, `/areyou`, `/robots.txt`, and `/favicon.png` succeed.
 - A missing route returns status `404` and the custom 404 UI without changing the browser URL.
 - Hashed asset and HTML cache headers are correct.
-- Metadata, responsive images, modal interactions, gallery navigation, desktop layout, and mobile layout work.
+- The desktop and mobile visual baselines, bio and image modals, and gallery navigation behave as expected.
 - No HTML or network request contains a Netlify runtime URL.
 - A same-commit workflow dispatch can deploy and validate successfully.
 

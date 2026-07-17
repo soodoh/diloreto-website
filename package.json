@@ -22,9 +22,9 @@
 		"lint:fix": "biome check --fix .",
 		"typecheck": "tsc --noEmit",
 		"check:output": "bun scripts/assert-static-output.ts",
-		"test:smoke": "playwright test",
-		"test:smoke:build": "bun run build && bun run check:output && bun run test:smoke",
-		"check": "bun run lint && bun run typecheck && bun run build && bun run check:output && bun run test:smoke",
+		"test:playwright": "bash scripts/test-playwright-docker.sh",
+		"test:playwright:update": "bash scripts/test-playwright-docker.sh --update-snapshots",
+		"check": "bun run lint && bun run typecheck && bun run build && bun run check:output && PLAYWRIGHT_SKIP_BUILD=1 bun run test:playwright",
 		"prepare": "lefthook install"
 	},
 	"dependencies": {

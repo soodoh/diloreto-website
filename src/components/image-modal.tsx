@@ -125,8 +125,12 @@ export default function ImageModal({
 					</DialogClose>
 
 					<CarouselContent className="ml-0 h-full">
-						{images.map((photo) => (
-							<CarouselItem key={photo.img.src} className="h-full p-4">
+						{images.map((photo, index) => (
+							<CarouselItem
+								key={photo.img.src}
+								aria-hidden={index !== currentIndex}
+								className="h-full p-4"
+							>
 								<div className="h-full min-h-0 flex flex-col items-center">
 									<div className="min-h-0 w-full flex-1">
 										<ResponsiveImage
@@ -154,7 +158,10 @@ export default function ImageModal({
 					/>
 				</Carousel>
 
-				<div className="pb-3 text-center text-white/70 text-sm">
+				<div
+					data-slot="gallery-indicator"
+					className="pb-3 text-center text-white/70 text-sm"
+				>
 					{currentIndex + 1} / {images.length}
 				</div>
 			</DialogContent>
