@@ -22,7 +22,7 @@ export default function Tile({
 		<button
 			type="button"
 			onClick={onClick}
-			className="group relative cursor-pointer overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-black animate-fade-in"
+			className="group relative cursor-pointer overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-transparent animate-fade-in"
 			style={{ animationDelay: `${delay}ms` }}
 		>
 			<ResponsiveImage

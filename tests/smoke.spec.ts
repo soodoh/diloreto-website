@@ -115,7 +115,11 @@ test("home renders its title, tiles, and responsive images", async ({
 	const response = await page.goto("/");
 	expect(response?.status()).toBe(200);
 	await expect(page).toHaveTitle("The DiLoreto Family");
-	await expect(page.getByRole("button")).toHaveCount(6);
+	const tileButtons = page.getByRole("button");
+	await expect(tileButtons).toHaveCount(6);
+	for (const tileButton of await tileButtons.all()) {
+		await expect(tileButton).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+	}
 	await expect(
 		page.getByRole("link", { name: /Family History/ }),
 	).toBeVisible();
