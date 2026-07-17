@@ -106,6 +106,7 @@ jobs:
       AMPLIFY_APP_ID: ${{ vars.AMPLIFY_APP_ID }}
       AMPLIFY_BRANCH: ${{ vars.AMPLIFY_BRANCH }}
       AMPLIFY_DEFAULT_DOMAIN: ${{ vars.AMPLIFY_DEFAULT_DOMAIN }}
+      EDGE_DEFAULT_DOMAIN: ${{ vars.EDGE_DEFAULT_DOMAIN }}
     steps:
       - name: Download validated artifact
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
@@ -120,6 +121,7 @@ jobs:
           test -n "${AMPLIFY_APP_ID}"
           test -n "${AMPLIFY_BRANCH}"
           test -n "${AMPLIFY_DEFAULT_DOMAIN}"
+          test -n "${EDGE_DEFAULT_DOMAIN}"
           test -f "${ARCHIVE_NAME}"
 
       - name: Check deployment freshness
@@ -213,21 +215,33 @@ jobs:
           echo 'Timed out waiting for the Amplify deployment' >&2
           exit 1
 
-      - name: Verify default branch deployment
+      - name: Verify Amplify origin and CloudFront edge
         if: steps.freshness.outputs.should-deploy == 'true'
         id: deployment-url
         run: |
           set -euo pipefail
-          base_url="https://${AMPLIFY_BRANCH}.${AMPLIFY_DEFAULT_DOMAIN}"
+          origin_url="https://${AMPLIFY_BRANCH}.${AMPLIFY_DEFAULT_DOMAIN}"
+          base_url="https://${EDGE_DEFAULT_DOMAIN}"
           headers=$(mktemp)
+          origin_body=$(mktemp)
           body=$(mktemp)
+
+          cleanup() {
+            rm -f "${headers}" "${origin_body}" "${body}"
+          }
+          trap cleanup EXIT
+
+          curl --fail --silent --show-error --location \
+            --output "${origin_body}" \
+            "${origin_url}/"
+          grep -q 'The DiLoreto Family' "${origin_body}"
+          grep -q 'google-site-verification' "${origin_body}"
 
           curl --fail --silent --show-error --location \
             --dump-header "${headers}" \
             --output "${body}" \
             "${base_url}/"
-          grep -q 'The DiLoreto Family' "${body}"
-          grep -q 'google-site-verification' "${body}"
+          cmp "${origin_body}" "${body}"
           if grep -Eqi '(\.netlify|/\.netlify/images)' "${body}"; then
             echo 'Netlify reference found in deployed HTML' >&2
             exit 1
@@ -235,7 +249,7 @@ jobs:
           grep -Eqi '^cache-control:.*no-cache' "${headers}"
           grep -Eqi '^x-content-type-options:.*nosniff' "${headers}"
 
-          curl --fail --silent --show-error --location --output /dev/null "${base_url}/areyou"
+          curl --fail --silent --show-error --output /dev/null "${base_url}/areyou"
           curl --fail --silent --show-error --output /dev/null "${base_url}/robots.txt"
           curl --fail --silent --show-error --output /dev/null "${base_url}/favicon.png"
 
@@ -246,7 +260,7 @@ jobs:
           test "${not_found_status}" = '404'
           grep -q '404: Page Not Found' "${body}"
 
-          asset_path=$(python3 - "${body}" <<'PY'
+          asset_path=$(python3 - "${origin_body}" <<'PY'
           import re
           import sys
           from pathlib import Path
