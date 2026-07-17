@@ -146,7 +146,7 @@ Resources:
                 Action:
                   - amplify:CreateDeployment
                   - amplify:StartDeployment
-                Resource: !GetAtt AmplifyBranch.Arn
+                Resource: !Sub "${AmplifyBranch.Arn}/deployments/*"
               - Effect: Allow
                 Action: amplify:GetJob
                 Resource: !Sub "${AmplifyBranch.Arn}/jobs/*"
