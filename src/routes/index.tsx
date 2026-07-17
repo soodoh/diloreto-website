@@ -1,18 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { useState } from "react";
-import ContactModal from "~/components/contact-modal";
-import PersonModal from "~/components/person-modal";
+import { lazy, Suspense, useRef, useState } from "react";
 import Tile from "~/components/tile";
+import { contacts } from "~/content/contacts";
 import { homePage } from "~/content/home";
 import { type Person, people } from "~/content/people";
+
+const ContactModal = lazy(() => import("~/components/contact-modal"));
+const PersonModal = lazy(() => import("~/components/person-modal"));
 
 function HomePage(): JSX.Element {
 	const [contactActive, setContactActive] = useState(false);
 	const [personActive, setPersonActive] = useState(false);
-	const [currentPerson, setCurrentPerson] = useState<Person | undefined>(
-		undefined,
-	);
+	const [currentPerson, setCurrentPerson] = useState<Person>();
+	const contactTriggerRef = useRef<HTMLElement>(null);
+	const personTriggerRef = useRef<HTMLElement>(null);
 	const transitionDelay = 300;
 
 	return (
@@ -24,7 +26,10 @@ function HomePage(): JSX.Element {
 						delay={transitionDelay * (index + 1)}
 						image={person.portrait}
 						label={person.firstName}
-						onClick={() => {
+						priority={index < 3}
+						onClick={(event) => {
+							personTriggerRef.current = event.currentTarget;
+							setContactActive(false);
 							setCurrentPerson(person);
 							setPersonActive(true);
 						}}
@@ -46,23 +51,32 @@ function HomePage(): JSX.Element {
 					image={homePage.contactThumbnail}
 					delay={transitionDelay * (people.length + 3)}
 					label="Contact"
-					onClick={() => setContactActive(true)}
+					onClick={(event) => {
+						contactTriggerRef.current = event.currentTarget;
+						setPersonActive(false);
+						setContactActive(true);
+					}}
 				/>
 			</div>
 
-			<ContactModal
-				open={contactActive}
-				onClose={() => setContactActive(false)}
-				people={people}
-			/>
-			<PersonModal
-				open={personActive}
-				onClose={() => {
-					setPersonActive(false);
-					setCurrentPerson(undefined);
-				}}
-				data={currentPerson}
-			/>
+			<Suspense fallback={null}>
+				{contactActive ? (
+					<ContactModal
+						open={contactActive}
+						onClose={() => setContactActive(false)}
+						contacts={contacts}
+						restoreFocusRef={contactTriggerRef}
+					/>
+				) : null}
+				{currentPerson ? (
+					<PersonModal
+						open={personActive}
+						onClose={() => setPersonActive(false)}
+						data={currentPerson}
+						restoreFocusRef={personTriggerRef}
+					/>
+				) : null}
+			</Suspense>
 		</>
 	);
 }

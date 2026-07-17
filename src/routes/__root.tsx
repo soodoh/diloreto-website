@@ -50,8 +50,23 @@ export const Route = createRootRoute({
 			},
 		],
 		links: [
+			{ rel: "preconnect", href: "https://fonts.googleapis.com" },
+			{
+				rel: "preconnect",
+				href: "https://fonts.gstatic.com",
+				crossOrigin: "anonymous",
+			},
+			{
+				rel: "stylesheet",
+				href: "https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital@0;1&family=Karla&display=swap",
+			},
 			{ rel: "stylesheet", href: appCss },
-			{ rel: "icon", href: "/favicon.png" },
+			{ rel: "icon", type: "image/png", sizes: "64x64", href: "/favicon.png" },
+			{
+				rel: "apple-touch-icon",
+				sizes: "180x180",
+				href: "/apple-touch-icon.png",
+			},
 		],
 	}),
 	component: RootComponent,

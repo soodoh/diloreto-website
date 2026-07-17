@@ -11,7 +11,7 @@ const galleryPhotos = [
 	},
 	{
 		aspectRatio: "landscape",
-		title: "postcard-04a",
+		title: "Antique postcard from Alfedena, archival image 04a",
 	},
 ] as const;
 

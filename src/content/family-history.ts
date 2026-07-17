@@ -211,118 +211,147 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 		galleryPhotos: [
 			{
 				title: "postcard-04a",
+				alt: "Antique postcard from Alfedena, archival image 04a",
 				...postcard04AGif,
 			},
 			{
 				title: "postcard-04",
+				alt: "Antique postcard from Alfedena, archival image 04",
 				...postcard04Jpg,
 			},
 			{
 				title: "postcard-06a",
+				alt: "Antique postcard from Alfedena, archival image 06a",
 				...postcard06AGif,
 			},
 			{
 				title: "postcard-06",
+				alt: "Antique postcard from Alfedena, archival image 06",
 				...postcard06Gif,
 			},
 			{
 				title: "postcard-01",
+				alt: "Antique postcard from Alfedena, archival image 01",
 				...postcard01Gif,
 			},
 			{
 				title: "postcard-01a",
+				alt: "Antique postcard from Alfedena, archival image 01a",
 				...postcard01AGif,
 			},
 			{
 				title: "postcard-02",
+				alt: "Antique postcard from Alfedena, archival image 02",
 				...postcard02Gif,
 			},
 			{
 				title: "postcard-03",
+				alt: "Antique postcard from Alfedena, archival image 03",
 				...postcard03Gif,
 			},
 			{
 				title: "postcard-03a",
+				alt: "Antique postcard from Alfedena, archival image 03a",
 				...postcard03AGif,
 			},
 			{
 				title: "postcard-03b",
+				alt: "Antique postcard from Alfedena, archival image 03b",
 				...postcard03BJpg,
 			},
 			{
 				title: "postcard-05",
+				alt: "Antique postcard from Alfedena, archival image 05",
 				...postcard05Jpg,
 			},
 			{
 				title: "postcard-05a",
+				alt: "Antique postcard from Alfedena, archival image 05a",
 				...postcard05AGif,
 			},
 			{
 				title: "postcard-07",
+				alt: "Antique postcard from Alfedena, archival image 07",
 				...postcard07Gif,
 			},
 			{
 				title: "postcard-07a",
+				alt: "Antique postcard from Alfedena, archival image 07a",
 				...postcard07AGif,
 			},
 			{
 				title: "postcard-08",
+				alt: "Antique postcard from Alfedena, archival image 08",
 				...postcard08Gif,
 			},
 			{
 				title: "postcard-08a",
+				alt: "Antique postcard from Alfedena, archival image 08a",
 				...postcard08AGif,
 			},
 			{
 				title: "postcard-09",
+				alt: "Antique postcard from Alfedena, archival image 09",
 				...postcard09Gif,
 			},
 			{
 				title: "postcard-10",
+				alt: "Antique postcard from Alfedena, archival image 10",
 				...postcard10Gif,
 			},
 			{
 				title: "postcard-11",
+				alt: "Antique postcard from Alfedena, archival image 11",
 				...postcard11Gif,
 			},
 			{
 				title: "postcard-12",
+				alt: "Antique postcard from Alfedena, archival image 12",
 				...postcard12Gif,
 			},
 			{
 				title: "postcard-13",
+				alt: "Antique postcard from Alfedena, archival image 13",
 				...postcard13Gif,
 			},
 			{
 				title: "postcard-14",
+				alt: "Antique postcard from Alfedena, archival image 14",
 				...postcard14Gif,
 			},
 			{
 				title: "postcard-15",
+				alt: "Antique postcard from Alfedena, archival image 15",
 				...postcard15Gif,
 			},
 			{
 				title: "postcard-16",
+				alt: "Antique postcard from Alfedena, archival image 16",
 				...postcard16Gif,
 			},
 			{
 				title: "postcard-17",
+				alt: "Antique postcard from Alfedena, archival image 17",
 				...postcard17Gif,
 			},
 			{
 				title: "postcard-18",
+				alt: "Antique postcard from Alfedena, archival image 18",
 				...postcard18Gif,
 			},
 			{
 				title: "postcard-19",
+				alt: "Antique postcard from Alfedena, archival image 19",
 				...postcard19Gif,
 			},
 			{
 				title: "postcard-20",
+				alt: "Antique postcard from Alfedena, archival image 20",
 				...postcard20Gif,
 			},
 			{
 				title: "postcard-21",
+				alt: "Antique postcard from Alfedena, archival image 21",
 				...postcard21Gif,
 			},
 		],
@@ -419,38 +448,47 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 		galleryPhotos: [
 			{
 				title: "Panorama-117",
+				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 1",
 				...alfedenaPanorama117Jpg,
 			},
 			{
 				title: "Panorama-118",
+				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 2",
 				...alfedenaPanorama118Jpg,
 			},
 			{
 				title: "Panorama-119",
+				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 3",
 				...alfedenaPanorama119Jpg,
 			},
 			{
 				title: "Panorama-120",
+				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 4",
 				...alfedenaPanorama120Jpg,
 			},
 			{
 				title: "Panorama-121",
+				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 5",
 				...alfedenaPanorama121Jpg,
 			},
 			{
 				title: "Panorama-122",
+				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 6",
 				...alfedenaPanorama122Jpg,
 			},
 			{
 				title: "Ruins-111",
+				alt: "Black-and-white view of war-damaged buildings in Alfedena in 1946, view 1",
 				...alfedenaRuins111Jpg,
 			},
 			{
 				title: "Ruins-112",
+				alt: "Black-and-white view of war-damaged buildings in Alfedena in 1946, view 2",
 				...alfedenaRuins112Jpg,
 			},
 			{
 				title: "Ruins-Apr46",
+				alt: "Black-and-white view of war-damaged buildings in Alfedena in April 1946",
 				...alfedenaRuinsApr46Jpg,
 			},
 		],

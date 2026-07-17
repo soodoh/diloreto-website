@@ -1,15 +1,21 @@
 import { Link } from "@tanstack/react-router";
-import type { JSX } from "react";
+import type { JSX, MouseEventHandler } from "react";
 import type { ContentImage } from "~/content/image";
 import ResponsiveImage from "./responsive-image";
 
-type TileProps = {
+type TileContentProps = {
 	image: ContentImage;
 	label: string;
-	onClick?: () => void;
-	link?: string;
 	delay?: number;
+	priority?: boolean;
 };
+
+type TileProps = TileContentProps &
+	(
+		| { link: string; onClick?: never }
+		| { link?: never; onClick: MouseEventHandler<HTMLButtonElement> }
+		| { link?: never; onClick?: never }
+	);
 
 export default function Tile({
 	image,
@@ -17,17 +23,18 @@ export default function Tile({
 	onClick,
 	link,
 	delay = 0,
+	priority = false,
 }: TileProps): JSX.Element {
+	const className =
+		"group relative overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-transparent animate-fade-in";
+	const style = { animationDelay: `${delay}ms` };
 	const content = (
-		<button
-			type="button"
-			onClick={onClick}
-			className="group relative cursor-pointer overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-transparent animate-fade-in"
-			style={{ animationDelay: `${delay}ms` }}
-		>
+		<>
 			<ResponsiveImage
 				image={image}
 				sizes="(max-width: 640px) calc(50vw - 12px), (max-width: 1216px) calc(33vw - 12px), 400px"
+				loading={priority ? "eager" : "lazy"}
+				fetchPriority={priority ? "high" : "auto"}
 				pictureClassName="w-full aspect-square"
 				className="size-full object-cover"
 			/>
@@ -39,12 +46,43 @@ export default function Tile({
 					</span>
 				</div>
 			)}
-		</button>
+		</>
 	);
 
 	if (link) {
-		return <Link to={link}>{content}</Link>;
+		return (
+			<Link to={link} data-slot="tile" className="group">
+				<span
+					className={`${className} inline-block cursor-pointer group-focus:grayscale-0`}
+					style={style}
+				>
+					{content}
+				</span>
+			</Link>
+		);
 	}
 
-	return content;
+	if (onClick) {
+		return (
+			<button
+				type="button"
+				onClick={onClick}
+				data-slot="tile"
+				className={`${className} cursor-pointer`}
+				style={style}
+			>
+				{content}
+			</button>
+		);
+	}
+
+	return (
+		<div
+			data-slot="tile"
+			className={`${className} flex items-center justify-center`}
+			style={style}
+		>
+			{content}
+		</div>
+	);
 }

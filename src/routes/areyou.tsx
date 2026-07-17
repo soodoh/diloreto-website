@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { useState } from "react";
-import ContactModal from "~/components/contact-modal";
-import ImageModal from "~/components/image-modal";
+import { lazy, Suspense, useCallback, useRef, useState } from "react";
+import type { OpenPhoto } from "~/components/photo";
 import Record from "~/components/record";
 import { Button } from "~/components/ui/button";
+import { contacts } from "~/content/contacts";
 import { familyHistory } from "~/content/family-history";
 import type { ContentImage } from "~/content/image";
-import { people } from "~/content/people";
+
+const ContactModal = lazy(() => import("~/components/contact-modal"));
+const ImageModal = lazy(() => import("~/components/image-modal"));
 
 const allPhotos: ContentImage[] = familyHistory.flatMap((record) => {
 	if (record.link) {
@@ -22,22 +24,38 @@ const allPhotos: ContentImage[] = familyHistory.flatMap((record) => {
 
 function FamilyHistory(): JSX.Element {
 	const [contactActive, setContact] = useState(false);
-	const [photoIndex, setPhoto] = useState<number | undefined>(undefined);
+	const [photoIndex, setPhoto] = useState<number>();
+	const contactTriggerRef = useRef<HTMLElement>(null);
+	const photoTriggerRef = useRef<HTMLElement>(null);
+	const openPhoto = useCallback<OpenPhoto>((selectedPhoto, trigger) => {
+		const selectedIndex = allPhotos.indexOf(selectedPhoto);
+		if (selectedIndex !== -1) {
+			photoTriggerRef.current = trigger;
+			setContact(false);
+			setPhoto(selectedIndex);
+		}
+	}, []);
 
 	return (
 		<>
-			<ContactModal
-				open={contactActive}
-				onClose={() => setContact(false)}
-				people={people}
-			/>
-
-			<ImageModal
-				onChange={(newIndex: number) => setPhoto(newIndex)}
-				onClose={() => setPhoto(undefined)}
-				images={allPhotos}
-				photoIndex={photoIndex}
-			/>
+			<Suspense fallback={null}>
+				{contactActive ? (
+					<ContactModal
+						open={contactActive}
+						onClose={() => setContact(false)}
+						contacts={contacts}
+						restoreFocusRef={contactTriggerRef}
+					/>
+				) : null}
+				{photoIndex !== undefined ? (
+					<ImageModal
+						onClose={() => setPhoto(undefined)}
+						images={allPhotos}
+						photoIndex={photoIndex}
+						restoreFocusRef={photoTriggerRef}
+					/>
+				) : null}
+			</Suspense>
 
 			<div className="p-4 flex flex-col items-center">
 				<p className="font-serif text-center max-w-3xl mb-4">
@@ -48,7 +66,11 @@ function FamilyHistory(): JSX.Element {
 				<Button
 					variant="outline"
 					className="border-primary text-primary font-sans hover:bg-primary hover:text-primary-contrast"
-					onClick={() => setContact(true)}
+					onClick={(event) => {
+						contactTriggerRef.current = event.currentTarget;
+						setPhoto(undefined);
+						setContact(true);
+					}}
 				>
 					Contact Us
 				</Button>
@@ -59,12 +81,7 @@ function FamilyHistory(): JSX.Element {
 					key={record.title}
 					data={record}
 					isEven={index % 2 === 0}
-					openPhoto={(selectedPhoto) => {
-						const selectedIndex = allPhotos.indexOf(selectedPhoto);
-						if (selectedIndex !== -1) {
-							setPhoto(selectedIndex);
-						}
-					}}
+					openPhoto={openPhoto}
 				/>
 			))}
 		</>

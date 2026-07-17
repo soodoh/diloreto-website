@@ -96,6 +96,10 @@ Resources:
             headers:
               - key: 'Cache-Control'
                 value: 'no-cache'
+          - pattern: '/apple-touch-icon.png'
+            headers:
+              - key: 'Cache-Control'
+                value: 'no-cache'
           - pattern: '**'
             headers:
               - key: 'X-Content-Type-Options'

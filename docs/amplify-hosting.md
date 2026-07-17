@@ -23,7 +23,7 @@ CloudFront uses the Amplify branch domain as a custom HTTPS origin. The distribu
 - AWS CLI authenticated with `aws login` to the intended account.
 - GitHub CLI authenticated with repository administration access.
 - Bun, Docker, and project dependencies installed.
-- `cfn-lint` available, for example through `uvx cfn-lint`.
+- `cfn-lint` available at the CI-pinned version, for example through `uvx --from cfn-lint==1.53.0 cfn-lint`.
 - Public Route 53 zone `Z07741203I5VR48TBSMSA` for `diloreto.com`.
 - The ignored pre-migration DNS snapshot at `.aws-migration/route53-before.json`.
 
@@ -38,13 +38,13 @@ aws sts get-caller-identity
 ```bash
 bun install --frozen-lockfile
 bun run check
-uvx cfn-lint infrastructure/amplify-hosting.yml
+uvx --from cfn-lint==1.53.0 cfn-lint infrastructure/amplify-hosting.yml
 aws cloudformation validate-template \
   --region us-east-1 \
   --template-body file://infrastructure/amplify-hosting.yml
 ```
 
-`bun run check` performs linting, TypeScript checks, a production build, static-output assertions, and the containerized Playwright desktop/mobile visual and gallery interaction suites. The build must contain root-level `index.html`, `areyou/index.html`, and the script-free `404.html`. Use `bun run test:playwright:update` to intentionally regenerate visual baselines in the same container used by CI.
+`bun run check` performs linting, TypeScript checks, a production build, static-output assertions, and the containerized Playwright desktop/mobile visual, smoke, and gallery interaction suites. Static file routes are discovered automatically and must each produce HTML. The hydration-free `404.html` must contain neither scripts nor module preloads. Use `bun run test:playwright:update` to intentionally regenerate visual baselines in the same container used by CI.
 
 ## 2. Create or update pre-cutover infrastructure
 
@@ -100,7 +100,7 @@ No AWS access keys or GitHub secrets are required. The role trust policy accepts
 `.github/workflows/deploy.yml` has two paths:
 
 - Pull requests run validation and package the artifact but never deploy.
-- Pushes to `main` and explicit workflow dispatches validate first, then assume the AWS role with GitHub OIDC and publish the validated ZIP.
+- Pushes to `main` and explicit workflow dispatches resolve the requested ref to one commit, validate that commit, then assume the AWS role with GitHub OIDC and publish its validated ZIP.
 
 The deploy job:
 
@@ -110,7 +110,8 @@ The deploy job:
 4. uploads and starts the Amplify deployment;
 5. polls the bounded Amplify job to completion;
 6. compares the Amplify origin HTML with CloudFront output;
-7. checks edge cache/security headers, assets, routes, and the true custom `404` response.
+7. checks edge cache/security headers, assets, routes, and the true custom `404` response;
+8. runs the workflow revision's desktop Chromium smoke harness against the deployed CloudFront URL, so rollback targets do not need to contain the latest tests.
 
 The archive contents are the root of `dist/client`; the archive must not contain an extra `dist/` or `client/` directory.
 
@@ -128,7 +129,7 @@ EDGE_URL=$(aws cloudformation describe-stacks \
 curl -I "$EDGE_URL/"
 curl -I "$EDGE_URL/areyou"
 curl -i "$EDGE_URL/not-a-real-route"
-PLAYWRIGHT_BASE_URL="$EDGE_URL" bun run test:playwright
+PLAYWRIGHT_BASE_URL="$EDGE_URL" bun run test:smoke
 ```
 
 Required results:
@@ -254,19 +255,20 @@ curl -I https://diloreto.com/
 curl -I https://diloreto.com/areyou
 curl -i https://diloreto.com/not-a-real-route
 curl -I 'https://www.diloreto.com/areyou?source=verification'
-PLAYWRIGHT_BASE_URL=https://diloreto.com bun run test:playwright
+PLAYWRIGHT_BASE_URL=https://diloreto.com bun run test:smoke
 ```
 
 Confirm all of the following:
 
 - The apex serves valid TLS and the expected static site.
 - `www` returns one permanent `301` to the same apex path with all query parameters preserved.
-- `/`, `/areyou`, `/robots.txt`, and `/favicon.png` succeed.
+- `/`, `/areyou`, `/robots.txt`, `/favicon.png`, and `/apple-touch-icon.png` succeed.
 - A missing route returns status `404` and the custom 404 UI without changing the browser URL.
 - Hashed asset and HTML cache headers are correct.
-- The desktop and mobile visual baselines, bio and image modals, and gallery navigation behave as expected.
+- Manual `bun run test:smoke` verification passes its core page navigation, icon metadata, contact and biography dialog, and custom 404 checks.
+- Automated post-deployment verification runs `tests/deployment-smoke.spec.ts` in desktop Chromium and confirms that `/` and `/areyou` return usable documents with status `200`.
 - No HTML or network request contains a Netlify runtime URL.
-- A same-commit workflow dispatch can deploy and validate successfully.
+- A workflow dispatch reports and deploys one resolved commit SHA even when the requested branch or tag later moves.
 
 After cutover, take another Route 53 snapshot and prove that only the authorized apex/`www` records plus CloudFormation-managed ACM validation and aliases changed.
 
@@ -297,7 +299,7 @@ Wait for `UPDATE_COMPLETE`, confirm the stack-owned A/AAAA aliases are gone, and
 
 ### Bad application release
 
-Re-run the workflow with a known-good commit or revert the bad commit on `main`. The workflow rebuilds that exact source and publishes a fresh Amplify artifact. CloudFront disables caching for HTML and all non-fingerprinted files; content-addressed `/assets/*` files retain immutable caching and use new filenames.
+Re-run the workflow with a known-good commit or revert the bad commit on `main`. The workflow resolves the requested ref once, rebuilds that exact source, and publishes a fresh Amplify artifact. Post-deployment checks use the workflow revision's smoke harness, so an older target does not need the latest test files. CloudFront disables caching for HTML and all non-fingerprinted files; content-addressed `/assets/*` files retain immutable caching and use new filenames.
 
 ### Full decommission
 
