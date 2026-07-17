@@ -52,7 +52,11 @@ export default defineConfig({
 		},
 		{
 			name: "mobile-chromium",
-			testMatch: "**/*.visual.spec.ts",
+			testMatch: [
+				"**/*.visual.spec.ts",
+				"**/gallery-*.spec.ts",
+				"**/smoke.spec.ts",
+			],
 			use: { ...devices["Pixel 7"] },
 		},
 	],

@@ -1,6 +1,7 @@
 import { expect, type Page, test } from "@playwright/test";
 import {
 	expectGalleryIndex,
+	expectMountedGalleryImages,
 	galleryDialog,
 	openGalleryThumbnail,
 } from "./support/gallery";
@@ -10,6 +11,7 @@ const startingPhoto = "Map of Abruzzo pointing to Alfedena at the bottom";
 async function swipeGallery(
 	page: Page,
 	direction: "next" | "previous",
+	release = true,
 ): Promise<void> {
 	const carousel = galleryDialog(page).locator(
 		'[data-slot="carousel-content"]',
@@ -22,7 +24,7 @@ async function swipeGallery(
 
 	const startX = box.x + box.width / 2;
 	const y = box.y + box.height / 2;
-	const deltaX = box.width * (direction === "next" ? -0.5 : 0.5);
+	const deltaX = box.width * (direction === "next" ? -0.6 : 0.6);
 	let touches = [{ identifier: 0, clientX: startX, clientY: y }];
 
 	await carousel.dispatchEvent("touchstart", {
@@ -44,7 +46,9 @@ async function swipeGallery(
 			touches,
 		});
 	}
-	await carousel.dispatchEvent("touchend");
+	if (release) {
+		await carousel.dispatchEvent("touchend");
+	}
 }
 
 test.beforeEach(async ({ page }) => {
@@ -54,31 +58,97 @@ test.beforeEach(async ({ page }) => {
 test("arrow buttons navigate to the next and previous image", async ({
 	page,
 }) => {
+	const trigger = page.getByRole("button", {
+		name: `View ${startingPhoto}`,
+		exact: true,
+	});
 	const initial = await openGalleryThumbnail(page, startingPhoto);
 	const dialog = galleryDialog(page);
+	await expectMountedGalleryImages(dialog, initial.index);
+
+	const status = dialog.locator('[data-slot="gallery-status"]');
+	await expect(status).toHaveAttribute("role", "status");
+	await expect(status).toHaveAttribute("aria-live", "polite");
+	await expect(status).toHaveAttribute("aria-atomic", "true");
 
 	await dialog.getByRole("button", { name: "Next slide" }).click();
-	await expectGalleryIndex(dialog, initial.index + 1);
+	const next = await expectGalleryIndex(dialog, initial.index + 1);
+	await expectMountedGalleryImages(dialog, next.index);
+	await expect(status).toHaveText(
+		`${next.alt}. Image ${next.index + 1} of ${next.total}.`,
+	);
 	await dialog.getByRole("button", { name: "Previous slide" }).click();
 	await expectGalleryIndex(dialog, initial.index);
 
 	await dialog.getByRole("button", { name: "Close image modal" }).click();
 	await expect(dialog).toBeHidden();
+	await expect(trigger).toBeFocused();
 });
 
 test("touch dragging navigates to the next and previous image", async ({
 	page,
-}) => {
+}, testInfo) => {
+	test.skip(testInfo.project.name !== "mobile-chromium");
 	const initial = await openGalleryThumbnail(page, startingPhoto);
 	const dialog = galleryDialog(page);
+	const carousel = dialog.locator('[data-slot="carousel-content"]');
+	const incomingImage = dialog
+		.locator('[data-slot="carousel-item"]')
+		.nth(initial.index + 1)
+		.locator("img");
+	await expectMountedGalleryImages(dialog, initial.index);
 
-	await swipeGallery(page, "next");
-	await expectGalleryIndex(dialog, initial.index + 1);
+	await swipeGallery(page, "next", false);
+	await expect
+		.poll(async () => {
+			const carouselBox = await carousel.boundingBox();
+			const imageBox = await incomingImage.boundingBox();
+			if (!carouselBox || !imageBox) {
+				return false;
+			}
+			return (
+				imageBox.x < carouselBox.x + carouselBox.width &&
+				imageBox.x + imageBox.width > carouselBox.x
+			);
+		})
+		.toBe(true);
+	await carousel.dispatchEvent("touchend");
+	const next = await expectGalleryIndex(dialog, initial.index + 1);
+	await expectMountedGalleryImages(dialog, next.index);
 	await swipeGallery(page, "previous");
 	await expectGalleryIndex(dialog, initial.index);
 });
 
+test("gallery image mounting handles first and last boundaries", async ({
+	page,
+}) => {
+	const first = await openGalleryThumbnail(
+		page,
+		"Location of DiLoreto Homestead in Alfedena, L'Aquila, Italy.",
+	);
+	const dialog = galleryDialog(page);
+	expect(first.index).toBe(0);
+	await expectMountedGalleryImages(dialog, first.index);
+	await dialog.getByRole("button", { name: "Close image modal" }).click();
+
+	const nearEnd = await openGalleryThumbnail(
+		page,
+		"Oldest homes in Alfedena on Via Casili.",
+	);
+	for (let offset = 1; offset <= 4; offset += 1) {
+		await dialog.getByRole("button", { name: "Next slide" }).click();
+		await expectGalleryIndex(dialog, nearEnd.index + offset);
+	}
+	const lastIndex = nearEnd.total - 1;
+	expect(nearEnd.index + 4).toBe(lastIndex);
+	await expectMountedGalleryImages(dialog, lastIndex);
+});
+
 test("arrow keys navigate and Escape closes the gallery", async ({ page }) => {
+	const trigger = page.getByRole("button", {
+		name: `View ${startingPhoto}`,
+		exact: true,
+	});
 	const initial = await openGalleryThumbnail(page, startingPhoto);
 	const dialog = galleryDialog(page);
 
@@ -89,4 +159,5 @@ test("arrow keys navigate and Escape closes the gallery", async ({ page }) => {
 
 	await page.keyboard.press("Escape");
 	await expect(dialog).toBeHidden();
+	await expect(trigger).toBeFocused();
 });

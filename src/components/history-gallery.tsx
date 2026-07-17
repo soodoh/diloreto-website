@@ -1,11 +1,10 @@
 import type { JSX } from "react";
 import type { HistoryRecord } from "~/content/family-history";
-import type { ContentImage } from "~/content/image";
-import Photo from "./photo";
+import Photo, { type OpenPhoto } from "./photo";
 
 type HistoryGalleryProps = {
 	data: HistoryRecord;
-	openPhoto: (photo: ContentImage) => void;
+	openPhoto: OpenPhoto;
 	className?: string;
 };
 

@@ -27,11 +27,22 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: read
+    outputs:
+      target-sha: ${{ steps.target.outputs.sha }}
     steps:
       - name: Check out requested ref
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && inputs.ref || github.sha }}
+
+      - name: Resolve deployment target
+        id: target
+        run: echo "sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
+
+      - name: Check out resolved commit
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ steps.target.outputs.sha }}
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
@@ -44,6 +55,9 @@ jobs:
 
       - name: Type-check
         run: bun run typecheck
+
+      - name: Lint CloudFormation template
+        run: pipx run --spec cfn-lint==1.53.0 cfn-lint infrastructure/amplify-hosting.yml
 
       - name: Build static site
         run: bun run build
@@ -109,6 +123,7 @@ jobs:
       contents: read
       id-token: write
     env:
+      TARGET_SHA: ${{ needs.validate.outputs['target-sha'] }}
       AWS_REGION: ${{ vars.AWS_REGION }}
       AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
       AMPLIFY_APP_ID: ${{ vars.AMPLIFY_APP_ID }}
@@ -116,6 +131,12 @@ jobs:
       AMPLIFY_DEFAULT_DOMAIN: ${{ vars.AMPLIFY_DEFAULT_DOMAIN }}
       EDGE_DEFAULT_DOMAIN: ${{ vars.EDGE_DEFAULT_DOMAIN }}
     steps:
+      - name: Check out verification harness
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: verification-harness
+
       - name: Download validated artifact
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
@@ -124,6 +145,7 @@ jobs:
       - name: Validate deployment configuration
         run: |
           set -euo pipefail
+          test -n "${TARGET_SHA}"
           test -n "${AWS_REGION}"
           test -n "${AWS_ROLE_ARN}"
           test -n "${AMPLIFY_APP_ID}"
@@ -145,7 +167,7 @@ jobs:
               --header 'Accept: application/vnd.github+json' \
               "https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/main" \
               | jq -er '.sha')
-            if [ "${current_main_sha}" != "${GITHUB_SHA}" ]; then
+            if [ "${current_main_sha}" != "${TARGET_SHA}" ]; then
               echo 'A newer main commit exists; skipping this stale deployment.'
               should_deploy=false
             fi
@@ -167,6 +189,7 @@ jobs:
           DEPLOYMENT_FILE: ${{ runner.temp }}/amplify-deployment.json
         run: |
           set -euo pipefail
+          echo "Deploying validated commit ${TARGET_SHA}"
           umask 077
           cleanup() {
             unset upload_url || true
@@ -260,6 +283,7 @@ jobs:
           curl --fail --silent --show-error --output /dev/null "${base_url}/areyou"
           curl --fail --silent --show-error --output /dev/null "${base_url}/robots.txt"
           curl --fail --silent --show-error --output /dev/null "${base_url}/favicon.png"
+          curl --fail --silent --show-error --output /dev/null "${base_url}/apple-touch-icon.png"
 
           not_found_status=$(curl --silent --show-error \
             --output "${body}" \
@@ -268,22 +292,30 @@ jobs:
           test "${not_found_status}" = '404'
           grep -q '404: Page Not Found' "${body}"
 
-          asset_path=$(python3 - "${origin_body}" <<'PY'
+          javascript_path=$(python3 - "${origin_body}" <<'PY'
           import re
           import sys
           from pathlib import Path
 
           html = Path(sys.argv[1]).read_text()
-          match = re.search(r'/assets/[^" ]+\.(?:css|js|webp|jpeg|gif|png)', html)
+          match = re.search(r'/assets/[^" ]+\.js', html)
           if match is None:
-              raise SystemExit('No hashed asset found in deployed HTML')
+              raise SystemExit('No JavaScript asset found in deployed HTML')
           print(match.group(0))
           PY
           )
           curl --fail --silent --show-error \
             --dump-header "${headers}" \
             --output /dev/null \
-            "${base_url}${asset_path}"
+            "${base_url}${javascript_path}"
           grep -Eqi '^cache-control:.*max-age=31536000.*immutable' "${headers}"
 
           echo "url=${base_url}" >> "${GITHUB_OUTPUT}"
+
+      - name: Run deployment-invariant browser smoke tests
+        if: steps.freshness.outputs.should-deploy == 'true'
+        working-directory: verification-harness
+        env:
+          PLAYWRIGHT_BASE_URL: ${{ steps.deployment-url.outputs.url }}
+          PLAYWRIGHT_SKIP_BUILD: "1"
+        run: bash scripts/test-playwright-docker.sh tests/deployment-smoke.spec.ts --project=chromium

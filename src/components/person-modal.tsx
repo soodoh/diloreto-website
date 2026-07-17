@@ -1,4 +1,4 @@
-import type { JSX } from "react";
+import type { JSX, RefObject } from "react";
 import ReactMarkdown from "react-markdown";
 import {
 	Dialog,
@@ -6,22 +6,25 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "~/components/ui/dialog";
+import { biographies } from "~/content/biographies";
 import type { Person } from "~/content/people";
 
 type PersonModalProps = {
 	open: boolean;
 	data: Person | undefined;
 	onClose: () => void;
+	restoreFocusRef: RefObject<HTMLElement | null>;
 };
 
 export default function PersonModal({
 	open,
 	data,
 	onClose,
+	restoreFocusRef,
 }: PersonModalProps): JSX.Element {
 	return (
 		<Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-			<DialogContent>
+			<DialogContent restoreFocusRef={restoreFocusRef}>
 				<DialogHeader>
 					<DialogTitle className="font-serif italic text-primary text-4xl max-sm:text-2xl">
 						{data?.fullName ?? ""}
@@ -37,11 +40,11 @@ export default function PersonModal({
 					</a>
 				)}
 
-				{data?.bio && (
+				{data ? (
 					<div className="font-serif markdown-content">
-						<ReactMarkdown>{data.bio}</ReactMarkdown>
+						<ReactMarkdown>{biographies[data.firstName]}</ReactMarkdown>
 					</div>
-				)}
+				) : null}
 			</DialogContent>
 		</Dialog>
 	);

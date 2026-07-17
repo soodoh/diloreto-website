@@ -16,7 +16,7 @@ const mimeType = (format: string): string =>
 
 export default function ResponsiveImage({
 	image,
-	alt = image.title,
+	alt = image.alt ?? image.title,
 	className,
 	pictureClassName,
 	loading = "lazy",

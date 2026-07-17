@@ -9,4 +9,5 @@ export type ResponsiveImageData = {
 
 export type ContentImage = ResponsiveImageData & {
 	title: string;
+	alt?: string;
 };

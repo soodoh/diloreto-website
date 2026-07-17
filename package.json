@@ -24,6 +24,7 @@
 		"check:output": "bun scripts/assert-static-output.ts",
 		"test:playwright": "bash scripts/test-playwright-docker.sh",
 		"test:playwright:update": "bash scripts/test-playwright-docker.sh --update-snapshots",
+		"test:smoke": "bash scripts/test-playwright-docker.sh tests/smoke.spec.ts",
 		"check": "bun run lint && bun run typecheck && bun run build && bun run check:output && PLAYWRIGHT_SKIP_BUILD=1 bun run test:playwright",
 		"prepare": "lefthook install"
 	},

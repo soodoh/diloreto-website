@@ -49,8 +49,6 @@ export default defineConfig({
 		}),
 		tanstackStart({
 			pages: [
-				{ path: "/" },
-				{ path: "/areyou" },
 				{
 					path: "/404",
 					prerender: { outputPath: "/404.html", crawlLinks: false },
@@ -58,7 +56,7 @@ export default defineConfig({
 			],
 			prerender: {
 				enabled: true,
-				autoStaticPathsDiscovery: false,
+				autoStaticPathsDiscovery: true,
 				crawlLinks: false,
 				failOnError: true,
 			},

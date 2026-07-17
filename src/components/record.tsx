@@ -1,21 +1,17 @@
 import type { JSX } from "react";
+import { memo } from "react";
 import ReactMarkdown from "react-markdown";
 import type { HistoryRecord } from "~/content/family-history";
-import type { ContentImage } from "~/content/image";
 import HistoryGallery from "./history-gallery";
-import Photo from "./photo";
+import Photo, { type OpenPhoto } from "./photo";
 
 type RecordProps = {
 	data: HistoryRecord;
-	openPhoto: (photo: ContentImage) => void;
+	openPhoto: OpenPhoto;
 	isEven: boolean;
 };
 
-export default function Record({
-	data,
-	openPhoto,
-	isEven,
-}: RecordProps): JSX.Element {
+function Record({ data, openPhoto, isEven }: RecordProps): JSX.Element {
 	const hasGallery =
 		data.galleryPhotos !== undefined && data.galleryPhotos.length > 0;
 
@@ -69,3 +65,5 @@ export default function Record({
 		</div>
 	);
 }
+
+export default memo(Record);
