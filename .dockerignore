@@ -1,0 +1,11 @@
+.git
+.github
+.aws-migration
+.pi-subagents
+.playwright-mcp
+node_modules
+.output
+playwright-report
+test-results
+amplify-deployment.zip
+*.log
