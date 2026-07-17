@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import type { JSX, ReactNode } from "react";
 import Header from "~/components/header";
+import NotFound from "~/components/not-found";
 import appCss from "~/styles/app.css?url";
 
 export function RootDocument({
@@ -35,15 +36,6 @@ export function RootComponent(): JSX.Element {
 		<RootDocument>
 			<Outlet />
 		</RootDocument>
-	);
-}
-
-export function NotFound(): JSX.Element {
-	return (
-		<div className="p-4">
-			<h3 className="font-serif text-3xl mb-4">404: Page Not Found</h3>
-			<p className="font-serif text-xl">Please check your URL</p>
-		</div>
 	);
 }
 

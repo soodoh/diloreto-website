@@ -1,7 +1,7 @@
-import { Image } from "@unpic/react";
 import { XIcon } from "lucide-react";
 import type { JSX } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import ResponsiveImage from "~/components/responsive-image";
 import { Button } from "~/components/ui/button";
 import type { CarouselApi } from "~/components/ui/carousel";
 import {
@@ -106,17 +106,13 @@ export default function ImageModal({
 
 					<CarouselContent className="ml-0 h-full">
 						{images.map((photo) => (
-							<CarouselItem key={photo.src} className="h-full p-4">
+							<CarouselItem key={photo.img.src} className="h-full p-4">
 								<div className="h-full min-h-0 flex flex-col items-center">
 									<div className="min-h-0 w-full flex-1">
-										<Image
-											src={photo.src}
-											alt={photo.title}
-											layout="constrained"
-											width={photo.width}
-											height={photo.height}
-											fallback="netlify"
-											unstyled
+										<ResponsiveImage
+											image={photo}
+											sizes="100vw"
+											pictureClassName="size-full"
 											className="size-full object-contain"
 										/>
 									</div>

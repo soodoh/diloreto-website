@@ -1,0 +1,217 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Static AWS Amplify Hosting and GitHub OIDC deployment access for diloreto.com
+
+Parameters:
+  EnableCustomDomain:
+    Type: String
+    Default: "false"
+    AllowedValues:
+      - "true"
+      - "false"
+    Description: Create the Amplify-managed diloreto.com domain association.
+  ExistingGitHubOidcProviderArn:
+    Type: String
+    Default: ""
+    AllowedPattern: "^$|^arn:[^:]+:iam::[0-9]{12}:oidc-provider/token\\.actions\\.githubusercontent\\.com$"
+    Description: Existing GitHub Actions OIDC provider ARN. Leave empty to create it in this stack.
+  GitHubRepository:
+    Type: String
+    Default: soodoh/diloreto-website
+    AllowedPattern: "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+  GitHubEnvironment:
+    Type: String
+    Default: production
+    AllowedPattern: "^[A-Za-z0-9_.-]+$"
+  BranchName:
+    Type: String
+    Default: main
+    AllowedPattern: "^[A-Za-z0-9_.-]+$"
+  DomainName:
+    Type: String
+    Default: diloreto.com
+    AllowedPattern: "^(?!-)[A-Za-z0-9.-]+[A-Za-z0-9]$"
+  DeploymentRoleName:
+    Type: String
+    Default: diloreto-website-github-deploy
+    AllowedPattern: "^[A-Za-z0-9+=,.@_-]+$"
+
+Conditions:
+  CreateGitHubOidcProvider: !Equals [!Ref ExistingGitHubOidcProviderArn, ""]
+  CreateCustomDomain: !Equals [!Ref EnableCustomDomain, "true"]
+
+Resources:
+  AmplifyApp:
+    Type: AWS::Amplify::App
+    Properties:
+      Name: diloreto-website
+      Description: Fully static hosting for diloreto.com, deployed by GitHub Actions.
+      Platform: WEB
+      EnableBranchAutoDeletion: false
+      CustomRules:
+        - Source: !Sub "https://www.${DomainName}"
+          Target: !Sub "https://${DomainName}"
+          Status: "301"
+        - Source: /<*>
+          Target: /404.html
+          Status: "404"
+      CustomHeaders: |
+        customHeaders:
+          - pattern: '/assets/*'
+            headers:
+              - key: 'Cache-Control'
+                value: 'public, max-age=31536000, immutable'
+          - pattern: '**/*.html'
+            headers:
+              - key: 'Cache-Control'
+                value: 'no-cache'
+          - pattern: '/'
+            headers:
+              - key: 'Cache-Control'
+                value: 'no-cache'
+          - pattern: '/areyou*'
+            headers:
+              - key: 'Cache-Control'
+                value: 'no-cache'
+          - pattern: '**'
+            headers:
+              - key: 'X-Content-Type-Options'
+                value: 'nosniff'
+              - key: 'X-Frame-Options'
+                value: 'DENY'
+              - key: 'Referrer-Policy'
+                value: 'strict-origin-when-cross-origin'
+              - key: 'Permissions-Policy'
+                value: 'camera=(), geolocation=(), microphone=()'
+      Tags:
+        - Key: Project
+          Value: diloreto-website
+        - Key: ManagedBy
+          Value: CloudFormation
+
+  AmplifyBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      BranchName: !Ref BranchName
+      Description: Production branch populated by GitHub Actions manual deployments.
+      Stage: PRODUCTION
+      EnableAutoBuild: false
+      EnablePerformanceMode: false
+      EnablePullRequestPreview: false
+      Tags:
+        - Key: Project
+          Value: diloreto-website
+        - Key: ManagedBy
+          Value: CloudFormation
+
+  GitHubOidcProvider:
+    Type: AWS::IAM::OIDCProvider
+    Condition: CreateGitHubOidcProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList:
+        - sts.amazonaws.com
+      Tags:
+        - Key: Project
+          Value: diloreto-website
+        - Key: ManagedBy
+          Value: CloudFormation
+
+  GitHubDeploymentRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Ref DeploymentRoleName
+      Description: Publishes validated static artifacts to the diloreto-website Amplify main branch.
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !If
+                - CreateGitHubOidcProvider
+                - !Ref GitHubOidcProvider
+                - !Ref ExistingGitHubOidcProviderArn
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub: !Sub "repo:${GitHubRepository}:environment:${GitHubEnvironment}"
+      Policies:
+        - PolicyName: PublishAmplifyArtifacts
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - amplify:CreateDeployment
+                  - amplify:StartDeployment
+                Resource: !GetAtt AmplifyBranch.Arn
+              - Effect: Allow
+                Action: amplify:GetJob
+                Resource: !Sub "${AmplifyBranch.Arn}/jobs/*"
+      Tags:
+        - Key: Project
+          Value: diloreto-website
+        - Key: ManagedBy
+          Value: CloudFormation
+
+  AmplifyDomain:
+    Type: AWS::Amplify::Domain
+    Condition: CreateCustomDomain
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      DomainName: !Ref DomainName
+      EnableAutoSubDomain: false
+      CertificateSettings:
+        CertificateType: AMPLIFY_MANAGED
+      SubDomainSettings:
+        - BranchName: !GetAtt AmplifyBranch.BranchName
+          Prefix: ""
+        - BranchName: !GetAtt AmplifyBranch.BranchName
+          Prefix: www
+
+Outputs:
+  AmplifyAppId:
+    Description: Amplify application ID.
+    Value: !GetAtt AmplifyApp.AppId
+  AmplifyAppArn:
+    Description: Amplify application ARN.
+    Value: !GetAtt AmplifyApp.Arn
+  AmplifyDefaultDomain:
+    Description: Amplify-generated application domain.
+    Value: !GetAtt AmplifyApp.DefaultDomain
+  AmplifyBranchName:
+    Description: Production Amplify branch name.
+    Value: !GetAtt AmplifyBranch.BranchName
+  AmplifyBranchArn:
+    Description: Production Amplify branch ARN.
+    Value: !GetAtt AmplifyBranch.Arn
+  AmplifyBranchUrl:
+    Description: Default production branch URL.
+    Value: !Sub "https://${AmplifyBranch.BranchName}.${AmplifyApp.DefaultDomain}"
+  GitHubDeploymentRoleArn:
+    Description: IAM role assumed by the GitHub production environment through OIDC.
+    Value: !GetAtt GitHubDeploymentRole.Arn
+  GitHubOidcProviderArn:
+    Description: GitHub Actions OIDC provider created or reused by this stack.
+    Value: !If
+      - CreateGitHubOidcProvider
+      - !Ref GitHubOidcProvider
+      - !Ref ExistingGitHubOidcProviderArn
+  AmplifyDomainArn:
+    Condition: CreateCustomDomain
+    Description: Amplify custom domain association ARN.
+    Value: !GetAtt AmplifyDomain.Arn
+  AmplifyDomainStatus:
+    Condition: CreateCustomDomain
+    Description: Amplify custom domain association status.
+    Value: !GetAtt AmplifyDomain.DomainStatus
+  AmplifyDomainUpdateStatus:
+    Condition: CreateCustomDomain
+    Description: Amplify custom domain update status.
+    Value: !GetAtt AmplifyDomain.UpdateStatus
+  AmplifyCertificateRecord:
+    Condition: CreateCustomDomain
+    Description: DNS certificate verification record reported by Amplify.
+    Value: !GetAtt AmplifyDomain.CertificateRecord

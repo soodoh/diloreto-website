@@ -26,7 +26,7 @@ export default function HistoryGallery({
 			<div className={`grid grid-cols-1 gap-4 ${columnClass}`}>
 				{photos.map((photo) => (
 					<Photo
-						key={photo.src}
+						key={photo.img.src}
 						data={photo}
 						link={data.link}
 						openPhoto={openPhoto}

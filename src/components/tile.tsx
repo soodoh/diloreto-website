@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Image } from "@unpic/react";
 import type { JSX } from "react";
 import type { ContentImage } from "~/content/image";
+import ResponsiveImage from "./responsive-image";
 
 type TileProps = {
 	image: ContentImage;
@@ -25,14 +25,11 @@ export default function Tile({
 			className="group relative cursor-pointer overflow-hidden border-none p-0 w-full grayscale hover:grayscale-0 focus:grayscale-0 transition-[filter] duration-500 bg-black animate-fade-in"
 			style={{ animationDelay: `${delay}ms` }}
 		>
-			<Image
-				src={image.src}
-				alt={image.title}
-				layout="constrained"
-				width={image.width}
-				height={image.height}
-				fallback="netlify"
-				className="w-full h-full object-cover aspect-square"
+			<ResponsiveImage
+				image={image}
+				sizes="(max-width: 640px) calc(50vw - 12px), (max-width: 1216px) calc(33vw - 12px), 400px"
+				pictureClassName="w-full aspect-square"
+				className="size-full object-cover"
 			/>
 
 			{label && (
