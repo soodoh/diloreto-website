@@ -310,5 +310,6 @@ First disable the custom domain and verify DNS ownership. Delete the stack only 
 - CloudFront disables caching for default behavior paths and uses a dedicated policy only for content-addressed `/assets/*` files.
 - Asset query strings are cached separately and forwarded to Amplify.
 - Error caching is disabled so missing paths are not retained at the edge.
+- CloudFormation drift detection can report `AmplifyApp /CustomHeaders` as modified because Amplify returns the YAML property as normalized JSON. Compare the parsed rules; the representations are semantically equivalent.
 - The image pipeline emits many responsive variants; monitor artifact size and Amplify/CloudFront transfer over time.
 - Generated archives, DNS snapshots, Playwright reports, and migration evidence remain ignored and must not be committed.
