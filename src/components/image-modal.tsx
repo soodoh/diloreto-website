@@ -1,5 +1,5 @@
 import { XIcon } from "lucide-react";
-import type { JSX } from "react";
+import type { JSX, KeyboardEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import ResponsiveImage from "~/components/responsive-image";
 import { Button } from "~/components/ui/button";
@@ -43,6 +43,25 @@ export default function ImageModal({
 		setApi(carouselApi);
 	}, []);
 
+	const handleKeyDown = useCallback(
+		(event: KeyboardEvent<HTMLDivElement>) => {
+			if (!api) {
+				return;
+			}
+
+			if (event.key === "ArrowLeft") {
+				event.preventDefault();
+				event.stopPropagation();
+				api.scrollPrev();
+			} else if (event.key === "ArrowRight") {
+				event.preventDefault();
+				event.stopPropagation();
+				api.scrollNext();
+			}
+		},
+		[api],
+	);
+
 	useEffect(() => {
 		if (!api) {
 			return;
@@ -77,6 +96,7 @@ export default function ImageModal({
 	return (
 		<Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
 			<DialogContent
+				onKeyDownCapture={handleKeyDown}
 				showCloseButton={false}
 				overlayClassName="bg-black/80"
 				className="inset-0 top-0 left-0 translate-x-0 translate-y-0 max-w-none sm:max-w-none max-h-screen h-full w-full overflow-hidden rounded-none border-none bg-black/95 p-0 shadow-none gap-0 flex flex-col data-[state=open]:zoom-in-100 data-[state=closed]:zoom-out-100"

@@ -195,6 +195,13 @@ test("gallery modal and carousel navigate images", async ({ page }) => {
 	);
 
 	const initialTitle = await title.textContent();
+	await dialog.focus();
+	await expect(dialog).toBeFocused();
+	await page.keyboard.press("ArrowRight");
+	await expect(title).not.toHaveText(initialTitle ?? "");
+	await page.keyboard.press("ArrowLeft");
+	await expect(title).toHaveText(initialTitle ?? "");
+
 	await dialog.getByRole("button", { name: "Next slide" }).click();
 	await expect(title).not.toHaveText(initialTitle ?? "");
 	const nextTitle = await title.textContent();
