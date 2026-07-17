@@ -1,10 +1,5 @@
-declare module "*?as=metadata" {
-	const metadata: {
-		src: string;
-		width: number;
-		height: number;
-		format: string;
-	};
+declare module "*?responsive" {
+	const image: import("./content/image").ResponsiveImageData;
 
-	export default metadata;
+	export default image;
 }

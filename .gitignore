@@ -15,6 +15,15 @@ node_modules/
 # Build output
 .output/
 dist/
+amplify-deployment.zip
+
+# Deployment recovery snapshots (local only)
+.aws-migration/
+
+# Playwright output
+playwright-report/
+test-results/
+.playwright-mcp/
 
 # Vite
 *.local
@@ -24,9 +33,6 @@ dist/
 
 # lint cache
 .oxlintcache
-
-# Local Netlify folder
-.netlify
 
 # AI Agents
 .pi-subagents/

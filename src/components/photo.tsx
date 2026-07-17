@@ -1,6 +1,6 @@
-import { Image } from "@unpic/react";
 import type { JSX } from "react";
 import type { ContentImage } from "~/content/image";
+import ResponsiveImage from "./responsive-image";
 
 type PhotoProps = {
 	data: ContentImage;
@@ -30,13 +30,10 @@ export default function Photo({
 				onClick={link ? undefined : () => openPhoto(data)}
 				className="block max-w-[300px] mx-auto cursor-pointer"
 			>
-				<Image
-					src={data.src}
-					alt={data.title}
-					layout="constrained"
-					width={data.width}
-					height={data.height}
-					fallback="netlify"
+				<ResponsiveImage
+					image={data}
+					sizes="(max-width: 320px) 100vw, 300px"
+					className="h-auto w-full object-contain"
 				/>
 			</Wrapper>
 		</div>

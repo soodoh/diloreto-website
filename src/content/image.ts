@@ -1,7 +1,12 @@
-export type ContentImage = {
+export type ResponsiveImageData = {
+	sources: Record<string, string>;
+	img: {
+		src: string;
+		w: number;
+		h: number;
+	};
+};
+
+export type ContentImage = ResponsiveImageData & {
 	title: string;
-	src: string;
-	width: number;
-	height: number;
-	format: string;
 };

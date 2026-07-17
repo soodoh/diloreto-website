@@ -15,6 +15,13 @@
 			"~/*": ["./src/*"]
 		}
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"],
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"scripts/**/*.ts",
+		"tests/**/*.ts",
+		"playwright.config.ts",
+		"vite.config.ts"
+	],
 	"exclude": ["node_modules", ".output", "dist"]
 }
