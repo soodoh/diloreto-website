@@ -1,0 +1,1 @@
+Photo of DiLoreto children, c. 1919. If you have additional information about this photo, please contact us.
