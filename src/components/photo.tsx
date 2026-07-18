@@ -44,7 +44,7 @@ export default function Photo({
 				<button
 					type="button"
 					onClick={(event) => openPhoto(data, event.currentTarget)}
-					aria-label={`View ${data.alt ?? data.title}`}
+					aria-label={`View ${data.alt}`}
 					className="m-0 block w-full max-w-[300px] appearance-none border-0 bg-transparent p-0 mx-auto cursor-pointer text-inherit [font:inherit] [letter-spacing:inherit] [line-height:inherit] [text-align:inherit] [word-spacing:inherit]"
 				>
 					{image}

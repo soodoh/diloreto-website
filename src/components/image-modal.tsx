@@ -194,7 +194,7 @@ export default function ImageModal({
 					className="sr-only"
 				>
 					{currentPhoto
-						? `${currentPhoto.alt ?? currentPhoto.title}. Image ${displayedIndex + 1} of ${images.length}.`
+						? `${currentPhoto.alt}. Image ${displayedIndex + 1} of ${images.length}.`
 						: ""}
 				</div>
 			</DialogContent>

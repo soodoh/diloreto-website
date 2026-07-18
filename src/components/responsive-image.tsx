@@ -7,7 +7,6 @@ type ResponsiveImageProps = Omit<
 	"alt" | "height" | "src" | "srcSet" | "width"
 > & {
 	image: ContentImage;
-	alt?: string;
 	pictureClassName?: string;
 };
 
@@ -16,7 +15,6 @@ const mimeType = (format: string): string =>
 
 export default function ResponsiveImage({
 	image,
-	alt = image.alt ?? image.title,
 	className,
 	pictureClassName,
 	loading = "lazy",
@@ -36,7 +34,7 @@ export default function ResponsiveImage({
 			<img
 				{...imageProps}
 				src={image.img.src}
-				alt={alt}
+				alt={image.alt}
 				width={image.img.w}
 				height={image.img.h}
 				loading={loading}
