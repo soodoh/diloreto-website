@@ -6,7 +6,8 @@ import {
 	openGalleryThumbnail,
 } from "./support/gallery";
 
-const startingPhoto = "Map of Abruzzo pointing to Alfedena at the bottom";
+const startingPhoto =
+	"Map of the Abruzzo region of Italy marking Alfedena near its southern border";
 
 async function swipeGallery(
 	page: Page,
@@ -124,7 +125,7 @@ test("gallery image mounting handles first and last boundaries", async ({
 }) => {
 	const first = await openGalleryThumbnail(
 		page,
-		"Location of DiLoreto Homestead in Alfedena, L'Aquila, Italy.",
+		"Hand-drawn map marking the DiLoreto homestead in Alfedena, L'Aquila, Italy",
 	);
 	const dialog = galleryDialog(page);
 	expect(first.index).toBe(0);
@@ -133,7 +134,7 @@ test("gallery image mounting handles first and last boundaries", async ({
 
 	const nearEnd = await openGalleryThumbnail(
 		page,
-		"Oldest homes in Alfedena on Via Casili.",
+		"Historic multistory homes lining Via Casili in Alfedena in 2004",
 	);
 	for (let offset = 1; offset <= 4; offset += 1) {
 		await dialog.getByRole("button", { name: "Next slide" }).click();

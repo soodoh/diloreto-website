@@ -7,11 +7,13 @@ import {
 const galleryPhotos = [
 	{
 		aspectRatio: "portrait",
-		title: "Hand-drawn family tree (1797-1938)",
+		title:
+			"Hand-drawn DiLoreto family tree documenting relatives from 1797 through 1938",
 	},
 	{
 		aspectRatio: "landscape",
-		title: "Antique postcard from Alfedena, archival image 04a",
+		title:
+			"Front of an antique postcard showing Alfedena and its school building",
 	},
 ] as const;
 

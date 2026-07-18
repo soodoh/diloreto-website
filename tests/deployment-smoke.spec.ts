@@ -19,9 +19,12 @@ const routes: DeploymentRoute[] = [
 		path: "/areyou",
 		interact: async (page) => {
 			await page
-				.getByAltText("Hand-drawn family tree (1797-1938)", {
-					exact: true,
-				})
+				.getByAltText(
+					"Hand-drawn DiLoreto family tree documenting relatives from 1797 through 1938",
+					{
+						exact: true,
+					},
+				)
 				.click();
 			await expect(
 				page.getByRole("dialog").getByRole("button", {

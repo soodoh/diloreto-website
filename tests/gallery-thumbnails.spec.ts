@@ -8,7 +8,7 @@ import { expectImageLoaded } from "./support/visual";
 
 const panorama = {
 	alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 1",
-	title: "Panorama-117",
+	title: "Alfedena panorama, 1946 — view 1",
 };
 
 test.beforeEach(async ({ page }) => {
