@@ -1,0 +1,5 @@
+The headline in The Rochester Democratic and Chronicle on 02.13.1911 read: DiLoreto-D’Amico, Largely Attended Wedding in Church in Hulberton, and stated it was one of the largest church weddings in Orleans country in many months. Donatelli’s Orchestra played the wedding march. Over 150 invited guests witnessed the ceremony.
+
+“After the ceremony, a wedding dinner was served to 150 guests at the farm home of the bride’s parents. Forty were seated at the bride’s table, while the other guests were seated at smaller tables in various rooms of the home. The event was made of the occasion of the Passarelli family reunion.
+
+“Following the Italian custom, there will be no honeymoon trip, but several days will be given to entertainment and social gatherings. The bride is well known in this village, where her father formerly conducted a store in East Bank Street, and she is a graduate of the Brockport Normal School (a school to prepare students for careers in education).
