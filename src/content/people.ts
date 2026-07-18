@@ -1,6 +1,6 @@
-import carolynHeadshot from "~/assets/images/2018-Carolyn-Headshot-01518.jpeg?responsive";
-import paulHeadshot from "~/assets/images/Edited_Headshot.jpg?responsive";
-import johnHeadshot from "~/assets/images/JohnDiLoreto-6930.jpeg?responsive";
+import carolynPortraitImage from "~/assets/images/people/carolyn-diloreto-portrait.jpeg?responsive";
+import johnPortraitImage from "~/assets/images/people/john-diloreto-portrait.jpeg?responsive";
+import paulPortraitImage from "~/assets/images/people/paul-michael-diloreto-portrait.jpg?responsive";
 import {
 	type Contact,
 	carolynContact,
@@ -20,18 +20,30 @@ export const people: Person[] = [
 		...johnContact,
 		order: 0,
 		fullName: "John R. DiLoreto",
-		portrait: { title: "John DiLoreto", ...johnHeadshot },
+		portrait: {
+			title: "John R. DiLoreto",
+			alt: "Portrait of John R. DiLoreto",
+			...johnPortraitImage,
+		},
 	},
 	{
 		...paulContact,
 		order: 1,
 		fullName: "Paul Michael DiLoreto",
-		portrait: { title: "Paul DiLoreto", ...paulHeadshot },
+		portrait: {
+			title: "Paul Michael DiLoreto",
+			alt: "Portrait of Paul Michael DiLoreto",
+			...paulPortraitImage,
+		},
 	},
 	{
 		...carolynContact,
 		order: 2,
 		fullName: "Carolyn DiLoreto",
-		portrait: { title: "Carolyn DiLoreto", ...carolynHeadshot },
+		portrait: {
+			title: "Carolyn DiLoreto",
+			alt: "Portrait of Carolyn DiLoreto",
+			...carolynPortraitImage,
+		},
 	},
 ];

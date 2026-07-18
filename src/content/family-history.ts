@@ -1,74 +1,74 @@
-import image4DiLoretoS1919Jpg from "~/assets/images/4_DiLoreto_s__1919.jpg?responsive";
-import image1965ReunionProgramGif from "~/assets/images/1965_reunion_program.gif?responsive";
-import alfedenaPanorama117Jpg from "~/assets/images/Alfedena_Panorama-117.jpg?responsive";
-import alfedenaPanorama118Jpg from "~/assets/images/Alfedena_Panorama-118.jpg?responsive";
-import alfedenaPanorama119Jpg from "~/assets/images/Alfedena_Panorama-119.jpg?responsive";
-import alfedenaPanorama120Jpg from "~/assets/images/Alfedena_Panorama-120.jpg?responsive";
-import alfedenaPanorama121Jpg from "~/assets/images/Alfedena_Panorama-121.jpg?responsive";
-import alfedenaPanorama122Jpg from "~/assets/images/Alfedena_Panorama-122.jpg?responsive";
-import alfedenaRuins111Jpg from "~/assets/images/Alfedena_Ruins-111.jpg?responsive";
-import alfedenaRuins112Jpg from "~/assets/images/Alfedena_Ruins-112.jpg?responsive";
-import alfedenaRuinsApr46Jpg from "~/assets/images/Alfedena_Ruins-Apr_46.jpg?responsive";
-import alfedena46DJpg from "~/assets/images/Alfedena-_46d.jpg?responsive";
-import alfedena46HJpg from "~/assets/images/Alfedena-_46h.jpg?responsive";
-import alfedena89Jpg from "~/assets/images/Alfedena-89.jpg?responsive";
-import abruzziMapJpg from "~/assets/images/abruzzi_map.jpg?responsive";
-import alfedenaJpg from "~/assets/images/alfedena.jpg?responsive";
-import coatofarmsGif from "~/assets/images/CoatofArms.gif?responsive";
-import diloretoMapGif from "~/assets/images/DiLoreto_map.gif?responsive";
-import diloretoDAmicoWeddingJpg from "~/assets/images/DiLoreto-D_Amico_Wedding.jpg?responsive";
-import damicoFamilyTreeJpg from "~/assets/images/damico-family-tree.jpg?responsive";
-import familytreeGif from "~/assets/images/FamilyTree.gif?responsive";
-import freePress43Jpg from "~/assets/images/Free_Press-_43.jpg?responsive";
-import farm1909 from "~/assets/images/farm1909.png?responsive";
-import img0339JPG from "~/assets/images/IMG_0339.JPG?responsive";
-import img0340JPG from "~/assets/images/IMG_0340.JPG?responsive";
-import img0341JPG from "~/assets/images/IMG_0341.JPG?responsive";
-import img0346JPG from "~/assets/images/IMG_0346.JPG?responsive";
-import img0347JPG from "~/assets/images/IMG_0347.JPG?responsive";
-import img0349JPG from "~/assets/images/IMG_0349.JPG?responsive";
-import img0364JPG from "~/assets/images/IMG_0364.JPG?responsive";
-import mapAlfGif from "~/assets/images/Map_Alf.gif?responsive";
-import nickMariaBoysJpg from "~/assets/images/Nick__Maria__Boys.jpg?responsive";
-import oldestFamilyTreeGif from "~/assets/images/oldest_family_tree.gif?responsive";
-import panfEufrJpg from "~/assets/images/Panf-Eufr.jpg?responsive";
-import postcard01Gif from "~/assets/images/postcard-01.gif?responsive";
-import postcard01AGif from "~/assets/images/postcard-01a.gif?responsive";
-import postcard02Gif from "~/assets/images/postcard-02.gif?responsive";
-import postcard03Gif from "~/assets/images/postcard-03.gif?responsive";
-import postcard03AGif from "~/assets/images/postcard-03a.gif?responsive";
-import postcard03BJpg from "~/assets/images/postcard-03b.jpg?responsive";
-import postcard04Jpg from "~/assets/images/postcard-04.jpg?responsive";
-import postcard04AGif from "~/assets/images/postcard-04a.gif?responsive";
-import postcard05Jpg from "~/assets/images/postcard-05.jpg?responsive";
-import postcard05AGif from "~/assets/images/postcard-05a.gif?responsive";
-import postcard06Gif from "~/assets/images/postcard-06.gif?responsive";
-import postcard06AGif from "~/assets/images/postcard-06a.gif?responsive";
-import postcard07Gif from "~/assets/images/postcard-07.gif?responsive";
-import postcard07AGif from "~/assets/images/postcard-07a.gif?responsive";
-import postcard08Gif from "~/assets/images/postcard-08.gif?responsive";
-import postcard08AGif from "~/assets/images/postcard-08a.gif?responsive";
-import postcard09Gif from "~/assets/images/postcard-09.gif?responsive";
-import postcard10Gif from "~/assets/images/postcard-10.gif?responsive";
-import postcard11Gif from "~/assets/images/postcard-11.gif?responsive";
-import postcard12Gif from "~/assets/images/postcard-12.gif?responsive";
-import postcard13Gif from "~/assets/images/postcard-13.gif?responsive";
-import postcard14Gif from "~/assets/images/postcard-14.gif?responsive";
-import postcard15Gif from "~/assets/images/postcard-15.gif?responsive";
-import postcard16Gif from "~/assets/images/postcard-16.gif?responsive";
-import postcard17Gif from "~/assets/images/postcard-17.gif?responsive";
-import postcard18Gif from "~/assets/images/postcard-18.gif?responsive";
-import postcard19Gif from "~/assets/images/postcard-19.gif?responsive";
-import postcard20Gif from "~/assets/images/postcard-20.gif?responsive";
-import postcard21Gif from "~/assets/images/postcard-21.gif?responsive";
-import remoJpg from "~/assets/images/Remo.jpg?responsive";
-import rome46AJpg from "~/assets/images/Rome-_46a.jpg?responsive";
-import rome46BJpg from "~/assets/images/Rome-_46b.jpg?responsive";
-import rome46CJpg from "~/assets/images/Rome-_46c.jpg?responsive";
-import rome46EJpg from "~/assets/images/Rome-_46e.jpg?responsive";
-import rome46FJpg from "~/assets/images/Rome-_46f.jpg?responsive";
-import rome46GJpg from "~/assets/images/Rome-_46g.jpg?responsive";
-import wedding1911 from "~/assets/images/Wedding-1911.jpg?responsive";
+import alfedenaCascinaSanFrancescoBackImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-cascina-san-francesco-back-src-08a.gif?responsive";
+import alfedenaCascinaSanFrancescoFrontImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-cascina-san-francesco-front-src-08.gif?responsive";
+import alfedenaCooperativeBankBackImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-cooperative-bank-back-src-06a.gif?responsive";
+import alfedenaCooperativeBankFrontImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-cooperative-bank-front-src-06.gif?responsive";
+import alfedenaMedievalCastleAndBridgePostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-medieval-castle-and-bridge-front-src-17.gif?responsive";
+import alfedenaMusiciansBackImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-musicians-and-townspeople-back-src-05a.gif?responsive";
+import alfedenaMusiciansFrontImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-musicians-and-townspeople-front-src-05.jpg?responsive";
+import alfedenaPanoramaPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-panorama-front-src-20.gif?responsive";
+import alfedenaPiazzaUmbertoPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-piazza-umberto-i-front-src-13.gif?responsive";
+import alfedenaPortaDel500PostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-porta-del-500-front-src-18.gif?responsive";
+import alfedenaPrinceOfNaplesBridgePostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-prince-of-naples-bridge-front-src-09.gif?responsive";
+import alfedenaRioTortoGorgePostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-rio-torto-gorge-front-src-12.gif?responsive";
+import alfedenaSangroBridgesPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-sangro-bridges-front-src-11.gif?responsive";
+import alfedenaSangroValleyPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-sangro-valley-panorama-front-src-10.gif?responsive";
+import alfedenaSchoolAndNurseryPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-school-and-nursery-inauguration-front-src-14.gif?responsive";
+import alfedenaSchoolPanoramaCloseViewImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-school-panorama-close-view-front-src-03b.jpg?responsive";
+import alfedenaSchoolPanoramaPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-school-panorama-front-src-02.gif?responsive";
+import alfedenaSnowyRiverBackImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-snowy-river-and-bridge-back-src-04a.gif?responsive";
+import alfedenaSnowyRiverFrontImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-snowy-river-and-bridge-front-src-04.jpg?responsive";
+import alfedenaTownFountainPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-town-fountain-front-src-19.gif?responsive";
+import alfedenaTrainStationPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-train-station-front-src-15.gif?responsive";
+import alfedenaViaGiuseppeDeAmicisBackImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-via-giuseppe-de-amicis-back-src-07a.gif?responsive";
+import alfedenaViaGiuseppeDeAmicisFrontImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-via-giuseppe-de-amicis-front-src-07.gif?responsive";
+import alfedenaViaRomaAlbergoPostcardImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-via-roma-albergo-aufidena-front-src-21.gif?responsive";
+import alfedenaViaRomaBackImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-via-roma-back-src-01a.gif?responsive";
+import alfedenaViaRomaFrontImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-via-roma-front-src-01.gif?responsive";
+import alfedenaVialeMansuetoDeAmicisBackImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-viale-mansueto-de-amicis-back-src-03a.gif?responsive";
+import alfedenaVialeMansuetoDeAmicisFrontImage from "~/assets/images/family-history/1913-1923-postcards/alfedena-viale-mansueto-de-amicis-front-src-03.gif?responsive";
+import barreaPanoramaPostcardImage from "~/assets/images/family-history/1913-1923-postcards/barrea-panorama-front-src-16.gif?responsive";
+import alfedenaPanoramaView01Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-panorama-view-01-src-117.jpg?responsive";
+import alfedenaPanoramaView02Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-panorama-view-02-src-118.jpg?responsive";
+import alfedenaPanoramaView03Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-panorama-view-03-src-119.jpg?responsive";
+import alfedenaPanoramaView04Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-panorama-view-04-src-120.jpg?responsive";
+import alfedenaPanoramaView05Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-panorama-view-05-src-121.jpg?responsive";
+import alfedenaPanoramaView06Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-panorama-view-06-src-122.jpg?responsive";
+import alfedenaRelativesFamilyGroupImage from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-relatives-family-group-src-46d.jpg?responsive";
+import alfedenaRelativesGilbertKneeling46HImage from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-relatives-gilbert-kneeling-src-46h.jpg?responsive";
+import alfedenaRelativesGilbertKneeling89Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-relatives-gilbert-kneeling-src-89.jpg?responsive";
+import alfedenaWarRuinsApril1946Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-war-ruins-april-1946.jpg?responsive";
+import alfedenaWarRuinsView01Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-war-ruins-view-01-src-111.jpg?responsive";
+import alfedenaWarRuinsView02Image from "~/assets/images/family-history/1946-gilbert-italy-trip/alfedena-war-ruins-view-02-src-112.jpg?responsive";
+import romeElderlyWomanPortraitImage from "~/assets/images/family-history/1946-gilbert-italy-trip/rome-elderly-woman-portrait-src-46f.jpg?responsive";
+import romeManAtDeskImage from "~/assets/images/family-history/1946-gilbert-italy-trip/rome-man-at-desk-src-46e.jpg?responsive";
+import romeParentsAndChildImage from "~/assets/images/family-history/1946-gilbert-italy-trip/rome-parents-and-child-src-46g.jpg?responsive";
+import romeRelativesBalconyGroupImage from "~/assets/images/family-history/1946-gilbert-italy-trip/rome-relatives-balcony-group-src-46c.jpg?responsive";
+import romeWomanSeatedOnBalconyImage from "~/assets/images/family-history/1946-gilbert-italy-trip/rome-woman-seated-on-balcony-src-46a.jpg?responsive";
+import romeWomanStandingOnBalconyImage from "~/assets/images/family-history/1946-gilbert-italy-trip/rome-woman-standing-on-balcony-src-46b.jpg?responsive";
+import alfedenaAncientRuinsImage from "~/assets/images/family-history/2004-alfedena/alfedena-ancient-ruins-src-img-0340.jpg?responsive";
+import alfedenaBridgeAndGardenImage from "~/assets/images/family-history/2004-alfedena/alfedena-bridge-and-garden-src-img-0339.jpg?responsive";
+import alfedenaMetaRangePanoramaImage from "~/assets/images/family-history/2004-alfedena/alfedena-meta-range-panorama-src-img-0364.jpg?responsive";
+import alfedenaMountainStreamImage from "~/assets/images/family-history/2004-alfedena/alfedena-mountain-stream-src-img-0346.jpg?responsive";
+import alfedenaPonteDAchillePostOfficeImage from "~/assets/images/family-history/2004-alfedena/alfedena-ponte-dachille-post-office-src-img-0347.jpg?responsive";
+import alfedenaChurchPortalImage from "~/assets/images/family-history/2004-alfedena/alfedena-saints-peter-and-paul-church-portal-src-img-0349.jpg?responsive";
+import alfedenaViaCasiliHistoricHomesImage from "~/assets/images/family-history/2004-alfedena/alfedena-via-casili-historic-homes-src-img-0341.jpg?responsive";
+import damicoFamilyTreeImage from "~/assets/images/family-history/family-trees/damico-family-tree.jpg?responsive";
+import diloretoFamilyTree1797Image from "~/assets/images/family-history/family-trees/diloreto-family-tree-1797-1938.gif?responsive";
+import diloretoFamilyTree1600sImage from "~/assets/images/family-history/family-trees/diloreto-family-tree-mid-1600s.gif?responsive";
+import diloretoCoatOfArmsGenoaImage from "~/assets/images/family-history/heraldry/diloreto-coat-of-arms-genoa.gif?responsive";
+import abruzzoRegionAlfedenaMapImage from "~/assets/images/family-history/maps/abruzzo-region-alfedena.jpg?responsive";
+import diloretoHomesteadMapImage from "~/assets/images/family-history/maps/diloreto-homestead-alfedena.gif?responsive";
+import diloretoSurnameDistributionMapImage from "~/assets/images/family-history/maps/diloreto-surname-distribution-italy.gif?responsive";
+import camilloDamicoFarmFamilyImage from "~/assets/images/family-history/people-and-events/camillo-damico-farm-family-1909-1910.png?responsive";
+import diloretoChildrenCirca1919Image from "~/assets/images/family-history/people-and-events/diloreto-children-circa-1919.jpg?responsive";
+import diloretoFamilyReunionProgram1965Image from "~/assets/images/family-history/people-and-events/diloreto-family-reunion-program-1965.gif?responsive";
+import gaetanoCleoniceWedding1913Image from "~/assets/images/family-history/people-and-events/gaetano-damico-cleonice-diloreto-wedding-1913.jpg?responsive";
+import nickMaryDiloretoStoreImage from "~/assets/images/family-history/people-and-events/nick-mary-diloreto-sons-store-circa-1938.jpg?responsive";
+import panfiloEufrasiaPortraitImage from "~/assets/images/family-history/people-and-events/panfilo-diloreto-eufrasia-gigante-portrait.jpg?responsive";
+import remoDiloretoFreePressProfileImage from "~/assets/images/family-history/people-and-events/remo-diloreto-detroit-free-press-profile-1943.jpg?responsive";
+import remoMariannaWedding1911Image from "~/assets/images/family-history/people-and-events/remo-diloreto-marianna-damico-wedding-1911.jpg?responsive";
+import remoDiloretoPortraitImage from "~/assets/images/family-history/people-and-events/remo-diloreto-portrait.jpg?responsive";
+import alfedenaVillageAerialViewImage from "~/assets/images/family-history/places/alfedena-village-aerial-view.jpg?responsive";
 import type { ContentImage } from "./image";
 
 export type HistoryRecord = {
@@ -88,8 +88,9 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			"## Historical and Heraldic Information on the DiLoreto Stock\n\nExcerpts from the Istituto Genealogico Italiano:\n\n\"The family descends from D'Aquino stock of Longobard origin, whose forefather was Atenolfo, Lord of Capua in 996. Among the feudal holdings of this important family were L'Aquila, Alvito, Loreto and many others. The branch of the family that became known as DI LORETO presumably took its surname from the town of Loreto, their feudal holding. The first DI LORETO of documented record is one Berardo in 1330.\"",
 		headerPhoto: {
-			title: "How many DiLoretos live in Italy?",
-			...diloretoMapGif,
+			title: "Distribution of the DiLoreto surname in Italy",
+			alt: "Map of Italy showing the regional distribution of people with the DiLoreto surname",
+			...diloretoSurnameDistributionMapImage,
 		},
 	},
 	{
@@ -98,8 +99,9 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			'## Excerpts from "The Historical Research Center"\n\nSubmitted by Joanne Monroe (1993):\n\n"The surname Loreto is of Italian origin, and is a locational name from the famous town of Loreto in the province of Ancona in Italy. Loreto became famous through the legend of the \'Holy House,\' where tradition states that the house where the Virgin Mary lived and was visited by the Angel, was miraculously carried to Loreto in 1295 by angels from the Holy Land."\n\n"In the 14th century, a family named Di Loreto, having originated in the above-named town, became quite prominent. The first documented reference to the name was in 1528, when one Luca di Loreto was recorded. It is from this point in time that the ancestral history of the family began to be carefully followed."',
 		headerPhoto: {
-			title: "Location of DiLoreto Homestead in Alfedena, L'Aquila, Italy.",
-			...mapAlfGif,
+			title: "DiLoreto homestead in Alfedena",
+			alt: "Hand-drawn map marking the DiLoreto homestead in Alfedena, L'Aquila, Italy",
+			...diloretoHomesteadMapImage,
 		},
 	},
 	{
@@ -108,8 +110,9 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			'## Coat of Arms\n\nBlazon: "Azure, a tree on a grassy plain all proper, overall a fess gules."\n\nThe tree signifies antiquity and knowledge. The fesse represents the military belt of honor. Crest: Three ostrich plumes. Origin: Italy.',
 		headerPhoto: {
-			title: "DiLoreto Coat of Arms",
-			...coatofarmsGif,
+			title: "DiLoreto coat of arms from Genoa",
+			alt: "Historic DiLoreto family coat of arms associated with Genoa",
+			...diloretoCoatOfArmsGenoaImage,
 		},
 	},
 	{
@@ -118,16 +121,19 @@ export const familyHistory: HistoryRecord[] = [
 		content: "",
 		galleryPhotos: [
 			{
-				title: "Hand-drawn family tree (1797-1938)",
-				...familytreeGif,
+				title: "Hand-drawn DiLoreto family tree (1797-1938)",
+				alt: "Hand-drawn DiLoreto family tree documenting relatives from 1797 through 1938",
+				...diloretoFamilyTree1797Image,
 			},
 			{
-				title: "Family tree dating back to the mid-1600s",
-				...oldestFamilyTreeGif,
+				title: "DiLoreto family tree dating to the mid-1600s",
+				alt: "DiLoreto ancestor chart tracing the family to the mid-1600s",
+				...diloretoFamilyTree1600sImage,
 			},
 			{
 				title: "D'Amico family tree",
-				...damicoFamilyTreeJpg,
+				alt: "D'Amico family tree with names and relationships across multiple generations",
+				...damicoFamilyTreeImage,
 			},
 		],
 	},
@@ -137,8 +143,9 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			"## We Came from Alfedena\n\nAlfedena is a comune (municipality) in the Province of L'Aquila in the Abruzzo region of Italy. A small village of about 700 inhabitants, it sits along the Sangro River in a narrow valley at about 3,000 feet elevation.",
 		headerPhoto: {
-			title: "Map of Abruzzo pointing to Alfedena at the bottom",
-			...abruzziMapJpg,
+			title: "Alfedena in the Abruzzo region",
+			alt: "Map of the Abruzzo region of Italy marking Alfedena near its southern border",
+			...abruzzoRegionAlfedenaMapImage,
 		},
 	},
 	{
@@ -148,8 +155,9 @@ export const familyHistory: HistoryRecord[] = [
 		content:
 			'## The Loyal Wing Club\n\nMigration from Alfedena to Detroit began in 1886, with about 100 arriving by 1900. By 1960, there were 1,680 Alfedenese in Detroit (compared to 1,430 in Alfedena itself), and by 1979 that number had grown to 2-3 thousand.\n\nThe Loyal Wing Club ("Club Ala Fidente") was founded in 1919 by the Alfedenese community in Detroit. The club\'s name derives from the legend that Alfedena defended the right wing of the army of Rome against Hannibal in 216 BC.',
 		headerPhoto: {
-			title: "Loyal Wing Club's Facebook Group",
-			...alfedenaJpg,
+			title: "Aerial view of Alfedena",
+			alt: "Aerial view of the village of Alfedena surrounded by green hills",
+			...alfedenaVillageAerialViewImage,
 		},
 	},
 	{
@@ -159,12 +167,14 @@ export const familyHistory: HistoryRecord[] = [
 			"## Immigration to the U.S.\n\nRemo DiLoreto, one of 13 children of Panfilo and Eufrasia Gigante, emigrated to the United States. He married Marianna D'Amico in 1911 (one of 11 children). They settled in the Eastern Market area of Detroit. Their children were: Panfilo, Oscar, Gilbert, and Emma.",
 		galleryPhotos: [
 			{
-				title: "Panfilo (1847-1920) & Eufrasia (1854-1928)",
-				...panfEufrJpg,
+				title: "Panfilo DiLoreto and Eufrasia Gigante",
+				alt: "Portrait of Panfilo DiLoreto, 1847-1920, and Eufrasia Gigante, 1854-1928",
+				...panfiloEufrasiaPortraitImage,
 			},
 			{
 				title: "Remo DiLoreto",
-				...remoJpg,
+				alt: "Seated portrait of Remo DiLoreto",
+				...remoDiloretoPortraitImage,
 			},
 		],
 	},
@@ -178,8 +188,9 @@ Back row: Gaetano, Remo, Marianna, Pasqualino (Pat)
 Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephine
 `,
 		headerPhoto: {
-			title: "Family photo at Camillo D'Amico's farm (1909-1910)",
-			...farm1909,
+			title: "Camillo D'Amico's farm family (1909-1910)",
+			alt: "Camillo D'Amico's extended family gathered at the farm around 1909 or 1910",
+			...camilloDamicoFarmFamilyImage,
 		},
 	},
 	{
@@ -192,14 +203,14 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 “Following the Italian custom, there will be no honeymoon trip, but several days will be given to entertainment and social gatherings. The bride is well known in this village, where her father formerly conducted a store in East Bank Street, and she is a graduate of the Brockport Normal School (a school to prepare students for careers in education).`,
 		galleryPhotos: [
 			{
-				title:
-					"The wedding of Remo DiLoreto and Marianna D'Amico (Feb. 12, 1911)",
-				...wedding1911,
+				title: "Remo DiLoreto and Marianna D'Amico's wedding",
+				alt: "Wedding portrait of Remo DiLoreto and Marianna D'Amico on February 12, 1911",
+				...remoMariannaWedding1911Image,
 			},
 			{
-				title:
-					"The wedding of Gaetano D'Amico and Cleonice DiLoreto with Remo and Marianna (D'Amico) DiLoreto (Aug. 23, 1913).",
-				...diloretoDAmicoWeddingJpg,
+				title: "Gaetano D'Amico and Cleonice DiLoreto's wedding",
+				alt: "Gaetano D'Amico and Cleonice DiLoreto with Remo and Marianna DiLoreto at the wedding on August 23, 1913",
+				...gaetanoCleoniceWedding1913Image,
 			},
 		],
 	},
@@ -210,149 +221,149 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 			"## Antique Postcards from Alfedena, Italy\n\nThese postcards were sent between 1913 and 1923, between family members in Alfedena and those who had emigrated to Detroit and Rochester.",
 		galleryPhotos: [
 			{
-				title: "postcard-04a",
-				alt: "Antique postcard from Alfedena, archival image 04a",
-				...postcard04AGif,
+				title: "Via Roma, Alfedena postcard (front)",
+				alt: "Front of an antique postcard showing Via Roma in Alfedena",
+				...alfedenaViaRomaFrontImage,
 			},
 			{
-				title: "postcard-04",
-				alt: "Antique postcard from Alfedena, archival image 04",
-				...postcard04Jpg,
+				title: "Via Roma, Alfedena postcard (back)",
+				alt: "Back of the Via Roma postcard with handwritten Italian correspondence",
+				...alfedenaViaRomaBackImage,
 			},
 			{
-				title: "postcard-06a",
-				alt: "Antique postcard from Alfedena, archival image 06a",
-				...postcard06AGif,
+				title: "Alfedena school panorama postcard (front)",
+				alt: "Front of an antique postcard showing Alfedena and its school building",
+				...alfedenaSchoolPanoramaPostcardImage,
 			},
 			{
-				title: "postcard-06",
-				alt: "Antique postcard from Alfedena, archival image 06",
-				...postcard06Gif,
+				title: "Viale Mansueto De Amicis postcard (front)",
+				alt: "Front of an antique postcard showing Viale Mansueto De Amicis in Alfedena",
+				...alfedenaVialeMansuetoDeAmicisFrontImage,
 			},
 			{
-				title: "postcard-01",
-				alt: "Antique postcard from Alfedena, archival image 01",
-				...postcard01Gif,
+				title: "Viale Mansueto De Amicis postcard (back)",
+				alt: "Back of the Viale Mansueto De Amicis postcard with handwritten Italian correspondence",
+				...alfedenaVialeMansuetoDeAmicisBackImage,
 			},
 			{
-				title: "postcard-01a",
-				alt: "Antique postcard from Alfedena, archival image 01a",
-				...postcard01AGif,
+				title: "Alfedena school panorama, closer view (front)",
+				alt: "Front of an antique postcard showing a closer panorama of Alfedena and its school building",
+				...alfedenaSchoolPanoramaCloseViewImage,
 			},
 			{
-				title: "postcard-02",
-				alt: "Antique postcard from Alfedena, archival image 02",
-				...postcard02Gif,
+				title: "Snowy river and bridge in Alfedena postcard (front)",
+				alt: "Front of an antique postcard showing a snowy river, bridge, and buildings in Alfedena",
+				...alfedenaSnowyRiverFrontImage,
 			},
 			{
-				title: "postcard-03",
-				alt: "Antique postcard from Alfedena, archival image 03",
-				...postcard03Gif,
+				title: "Snowy river and bridge in Alfedena postcard (back)",
+				alt: "Back of the snowy Alfedena river postcard, addressed to Gaetano Di Loreto in Rochester",
+				...alfedenaSnowyRiverBackImage,
 			},
 			{
-				title: "postcard-03a",
-				alt: "Antique postcard from Alfedena, archival image 03a",
-				...postcard03AGif,
+				title: "Alfedena musicians and townspeople postcard (front)",
+				alt: "Front of an antique postcard showing musicians, townspeople, and children beside a fountain in Alfedena",
+				...alfedenaMusiciansFrontImage,
 			},
 			{
-				title: "postcard-03b",
-				alt: "Antique postcard from Alfedena, archival image 03b",
-				...postcard03BJpg,
+				title: "Alfedena musicians and townspeople postcard (back)",
+				alt: "Back of the Alfedena musicians postcard with correspondence and a Rochester address",
+				...alfedenaMusiciansBackImage,
 			},
 			{
-				title: "postcard-05",
-				alt: "Antique postcard from Alfedena, archival image 05",
-				...postcard05Jpg,
+				title: "Alfedena Cooperative Bank postcard (front)",
+				alt: "Front of an antique postcard showing the Cooperative Bank building in Alfedena",
+				...alfedenaCooperativeBankFrontImage,
 			},
 			{
-				title: "postcard-05a",
-				alt: "Antique postcard from Alfedena, archival image 05a",
-				...postcard05AGif,
+				title: "Alfedena Cooperative Bank postcard (back)",
+				alt: "Back of the Cooperative Bank postcard, addressed to Remo Di Loreto in Detroit",
+				...alfedenaCooperativeBankBackImage,
 			},
 			{
-				title: "postcard-07",
-				alt: "Antique postcard from Alfedena, archival image 07",
-				...postcard07Gif,
+				title: "Via Giuseppe De Amicis postcard (front)",
+				alt: "Front of an antique postcard showing Via Giuseppe De Amicis in Alfedena",
+				...alfedenaViaGiuseppeDeAmicisFrontImage,
 			},
 			{
-				title: "postcard-07a",
-				alt: "Antique postcard from Alfedena, archival image 07a",
-				...postcard07AGif,
+				title: "Via Giuseppe De Amicis postcard (back)",
+				alt: "Back of the Via Giuseppe De Amicis postcard, addressed to Remo and Marianna Di Loreto in Detroit",
+				...alfedenaViaGiuseppeDeAmicisBackImage,
 			},
 			{
-				title: "postcard-08",
-				alt: "Antique postcard from Alfedena, archival image 08",
-				...postcard08Gif,
+				title: "Cascina San Francesco postcard (front)",
+				alt: "Front of an antique postcard showing cattle at Cascina San Francesco near Alfedena",
+				...alfedenaCascinaSanFrancescoFrontImage,
 			},
 			{
-				title: "postcard-08a",
-				alt: "Antique postcard from Alfedena, archival image 08a",
-				...postcard08AGif,
+				title: "Cascina San Francesco postcard (back)",
+				alt: "Back of the Cascina San Francesco postcard with correspondence and a Detroit address",
+				...alfedenaCascinaSanFrancescoBackImage,
 			},
 			{
-				title: "postcard-09",
-				alt: "Antique postcard from Alfedena, archival image 09",
-				...postcard09Gif,
+				title: "View from the Prince of Naples Bridge",
+				alt: "Antique postcard view of Alfedena from the Prince of Naples Bridge, with a bus and pedestrians",
+				...alfedenaPrinceOfNaplesBridgePostcardImage,
 			},
 			{
-				title: "postcard-10",
-				alt: "Antique postcard from Alfedena, archival image 10",
-				...postcard10Gif,
+				title: "Alfedena and the Sangro Valley",
+				alt: "Antique postcard panorama of Alfedena and the Sangro Valley",
+				...alfedenaSangroValleyPostcardImage,
 			},
 			{
-				title: "postcard-11",
-				alt: "Antique postcard from Alfedena, archival image 11",
-				...postcard11Gif,
+				title: "Bridges over the Sangro River",
+				alt: "Antique postcard showing road and rail bridges over the Sangro River near Alfedena",
+				...alfedenaSangroBridgesPostcardImage,
 			},
 			{
-				title: "postcard-12",
-				alt: "Antique postcard from Alfedena, archival image 12",
-				...postcard12Gif,
+				title: "Rio Torto gorge near Alfedena",
+				alt: "Antique postcard showing the rocky Rio Torto gorge and river near Alfedena",
+				...alfedenaRioTortoGorgePostcardImage,
 			},
 			{
-				title: "postcard-13",
-				alt: "Antique postcard from Alfedena, archival image 13",
-				...postcard13Gif,
+				title: "Piazza Umberto I in winter",
+				alt: "Antique postcard showing snow-covered Piazza Umberto I in Alfedena",
+				...alfedenaPiazzaUmbertoPostcardImage,
 			},
 			{
-				title: "postcard-14",
-				alt: "Antique postcard from Alfedena, archival image 14",
-				...postcard14Gif,
+				title: "Alfedena school and nursery inauguration",
+				alt: "Antique postcard showing a crowd at the inauguration of Alfedena's school and nursery",
+				...alfedenaSchoolAndNurseryPostcardImage,
 			},
 			{
-				title: "postcard-15",
-				alt: "Antique postcard from Alfedena, archival image 15",
-				...postcard15Gif,
+				title: "Alfedena train station",
+				alt: "Antique postcard showing a steam train and passengers at Alfedena station",
+				...alfedenaTrainStationPostcardImage,
 			},
 			{
-				title: "postcard-16",
-				alt: "Antique postcard from Alfedena, archival image 16",
-				...postcard16Gif,
+				title: "Panorama of Barrea",
+				alt: "Antique postcard panorama of Barrea and the surrounding mountains",
+				...barreaPanoramaPostcardImage,
 			},
 			{
-				title: "postcard-17",
-				alt: "Antique postcard from Alfedena, archival image 17",
-				...postcard17Gif,
+				title: "Alfedena's medieval castle and bridge",
+				alt: "Antique postcard panorama of Alfedena's medieval castle and stone bridge",
+				...alfedenaMedievalCastleAndBridgePostcardImage,
 			},
 			{
-				title: "postcard-18",
-				alt: "Antique postcard from Alfedena, archival image 18",
-				...postcard18Gif,
+				title: "Porta del 500 in Alfedena",
+				alt: "Antique postcard showing the Porta del 500 stone archway in Alfedena",
+				...alfedenaPortaDel500PostcardImage,
 			},
 			{
-				title: "postcard-19",
-				alt: "Antique postcard from Alfedena, archival image 19",
-				...postcard19Gif,
+				title: "Town fountain in Alfedena",
+				alt: "Antique postcard showing the town fountain and surrounding buildings in Alfedena",
+				...alfedenaTownFountainPostcardImage,
 			},
 			{
-				title: "postcard-20",
-				alt: "Antique postcard from Alfedena, archival image 20",
-				...postcard20Gif,
+				title: "Panorama of Alfedena",
+				alt: "Antique postcard panorama of Alfedena beneath the surrounding mountains",
+				...alfedenaPanoramaPostcardImage,
 			},
 			{
-				title: "postcard-21",
-				alt: "Antique postcard from Alfedena, archival image 21",
-				...postcard21Gif,
+				title: "Via Roma and Albergo Aufidena",
+				alt: "Antique postcard showing Via Roma and Albergo Aufidena in Alfedena",
+				...alfedenaViaRomaAlbergoPostcardImage,
 			},
 		],
 	},
@@ -362,8 +373,9 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 		content:
 			"Photo of DiLoreto children, c. 1919. If you have additional information about this photo, please contact us.",
 		headerPhoto: {
-			title: "DiLoreto children (c. 1919)",
-			...image4DiLoretoS1919Jpg,
+			title: "DiLoreto children (circa 1919)",
+			alt: "Studio portrait of four DiLoreto children around 1919",
+			...diloretoChildrenCirca1919Image,
 		},
 	},
 	{
@@ -372,9 +384,9 @@ Front row: Quindo, Rosa Passarelli D'Amico, Lydia, Amelia, Camillo, and Josephin
 		content:
 			"## Nick & Mary's Store in Erie, PA\n\nNick and Mary (Monacelli) DiLoreto with sons William and Julio.",
 		headerPhoto: {
-			title:
-				"Nick and Mary (Monacelli) DiLoreto with sons William and Julio in their store in Erie, PA.",
-			...nickMariaBoysJpg,
+			title: "Nick and Mary DiLoreto's store in Erie",
+			alt: "Nick and Mary Monacelli DiLoreto with their sons William and Julio outside their store in Erie, Pennsylvania",
+			...nickMaryDiloretoStoreImage,
 		},
 	},
 	{
@@ -436,8 +448,9 @@ Oscar, 26, a dentist with offices at 3413 McDougall, volunteered but was turned 
 
 Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to the officers' training school.`,
 		headerPhoto: {
-			title: "1943 Detroit Free Press Article",
-			...freePress43Jpg,
+			title: "Detroit Free Press profile of Remo DiLoreto (1943)",
+			alt: "Scanned 1943 Detroit Free Press article profiling Remo DiLoreto and his family",
+			...remoDiloretoFreePressProfileImage,
 		},
 	},
 	{
@@ -447,49 +460,49 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 			"## A G.I.'s Visit to Alfedena\n\nThese photos were taken by Gilbert DiLoreto during his visit to Alfedena in 1946.",
 		galleryPhotos: [
 			{
-				title: "Panorama-117",
+				title: "Alfedena panorama, 1946 — view 1",
 				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 1",
-				...alfedenaPanorama117Jpg,
+				...alfedenaPanoramaView01Image,
 			},
 			{
-				title: "Panorama-118",
+				title: "Alfedena panorama, 1946 — view 2",
 				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 2",
-				...alfedenaPanorama118Jpg,
+				...alfedenaPanoramaView02Image,
 			},
 			{
-				title: "Panorama-119",
+				title: "Alfedena panorama, 1946 — view 3",
 				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 3",
-				...alfedenaPanorama119Jpg,
+				...alfedenaPanoramaView03Image,
 			},
 			{
-				title: "Panorama-120",
+				title: "Alfedena panorama, 1946 — view 4",
 				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 4",
-				...alfedenaPanorama120Jpg,
+				...alfedenaPanoramaView04Image,
 			},
 			{
-				title: "Panorama-121",
+				title: "Alfedena panorama, 1946 — view 5",
 				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 5",
-				...alfedenaPanorama121Jpg,
+				...alfedenaPanoramaView05Image,
 			},
 			{
-				title: "Panorama-122",
+				title: "Alfedena panorama, 1946 — view 6",
 				alt: "Black-and-white panoramic view of Alfedena and the surrounding mountains in 1946, view 6",
-				...alfedenaPanorama122Jpg,
+				...alfedenaPanoramaView06Image,
 			},
 			{
-				title: "Ruins-111",
+				title: "War-damaged buildings in Alfedena, 1946 — view 1",
 				alt: "Black-and-white view of war-damaged buildings in Alfedena in 1946, view 1",
-				...alfedenaRuins111Jpg,
+				...alfedenaWarRuinsView01Image,
 			},
 			{
-				title: "Ruins-112",
+				title: "War-damaged buildings in Alfedena, 1946 — view 2",
 				alt: "Black-and-white view of war-damaged buildings in Alfedena in 1946, view 2",
-				...alfedenaRuins112Jpg,
+				...alfedenaWarRuinsView02Image,
 			},
 			{
-				title: "Ruins-Apr46",
+				title: "War-damaged buildings in Alfedena, April 1946",
 				alt: "Black-and-white view of war-damaged buildings in Alfedena in April 1946",
-				...alfedenaRuinsApr46Jpg,
+				...alfedenaWarRuinsApril1946Image,
 			},
 		],
 	},
@@ -500,40 +513,49 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 			"## A G.I.'s Visit to Alfedena\n\nGilbert DiLoreto visited relatives in Alfedena and Rome after World War II.",
 		galleryPhotos: [
 			{
-				title: "Group Photo Balcony",
-				...rome46CJpg,
+				title: "Relatives gathered on a balcony in Rome",
+				alt: "Group of DiLoreto relatives gathered on a balcony in Rome in 1946",
+				...romeRelativesBalconyGroupImage,
 			},
 			{
-				title: "Entire Family Photo",
-				...alfedena46DJpg,
+				title: "DiLoreto relatives in Alfedena",
+				alt: "Large group portrait of DiLoreto relatives in Alfedena in 1946",
+				...alfedenaRelativesFamilyGroupImage,
 			},
 			{
-				title: "Gilbert DiLoreto kneeling center with other relatives",
-				...alfedena89Jpg,
+				title: "Gilbert DiLoreto with relatives in Alfedena — group 1",
+				alt: "Gilbert DiLoreto kneeling at center with relatives in Alfedena in 1946",
+				...alfedenaRelativesGilbertKneeling89Image,
 			},
 			{
-				title: "Woman Sitting on Balcony",
-				...rome46AJpg,
+				title: "Woman seated on a balcony in Rome",
+				alt: "Woman seated on a balcony overlooking Rome in 1946",
+				...romeWomanSeatedOnBalconyImage,
 			},
 			{
-				title: "Woman Standing on Balcony",
-				...rome46BJpg,
+				title: "Woman standing on a balcony in Rome",
+				alt: "Woman standing on a balcony overlooking Rome in 1946",
+				...romeWomanStandingOnBalconyImage,
 			},
 			{
-				title: "Man Behind Desk",
-				...rome46EJpg,
+				title: "Man seated at a desk in Rome",
+				alt: "Man seated behind a desk in Rome in 1946",
+				...romeManAtDeskImage,
 			},
 			{
-				title: "Old Woman Looking Away",
-				...rome46FJpg,
+				title: "Elderly woman in Rome",
+				alt: "Portrait of an elderly woman looking away from the camera in Rome in 1946",
+				...romeElderlyWomanPortraitImage,
 			},
 			{
-				title: "Parents and Child",
-				...rome46GJpg,
+				title: "Parents and child in Rome",
+				alt: "Parents standing with their young child on a street in Rome in 1946",
+				...romeParentsAndChildImage,
 			},
 			{
-				title: "Gilbert DiLoreto kneeling in center with other relatives.",
-				...alfedena46HJpg,
+				title: "Gilbert DiLoreto with relatives in Alfedena — group 2",
+				alt: "Gilbert DiLoreto kneeling in front of another group of relatives in Alfedena in 1946",
+				...alfedenaRelativesGilbertKneeling46HImage,
 			},
 		],
 	},
@@ -543,8 +565,9 @@ Gilbert, 24, is waiting to be called in the Army. He hopes to gain admission to 
 		content:
 			"## Family Reunion\n\nAbout 150 family members attended the DiLoreto family reunion in Harper Woods, Michigan. A genealogical database of more than 500 descendants has been compiled, tracing ancestors back to the mid-1600s.",
 		headerPhoto: {
-			title: "DiLoreto Family Reunion Program (1965)",
-			...image1965ReunionProgramGif,
+			title: "DiLoreto family reunion program (1965)",
+			alt: "Cover and program pages from the 1965 DiLoreto family reunion in Harper Woods, Michigan",
+			...diloretoFamilyReunionProgram1965Image,
 		},
 	},
 	{
@@ -595,34 +618,39 @@ The roots were unquestionably strong and transplanted in our country with its fr
 			"## Photos by Bob Brunetti\n\nJune 2004. Contact: [rgbprocare1@americarecorp.com](mailto:rgbprocare1@americarecorp.com)",
 		galleryPhotos: [
 			{
-				title:
-					"A bridge and garden near the entrance to the village, over a branch of the Sangro River.",
-				...img0339JPG,
+				title: "Bridge and garden near the entrance to Alfedena",
+				alt: "Bridge and garden over a branch of the Sangro River near the entrance to Alfedena in 2004",
+				...alfedenaBridgeAndGardenImage,
 			},
 			{
-				title: "Ancient ruins in Alfedena.",
-				...img0340JPG,
+				title: "Ancient ruins in Alfedena",
+				alt: "Stone ruins surrounded by vegetation in Alfedena in 2004",
+				...alfedenaAncientRuinsImage,
 			},
 			{
-				title: "Oldest homes in Alfedena on Via Casili.",
-				...img0341JPG,
+				title: "Historic homes on Via Casili",
+				alt: "Historic multistory homes lining Via Casili in Alfedena in 2004",
+				...alfedenaViaCasiliHistoricHomesImage,
 			},
 			{
-				title: "Stream descending from mountains above Alfedena.",
-				...img0346JPG,
+				title: "Mountain stream above Alfedena",
+				alt: "Rocky stream descending from the mountains above Alfedena in 2004",
+				...alfedenaMountainStreamImage,
 			},
 			{
-				title:
-					"Ancient post office on Ponte D'Achillewhich, renovated in 2002.",
-				...img0347JPG,
+				title: "Historic post office on Ponte D'Achille",
+				alt: "Plaque on the historic post office at Ponte D'Achille in Alfedena, renovated in 2002",
+				...alfedenaPonteDAchillePostOfficeImage,
 			},
 			{
-				title: "13th century portal of the Church of Sts. Pietro e Paolo.",
-				...img0349JPG,
+				title: "Church of Saints Peter and Paul portal",
+				alt: "Thirteenth-century decorated portal of the Church of Saints Peter and Paul in Alfedena",
+				...alfedenaChurchPortalImage,
 			},
 			{
-				title: "Panorama of Alfedena with the Meta Range in the background.",
-				...img0364JPG,
+				title: "Alfedena and the Meta Range",
+				alt: "Panoramic view of Alfedena with the Meta mountain range in the background in 2004",
+				...alfedenaMetaRangePanoramaImage,
 			},
 		],
 	},
