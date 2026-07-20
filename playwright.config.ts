@@ -54,6 +54,7 @@ export default defineConfig({
 			name: "mobile-chromium",
 			testMatch: [
 				"**/*.visual.spec.ts",
+				"**/bio-modals.spec.ts",
 				"**/gallery-*.spec.ts",
 				"**/smoke.spec.ts",
 			],
