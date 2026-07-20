@@ -8,7 +8,11 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**", "!!src/routeTree.gen.ts"]
+		"includes": [
+			"**",
+			"!!src/routeTree.gen.ts",
+			"!!src/content/genealogy/generated.json"
+		]
 	},
 	"assist": {
 		"actions": {

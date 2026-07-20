@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import type { JSX } from "react";
 import { lazy, Suspense, useCallback, useRef, useState } from "react";
 import type { OpenPhoto } from "~/components/photo";
@@ -63,17 +63,22 @@ function FamilyHistory(): JSX.Element {
 					would love to hear from any relatives with updates. An updated copy of
 					the complete family tree can be sent as a PDF to family members.
 				</p>
-				<Button
-					variant="outline"
-					className="border-primary text-primary font-sans hover:bg-primary hover:text-primary-contrast"
-					onClick={(event) => {
-						contactTriggerRef.current = event.currentTarget;
-						setPhoto(undefined);
-						setContact(true);
-					}}
-				>
-					Contact Us
-				</Button>
+				<div className="flex flex-wrap justify-center gap-2">
+					<Button asChild className="font-sans">
+						<Link to="/familytree">Explore the Family Tree</Link>
+					</Button>
+					<Button
+						variant="outline"
+						className="border-primary text-primary font-sans hover:bg-primary hover:text-primary-contrast"
+						onClick={(event) => {
+							contactTriggerRef.current = event.currentTarget;
+							setPhoto(undefined);
+							setContact(true);
+						}}
+					>
+						Contact Us
+					</Button>
+				</div>
 			</div>
 
 			{familyHistory.map((record, index) => (

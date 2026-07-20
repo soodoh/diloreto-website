@@ -56,6 +56,7 @@ export default defineConfig({
 				"**/*.visual.spec.ts",
 				"**/bio-modals.spec.ts",
 				"**/gallery-*.spec.ts",
+				"**/family-tree.spec.ts",
 				"**/smoke.spec.ts",
 			],
 			use: { ...devices["Pixel 7"] },

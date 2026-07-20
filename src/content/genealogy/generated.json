@@ -1,0 +1,7716 @@
+{
+	"schemaVersion": 1,
+	"source": {
+		"format": "LINEAGE-LINKED",
+		"version": "5.5",
+		"producer": "Ancestry.com Family Trees"
+	},
+	"privacy": {
+		"livingPersonRule": "A person is presumed deceased when a death record exists, their latest recorded birth year is at least 120 years before the build year, or they are an ancestor of someone meeting that 120-year birth threshold.",
+		"livingPersonLabel": "Living person"
+	},
+	"defaultPersonId": "P90",
+	"people": {
+		"P1": {
+			"id": "P1",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F18",
+				"F19"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P2": {
+			"id": "P2",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F1"
+			],
+			"familyAsPartnerIds": [
+				"F18"
+			]
+		},
+		"P3": {
+			"id": "P3",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F20",
+				"F21"
+			],
+			"familyAsPartnerIds": [
+				"F5",
+				"F19"
+			]
+		},
+		"P4": {
+			"id": "P4",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F5"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P5": {
+			"id": "P5",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F18",
+				"F19"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P6": {
+			"id": "P6",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F5"
+			]
+		},
+		"P7": {
+			"id": "P7",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F21"
+			]
+		},
+		"P8": {
+			"id": "P8",
+			"isLiving": false,
+			"name": {
+				"display": "Eduardo Lobio Boncato",
+				"given": "Eduardo Lobio",
+				"surname": "Boncato"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-181",
+					"type": "Birth",
+					"date": "13 Oct 1911",
+					"place": "Umingan, Pangasinan, Philippines",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-184",
+							"sourceId": "S1358219752",
+							"extensions": {
+								"_APID": [
+									"1,1788::276735326"
+								]
+							}
+						},
+						{
+							"id": "citation-186",
+							"sourceId": "S1358220497",
+							"page": "Number: 574-03-5073; Issue State: Alaska; Issue Date: Before 1951",
+							"extensions": {
+								"_APID": [
+									"1,3693::5657249"
+								]
+							}
+						},
+						{
+							"id": "citation-189",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::3822666"
+								]
+							}
+						},
+						{
+							"id": "citation-191",
+							"sourceId": "S1358221233",
+							"extensions": {
+								"_APID": [
+									"1,70050::9681884"
+								]
+							}
+						},
+						{
+							"id": "citation-193",
+							"sourceId": "S1358221235",
+							"extensions": {
+								"_APID": [
+									"1,8750::3687734"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-195",
+					"type": "Death",
+					"date": "27 Feb 2001",
+					"place": "San Jose, Santa Clara, California, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-198",
+							"sourceId": "S1358220497",
+							"page": "Number: 574-03-5073; Issue State: Alaska; Issue Date: Before 1951",
+							"extensions": {
+								"_APID": [
+									"1,3693::5657249"
+								]
+							}
+						},
+						{
+							"id": "citation-201",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::3822666"
+								]
+							}
+						},
+						{
+							"id": "citation-203",
+							"sourceId": "S1358221233",
+							"extensions": {
+								"_APID": [
+									"1,70050::9681884"
+								]
+							}
+						},
+						{
+							"id": "citation-205",
+							"sourceId": "S1358221235",
+							"extensions": {
+								"_APID": [
+									"1,8750::3687734"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-219",
+					"type": "Burial",
+					"place": "CA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-221",
+							"sourceId": "S1358221235",
+							"extensions": {
+								"_APID": [
+									"1,8750::3687734"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-223",
+					"type": "Military service",
+					"date": "30 Sep 1942",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-225",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::3822666"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-227",
+					"type": "Military service",
+					"date": "18 Jan 1946",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-229",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::3822666"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-231",
+					"type": "Residence",
+					"date": "1993",
+					"place": "San Diego, CA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-234",
+							"sourceId": "S1358219752",
+							"extensions": {
+								"_APID": [
+									"1,1788::276735326"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-237",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=8"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F4"
+			],
+			"familyAsPartnerIds": [
+				"F20"
+			]
+		},
+		"P9": {
+			"id": "P9",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F20",
+				"F21"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P10": {
+			"id": "P10",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F20",
+				"F21"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P11": {
+			"id": "P11",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F4"
+			]
+		},
+		"P12": {
+			"id": "P12",
+			"isLiving": false,
+			"name": {
+				"display": "Felix Boncato",
+				"given": "Felix",
+				"surname": "Boncato"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-307",
+					"type": "Birth",
+					"place": "Philippines",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-309",
+					"type": "Death",
+					"place": "Philippines",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-313",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=12"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F4",
+				"F22"
+			]
+		},
+		"P13": {
+			"id": "P13",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F6"
+			],
+			"familyAsPartnerIds": [
+				"F1"
+			]
+		},
+		"P14": {
+			"id": "P14",
+			"isLiving": false,
+			"name": {
+				"display": "Gilbert R Diloreto",
+				"given": "Gilbert R",
+				"surname": "Diloreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-377",
+					"type": "Birth",
+					"date": "24 May 1918",
+					"place": "Detroit, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-380",
+							"sourceId": "S1358220497",
+							"page": "Number: 365-16-3764; Issue State: Michigan; Issue Date: Before 1951",
+							"extensions": {
+								"_APID": [
+									"1,3693::15683316"
+								]
+							}
+						},
+						{
+							"id": "citation-383",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::2213246"
+								]
+							}
+						},
+						{
+							"id": "citation-385",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188279"
+								]
+							}
+						},
+						{
+							"id": "citation-388",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555497"
+								]
+							}
+						},
+						{
+							"id": "citation-391",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::184099"
+								]
+							}
+						},
+						{
+							"id": "citation-393",
+							"sourceId": "S1358221202",
+							"extensions": {
+								"_APID": [
+									"1,60901::39789411"
+								]
+							}
+						},
+						{
+							"id": "citation-395",
+							"sourceId": "S1358219752",
+							"extensions": {
+								"_APID": [
+									"1,1788::333500477"
+								]
+							}
+						},
+						{
+							"id": "citation-397",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222565"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-400",
+					"type": "Death",
+					"date": "04/02/1998",
+					"place": "Grosse Point, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-403",
+							"sourceId": "S1358220497",
+							"page": "Number: 365-16-3764; Issue State: Michigan; Issue Date: Before 1951",
+							"extensions": {
+								"_APID": [
+									"1,3693::15683316"
+								]
+							}
+						},
+						{
+							"id": "citation-406",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::184099"
+								]
+							}
+						},
+						{
+							"id": "citation-408",
+							"sourceId": "S1358221202",
+							"extensions": {
+								"_APID": [
+									"1,60901::39789411"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-433",
+					"type": "Residence",
+					"date": "1947",
+					"place": "Battle Creek, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-436",
+							"sourceId": "S1358221164",
+							"extensions": {
+								"_APID": [
+									"1,2469::432802659"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-438",
+					"type": "Residence",
+					"date": "1935",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-441",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222565"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-444",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1 Apr 1940",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-447",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222565"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-450",
+					"type": "Residence",
+					"date": "1993",
+					"place": "Grosse Pointe Woods, MI",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-453",
+							"sourceId": "S1358219752",
+							"extensions": {
+								"_APID": [
+									"1,1788::333500477"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-455",
+					"type": "Military service",
+					"date": "31 Mar 1944",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-457",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::184099"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-459",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1930",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-462",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555497"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-465",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-468",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188279"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-471",
+					"type": "Residence",
+					"place": "Detroit, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-473",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::2213246"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-476",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=14"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F2"
+			],
+			"familyAsPartnerIds": [
+				"F1"
+			]
+		},
+		"P15": {
+			"id": "P15",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F1"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P16": {
+			"id": "P16",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F1"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P17": {
+			"id": "P17",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F1"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P18": {
+			"id": "P18",
+			"isLiving": false,
+			"name": {
+				"display": "Mary D'Amico",
+				"given": "Mary",
+				"surname": "D'Amico"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-503",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Daughter",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-506",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332281"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-509",
+					"type": "Arrival",
+					"date": "1897",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-512",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555471"
+								]
+							}
+						},
+						{
+							"id": "citation-515",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332281"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-518",
+					"type": "Birth",
+					"date": "12 Oct 1889",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-521",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188275"
+								]
+							}
+						},
+						{
+							"id": "citation-524",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555471"
+								]
+							}
+						},
+						{
+							"id": "citation-527",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222562"
+								]
+							}
+						},
+						{
+							"id": "citation-530",
+							"sourceId": "S1358222673",
+							"extensions": {
+								"_APID": [
+									"1,3171::663594"
+								]
+							}
+						},
+						{
+							"id": "citation-532",
+							"sourceId": "S1358220497",
+							"page": "Number: 365-68-4334; Issue State: Michigan; Issue Date: 1973",
+							"extensions": {
+								"_APID": [
+									"1,3693::15683380"
+								]
+							}
+						},
+						{
+							"id": "citation-535",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::900066954"
+								]
+							}
+						},
+						{
+							"id": "citation-537",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::900478962"
+								]
+							}
+						},
+						{
+							"id": "citation-539",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259155"
+								]
+							}
+						},
+						{
+							"id": "citation-542",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332281"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-578",
+					"type": "Residence",
+					"value": "Relationship to Head: Daughter",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-581",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259155"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-584",
+					"type": "Death",
+					"date": "21 Mar 1982",
+					"place": "Harper Woods, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-587",
+							"sourceId": "S1358222673",
+							"extensions": {
+								"_APID": [
+									"1,3171::663594"
+								]
+							}
+						},
+						{
+							"id": "citation-589",
+							"sourceId": "S1358220497",
+							"page": "Number: 365-68-4334; Issue State: Michigan; Issue Date: 1973",
+							"extensions": {
+								"_APID": [
+									"1,3693::15683380"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-592",
+					"type": "Death",
+					"date": "21 Mar 1982",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-595",
+					"type": "Residence",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-597",
+							"sourceId": "S1358222673",
+							"extensions": {
+								"_APID": [
+									"1,3171::663594"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-599",
+					"type": "Residence",
+					"date": "1935",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-602",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222562"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-605",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1 Apr 1940",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-608",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222562"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-611",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1930",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-614",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555471"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-617",
+					"type": "Arrival",
+					"date": "1894",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-620",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188275"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-623",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-626",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188275"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-630",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=18"
+				},
+				{
+					"id": "citation-634",
+					"sourceId": "S1358222733",
+					"extensions": {
+						"_APID": [
+							"1,61377::900478961"
+						]
+					}
+				}
+			],
+			"media": [
+				{
+					"id": "media-636",
+					"file": "http://trees.ancestry.com/rd?f=image&guid=78b46cf2-748c-4959-898d-65a416df781e&tid=107780571&pid=18",
+					"format": "jpg",
+					"title": "Marianne D'Amico Mass Card"
+				},
+				{
+					"id": "media-640",
+					"file": "http://trees.ancestry.com/rd?f=image&guid=e278f562-8d29-4196-9e33-e873669b359e&tid=107780571&pid=18",
+					"format": "jpg",
+					"title": "Marianne D'Amico Mass Card"
+				}
+			],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": [
+				"F2"
+			]
+		},
+		"P19": {
+			"id": "P19",
+			"isLiving": false,
+			"name": {
+				"display": "Remo Antonio Diloreto",
+				"given": "Remo Antonio",
+				"surname": "Diloreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-647",
+					"type": "Birth",
+					"date": "9 Jun 1885",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-650",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 16B; Enumeration District: 281; Image: 244",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188274"
+								]
+							}
+						},
+						{
+							"id": "citation-653",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555480"
+								]
+							}
+						},
+						{
+							"id": "citation-656",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222561"
+								]
+							}
+						},
+						{
+							"id": "citation-659",
+							"sourceId": "S1358222731",
+							"page": "Year: 1902; Arrival: New York, New York; Microfilm Serial: T715, 1897-1957; Microfilm Roll: Roll 0271; Line: 14; Page Number: 12",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						},
+						{
+							"id": "citation-662",
+							"sourceId": "S1358222737",
+							"page": "Registration State: Michigan; Registration County: Wayne; Roll: 2024111; Draft Board: 10",
+							"extensions": {
+								"_APID": [
+									"1,6482::32116818"
+								]
+							}
+						},
+						{
+							"id": "citation-665",
+							"sourceId": "S1358222739",
+							"page": "The National Archives at St. Louis; St. Louis, Missouri; Draft Registration Cards for Fourth Registration for Michigan, 04/27/1942 - 04/27/1942; NAI Number: 623283; Record Group Title: Records of the Selective Service System; Record Group Number: 147",
+							"extensions": {
+								"_APID": [
+									"1,1002::11747053"
+								]
+							}
+						},
+						{
+							"id": "citation-669",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::66954"
+								]
+							}
+						},
+						{
+							"id": "citation-671",
+							"sourceId": "S1358221202",
+							"extensions": {
+								"_APID": [
+									"1,60901::4978679"
+								]
+							}
+						},
+						{
+							"id": "citation-673",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::478962"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-675",
+					"type": "Death",
+					"date": "21 May 1951",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-713",
+					"type": "Arrival",
+					"date": "1902",
+					"place": "New York, New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-717",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555480"
+								]
+							}
+						},
+						{
+							"id": "citation-720",
+							"sourceId": "S1358222731",
+							"page": "Year: 1902; Arrival: New York, New York; Microfilm Serial: T715, 1897-1957; Microfilm Roll: Roll 0271; Line: 14; Page Number: 12",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-723",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1930",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-726",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555480"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-729",
+					"type": "Residence",
+					"date": "1942",
+					"place": "Detroit, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-732",
+							"sourceId": "S1358222739",
+							"page": "The National Archives at St. Louis; St. Louis, Missouri; Draft Registration Cards for Fourth Registration for Michigan, 04/27/1942 - 04/27/1942; NAI Number: 623283; Record Group Title: Records of the Selective Service System; Record Group Number: 147",
+							"extensions": {
+								"_APID": [
+									"1,1002::11747053"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-736",
+					"type": "Residence",
+					"date": "1917-1918",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-739",
+							"sourceId": "S1358222737",
+							"page": "Registration State: Michigan; Registration County: Wayne; Roll: 2024111; Draft Board: 10",
+							"extensions": {
+								"_APID": [
+									"1,6482::32116818"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-742",
+					"type": "Departure",
+					"place": "Genoa and Naples, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-745",
+							"sourceId": "S1358222731",
+							"page": "Year: 1902; Arrival: New York, New York; Microfilm Serial: T715, 1897-1957; Microfilm Roll: Roll 0271; Line: 14; Page Number: 12",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-748",
+					"type": "Residence",
+					"place": "Alfedcew",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-750",
+							"sourceId": "S1358222731",
+							"page": "Year: 1902; Arrival: New York, New York; Microfilm Serial: T715, 1897-1957; Microfilm Roll: Roll 0271; Line: 14; Page Number: 12",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-753",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1 Apr 1940",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-756",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222561"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-759",
+					"type": "Residence",
+					"date": "1935",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-762",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222561"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-765",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-768",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 16B; Enumeration District: 281; Image: 244",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188274"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-771",
+					"type": "Arrival",
+					"date": "1901",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-774",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 16B; Enumeration District: 281; Image: 244",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188274"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-778",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=19"
+				}
+			],
+			"media": [
+				{
+					"id": "media-782",
+					"file": "http://trees.ancestry.com/rd?f=image&guid=7ea14fb8-8992-48ef-a2b5-a9123fb8e0b9&tid=107780571&pid=19",
+					"format": "jpg",
+					"title": "Remo DiLoreto Mass Card"
+				}
+			],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": [
+				"F2"
+			]
+		},
+		"P20": {
+			"id": "P20",
+			"isLiving": false,
+			"name": {
+				"display": "Georgianna Dugas",
+				"given": "Georgianna",
+				"surname": "Dugas"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-809",
+					"type": "Birth",
+					"date": "abt 1881",
+					"place": "Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-812",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Highland Park, Wayne, Michigan; Roll: 1074; Page: 20B; Enumeration District: 1003; Image: 1050.0; FHL microfilm: 2340809",
+							"extensions": {
+								"_APID": [
+									"1,6224::13719706"
+								]
+							}
+						},
+						{
+							"id": "citation-815",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::3665042"
+								]
+							}
+						},
+						{
+							"id": "citation-817",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Inverness, Cheboygan, Michigan; Roll: T627_1740; Page: 10A; Enumeration District: 16-14",
+							"extensions": {
+								"_APID": [
+									"1,2442::78696626"
+								]
+							}
+						},
+						{
+							"id": "citation-820",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Inverness, Cheboygan, Michigan; Roll: T624_641; Page: 16A; Enumeration District: 0078; FHL microfilm: 1374654",
+							"extensions": {
+								"_APID": [
+									"1,7884::196936090"
+								]
+							}
+						},
+						{
+							"id": "citation-823",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::49055291"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-825",
+					"type": "Burial",
+					"place": "Cheboygan, Cheboygan County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-827",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::49055291"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-829",
+					"type": "Death",
+					"date": "1964",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-831",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::49055291"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-833",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1910",
+					"place": "Inverness, Cheboygan, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-836",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Inverness, Cheboygan, Michigan; Roll: T624_641; Page: 16A; Enumeration District: 0078; FHL microfilm: 1374654",
+							"extensions": {
+								"_APID": [
+									"1,7884::196936090"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-839",
+					"type": "Residence",
+					"date": "1935",
+					"place": "Inverness, Cheboygan, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-842",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Inverness, Cheboygan, Michigan; Roll: T627_1740; Page: 10A; Enumeration District: 16-14",
+							"extensions": {
+								"_APID": [
+									"1,2442::78696626"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-845",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1 Apr 1940",
+					"place": "Inverness, Cheboygan, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-848",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Inverness, Cheboygan, Michigan; Roll: T627_1740; Page: 10A; Enumeration District: 16-14",
+							"extensions": {
+								"_APID": [
+									"1,2442::78696626"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-851",
+					"type": "Residence",
+					"place": "Hebron, Township",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-853",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::3665042"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-855",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1930",
+					"place": "Highland Park, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-858",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Highland Park, Wayne, Michigan; Roll: 1074; Page: 20B; Enumeration District: 1003; Image: 1050.0; FHL microfilm: 2340809",
+							"extensions": {
+								"_APID": [
+									"1,6224::13719706"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-862",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=20"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F6"
+			]
+		},
+		"P21": {
+			"id": "P21",
+			"isLiving": false,
+			"name": {
+				"display": "George Gouine",
+				"given": "George",
+				"surname": "Gouine"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-888",
+					"type": "Birth",
+					"date": "abt 1876",
+					"place": "Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-891",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Highland Park, Wayne, Michigan; Roll: 1074; Page: 20B; Enumeration District: 1003; Image: 1050.0; FHL microfilm: 2340809",
+							"extensions": {
+								"_APID": [
+									"1,6224::13719733"
+								]
+							}
+						},
+						{
+							"id": "citation-894",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::853766"
+								]
+							}
+						},
+						{
+							"id": "citation-896",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Inverness, Cheboygan, Michigan; Roll: T627_1740; Page: 10A; Enumeration District: 16-14",
+							"extensions": {
+								"_APID": [
+									"1,2442::78696625"
+								]
+							}
+						},
+						{
+							"id": "citation-899",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Inverness, Cheboygan, Michigan; Roll: T624_641; Page: 16A; Enumeration District: 0078; FHL microfilm: 1374654",
+							"extensions": {
+								"_APID": [
+									"1,7884::11977588"
+								]
+							}
+						},
+						{
+							"id": "citation-902",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::49055259"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-904",
+					"type": "Death",
+					"date": "14 August 1964",
+					"place": "Cheboygan, Cheboygan County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-907",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::49055259"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-909",
+					"type": "Burial",
+					"place": "Cheboygan, Cheboygan County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-911",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::49055259"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-913",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1910",
+					"place": "Inverness, Cheboygan, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-916",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Inverness, Cheboygan, Michigan; Roll: T624_641; Page: 16A; Enumeration District: 0078; FHL microfilm: 1374654",
+							"extensions": {
+								"_APID": [
+									"1,7884::11977588"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-919",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1 Apr 1940",
+					"place": "Inverness, Cheboygan, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-922",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Inverness, Cheboygan, Michigan; Roll: T627_1740; Page: 10A; Enumeration District: 16-14",
+							"extensions": {
+								"_APID": [
+									"1,2442::78696625"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-925",
+					"type": "Residence",
+					"date": "1935",
+					"place": "Inverness, Cheboygan, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-928",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Inverness, Cheboygan, Michigan; Roll: T627_1740; Page: 10A; Enumeration District: 16-14",
+							"extensions": {
+								"_APID": [
+									"1,2442::78696625"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-931",
+					"type": "Residence",
+					"place": "Cheboygan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-933",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::853766"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-935",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1930",
+					"place": "Highland Park, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-938",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Highland Park, Wayne, Michigan; Roll: 1074; Page: 20B; Enumeration District: 1003; Image: 1050.0; FHL microfilm: 2340809",
+							"extensions": {
+								"_APID": [
+									"1,6224::13719733"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-942",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=21"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F7"
+			],
+			"familyAsPartnerIds": [
+				"F6"
+			]
+		},
+		"P22": {
+			"id": "P22",
+			"isLiving": false,
+			"name": {
+				"display": "Eufrasia Maria Salome Gigante",
+				"given": "Eufrasia Maria Salome",
+				"surname": "Gigante"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-949",
+					"type": "Death",
+					"date": "about 1926",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-951",
+					"type": "Birth",
+					"date": "July 7, 1854",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-954",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189541"
+								]
+							}
+						},
+						{
+							"id": "citation-957",
+							"sourceId": "S1358227473",
+							"page": "Pennsylvania Historic and Museum Commission; Pennsylvania, USA; Certificate Number Range: 037501-040500",
+							"extensions": {
+								"_APID": [
+									"1,5164::753296797"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-978",
+					"type": "Arrival",
+					"date": "1913",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-981",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189541"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-984",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-987",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189541"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-990",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=22"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F11"
+			]
+		},
+		"P23": {
+			"id": "P23",
+			"isLiving": false,
+			"name": {
+				"display": "Panfilo Filippo Diloreto",
+				"given": "Panfilo Filippo",
+				"surname": "Diloreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-996",
+					"type": "Death",
+					"date": "about 1920",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-998",
+					"type": "Birth",
+					"date": "April 28, 1847",
+					"place": "Barrea, Aquila, L'Aquila, Abruzzo, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1001",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189540"
+								]
+							}
+						},
+						{
+							"id": "citation-1004",
+							"sourceId": "S1358227473",
+							"page": "Pennsylvania Historic and Museum Commission; Pennsylvania, USA; Certificate Number Range: 037501-040500",
+							"extensions": {
+								"_APID": [
+									"1,5164::603296797"
+								]
+							}
+						},
+						{
+							"id": "citation-1007",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5097284"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1028",
+					"type": "Baptism",
+					"date": "28 Apr 1847",
+					"place": "Civile, Barrea, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1031",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5097284"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1034",
+					"type": "Baptism",
+					"date": "14 Sep 1850",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-1036",
+					"type": "Arrival",
+					"date": "1913",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1039",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189540"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1042",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1045",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189540"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1048",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=23"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F15"
+			],
+			"familyAsPartnerIds": [
+				"F11"
+			]
+		},
+		"P24": {
+			"id": "P24",
+			"isLiving": false,
+			"name": {
+				"display": "Oscar Arthur DiLoreto",
+				"given": "Oscar Arthur",
+				"surname": "DiLoreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1055",
+					"type": "Death",
+					"date": "28 Jun 1984",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-1057",
+					"type": "Birth",
+					"date": "26 Aug 1916",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1061",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=24"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F2"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P25": {
+			"id": "P25",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F2"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P26": {
+			"id": "P26",
+			"isLiving": false,
+			"name": {
+				"display": "Arnold Di Loreto",
+				"given": "Arnold",
+				"surname": "Di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1086",
+					"type": "Birth",
+					"date": "17 Sep 1921",
+					"place": "Detroit, Wayne County, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1089",
+							"sourceId": "S1358222717",
+							"extensions": {
+								"_APID": [
+									"1,60872::1238543"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1091",
+					"type": "Death",
+					"date": "25 Apr 1922",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1094",
+							"sourceId": "S1358222717",
+							"extensions": {
+								"_APID": [
+									"1,60872::1238543"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1100",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=26"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F2"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P27": {
+			"id": "P27",
+			"isLiving": false,
+			"name": {
+				"display": "Oscar Arthur DiLoreto",
+				"given": "Oscar Arthur",
+				"surname": "DiLoreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1106",
+					"type": "Birth",
+					"date": "26 Aug 1916",
+					"place": "Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1109",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188278"
+								]
+							}
+						},
+						{
+							"id": "citation-1112",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555455"
+								]
+							}
+						},
+						{
+							"id": "citation-1115",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222564"
+								]
+							}
+						},
+						{
+							"id": "citation-1118",
+							"sourceId": "S1358222603",
+							"page": "National Archives and Records Administration; Washington, D.C.; Passenger and Crew Lists of Vessels Arriving at Seattle, Washington; NAI Number: 4449160; Record Group Title: Records of the Immigration and Naturalization Service, 1787 - 2004; Record Group N",
+							"extensions": {
+								"_APID": [
+									"1,8945::2542689"
+								]
+							}
+						},
+						{
+							"id": "citation-1122",
+							"sourceId": "S1358221317",
+							"extensions": {
+								"_APID": [
+									"1,1732::357531112"
+								]
+							}
+						},
+						{
+							"id": "citation-1124",
+							"sourceId": "S1358220497",
+							"page": "Number: 364-16-4304; Issue State: Michigan; Issue Date: Before 1951",
+							"extensions": {
+								"_APID": [
+									"1,3693::15683398"
+								]
+							}
+						},
+						{
+							"id": "citation-1127",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::1615200"
+								]
+							}
+						},
+						{
+							"id": "citation-1129",
+							"sourceId": "S1358222673",
+							"extensions": {
+								"_APID": [
+									"1,3171::1297042"
+								]
+							}
+						},
+						{
+							"id": "citation-1131",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::11059250"
+								]
+							}
+						},
+						{
+							"id": "citation-1133",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::40726295"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1135",
+					"type": "Death",
+					"date": "28 Jun 1984",
+					"place": "Oscoda, Iosco, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1138",
+							"sourceId": "S1358220497",
+							"page": "Number: 364-16-4304; Issue State: Michigan; Issue Date: Before 1951",
+							"extensions": {
+								"_APID": [
+									"1,3693::15683398"
+								]
+							}
+						},
+						{
+							"id": "citation-1141",
+							"sourceId": "S1358222673",
+							"extensions": {
+								"_APID": [
+									"1,3171::1297042"
+								]
+							}
+						},
+						{
+							"id": "citation-1143",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::11059250"
+								]
+							}
+						},
+						{
+							"id": "citation-1145",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::40726295"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1174",
+					"type": "Burial",
+					"place": "Oscoda, Iosco County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1176",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::40726295"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1178",
+					"type": "Burial",
+					"place": "Oscoda, Iosco County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1180",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::40726295"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1182",
+					"type": "Military service",
+					"date": "12 Jan 1955",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1184",
+							"sourceId": "S1358221198",
+							"extensions": {
+								"_APID": [
+									"1,2441::11059250"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1186",
+					"type": "Residence",
+					"place": "Oscoda, Iosco, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1188",
+							"sourceId": "S1358222673",
+							"extensions": {
+								"_APID": [
+									"1,3171::1297042"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1190",
+					"type": "Residence",
+					"place": "Detroit, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1192",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::1615200"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1194",
+					"type": "Residence",
+					"place": "Oscoda, MI",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1196",
+							"sourceId": "S1358221317",
+							"extensions": {
+								"_APID": [
+									"1,1732::357531112"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1198",
+					"type": "Departure",
+					"place": "Inchon, Korea and Yokohama, Japan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1201",
+							"sourceId": "S1358222603",
+							"page": "National Archives and Records Administration; Washington, D.C.; Passenger and Crew Lists of Vessels Arriving at Seattle, Washington; NAI Number: 4449160; Record Group Title: Records of the Immigration and Naturalization Service, 1787 - 2004; Record Group N",
+							"extensions": {
+								"_APID": [
+									"1,8945::2542689"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1205",
+					"type": "Arrival",
+					"date": "Sep 1956",
+					"place": "Seattle, Washington",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1209",
+							"sourceId": "S1358222603",
+							"page": "National Archives and Records Administration; Washington, D.C.; Passenger and Crew Lists of Vessels Arriving at Seattle, Washington; NAI Number: 4449160; Record Group Title: Records of the Immigration and Naturalization Service, 1787 - 2004; Record Group N",
+							"extensions": {
+								"_APID": [
+									"1,8945::2542689"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1213",
+					"type": "Residence",
+					"date": "1935",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1216",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222564"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1219",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1 Apr 1940",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1222",
+							"sourceId": "S1358221208",
+							"page": "Year: 1940; Census Place: Detroit, Wayne, Michigan; Roll: T627_1861; Page: 8B; Enumeration District: 84-683",
+							"extensions": {
+								"_APID": [
+									"1,2442::84222564"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1225",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1930",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1228",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555455"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1231",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1234",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188278"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1238",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=27"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F2"
+			],
+			"familyAsPartnerIds": [
+				"F3"
+			]
+		},
+		"P28": {
+			"id": "P28",
+			"isLiving": false,
+			"name": {
+				"display": "Emma Di Loreto",
+				"given": "Emma",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1246",
+					"type": "Death",
+					"date": "29 Apr 1981",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-1248",
+					"type": "Birth",
+					"date": "25 Jun 1915",
+					"place": "New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1251",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188277"
+								]
+							}
+						},
+						{
+							"id": "citation-1254",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555474"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1264",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Daughter",
+					"date": "1930",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1267",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555474"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1270",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Daughter",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1273",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188277"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1277",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=28"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F2"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P29": {
+			"id": "P29",
+			"isLiving": false,
+			"name": {
+				"display": "Panfilo Camillo DiLoreto",
+				"given": "Panfilo Camillo",
+				"surname": "DiLoreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1284",
+					"type": "Death",
+					"date": "21 June 2008",
+					"place": "Michigan, USA",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-1287",
+					"type": "Birth",
+					"date": "12 Dec 1913",
+					"place": "New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1290",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188276"
+								]
+							}
+						},
+						{
+							"id": "citation-1293",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555468"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1303",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1930",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1306",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Detroit, Wayne, Michigan; Roll: 1047; Page: 7A; Enumeration District: 0378; Image: 15.0; FHL microfilm: 2340782",
+							"extensions": {
+								"_APID": [
+									"1,6224::12555468"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1309",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1312",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 17A; Enumeration District: 281; Image: 245",
+							"extensions": {
+								"_APID": [
+									"1,6061::41188276"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1316",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=29"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F2"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P30": {
+			"id": "P30",
+			"isLiving": false,
+			"name": {
+				"display": "Rosa Passarelli",
+				"given": "Rosa",
+				"surname": "Passarelli"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1322",
+					"type": "Residence",
+					"value": "Relation to Head of House: Wife",
+					"date": "1 June 1915",
+					"place": "Murray, Orleans, New York, United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1325",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416709"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1328",
+					"type": "Birth",
+					"date": "14 Apr 1865",
+					"place": "Alfedena, Aquilla, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1331",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4253664"
+								]
+							}
+						},
+						{
+							"id": "citation-1334",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332279"
+								]
+							}
+						},
+						{
+							"id": "citation-1337",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416709"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1354",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Wife",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1357",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332279"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1360",
+					"type": "Arrival",
+					"date": "1897",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1363",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332279"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1366",
+					"type": "Residence",
+					"value": "Relationship to Head: Wife",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1369",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4253664"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1372",
+					"type": "Death",
+					"date": "25 Aug 1942",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1376",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=30"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F9"
+			]
+		},
+		"P31": {
+			"id": "P31",
+			"isLiving": false,
+			"name": {
+				"display": "Camillo D'Amico",
+				"given": "Camillo",
+				"surname": "D'Amico"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1382",
+					"type": "Birth",
+					"date": "16 Apr 1861",
+					"place": "Alfedena, Aquilla, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1385",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4253663"
+								]
+							}
+						},
+						{
+							"id": "citation-1388",
+							"sourceId": "S1358222717",
+							"extensions": {
+								"_APID": [
+									"1,60872::389011"
+								]
+							}
+						},
+						{
+							"id": "citation-1390",
+							"sourceId": "S1358225926",
+							"page": "The National Archives at Washington, D.C.; Washington, D.C.; Series Title: Passenger Lists of Vessels Arriving at Philadelphia, Pennsylvania; NAI Number: 4492386; Record Group Title: Records of the Immigration and Naturalization Service, 1787-2004; Record",
+							"extensions": {
+								"_APID": [
+									"1,8769::1220690"
+								]
+							}
+						},
+						{
+							"id": "citation-1394",
+							"sourceId": "S1358222731",
+							"page": "Year: 1893; Arrival: New York, New York; Microfilm Serial: M237, 1820-1897; Microfilm Roll: Roll 606; Line: 15",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						},
+						{
+							"id": "citation-1397",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::19656842"
+								]
+							}
+						},
+						{
+							"id": "citation-1400",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416706"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1403",
+					"type": "Residence",
+					"value": "Relation to Head of House: Head",
+					"date": "1 June 1915",
+					"place": "Murray, Orleans, New York, United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1406",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416706"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1432",
+					"type": "Arrival",
+					"date": "1892",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1435",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::19656842"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1438",
+					"type": "Residence",
+					"value": "Marital Status: MarriedRelation to Head of House: Head",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1441",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::19656842"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1444",
+					"type": "Residence",
+					"value": "Relationship to Head: Head",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1447",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4253663"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1450",
+					"type": "Residence",
+					"place": "New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1452",
+							"sourceId": "S1358222731",
+							"page": "Year: 1893; Arrival: New York, New York; Microfilm Serial: M237, 1820-1897; Microfilm Roll: Roll 606; Line: 15",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1455",
+					"type": "Departure",
+					"place": "Naples, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1458",
+							"sourceId": "S1358225926",
+							"page": "The National Archives at Washington, D.C.; Washington, D.C.; Series Title: Passenger Lists of Vessels Arriving at Philadelphia, Pennsylvania; NAI Number: 4492386; Record Group Title: Records of the Immigration and Naturalization Service, 1787-2004; Record",
+							"extensions": {
+								"_APID": [
+									"1,8769::1220690"
+								]
+							}
+						},
+						{
+							"id": "citation-1462",
+							"sourceId": "S1358222731",
+							"page": "Year: 1893; Arrival: New York, New York; Microfilm Serial: M237, 1820-1897; Microfilm Roll: Roll 606; Line: 15",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1465",
+					"type": "Arrival",
+					"date": "17 Apr 1893",
+					"place": "New York, New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1469",
+							"sourceId": "S1358222731",
+							"page": "Year: 1893; Arrival: New York, New York; Microfilm Serial: M237, 1820-1897; Microfilm Roll: Roll 606; Line: 15",
+							"extensions": {
+								"_APID": [
+									"1,7488::2147483647"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1472",
+					"type": "Arrival",
+					"date": "25 Feb 1921",
+					"place": "Philadelphia, Pennsylvania, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1476",
+							"sourceId": "S1358225926",
+							"page": "The National Archives at Washington, D.C.; Washington, D.C.; Series Title: Passenger Lists of Vessels Arriving at Philadelphia, Pennsylvania; NAI Number: 4492386; Record Group Title: Records of the Immigration and Naturalization Service, 1787-2004; Record",
+							"extensions": {
+								"_APID": [
+									"1,8769::1220690"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1480",
+					"type": "Death",
+					"date": "23 Jul 1929",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1483",
+							"sourceId": "S1358222717",
+							"extensions": {
+								"_APID": [
+									"1,60872::389011"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1486",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=31"
+				}
+			],
+			"media": [
+				{
+					"id": "media-1490",
+					"file": "http://trees.ancestry.com/rd?f=image&guid=2115b605-2ea2-4930-b8ee-e036733fa3df&tid=107780571&pid=31",
+					"format": "jpg",
+					"title": "Camillo D'Amico"
+				},
+				{
+					"id": "media-1494",
+					"file": "http://trees.ancestry.com/rd?f=image&guid=3cbed468-bb5a-40e9-b701-0f9476aa4885&tid=107780571&pid=31",
+					"format": "jpg",
+					"title": "image"
+				}
+			],
+			"notes": [],
+			"familyAsChildIds": [
+				"F10"
+			],
+			"familyAsPartnerIds": [
+				"F9"
+			]
+		},
+		"P32": {
+			"id": "P32",
+			"isLiving": false,
+			"name": {
+				"display": "Josephine Loretta Lysczyk",
+				"given": "Josephine Loretta",
+				"surname": "Lysczyk"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1501",
+					"type": "Death",
+					"date": "29 Aug 1986",
+					"place": "Oscoda, MI",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1504",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::40726314"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1506",
+					"type": "Birth",
+					"date": "26 Jan 1916",
+					"place": "??, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1509",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::4426476"
+								]
+							}
+						},
+						{
+							"id": "citation-1511",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::40726314"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1518",
+					"type": "Burial",
+					"place": "Oscoda, Iosco County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1520",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::40726314"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1522",
+					"type": "Residence",
+					"place": "Detroit, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1524",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::4426476"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1527",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=32"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F3"
+			]
+		},
+		"P33": {
+			"id": "P33",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F22"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P34": {
+			"id": "P34",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F6"
+			],
+			"familyAsPartnerIds": [
+				"F8"
+			]
+		},
+		"P35": {
+			"id": "P35",
+			"isLiving": false,
+			"name": {
+				"display": "Loyd Gouine",
+				"given": "Loyd",
+				"surname": "Gouine"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1591",
+					"type": "Birth",
+					"date": "abt 1905",
+					"place": "Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1594",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Highland Park, Wayne, Michigan; Roll: 1074; Page: 20B; Enumeration District: 1003; Image: 1050.0; FHL microfilm: 2340809",
+							"extensions": {
+								"_APID": [
+									"1,6224::13719705"
+								]
+							}
+						},
+						{
+							"id": "citation-1597",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Inverness, Cheboygan, Michigan; Roll: T624_641; Page: 16A; Enumeration District: 0078; FHL microfilm: 1374654",
+							"extensions": {
+								"_APID": [
+									"1,7884::196936091"
+								]
+							}
+						},
+						{
+							"id": "citation-1600",
+							"sourceId": "S1358222320",
+							"extensions": {
+								"_APID": [
+									"1,61378::1422249"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1611",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1910",
+					"place": "Inverness, Cheboygan, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1614",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Inverness, Cheboygan, Michigan; Roll: T624_641; Page: 16A; Enumeration District: 0078; FHL microfilm: 1374654",
+							"extensions": {
+								"_APID": [
+									"1,7884::196936091"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1617",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1930",
+					"place": "Highland Park, Wayne, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1620",
+							"sourceId": "S1358221195",
+							"page": "Year: 1930; Census Place: Highland Park, Wayne, Michigan; Roll: 1074; Page: 20B; Enumeration District: 1003; Image: 1050.0; FHL microfilm: 2340809",
+							"extensions": {
+								"_APID": [
+									"1,6224::13719705"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F6"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P36": {
+			"id": "P36",
+			"isLiving": false,
+			"name": {
+				"display": "Margaret Denserd",
+				"given": "Margaret",
+				"surname": "Denserd"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1626",
+					"type": "Death",
+					"date": "17 February 1921",
+					"place": "Cheboygan, Cheboygan County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1629",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::30951567"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1631",
+					"type": "Birth",
+					"date": "January 1835",
+					"place": "Berthierville, Quebec, Canada",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1634",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::30951567"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1636",
+					"type": "Burial",
+					"place": "Cheboygan, Cheboygan County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1638",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::30951567"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F7"
+			]
+		},
+		"P37": {
+			"id": "P37",
+			"isLiving": false,
+			"name": {
+				"display": "Mitchell Gouin",
+				"given": "Mitchell",
+				"surname": "Gouin"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1648",
+					"type": "Burial",
+					"place": "Cheboygan, Cheboygan County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1650",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::48864134"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1652",
+					"type": "Death",
+					"date": "7 January 1918",
+					"place": "Cheboygan, Cheboygan County, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1655",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::48864134"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1657",
+					"type": "Birth",
+					"date": "15 July 1826",
+					"place": "Richelieu, Quebec, Canada",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1660",
+							"sourceId": "S1358222043",
+							"extensions": {
+								"_APID": [
+									"1,60525::48864134"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F7"
+			]
+		},
+		"P38": {
+			"id": "P38",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F6"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P39": {
+			"id": "P39",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F6"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P40": {
+			"id": "P40",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F6"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P41": {
+			"id": "P41",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F8"
+			]
+		},
+		"P42": {
+			"id": "P42",
+			"isLiving": false,
+			"name": {
+				"display": "Amelia D'Amico",
+				"given": "Amelia",
+				"surname": "D'Amico"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1749",
+					"type": "Birth",
+					"date": "15 Oct 1905",
+					"place": "New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1752",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332286"
+								]
+							}
+						},
+						{
+							"id": "citation-1755",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416721"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1758",
+					"type": "Residence",
+					"value": "Relation to Head of House: Daughter",
+					"date": "1 June 1915",
+					"place": "Murray, Orleans, New York, United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1761",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416721"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1764",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Daughter",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1767",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332286"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1770",
+					"type": "Death",
+					"date": "31 Jul 1997",
+					"place": "Eastpointe, MI",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1774",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=42"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P43": {
+			"id": "P43",
+			"isLiving": false,
+			"name": {
+				"display": "Lydia D'Amico",
+				"given": "Lydia",
+				"surname": "D'Amico"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1780",
+					"type": "Birth",
+					"date": "24 Oct 1903",
+					"place": "New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1783",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::2875940"
+								]
+							}
+						},
+						{
+							"id": "citation-1786",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332285"
+								]
+							}
+						},
+						{
+							"id": "citation-1789",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416718"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1792",
+					"type": "Residence",
+					"value": "Relation to Head of House: Daughter",
+					"date": "1 June 1915",
+					"place": "Murray, Orleans, New York, United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1795",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416718"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1808",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Daughter",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1811",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332285"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1814",
+					"type": "Residence",
+					"value": "Relationship to Head: Daughter",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1817",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::2875940"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1820",
+					"type": "Death",
+					"date": "05 Oct 1997",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1823",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=43"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P44": {
+			"id": "P44",
+			"isLiving": false,
+			"name": {
+				"display": "Josephine D'Amico",
+				"given": "Josephine",
+				"surname": "D'Amico"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1829",
+					"type": "Residence",
+					"value": "Relation to Head of House: Daughter",
+					"date": "1 June 1915",
+					"place": "Murray, Orleans, New York, United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1832",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416715"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1835",
+					"type": "Birth",
+					"date": "abt 1901",
+					"place": "United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1838",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259158"
+								]
+							}
+						},
+						{
+							"id": "citation-1841",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332284"
+								]
+							}
+						},
+						{
+							"id": "citation-1844",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416715"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1857",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Daughter",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1860",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332284"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1863",
+					"type": "Residence",
+					"value": "Relationship to Head: Daughter",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1866",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259158"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1869",
+					"type": "Death",
+					"date": "12 Aug 1985",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-1873",
+					"type": "Birth",
+					"date": "24 Oct 1901",
+					"place": "Brockville, Orleans, New York",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1877",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=44"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P45": {
+			"id": "P45",
+			"isLiving": false,
+			"name": {
+				"display": "Quindo D'Amico",
+				"given": "Quindo",
+				"surname": "D'Amico"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1883",
+					"type": "Residence",
+					"value": "Relation to Head of House: Son",
+					"date": "1 June 1915",
+					"place": "Murray, Orleans, New York, United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1886",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416714"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1889",
+					"type": "Birth",
+					"date": "22 Apr 1900",
+					"place": "Murray, N.Y.",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1892",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259157"
+								]
+							}
+						},
+						{
+							"id": "citation-1895",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::1629931"
+								]
+							}
+						},
+						{
+							"id": "citation-1897",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416714"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1909",
+					"type": "Residence",
+					"value": "Relationship to Head: Son",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1912",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259157"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1915",
+					"type": "Residence",
+					"place": "Detroit, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1917",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::1629931"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1919",
+					"type": "Death",
+					"date": "27 May 1980",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1922",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=45"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P46": {
+			"id": "P46",
+			"isLiving": false,
+			"name": {
+				"display": "Pasqualino D'Amico",
+				"given": "Pasqualino",
+				"surname": "D'Amico"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-1928",
+					"type": "Birth",
+					"date": "21 Apr 1891",
+					"place": "Alfedena, Aquilla, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1931",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259156"
+								]
+							}
+						},
+						{
+							"id": "citation-1934",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332282"
+								]
+							}
+						},
+						{
+							"id": "citation-1937",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416711"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1940",
+					"type": "Residence",
+					"value": "Relation to Head of House: Son",
+					"date": "1 June 1915",
+					"place": "Murray, Orleans, New York, United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1943",
+							"sourceId": "S1358226796",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1915; Election District: 04; Assembly District: 01; City: Murray; County: Orleans; Page: 01",
+							"extensions": {
+								"_APID": [
+									"1,2703::6416711"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1956",
+					"type": "Arrival",
+					"date": "1897",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1959",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332282"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1962",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1965",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332282"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1968",
+					"type": "Residence",
+					"value": "Relationship to Head: Son",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1971",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259156"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1974",
+					"type": "Death",
+					"date": "03 Apr 1983",
+					"place": "Detroit, Wayne, Michigan",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-1978",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=46"
+				}
+			],
+			"media": [
+				{
+					"id": "media-1982",
+					"file": "http://trees.ancestry.com/rd?f=image&guid=87fc26e4-7dd8-4ba1-9220-9d577c82e618&tid=107780571&pid=46",
+					"format": "jpg",
+					"title": "Pasqualino D'Amico Mass Card"
+				}
+			],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P47": {
+			"id": "P47",
+			"isLiving": false,
+			"name": {
+				"display": "Guinlp Damico",
+				"given": "Guinlp",
+				"surname": "Damico"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-1988",
+					"type": "Birth",
+					"date": "1901",
+					"place": "New York",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1991",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332283"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-1994",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son; Relation to Head of House: Daughter",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-1997",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332283"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2005",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=47"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P48": {
+			"id": "P48",
+			"isLiving": false,
+			"name": {
+				"display": "Gaetano D'Amico",
+				"given": "Gaetano",
+				"surname": "D'Amico"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2011",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1910",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2014",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332280"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2026",
+					"type": "Arrival",
+					"date": "1897",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2029",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332280"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2032",
+					"type": "Birth",
+					"date": "22 Mar 1888",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2035",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259154"
+								]
+							}
+						},
+						{
+							"id": "citation-2038",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::523498"
+								]
+							}
+						},
+						{
+							"id": "citation-2040",
+							"sourceId": "S1358221990",
+							"page": "Year: 1910; Census Place: Murray, Orleans, New York; Roll: T624_1061; Page: 4A; Enumeration District: 0156; FHL microfilm: 1375074",
+							"extensions": {
+								"_APID": [
+									"1,7884::138332280"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2043",
+					"type": "Residence",
+					"value": "Relationship to Head: Son",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2046",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259154"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2049",
+					"type": "Death",
+					"date": "22 Apr 1973",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2052",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=48"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P49": {
+			"id": "P49",
+			"isLiving": false,
+			"name": {
+				"display": "Thimothy Damico",
+				"given": "Thimothy",
+				"surname": "Damico"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2058",
+					"type": "Residence",
+					"value": "Relationship to Head: Son",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2061",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::2875941"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2064",
+					"type": "Birth",
+					"date": "Abt. 1904",
+					"place": "United States",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2067",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::2875941"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2075",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=49"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P50": {
+			"id": "P50",
+			"isLiving": false,
+			"name": {
+				"display": "Gueseppa Cellone",
+				"given": "Gueseppa",
+				"surname": "Cellone"
+			},
+			"sex": "F",
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F10"
+			]
+		},
+		"P51": {
+			"id": "P51",
+			"isLiving": false,
+			"name": {
+				"display": "Giatano D'Amico",
+				"given": "Giatano",
+				"surname": "D'Amico"
+			},
+			"sex": "M",
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F10"
+			]
+		},
+		"P52": {
+			"id": "P52",
+			"isLiving": false,
+			"name": {
+				"display": "Alfonzo D'Amico",
+				"given": "Alfonzo",
+				"surname": "D'Amico"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2093",
+					"type": "Birth",
+					"date": "1893",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2095",
+					"type": "Death",
+					"date": "1905",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2099",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=52"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P53": {
+			"id": "P53",
+			"isLiving": false,
+			"name": {
+				"display": "Mary Damico",
+				"given": "Mary",
+				"surname": "Damico"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2105",
+					"type": "Birth",
+					"date": "Abt. 1890",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2108",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259155"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2115",
+					"type": "Residence",
+					"value": "Relationship to Head: Daughter",
+					"date": "1905",
+					"place": "Murray, Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2118",
+							"sourceId": "S1358223559",
+							"page": "New York State Archives; Albany, New York; State Population Census Schedules, 1905; Election District: E.D. 01; City: Murray; County: Orleans",
+							"extensions": {
+								"_APID": [
+									"1,7364::4259155"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2122",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=53"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F9"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P54": {
+			"id": "P54",
+			"isLiving": false,
+			"name": {
+				"display": "Angela Maria DeSanctis",
+				"given": "Angela Maria",
+				"surname": "DeSanctis"
+			},
+			"sex": "F",
+			"events": [],
+			"citations": [
+				{
+					"id": "citation-2144",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=54"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F15"
+			]
+		},
+		"P55": {
+			"id": "P55",
+			"isLiving": false,
+			"name": {
+				"display": "Alessio di Loreto",
+				"given": "Alessio",
+				"surname": "di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2150",
+					"type": "Death",
+					"date": "1876",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2152",
+					"type": "Birth",
+					"date": "1807",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2170",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=55"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F23"
+			],
+			"familyAsPartnerIds": [
+				"F15"
+			]
+		},
+		"P56": {
+			"id": "P56",
+			"isLiving": false,
+			"name": {
+				"display": "Assunta Di Loretto",
+				"given": "Assunta",
+				"surname": "Di Loretto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2178",
+					"type": "Death",
+					"date": "9 Sept. 1964",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2181",
+					"type": "Birth",
+					"date": "7 Oct. 1881",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2185",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=56"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P57": {
+			"id": "P57",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P58": {
+			"id": "P58",
+			"isLiving": false,
+			"name": {
+				"display": "Nicolino 'Nick' DiLoreto",
+				"given": "Nicolino 'Nick'",
+				"surname": "DiLoreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2199",
+					"type": "Death",
+					"date": "11 Apr 1940",
+					"place": "Erie, Erie, Pennsylvania, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2202",
+							"sourceId": "S1358227473",
+							"page": "Pennsylvania Historic and Museum Commission; Pennsylvania, USA; Certificate Number Range: 037501-040500",
+							"extensions": {
+								"_APID": [
+									"1,5164::3296797"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2205",
+					"type": "Birth",
+					"date": "12 Dec 1876",
+					"place": "Alfedena, Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2208",
+							"sourceId": "S1358227473",
+							"page": "Pennsylvania Historic and Museum Commission; Pennsylvania, USA; Certificate Number Range: 037501-040500",
+							"extensions": {
+								"_APID": [
+									"1,5164::3296797"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2216",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=58"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P59": {
+			"id": "P59",
+			"isLiving": false,
+			"name": {
+				"display": "Teodolinda Matilde Di Loreto D'Alleva",
+				"given": "Teodolinda Matilde",
+				"surname": "Di Loreto D'Alleva"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2222",
+					"type": "Birth",
+					"date": "22 Feb 1878",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2225",
+					"type": "Death",
+					"date": "25 Oct 1942",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2230",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=59"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P60": {
+			"id": "P60",
+			"isLiving": false,
+			"name": {
+				"display": "Alborino Mario Di Loreto",
+				"given": "Alborino Mario",
+				"surname": "Di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2236",
+					"type": "Birth",
+					"date": "14 Jun 1896",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2239",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189542"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2246",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2249",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189542"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2252",
+					"type": "Arrival",
+					"date": "1911",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2255",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189542"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2258",
+					"type": "Death",
+					"date": "14 Jun 1964",
+					"place": "Dearborn Heights, Wayne, Michigan",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2262",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=60"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P61": {
+			"id": "P61",
+			"isLiving": false,
+			"name": {
+				"display": "Eduardo Diloreto",
+				"given": "Eduardo",
+				"surname": "Diloreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2268",
+					"type": "Birth",
+					"date": "abt 1888",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2273",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=61"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P62": {
+			"id": "P62",
+			"isLiving": false,
+			"name": {
+				"display": "Gaetano Diloreto",
+				"given": "Gaetano",
+				"surname": "Diloreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2279",
+					"type": "Birth",
+					"date": "Abt. 1895",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2282",
+							"sourceId": "S1358222717",
+							"extensions": {
+								"_APID": [
+									"1,60872::626308"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2284",
+					"type": "Death",
+					"date": "29 Oct 1937",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2287",
+							"sourceId": "S1358222717",
+							"extensions": {
+								"_APID": [
+									"1,60872::626308"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2293",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=62"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P63": {
+			"id": "P63",
+			"isLiving": false,
+			"name": {
+				"display": "Alessio Di Loreto",
+				"given": "Alessio",
+				"surname": "Di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2299",
+					"type": "Birth",
+					"date": "1875",
+					"place": "Alfedena, Italy",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2303",
+					"type": "Death",
+					"date": "1950",
+					"place": "Alfedena, Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2307",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=63"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P64": {
+			"id": "P64",
+			"isLiving": false,
+			"name": {
+				"display": "Cleonice Diloreto",
+				"given": "Cleonice",
+				"surname": "Diloreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2313",
+					"type": "Death",
+					"date": "24 May 1972",
+					"place": "Pontiac, Oakland, Michigan",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2316",
+					"type": "Birth",
+					"date": "28 Apr 1890",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2321",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=64"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P65": {
+			"id": "P65",
+			"isLiving": false,
+			"name": {
+				"display": "Adelmina Diloreto",
+				"given": "Adelmina",
+				"surname": "Diloreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2328",
+					"type": "Birth",
+					"date": "Abt. 1878",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2332",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=65"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P66": {
+			"id": "P66",
+			"isLiving": false,
+			"name": {
+				"display": "Corradino Luciana Diloreto",
+				"given": "Corradino Luciana",
+				"surname": "Diloreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2338",
+					"type": "Death",
+					"date": "3 May 1942",
+					"place": "Detroit, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2341",
+					"type": "Birth",
+					"date": "9 Oct 1879",
+					"place": "Italy-Alfedena-Aquila",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2344",
+							"sourceId": "S1358221202",
+							"extensions": {
+								"_APID": [
+									"1,60901::11290124"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2350",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=66"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P67": {
+			"id": "P67",
+			"isLiving": false,
+			"name": {
+				"display": "Otto Di-Loreto",
+				"given": "Otto",
+				"surname": "Di-Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2356",
+					"type": "Birth",
+					"date": "19 Jun 1898",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2359",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189544"
+								]
+							}
+						},
+						{
+							"id": "citation-2362",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::134265"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2364",
+					"type": "Death",
+					"date": "22 Jul 1981",
+					"place": "Mount Clemens, Macomb, Michigan, United States of America",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2373",
+					"type": "Residence",
+					"place": "Detroit, Michigan",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2375",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::134265"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2377",
+					"type": "Arrival",
+					"date": "1913",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2380",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189544"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2383",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2386",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189544"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2389",
+					"type": "Birth",
+					"date": "Abt. 1899",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2393",
+					"type": "Birth",
+					"date": "1898",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2397",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=67"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P68": {
+			"id": "P68",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P69": {
+			"id": "P69",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P70": {
+			"id": "P70",
+			"isLiving": false,
+			"name": {
+				"display": "Gastono Delareto",
+				"given": "Gastono",
+				"surname": "Delareto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2419",
+					"type": "Arrival",
+					"date": "1911",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2422",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189543"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2425",
+					"type": "Birth",
+					"date": "abt 1895",
+					"place": "Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2428",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189543"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2431",
+					"type": "Residence",
+					"value": "Marital Status: SingleRelation to Head of House: Son",
+					"date": "1920",
+					"place": "Detroit Ward 9, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2434",
+							"sourceId": "S1358221179",
+							"page": "Year: 1920; Census Place: Detroit Ward 9, Wayne, Michigan; Roll: T625_807; Page: 10A; Enumeration District: 282; Image: 271",
+							"extensions": {
+								"_APID": [
+									"1,6061::41189543"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2442",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=70"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F11"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P71": {
+			"id": "P71",
+			"isLiving": false,
+			"name": {
+				"display": "Domenica Di Loreto",
+				"given": "Domenica",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2448",
+					"type": "Birth",
+					"date": "11 Mar 1857",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2451",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::4264233"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2456",
+					"type": "Baptism",
+					"date": "11 Mar 1857",
+					"place": "Vittorito,L'Aquila,Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2459",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::4264233"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2462",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=71"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": []
+		},
+		"P72": {
+			"id": "P72",
+			"isLiving": false,
+			"name": {
+				"display": "Panfilo Di Loreto",
+				"given": "Panfilo",
+				"surname": "Di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2467",
+					"type": "Birth",
+					"date": "1778",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2470",
+							"sourceId": "S1358228471",
+							"extensions": {
+								"_APID": [
+									"1,9905::47778"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2472",
+					"type": "Death",
+					"date": "13 Jul 1826",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2475",
+							"sourceId": "S1358228471",
+							"extensions": {
+								"_APID": [
+									"1,9905::47778"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2493",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=72"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F13"
+			],
+			"familyAsPartnerIds": [
+				"F12"
+			]
+		},
+		"P73": {
+			"id": "P73",
+			"isLiving": false,
+			"name": {
+				"display": "Santa Projetta",
+				"given": "Santa",
+				"surname": "Projetta"
+			},
+			"sex": "F",
+			"events": [],
+			"citations": [
+				{
+					"id": "citation-2504",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=73"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F13"
+			]
+		},
+		"P74": {
+			"id": "P74",
+			"isLiving": false,
+			"name": {
+				"display": "Domenico Di Loreto",
+				"given": "Domenico",
+				"surname": "Di Loreto"
+			},
+			"sex": "M",
+			"events": [],
+			"citations": [
+				{
+					"id": "citation-2514",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=74"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F13"
+			]
+		},
+		"P75": {
+			"id": "P75",
+			"isLiving": false,
+			"name": {
+				"display": "Colomba Antonia Di Loreto",
+				"given": "Colomba Antonia",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2520",
+					"type": "Birth",
+					"date": "08 Feb 1809",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2523",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5255162"
+								]
+							}
+						},
+						{
+							"id": "citation-2525",
+							"sourceId": "S1358228471",
+							"extensions": {
+								"_APID": [
+									"1,9905::423089"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2527",
+					"type": "Death",
+					"date": "23 Feb 1809",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2530",
+							"sourceId": "S1358228471",
+							"extensions": {
+								"_APID": [
+									"1,9905::423089"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2539",
+					"type": "Baptism",
+					"date": "08 Feb 1809",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2541",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5255162"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2544",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=75"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F12"
+			],
+			"familyAsPartnerIds": [
+				"F14"
+			]
+		},
+		"P76": {
+			"id": "P76",
+			"isLiving": false,
+			"name": {
+				"display": "Vincenzo Giandomenico Antonio Di Loreto",
+				"given": "Vincenzo Giandomenico Antonio",
+				"surname": "Di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2551",
+					"type": "Birth",
+					"date": "06 Apr 1810",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2554",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5261269"
+								]
+							}
+						},
+						{
+							"id": "citation-2556",
+							"sourceId": "S1358228471",
+							"extensions": {
+								"_APID": [
+									"1,9905::491947"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2558",
+					"type": "Death",
+					"date": "19 Nov 1810",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2561",
+							"sourceId": "S1358228471",
+							"extensions": {
+								"_APID": [
+									"1,9905::491947"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2568",
+					"type": "Baptism",
+					"date": "06 Apr 1810",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2570",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5261269"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2573",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=76"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F12"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P77": {
+			"id": "P77",
+			"isLiving": false,
+			"name": {
+				"display": "Domenica Antonia Di Loreto",
+				"given": "Domenica Antonia",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2582",
+					"type": "Birth",
+					"date": "1814",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2585",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=77"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F12"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P78": {
+			"id": "P78",
+			"isLiving": false,
+			"name": {
+				"display": "Carmine Antonio Di Loreto",
+				"given": "Carmine Antonio",
+				"surname": "Di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2591",
+					"type": "Birth",
+					"date": "29 Mar 1821",
+					"place": "Vittorito, L'Aquila, Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2596",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=78"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F12"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P79": {
+			"id": "P79",
+			"isLiving": false,
+			"name": {
+				"display": "Anna Saveria Commito",
+				"given": "Anna Saveria",
+				"surname": "Commito"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2613",
+					"type": "Birth",
+					"date": "1783 (?)",
+					"place": "Vittorito",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2617",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=79"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F12"
+			]
+		},
+		"P80": {
+			"id": "P80",
+			"isLiving": true,
+			"name": {
+				"display": "Living person"
+			},
+			"events": [],
+			"citations": [],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F14"
+			]
+		},
+		"P81": {
+			"id": "P81",
+			"isLiving": false,
+			"name": {
+				"display": "Dom. Antonio di Loreto",
+				"given": "Dom. Antonio",
+				"surname": "di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2629",
+					"type": "Death",
+					"date": "1857",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2631",
+					"type": "Birth",
+					"date": "1783",
+					"place": "Barrea",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2636",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=81"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F16"
+			],
+			"familyAsPartnerIds": [
+				"F23"
+			]
+		},
+		"P82": {
+			"id": "P82",
+			"isLiving": false,
+			"name": {
+				"display": "Rosina Filomella Di Loreto",
+				"given": "Rosina Filomella",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2643",
+					"type": "Birth",
+					"date": "22 Aug 1856",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2647",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=82"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F15"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P83": {
+			"id": "P83",
+			"isLiving": false,
+			"name": {
+				"display": "Maria Giuseppa Di Loreto",
+				"given": "Maria Giuseppa",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2653",
+					"type": "Birth",
+					"date": "26 May 1852",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2655",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::3529131"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2660",
+					"type": "Baptism",
+					"date": "27 May 1852",
+					"place": "Civile, Barrea, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2663",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::3529131"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2666",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=83"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F15"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P84": {
+			"id": "P84",
+			"isLiving": false,
+			"name": {
+				"display": "Florinda Di Loreto",
+				"given": "Florinda",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2672",
+					"type": "Birth",
+					"date": "29 Jul 1841",
+					"place": "Barrea",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2675",
+							"sourceId": "S1358227969",
+							"extensions": {
+								"_APID": [
+									"1,9907::794441"
+								]
+							}
+						},
+						{
+							"id": "citation-2677",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5320582"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2684",
+					"type": "Baptism",
+					"date": "30 Jul 1841",
+					"place": "Civile, Barrea, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2687",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::5320582"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2690",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=84"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F15"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P85": {
+			"id": "P85",
+			"isLiving": false,
+			"name": {
+				"display": "Rosina Filomella Di Loreto",
+				"given": "Rosina Filomella",
+				"surname": "Di Loreto"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2696",
+					"type": "Baptism",
+					"date": "09 Apr 1843",
+					"place": "Civile, Barrea, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2699",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::3520508"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2701",
+					"type": "Birth",
+					"date": "07 Apr 1843",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2703",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::512478"
+								]
+							}
+						},
+						{
+							"id": "citation-2705",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::2914150"
+								]
+							}
+						},
+						{
+							"id": "citation-2707",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::3520508"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2716",
+					"type": "Baptism",
+					"date": "12 Jan 1850",
+					"place": "Civile, Barrea, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2719",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::2914150"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2721",
+					"type": "Baptism",
+					"date": "22 Aug 1856",
+					"place": "Civile, Barrea, L'Aquila, Italy",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2724",
+							"sourceId": "S1358227731",
+							"extensions": {
+								"_APID": [
+									"1,9906::512478"
+								]
+							}
+						}
+					]
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2727",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=85"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F15"
+			],
+			"familyAsPartnerIds": []
+		},
+		"P86": {
+			"id": "P86",
+			"isLiving": false,
+			"name": {
+				"display": "Felamilla Mancini",
+				"given": "Felamilla",
+				"surname": "Mancini"
+			},
+			"sex": "F",
+			"events": [],
+			"citations": [
+				{
+					"id": "citation-2735",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=86"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F16"
+			]
+		},
+		"P87": {
+			"id": "P87",
+			"isLiving": false,
+			"name": {
+				"display": "Pasquale di Loreto",
+				"given": "Pasquale",
+				"surname": "di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2741",
+					"type": "Death",
+					"date": "1822",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2743",
+					"type": "Birth",
+					"date": "1753",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2747",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=87"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F24"
+			],
+			"familyAsPartnerIds": [
+				"F16"
+			]
+		},
+		"P88": {
+			"id": "P88",
+			"isLiving": false,
+			"name": {
+				"display": "Simione Crescenzio di Loreto",
+				"given": "Simione Crescenzio",
+				"surname": "di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2754",
+					"type": "Death",
+					"date": "1763",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2756",
+					"type": "Birth",
+					"date": "1707",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2760",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=88"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [
+				"F17"
+			],
+			"familyAsPartnerIds": [
+				"F24"
+			]
+		},
+		"P89": {
+			"id": "P89",
+			"isLiving": false,
+			"name": {
+				"display": "Lucia Ciannino",
+				"given": "Lucia",
+				"surname": "Ciannino"
+			},
+			"sex": "F",
+			"events": [
+				{
+					"id": "event-2767",
+					"type": "Death",
+					"date": "Aft. 1707",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2769",
+					"type": "Birth",
+					"date": "1667",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2773",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=89"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F17"
+			]
+		},
+		"P90": {
+			"id": "P90",
+			"isLiving": false,
+			"name": {
+				"display": "Biagio di Loreto",
+				"given": "Biagio",
+				"surname": "di Loreto"
+			},
+			"sex": "M",
+			"events": [
+				{
+					"id": "event-2779",
+					"type": "Death",
+					"date": "Aft. 1707",
+					"notes": [],
+					"citations": []
+				},
+				{
+					"id": "event-2781",
+					"type": "Birth",
+					"date": "1655",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"citations": [
+				{
+					"id": "citation-2785",
+					"sourceId": "S1358220557",
+					"page": "Ancestry Family Tree",
+					"dataText": "http://trees.ancestry.com/pt/AMTCitationRedir.aspx?tid=107780571&pid=90"
+				}
+			],
+			"media": [],
+			"notes": [],
+			"familyAsChildIds": [],
+			"familyAsPartnerIds": [
+				"F17"
+			]
+		}
+	},
+	"families": {
+		"F1": {
+			"id": "F1",
+			"partnerIds": [
+				"P14",
+				"P13"
+			],
+			"children": [
+				{
+					"personId": "P2",
+					"paternalRelationship": "Unknown",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P15",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P16",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P17",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F2": {
+			"id": "F2",
+			"partnerIds": [
+				"P19",
+				"P18"
+			],
+			"children": [
+				{
+					"personId": "P29",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P28",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P24",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P27",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P25",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P14",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P26",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [
+				{
+					"id": "event-2834",
+					"type": "Marriage",
+					"date": "9 Feb 1911",
+					"place": "Orleans, New York, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2837",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::478961"
+								]
+							}
+						},
+						{
+							"id": "citation-2839",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::66954"
+								]
+							}
+						},
+						{
+							"id": "citation-2841",
+							"sourceId": "S1358222733",
+							"extensions": {
+								"_APID": [
+									"1,61377::478962"
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "event-2843",
+					"type": "Marriage",
+					"date": "11 Feb 1911",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"notes": [],
+			"citations": []
+		},
+		"F3": {
+			"id": "F3",
+			"partnerIds": [
+				"P27",
+				"P32"
+			],
+			"children": [],
+			"events": [
+				{
+					"id": "event-2848",
+					"type": "Marriage",
+					"date": "5 May 1945",
+					"place": "Grosse Pointe Park, Wayne, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2851",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::1615200"
+								]
+							}
+						}
+					]
+				}
+			],
+			"notes": [],
+			"citations": []
+		},
+		"F4": {
+			"id": "F4",
+			"partnerIds": [
+				"P12",
+				"P11"
+			],
+			"children": [
+				{
+					"personId": "P8",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F5": {
+			"id": "F5",
+			"partnerIds": [
+				"P6",
+				"P3"
+			],
+			"children": [
+				{
+					"personId": "P4",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F6": {
+			"id": "F6",
+			"partnerIds": [
+				"P21",
+				"P20"
+			],
+			"children": [
+				{
+					"personId": "P35",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P38",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P40",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P39",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P34",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P13",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [
+				{
+					"id": "event-2891",
+					"type": "Marriage",
+					"date": "1 Feb 1904",
+					"place": "Cheboygan, Cheboygan, Michigan, USA",
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-2894",
+							"sourceId": "S1358220646",
+							"extensions": {
+								"_APID": [
+									"1,9093::853766"
+								]
+							}
+						}
+					]
+				}
+			],
+			"notes": [],
+			"citations": []
+		},
+		"F7": {
+			"id": "F7",
+			"partnerIds": [
+				"P37",
+				"P36"
+			],
+			"children": [
+				{
+					"personId": "P21",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F8": {
+			"id": "F8",
+			"partnerIds": [
+				"P41",
+				"P34"
+			],
+			"children": [],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F9": {
+			"id": "F9",
+			"partnerIds": [
+				"P31",
+				"P30"
+			],
+			"children": [
+				{
+					"personId": "P48",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P18",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P53",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P46",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P52",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P45",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P47",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P44",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P43",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P49",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P42",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [
+				{
+					"id": "event-2946",
+					"type": "Marriage",
+					"date": "25 Aug 1885",
+					"place": "Alfedena, Aquilla, Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"notes": [],
+			"citations": []
+		},
+		"F10": {
+			"id": "F10",
+			"partnerIds": [
+				"P51",
+				"P50"
+			],
+			"children": [
+				{
+					"personId": "P31",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F11": {
+			"id": "F11",
+			"partnerIds": [
+				"P23",
+				"P22"
+			],
+			"children": [
+				{
+					"personId": "P63",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P58",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P59",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P65",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P66",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P56",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P19",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P57",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P61",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P64",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P62",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P60",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P67",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P68",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P69",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P70",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [
+				{
+					"id": "event-3006",
+					"type": "Marriage",
+					"date": "1874",
+					"place": "Italy",
+					"notes": [],
+					"citations": []
+				}
+			],
+			"notes": [],
+			"citations": []
+		},
+		"F12": {
+			"id": "F12",
+			"partnerIds": [
+				"P72",
+				"P79"
+			],
+			"children": [
+				{
+					"personId": "P75",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P76",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P77",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P78",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F13": {
+			"id": "F13",
+			"partnerIds": [
+				"P74",
+				"P73"
+			],
+			"children": [
+				{
+					"personId": "P72",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F14": {
+			"id": "F14",
+			"partnerIds": [
+				"P80",
+				"P75"
+			],
+			"children": [],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F15": {
+			"id": "F15",
+			"partnerIds": [
+				"P55",
+				"P54"
+			],
+			"children": [
+				{
+					"personId": "P84",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P85",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P23",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P83",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P82",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F16": {
+			"id": "F16",
+			"partnerIds": [
+				"P87",
+				"P86"
+			],
+			"children": [
+				{
+					"personId": "P81",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F17": {
+			"id": "F17",
+			"partnerIds": [
+				"P90",
+				"P89"
+			],
+			"children": [
+				{
+					"personId": "P88",
+					"paternalRelationship": "Natural",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F18": {
+			"id": "F18",
+			"partnerIds": [
+				"P2"
+			],
+			"children": [
+				{
+					"personId": "P1",
+					"paternalRelationship": "Unknown"
+				},
+				{
+					"personId": "P5",
+					"paternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F19": {
+			"id": "F19",
+			"partnerIds": [
+				"P3"
+			],
+			"children": [
+				{
+					"personId": "P1",
+					"maternalRelationship": "Unknown"
+				},
+				{
+					"personId": "P5",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F20": {
+			"id": "F20",
+			"partnerIds": [
+				"P8"
+			],
+			"children": [
+				{
+					"personId": "P9",
+					"paternalRelationship": "Natural"
+				},
+				{
+					"personId": "P3",
+					"paternalRelationship": "Unknown"
+				},
+				{
+					"personId": "P10",
+					"paternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F21": {
+			"id": "F21",
+			"partnerIds": [
+				"P7"
+			],
+			"children": [
+				{
+					"personId": "P9",
+					"maternalRelationship": "Natural"
+				},
+				{
+					"personId": "P3",
+					"maternalRelationship": "Unknown"
+				},
+				{
+					"personId": "P10",
+					"maternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F22": {
+			"id": "F22",
+			"partnerIds": [
+				"P12"
+			],
+			"children": [
+				{
+					"personId": "P33",
+					"paternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F23": {
+			"id": "F23",
+			"partnerIds": [
+				"P81"
+			],
+			"children": [
+				{
+					"personId": "P55",
+					"paternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		},
+		"F24": {
+			"id": "F24",
+			"partnerIds": [
+				"P88"
+			],
+			"children": [
+				{
+					"personId": "P87",
+					"paternalRelationship": "Natural"
+				}
+			],
+			"events": [],
+			"notes": [],
+			"citations": []
+		}
+	},
+	"sources": {
+		"S1358219752": {
+			"id": "S1358219752",
+			"title": "U.S. Public Records Index, 1950-1993, Volume 1",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358220497": {
+			"id": "S1358220497",
+			"title": "U.S., Social Security Death Index, 1935-2014",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358220557": {
+			"id": "S1358220557",
+			"title": "Ancestry Family Trees",
+			"publication": "Online publication - Provo, UT, USA: Ancestry.com.  Original data:  Family Tree files submitted by Ancestry members.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358220646": {
+			"id": "S1358220646",
+			"title": "Michigan, Marriage Records, 1867-1952",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221164": {
+			"id": "S1358221164",
+			"title": "U.S. City Directories, 1822-1995",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221179": {
+			"id": "S1358221179",
+			"title": "1920 United States Federal Census",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221195": {
+			"id": "S1358221195",
+			"title": "1930 United States Federal Census",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221198": {
+			"id": "S1358221198",
+			"title": "U.S., Department of Veterans Affairs BIRLS Death File, 1850-2010",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221202": {
+			"id": "S1358221202",
+			"title": "U.S., Social Security Applications and Claims Index, 1936-2007",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221208": {
+			"id": "S1358221208",
+			"title": "1940 United States Federal Census",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221233": {
+			"id": "S1358221233",
+			"title": "Web: Obituary Daily Times Index, 1995-Current",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221235": {
+			"id": "S1358221235",
+			"title": "U.S. Veterans Gravesites, ca.1775-2006",
+			"author": "National Cemetery Administration",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221309": {
+			"id": "S1358221309",
+			"title": "California, Federal Naturalization Records, 1843-1999",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221317": {
+			"id": "S1358221317",
+			"title": "U.S. Public Records Index, 1950-1993, Volume 2",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221339": {
+			"id": "S1358221339",
+			"title": "California, Marriage Index, 1960-1985",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221345": {
+			"id": "S1358221345",
+			"title": "California Birth Index, 1905-1995",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221748": {
+			"id": "S1358221748",
+			"title": "U.S., School Yearbooks, 1880-2012",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358221990": {
+			"id": "S1358221990",
+			"title": "1910 United States Federal Census",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222043": {
+			"id": "S1358222043",
+			"title": "U.S., Find A Grave Index, 1600s-Current",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222135": {
+			"id": "S1358222135",
+			"title": "Michigan, County Marriages, 1822-1940",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222320": {
+			"id": "S1358222320",
+			"title": "Ohio, County Marriages, 1774-1993",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222603": {
+			"id": "S1358222603",
+			"title": "Washington, Passenger and Crew Lists, 1882-1965",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222673": {
+			"id": "S1358222673",
+			"title": "Michigan, Death Index, 1971-1996",
+			"author": "Michigan Department of Vital and Health Records",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222717": {
+			"id": "S1358222717",
+			"title": "Michigan, Death Records, 1867-1950",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222731": {
+			"id": "S1358222731",
+			"title": "New York, Passenger Lists, 1820-1957",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222733": {
+			"id": "S1358222733",
+			"title": "New York, County Marriages, 1847-1849; 1907-1936",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222737": {
+			"id": "S1358222737",
+			"title": "U.S., World War I Draft Registration Cards, 1917-1918",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations Inc",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358222739": {
+			"id": "S1358222739",
+			"title": "U.S., World War II Draft Registration Cards, 1942",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358223559": {
+			"id": "S1358223559",
+			"title": "New York, State Census, 1905",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358225926": {
+			"id": "S1358225926",
+			"title": "Pennsylvania, Passenger and Crew Lists, 1800-1962",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358226796": {
+			"id": "S1358226796",
+			"title": "New York, State Census, 1915",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358227473": {
+			"id": "S1358227473",
+			"title": "Pennsylvania, Death Certificates, 1906-1964",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358227731": {
+			"id": "S1358227731",
+			"title": "Italy, Select Births and Baptisms, 1806-1900",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358227969": {
+			"id": "S1358227969",
+			"title": "Italy, Select Marriages, 1809-1900",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358228471": {
+			"id": "S1358228471",
+			"title": "Italy, Select Deaths and Burials, 1809-1900",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		},
+		"S1358229292": {
+			"id": "S1358229292",
+			"title": "Virginia, Birth Records, 1912-2014, Delayed Birth Records, 1854-1911",
+			"author": "Ancestry.com",
+			"publication": "Ancestry.com Operations, Inc.",
+			"notes": [],
+			"repositoryIds": [
+				"R1350432381"
+			]
+		}
+	},
+	"repositories": {
+		"R1350432381": {
+			"id": "R1350432381",
+			"name": "Ancestry.com"
+		}
+	},
+	"stats": {
+		"people": 90,
+		"families": 24,
+		"livingPeopleRedacted": 25,
+		"deceasedPeople": 65
+	}
+}

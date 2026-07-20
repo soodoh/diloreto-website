@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as AreyouRouteImport } from './routes/areyou'
+import { Route as FamilytreeRouteImport } from './routes/familytree'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const AreyouRoute = AreyouRouteImport.update({
   path: '/areyou',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FamilytreeRoute = FamilytreeRouteImport.update({
+  id: '/familytree',
+  path: '/familytree',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/areyou': typeof AreyouRoute
+  '/familytree': typeof FamilytreeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/areyou': typeof AreyouRoute
+  '/familytree': typeof FamilytreeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/areyou': typeof AreyouRoute
+  '/familytree': typeof FamilytreeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/404' | '/areyou'
+  fullPaths: '/' | '/404' | '/areyou' | '/familytree'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/404' | '/areyou'
-  id: '__root__' | '/' | '/404' | '/areyou'
+  to: '/' | '/404' | '/areyou' | '/familytree'
+  id: '__root__' | '/' | '/404' | '/areyou' | '/familytree'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   AreyouRoute: typeof AreyouRoute
+  FamilytreeRoute: typeof FamilytreeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreyouRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/familytree': {
+      id: '/familytree'
+      path: '/familytree'
+      fullPath: '/familytree'
+      preLoaderRoute: typeof FamilytreeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   AreyouRoute: AreyouRoute,
+  FamilytreeRoute: FamilytreeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

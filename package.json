@@ -14,6 +14,7 @@
 		"url": "https://github.com/soodoh/diloreto-website/issues"
 	},
 	"scripts": {
+		"genealogy:build": "bun scripts/build-genealogy.ts",
 		"dev": "vite dev",
 		"build": "vite build && bun scripts/finalize-static-output.ts",
 		"start": "serve dist/client --listen 4173",
@@ -25,12 +26,14 @@
 		"test:playwright": "bash scripts/test-playwright-docker.sh",
 		"test:playwright:update": "bash scripts/test-playwright-docker.sh --update-snapshots",
 		"test:smoke": "bash scripts/test-playwright-docker.sh tests/smoke.spec.ts",
-		"check": "bun run lint && bun run typecheck && bun run build && bun run check:output && PLAYWRIGHT_SKIP_BUILD=1 bun run test:playwright",
+		"test:genealogy": "bun test scripts/genealogy",
+		"check": "bun run lint && bun run typecheck && bun run test:genealogy && bun run build && bun run check:output && PLAYWRIGHT_SKIP_BUILD=1 bun run test:playwright",
 		"prepare": "lefthook install"
 	},
 	"dependencies": {
 		"@tanstack/react-router": "^1.170.18",
 		"@tanstack/react-start": "^1.168.32",
+		"@xyflow/react": "^12.11.2",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"embla-carousel-react": "^8.6.0",
