@@ -16,6 +16,20 @@ Parameters:
       - "true"
       - "false"
     Description: Create Route 53 apex and www aliases after the CloudFront custom domain is ready.
+  EnablePaulRedirect:
+    Type: String
+    Default: "false"
+    AllowedValues:
+      - "true"
+      - "false"
+    Description: Add paul.diloreto.com to the edge certificate and redirect it to pauldiloreto.com.
+  EnablePaulDnsCutover:
+    Type: String
+    Default: "false"
+    AllowedValues:
+      - "true"
+      - "false"
+    Description: Create the Route 53 paul CNAME only after its CloudFront alias is ready.
   ExistingGitHubOidcProviderArn:
     Type: String
     Default: ""
@@ -53,6 +67,16 @@ Rules:
     Assertions:
       - Assert: !Equals [!Ref EnableCustomDomain, "true"]
         AssertDescription: EnableCustomDomain must be true when EnableDnsCutover is true.
+  PaulRedirectRequiresCustomDomain:
+    RuleCondition: !Equals [!Ref EnablePaulRedirect, "true"]
+    Assertions:
+      - Assert: !Equals [!Ref EnableCustomDomain, "true"]
+        AssertDescription: EnableCustomDomain must be true when EnablePaulRedirect is true.
+  PaulDnsCutoverRequiresReadyRedirect:
+    RuleCondition: !Equals [!Ref EnablePaulDnsCutover, "true"]
+    Assertions:
+      - Assert: !Equals [!Ref EnablePaulRedirect, "true"]
+        AssertDescription: EnablePaulRedirect must be true when EnablePaulDnsCutover is true.
 
 Conditions:
   CreateGitHubOidcProvider: !Equals [!Ref ExistingGitHubOidcProviderArn, ""]
@@ -60,6 +84,12 @@ Conditions:
   CreateDnsRecords: !And
     - !Condition CreateCustomDomain
     - !Equals [!Ref EnableDnsCutover, "true"]
+  CreatePaulRedirect: !And
+    - !Condition CreateCustomDomain
+    - !Equals [!Ref EnablePaulRedirect, "true"]
+  CreatePaulDnsRecord: !And
+    - !Condition CreatePaulRedirect
+    - !Equals [!Ref EnablePaulDnsCutover, "true"]
 
 Resources:
   AmplifyApp:
@@ -157,7 +187,7 @@ Resources:
       Name: diloreto-website-request
       AutoPublish: true
       FunctionConfig:
-        Comment: Redirect www and internally normalize clean static paths.
+        Comment: Redirect www and Paul, then internally normalize clean static paths.
         Runtime: cloudfront-js-2.0
       FunctionCode: !Sub |
         function addQueryValue(parts, key, value) {
@@ -195,6 +225,18 @@ Resources:
             };
           }
 
+          if (host === 'paul.${DomainName}') {
+            return {
+              statusCode: 301,
+              statusDescription: 'Moved Permanently',
+              headers: {
+                location: {
+                  value: 'https://pauldiloreto.com' + request.uri + querySuffix(request.querystring)
+                }
+              }
+            };
+          }
+
           var finalSegment = request.uri.slice(request.uri.lastIndexOf('/') + 1);
           if (request.uri !== '/' && request.uri.slice(-1) !== '/' && finalSegment.indexOf('.') === -1) {
             request.uri += '/';
@@ -214,12 +256,21 @@ Resources:
       DomainName: !Ref DomainName
       SubjectAlternativeNames:
         - !Sub "www.${DomainName}"
+        - !If
+          - CreatePaulRedirect
+          - !Sub "paul.${DomainName}"
+          - !Ref AWS::NoValue
       ValidationMethod: DNS
       DomainValidationOptions:
         - DomainName: !Ref DomainName
           HostedZoneId: !Ref HostedZoneId
         - DomainName: !Sub "www.${DomainName}"
           HostedZoneId: !Ref HostedZoneId
+        - !If
+          - CreatePaulRedirect
+          - DomainName: !Sub "paul.${DomainName}"
+            HostedZoneId: !Ref HostedZoneId
+          - !Ref AWS::NoValue
       KeyAlgorithm: RSA_2048
       CertificateTransparencyLoggingPreference: ENABLED
       Tags:
@@ -236,6 +287,10 @@ Resources:
           - CreateCustomDomain
           - - !Ref DomainName
             - !Sub "www.${DomainName}"
+            - !If
+              - CreatePaulRedirect
+              - !Sub "paul.${DomainName}"
+              - !Ref AWS::NoValue
           - !Ref AWS::NoValue
         Comment: Canonical edge delivery for the static diloreto-website Amplify origin.
         CacheBehaviors:
@@ -348,6 +403,17 @@ Resources:
         EvaluateTargetHealth: false
         HostedZoneId: Z2FDTNDATAQYW2
 
+  PaulRedirectRecord:
+    Type: AWS::Route53::RecordSet
+    Condition: CreatePaulDnsRecord
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      Name: !Sub "paul.${DomainName}"
+      Type: CNAME
+      TTL: 300
+      ResourceRecords:
+        - !GetAtt EdgeDistribution.DomainName
+
   GitHubOidcProvider:
     Type: AWS::IAM::OIDCProvider
     Condition: CreateGitHubOidcProvider
@@ -439,9 +505,13 @@ Outputs:
     Value: !Sub "https://${EdgeDistribution.DomainName}"
   EdgeCertificateArn:
     Condition: CreateCustomDomain
-    Description: ACM certificate ARN for the apex and www names.
+    Description: ACM certificate ARN for the apex, www, and optional Paul redirect names.
     Value: !Ref EdgeCertificate
   ProductionUrl:
     Condition: CreateDnsRecords
     Description: Canonical production URL.
     Value: !Sub "https://${DomainName}"
+  PaulRedirectUrl:
+    Condition: CreatePaulDnsRecord
+    Description: Legacy Paul hostname redirected by the edge distribution.
+    Value: !Sub "https://paul.${DomainName}"

@@ -1,6 +1,6 @@
 # AWS Amplify and CloudFront hosting runbook
 
-The site is a static TanStack Start build published to an AWS Amplify `WEB` app in `us-east-1`. CloudFront is the public delivery layer. It supplies the generated `404.html` body with HTTP status `404`, redirects `www` to the apex, and serves the apex certificate. Route 53 and ACM complete the custom-domain setup.
+The site is a static TanStack Start build published to an AWS Amplify `WEB` app in `us-east-1`. CloudFront is the public delivery layer. It supplies the generated `404.html` body with HTTP status `404`, redirects `www` to the apex, redirects `paul.diloreto.com` to `pauldiloreto.com`, and serves the shared edge certificate. Route 53 and ACM complete the custom-domain setup.
 
 CloudFormation owns the Amplify app and branch, CloudFront resources, ACM certificate, Route 53 aliases, GitHub OIDC provider, and deployment role. GitHub Actions only validates and publishes the static artifact to Amplify.
 
@@ -13,10 +13,12 @@ GitHub Actions --OIDC--> Amplify branch origin
 Route 53 --> CloudFront --> main.<app-id>.amplifyapp.com
                |  |
                |  +-- origin 404 + /404.html => custom body with status 404
-               +----- www 301 redirect and clean-path request normalization
+               +----- www 301, paul 301, and clean-path request normalization
 ```
 
-CloudFront uses the Amplify branch domain as a custom HTTPS origin. The distribution exists even while `EnableCustomDomain=false`, so it can be validated before DNS changes. `EnableCustomDomain=true` pre-provisions the ACM certificate and CloudFront aliases while legacy DNS remains live. The separate `EnableDnsCutover=true` gate creates the Route 53 A/AAAA aliases; no Amplify domain association is created.
+CloudFront uses the Amplify branch domain as a custom HTTPS origin. The distribution exists even while `EnableCustomDomain=false`, so it can be validated before DNS changes. `EnableCustomDomain=true` pre-provisions the ACM certificate and CloudFront aliases while legacy DNS remains live. The separate `EnableDnsCutover=true` gate creates the Route 53 apex/`www` A/AAAA aliases; no Amplify domain association is created.
+
+The exact `paul.diloreto.com` hostname is also owned here because this stack controls the source DNS zone and edge certificate. `EnablePaulRedirect=true` adds only that SAN, CloudFront alias, and viewer-request redirect. `EnablePaulDnsCutover=true` separately creates only its CNAME after the alias is validated. The Carolyn portfolio remains isolated in AWS account `725669362139`: its Amplify app owns only the `carolyn.diloreto.com` association, while this account's shared zone supplies its two cross-account CNAMEs.
 
 ## Prerequisites
 
@@ -158,12 +160,14 @@ sha256sum .aws-migration/route53-before.json \
   .aws-migration/route53-pre-cutover.json
 ```
 
-Review the full record-set diff. Preserve all unrelated records byte-for-byte, especially Proton Mail records and the unrelated `carolyn` and `paul` CNAMEs.
+Review the full record-set diff. Preserve all unrelated records byte-for-byte, especially Proton Mail records and the cross-account `carolyn` CNAMEs.
 
-Only these stale records are authorized for deletion:
+The original apex/`www` cutover authorized deletion of only:
 
 - apex A `75.2.60.5`
 - `www` CNAME `diloreto.netlify.com.`
+
+The later Paul redirect cutover additionally authorizes replacing only the broken `paul` CNAME from `pauldiloreto.com.` to the stack's CloudFront distribution. Do not alter `carolyn`, mail, wildcard, or any other record.
 
 Do not delete or rewrite any other record.
 
@@ -241,6 +245,39 @@ aws cloudformation deploy \
 
 Only the four Route 53 alias resources should be added in this second change set. Wait for `UPDATE_COMPLETE`. If the update fails, immediately restore the two original record sets from the snapshot; do not leave the names absent.
 
+### 7.3 Provision the Paul redirect
+
+The existing `paul.diloreto.com CNAME pauldiloreto.com.` resolves but cannot complete TLS because the destination certificate does not cover the source hostname. Replace it in two stages.
+
+First deploy the edge behavior without changing DNS:
+
+```bash
+aws cloudformation deploy \
+  --region us-east-1 \
+  --stack-name diloreto-amplify-hosting \
+  --template-file infrastructure/amplify-hosting.yml \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides \
+    EnableCustomDomain=true \
+    EnableDnsCutover=true \
+    EnablePaulRedirect=true \
+    EnablePaulDnsCutover=false
+```
+
+Wait for the stack and distribution, confirm the replacement ACM certificate is `ISSUED`, and verify the staged redirect while preserving the requested TLS name:
+
+```bash
+aws cloudfront wait distribution-deployed --id "$DISTRIBUTION_ID"
+curl --connect-to "paul.diloreto.com:443:${EDGE_DOMAIN}:443" \
+  -I 'https://paul.diloreto.com/hosting-redirect-check/deep/path?source=verification'
+```
+
+The response must be `301` with `location: https://pauldiloreto.com/hosting-redirect-check/deep/path?source=verification`. Recheck apex and `www` before continuing.
+
+Next create and inspect a change set with `EnablePaulDnsCutover=true`. Save the current `paul` record as a restoration batch. Immediately before executing the reviewed change set, delete exactly the unmanaged `paul CNAME pauldiloreto.com.` record. CloudFormation cannot adopt that existing record, so the short delete/create transition is intentional. If stack execution fails, restore that exact CNAME and leave the DNS gate disabled while investigating.
+
+After the stack reaches `UPDATE_COMPLETE`, `PaulRedirectRecord` owns `paul.diloreto.com CNAME <distribution>.cloudfront.net.` with a 300-second TTL. Keep all four steady-state gates enabled in future stack updates.
+
 ## 8. Production verification
 
 Verify DNS and TLS from more than one resolver or network if possible:
@@ -255,6 +292,7 @@ curl -I https://diloreto.com/
 curl -I https://diloreto.com/areyou
 curl -i https://diloreto.com/not-a-real-route
 curl -I 'https://www.diloreto.com/areyou?source=verification'
+curl -I 'https://paul.diloreto.com/hosting-redirect-check/deep/path?source=verification'
 PLAYWRIGHT_BASE_URL=https://diloreto.com bun run test:smoke
 ```
 
@@ -262,6 +300,7 @@ Confirm all of the following:
 
 - The apex serves valid TLS and the expected static site.
 - `www` returns one permanent `301` to the same apex path with all query parameters preserved.
+- `paul` returns one permanent `301` to `https://pauldiloreto.com` with the same path and query.
 - `/`, `/areyou`, `/robots.txt`, `/favicon.png`, and `/apple-touch-icon.png` succeed.
 - A missing route returns status `404` and the custom 404 UI without changing the browser URL.
 - Hashed asset and HTML cache headers are correct.
@@ -270,7 +309,7 @@ Confirm all of the following:
 - No HTML or network request contains a Netlify runtime URL.
 - A workflow dispatch reports and deploys one resolved commit SHA even when the requested branch or tag later moves.
 
-After cutover, take another Route 53 snapshot and prove that only the authorized apex/`www` records plus CloudFormation-managed ACM validation and aliases changed.
+After each cutover, take another Route 53 snapshot. For the Paul change, prove that only its old CNAME target, the stack-managed replacement CNAME, and the ACM validation record required by the replacement edge certificate changed. The `carolyn` traffic/validation CNAMEs and every mail record must remain byte-for-byte unchanged.
 
 ## Recovery
 
@@ -284,7 +323,7 @@ If pre-provisioning fails while `EnableDnsCutover=false`, leave DNS unchanged an
 
 If the DNS-cutover update fails and rolls back after the legacy records were deleted, inspect Route 53 first. Restore only the original apex A and `www` CNAME when the CloudFormation-managed apex/`www` aliases are absent. Never attempt to restore legacy records over aliases that still exist.
 
-If cutover reached `UPDATE_COMPLETE` but production is unhealthy, first remove only the stack-owned traffic aliases while retaining the ready certificate and distribution:
+If the apex/`www` cutover reached `UPDATE_COMPLETE` but production is unhealthy, first remove only the stack-owned apex/`www` traffic aliases while retaining the ready certificate and distribution:
 
 ```bash
 aws cloudformation deploy \
@@ -295,7 +334,9 @@ aws cloudformation deploy \
   --parameter-overrides EnableCustomDomain=true EnableDnsCutover=false
 ```
 
-Wait for `UPDATE_COMPLETE`, confirm the stack-owned A/AAAA aliases are gone, and immediately restore only the original apex A and `www` CNAME from `.aws-migration/route53-before.json`. Do not replay the whole snapshot. After legacy DNS is restored, the certificate and CloudFront aliases can optionally be removed with a second deployment using `EnableCustomDomain=false EnableDnsCutover=false`. The generated Amplify and CloudFront URLs remain available throughout.
+Wait for `UPDATE_COMPLETE`, confirm the stack-owned A/AAAA aliases are gone, and immediately restore only the original apex A and `www` CNAME from `.aws-migration/route53-before.json`. Do not replay the whole snapshot. After legacy DNS is restored, the certificate and CloudFront aliases can optionally be removed with a second deployment using `EnableCustomDomain=false EnableDnsCutover=false EnablePaulRedirect=false EnablePaulDnsCutover=false`. The generated Amplify and CloudFront URLs remain available throughout.
+
+If only the Paul redirect is unhealthy, deploy with `EnablePaulDnsCutover=false` while leaving the apex/`www` gates enabled. Confirm the stack-owned Paul CNAME is gone, restore the saved pre-cutover Paul CNAME only if a temporary fallback is required, and keep `EnablePaulRedirect=true` until the edge issue is understood. Removing `EnablePaulRedirect` replaces the shared certificate again and is not the first rollback step.
 
 ### Bad application release
 

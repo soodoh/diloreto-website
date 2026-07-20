@@ -132,6 +132,9 @@ test("custom 404 keeps its status and loads no JavaScript", async ({
 	diagnostics.allowConsoleError(
 		"Failed to load resource: the server responded with a status of 404 (Not Found)",
 	);
+	diagnostics.allowConsoleError(
+		"Failed to load resource: the server responded with a status of 404 ()",
+	);
 
 	const response = await page.goto("/not-a-real-route");
 	expect(response).not.toBeNull();
