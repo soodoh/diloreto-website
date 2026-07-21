@@ -6,6 +6,7 @@ import {
 	Handle,
 	MarkerType,
 	type Node,
+	type NodeMouseHandler,
 	type NodeProps,
 	Position,
 	ReactFlow,
@@ -74,7 +75,10 @@ function PersonNode({ data }: NodeProps<PersonFlowNode>) {
 			<button
 				type="button"
 				disabled={data.isLiving}
-				onClick={() => data.onSelect(data.personId)}
+				onClick={(event) => {
+					event.stopPropagation();
+					data.onSelect(data.personId);
+				}}
 				className={`family-tree-node nodrag ${data.isFocus ? "family-tree-node-focus" : ""} ${data.isLiving ? "family-tree-node-private" : ""}`}
 				aria-label={
 					data.isLiving
@@ -422,6 +426,14 @@ export default function FamilyTreeGraph({
 		[data, selectedPersonId, onSelect],
 	);
 	const flowContainerRef = useRef<HTMLDivElement>(null);
+	const selectFlowNode = useCallback<NodeMouseHandler<PersonFlowNode>>(
+		(_event, node) => {
+			if (!node.data.isLiving) {
+				onSelect(node.id);
+			}
+		},
+		[onSelect],
+	);
 	const focusSelectedPerson = useCallback(
 		(instance: ReactFlowInstance<PersonFlowNode, Edge>) => {
 			const container = flowContainerRef.current;
@@ -452,6 +464,7 @@ export default function FamilyTreeGraph({
 				nodes={graph.nodes}
 				edges={graph.edges}
 				nodeTypes={nodeTypes}
+				onNodeClick={selectFlowNode}
 				onInit={focusSelectedPerson}
 				minZoom={0.02}
 				maxZoom={1.5}

@@ -121,6 +121,58 @@ test("family tree supports private, searchable, shareable exploration", async ({
 		panfiloChart.getByRole("button", { name: /Santa Projetta/ }),
 	).toBeVisible();
 
+	const zoomOut = panfiloChart.getByRole("button", { name: "Zoom Out" });
+	await zoomOut.click();
+	await zoomOut.click();
+	const zoomedOutScale = await panfiloChart
+		.locator(".react-flow__viewport")
+		.evaluate(
+			(viewport) =>
+				new DOMMatrixReadOnly(getComputedStyle(viewport).transform).a,
+		);
+	const selectedChild = panfiloChart.getByRole("button", {
+		name: /Carmine Antonio Di Loreto/,
+	});
+	const childTopBeforeClick = await selectedChild.evaluate((element) => {
+		const flowBounds = element
+			.closest(".family-tree-flow")
+			?.getBoundingClientRect();
+		const nodeBounds = element.getBoundingClientRect();
+		return flowBounds
+			? (nodeBounds.top - flowBounds.top) / flowBounds.height
+			: null;
+	});
+	await selectedChild.click();
+	await expect(page).toHaveURL(/\/familytree\?person=I781$/);
+	await expect(
+		page.getByRole("heading", {
+			name: "Carmine Antonio Di Loreto",
+			exact: true,
+		}),
+	).toBeVisible();
+
+	const reframedSelection = await panfiloChart.evaluate((element) => {
+		const selectedNode = element.querySelector(".family-tree-node-focus");
+		const viewport = element.querySelector(".react-flow__viewport");
+		if (!selectedNode || !viewport) {
+			return null;
+		}
+		const flowBounds = element.getBoundingClientRect();
+		const nodeBounds = selectedNode.getBoundingClientRect();
+		return {
+			relativeTop: (nodeBounds.top - flowBounds.top) / flowBounds.height,
+			zoom: new DOMMatrixReadOnly(getComputedStyle(viewport).transform).a,
+		};
+	});
+	expect(reframedSelection).not.toBeNull();
+	expect(childTopBeforeClick).not.toBeNull();
+	if (!reframedSelection || childTopBeforeClick === null) {
+		throw new Error("The clicked family-tree node was not reframed");
+	}
+	expect(reframedSelection.zoom).toBeGreaterThan(zoomedOutScale);
+	expect(reframedSelection.relativeTop).toBeLessThan(childTopBeforeClick);
+	expect(reframedSelection.relativeTop).toBeLessThanOrEqual(0.25);
+
 	const viewport = page.viewportSize();
 	const canvas = page.locator(".family-tree-canvas");
 	const details = page.locator(".family-tree-details");
