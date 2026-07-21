@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Fuse from "fuse.js";
 import {
 	BookOpenText,
 	CalendarDays,
@@ -53,6 +54,47 @@ function lifespan(person: GenealogyPerson): string | undefined {
 		return undefined;
 	}
 	return `${birthYear ?? "?"}–${deathYear ?? "?"}`;
+}
+
+type SearchablePersonName = {
+	person: GenealogyPerson;
+	display: string;
+};
+
+const searchablePersonNames: SearchablePersonName[] = Object.values(
+	genealogy.people,
+).flatMap((person) =>
+	person.isLiving
+		? []
+		: [person.name, ...person.alternateNames].map((name) => ({
+				person,
+				display: name.display,
+			})),
+);
+
+const personNameSearch = new Fuse(searchablePersonNames, {
+	keys: ["display"],
+	ignoreDiacritics: true,
+	ignoreLocation: true,
+	threshold: 0.2,
+	useTokenSearch: true,
+	tokenMatch: "all",
+});
+
+function searchPublicPeople(query: string): GenealogyPerson[] {
+	const people: GenealogyPerson[] = [];
+	const personIds = new Set<string>();
+	for (const { item } of personNameSearch.search(query, { limit: 64 })) {
+		if (personIds.has(item.person.id)) {
+			continue;
+		}
+		people.push(item.person);
+		personIds.add(item.person.id);
+		if (people.length === 8) {
+			break;
+		}
+	}
+	return people;
 }
 
 function uniquePeople(personIds: string[]): GenealogyPerson[] {
@@ -477,24 +519,11 @@ function FamilyTreePage(): JSX.Element {
 	}
 
 	const [query, setQuery] = useState("");
-	const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase());
-	const results = useMemo(() => {
-		if (!deferredQuery) {
-			return [];
-		}
-		return Object.values(genealogy.people)
-			.filter(
-				(person) =>
-					!person.isLiving &&
-					[person.name, ...person.alternateNames].some((name) =>
-						name.display.toLocaleLowerCase().includes(deferredQuery),
-					),
-			)
-			.sort((first, second) =>
-				first.name.display.localeCompare(second.name.display),
-			)
-			.slice(0, 8);
-	}, [deferredQuery]);
+	const deferredQuery = useDeferredValue(query.trim());
+	const results = useMemo(
+		() => (deferredQuery ? searchPublicPeople(deferredQuery) : []),
+		[deferredQuery],
+	);
 	const selectPerson = useCallback(
 		(personId: string) => {
 			const person = genealogy.people[personId];

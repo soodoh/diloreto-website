@@ -42,8 +42,17 @@ test("family tree supports private, searchable, shareable exploration", async ({
 	await expect(
 		page.getByRole("heading", { name: "Family records" }),
 	).toBeVisible();
-	await search.fill("Otto Di-Loreto");
 	const results = page.locator(".family-tree-search-results");
+	await search.fill("remo diloreto");
+	await expect(results.getByRole("button")).toHaveCount(2);
+	await expect(
+		results.getByRole("button", { name: /Dr. Gilbert Remo DiLoreto DDS/ }),
+	).toBeVisible();
+	await expect(
+		results.getByRole("button", { name: /Remo Antonio DiLoreto/ }),
+	).toBeVisible();
+
+	await search.fill("Ottto Dilreto");
 	await results
 		.getByRole("button", { name: /Ottorino Antonio Angelo DiLoreto/ })
 		.click();
