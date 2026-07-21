@@ -415,7 +415,7 @@ function PersonDetails({
 					onSelect={onSelect}
 				/>
 				<RelationshipGroup
-					label="Partners"
+					label="Spouses / partners"
 					people={related.partners}
 					onSelect={onSelect}
 				/>

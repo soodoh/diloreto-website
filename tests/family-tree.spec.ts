@@ -64,6 +64,43 @@ test("family tree supports private, searchable, shareable exploration", async ({
 		name: "Interactive family relationship chart",
 	});
 	await expect(fullTreeChart).toBeVisible();
+	const relationshipLegend = page.getByRole("note", {
+		name: "Relationship legend",
+	});
+	await expect(relationshipLegend).toContainText("Parent → child");
+	await expect(relationshipLegend).toContainText("Spouse / partner");
+	await expect(relationshipLegend).toContainText("Selected person");
+	await expect(
+		fullTreeChart.locator(".family-tree-generation-band", {
+			hasText: "Selected generation",
+		}),
+	).toBeAttached();
+	await expect(
+		fullTreeChart.locator(".family-tree-family-junction").first(),
+	).toBeAttached();
+	await expect(
+		fullTreeChart.locator(".family-tree-parent-child-edge").first(),
+	).toBeAttached();
+	await expect(
+		fullTreeChart.locator(".family-tree-partner-edge").first(),
+	).toBeAttached();
+	await expect(
+		fullTreeChart.locator(".react-flow__edge[tabindex='0']"),
+	).toHaveCount(0);
+	await expect(
+		fullTreeChart.locator(".family-tree-generation-band", {
+			hasText: "Previous generation",
+		}),
+	).toBeAttached();
+	await expect(
+		fullTreeChart.getByRole("button", { name: /^Selected: Biagio di Loreto/ }),
+	).toBeAttached();
+	await expect(
+		fullTreeChart.getByRole("button", { name: /^Spouse \/ partner:/ }),
+	).toBeAttached();
+	await expect(
+		fullTreeChart.getByRole("button", { name: /^Child:/ }),
+	).toBeAttached();
 	const initialScale = await fullTreeChart
 		.locator(".react-flow__viewport")
 		.evaluate(
@@ -109,6 +146,23 @@ test("family tree supports private, searchable, shareable exploration", async ({
 		}),
 	).toBeVisible();
 	await expect(page.getByText("Otto Di-Loreto", { exact: true })).toBeVisible();
+	const selectedCenter = await fullTreeChart
+		.getByRole("button", { name: /^Selected: Ottorino/ })
+		.evaluate((element) => {
+			const bounds = element.getBoundingClientRect();
+			return bounds.left + bounds.width / 2;
+		});
+	const spouseCenters = await fullTreeChart
+		.locator(".family-tree-node-spouse-partner")
+		.evaluateAll((elements) =>
+			elements.map((element) => {
+				const bounds = element.getBoundingClientRect();
+				return bounds.left + bounds.width / 2;
+			}),
+		);
+	expect(spouseCenters).toHaveLength(2);
+	expect(Math.min(...spouseCenters)).toBeLessThan(selectedCenter);
+	expect(Math.max(...spouseCenters)).toBeGreaterThan(selectedCenter);
 
 	await expectSuccessfulNavigation(page, "/familytree?person=I775");
 	const panfiloChart = page.getByRole("application", {

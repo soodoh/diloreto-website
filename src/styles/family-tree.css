@@ -229,7 +229,83 @@
 }
 
 .family-tree-flow-container {
+	position: relative;
 	height: 100%;
+}
+
+.family-tree-legend {
+	position: absolute;
+	right: 0.85rem;
+	bottom: 0.85rem;
+	z-index: 10;
+	display: grid;
+	min-width: 11rem;
+	padding: 0.65rem 0.75rem;
+	gap: 0.42rem;
+	border: 1px solid rgb(77 88 70 / 18%);
+	border-radius: 0.7rem;
+	background: rgb(255 253 248 / 92%);
+	box-shadow: 0 0.5rem 1.4rem rgb(61 68 51 / 10%);
+	font-family: var(--font-sans);
+	font-size: 0.7rem;
+	pointer-events: none;
+	backdrop-filter: blur(0.5rem);
+}
+
+.family-tree-legend strong {
+	color: #4b5745;
+	font-size: 0.66rem;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+}
+
+.family-tree-legend span {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.family-tree-legend i {
+	position: relative;
+	display: block;
+	width: 1.7rem;
+	height: 0.65rem;
+	flex: 0 0 auto;
+}
+
+.family-tree-legend-parent-child::before,
+.family-tree-legend-partner::before {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	content: "";
+	transform: translateY(-50%);
+}
+
+.family-tree-legend-parent-child::before {
+	border-top: 2px solid #607253;
+}
+
+.family-tree-legend-parent-child::after {
+	position: absolute;
+	top: 50%;
+	right: -0.05rem;
+	border-width: 0.22rem 0 0.22rem 0.36rem;
+	border-style: solid;
+	border-color: transparent transparent transparent #607253;
+	content: "";
+	transform: translateY(-50%);
+}
+
+.family-tree-legend-partner::before {
+	border-top: 3px dashed #9b6554;
+}
+
+.family-tree-legend-selected {
+	border: 2px solid #6f7b62;
+	border-radius: 0.3rem;
+	background: #e8eadc;
 }
 
 .family-tree-flow {
@@ -242,6 +318,62 @@
 	width: 216px;
 }
 
+.react-flow__node-family {
+	width: 12px;
+	height: 12px;
+	pointer-events: none;
+}
+
+.react-flow__node-generation {
+	pointer-events: none;
+}
+
+.family-tree-generation-band {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid rgb(104 115 91 / 16%);
+	background: linear-gradient(180deg, rgb(120 133 106 / 4%), transparent 55%);
+}
+
+.family-tree-generation-band > span {
+	position: absolute;
+	top: 0.55rem;
+	left: 50%;
+	padding: 0.22rem 0.42rem;
+	border-radius: 999px;
+	background: rgb(246 242 232 / 88%);
+	color: #778071;
+	font-family: var(--font-sans);
+	font-size: 0.62rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	transform: translateX(-50%);
+}
+
+.family-tree-family-junction {
+	position: relative;
+	display: grid;
+	width: 12px;
+	height: 12px;
+	place-items: center;
+}
+
+.family-tree-family-junction > span {
+	display: block;
+	width: 10px;
+	height: 10px;
+	border: 2px solid #f6f2e8;
+	border-radius: 999px;
+	background: #68765c;
+	box-shadow: 0 0 0 1px #68765c;
+}
+
+.family-tree-family-junction-muted {
+	opacity: 0.24;
+}
+
 .family-tree-handle {
 	width: 1px;
 	height: 1px;
@@ -252,7 +384,7 @@
 .family-tree-node {
 	display: grid;
 	width: 216px;
-	min-height: 78px;
+	height: 112px;
 	padding: 0.85rem 1rem;
 	place-content: center;
 	gap: 0.25rem;
@@ -280,6 +412,13 @@
 	transform: translateY(-2px);
 }
 
+.family-tree-node-muted {
+	border-color: #ddd9ce;
+	background: #f8f5ed;
+	box-shadow: none;
+	color: #5f675d;
+}
+
 .family-tree-node-focus {
 	border-color: #6f7b62;
 	background: linear-gradient(145deg, #f3f0df, #e3e7d9);
@@ -297,11 +436,50 @@
 	cursor: not-allowed;
 }
 
+.family-tree-node-relationship {
+	width: fit-content;
+	margin: 0 auto 0.05rem;
+	padding: 0.16rem 0.38rem;
+	border-radius: 999px;
+	background: #e8eadf;
+	color: #57634f;
+	font-family: var(--font-sans);
+	font-size: 0.58rem;
+	font-weight: 800;
+	letter-spacing: 0.07em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.family-tree-node-spouse-partner .family-tree-node-relationship {
+	background: #f1e2dc;
+	color: #825846;
+}
+
+.family-tree-node-child .family-tree-node-relationship,
+.family-tree-node-grandchild .family-tree-node-relationship {
+	background: #e1e8ee;
+	color: #4f6578;
+}
+
+.family-tree-node-sibling .family-tree-node-relationship {
+	background: #ede6d3;
+	color: #75603e;
+}
+
+.family-tree-node-muted .family-tree-node-relationship {
+	background: #eeece4;
+	color: #697066;
+}
+
 .family-tree-node-name {
+	display: -webkit-box;
 	overflow: hidden;
-	font-size: 1rem;
-	line-height: 1.18;
+	font-size: 0.96rem;
+	line-height: 1.14;
 	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
 }
 
 .family-tree-node-years {
@@ -311,14 +489,43 @@
 	letter-spacing: 0.03em;
 }
 
+.react-flow__edge.family-tree-edge {
+	transition: opacity 160ms ease;
+}
+
 .react-flow__edge.family-tree-edge .react-flow__edge-path {
 	stroke: #77826d;
-	stroke-width: 1.35;
+	stroke-width: 1.6;
+}
+
+.react-flow__edge.family-tree-parent-child-edge .react-flow__edge-path {
+	stroke: #607253;
+	stroke-width: 2.2;
+}
+
+.react-flow__edge.family-tree-parent-child-edge .react-flow__arrowhead polyline,
+.react-flow__edge.family-tree-parent-child-edge .react-flow__arrowhead path {
+	fill: #607253;
+	stroke: #607253;
+}
+
+.react-flow__edge.family-tree-family-link .react-flow__edge-path {
+	stroke: #849079;
+	stroke-width: 1.7;
 }
 
 .react-flow__edge.family-tree-partner-edge .react-flow__edge-path {
-	stroke: #9b806f;
-	stroke-dasharray: 4 4;
+	stroke: #9b6554;
+	stroke-width: 3;
+	stroke-dasharray: 9 5;
+}
+
+.react-flow__edge.family-tree-edge-focus {
+	filter: drop-shadow(0 1px 1px rgb(58 64 51 / 16%));
+}
+
+.react-flow__edge.family-tree-edge-muted {
+	opacity: 0.16;
 }
 
 .react-flow__controls {
