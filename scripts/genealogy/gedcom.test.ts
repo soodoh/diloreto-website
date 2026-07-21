@@ -124,6 +124,80 @@ const OLD_EVENT_INFERENCE_FIXTURE = `0 HEAD
 0 TRLR
 `;
 
+const RELATIONSHIP_AGE_INFERENCE_FIXTURE = `0 HEAD
+1 SOUR Test suite
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+0 @CONTROL_DEAD@ INDI
+1 NAME Control /Deceased/
+1 DEAT
+2 DATE 1 JAN 2020
+0 @CHILD_RULE_CANDIDATE@ INDI
+1 NAME Child Rule /Candidate/
+1 FAMS @CHILD_RULE_FAMILY@
+0 @OLD_CHILD@ INDI
+1 NAME Old /Child/
+1 BIRT
+2 DATE 1 JAN 1926
+1 FAMC @CHILD_RULE_FAMILY@
+0 @SPOUSE_RULE_CANDIDATE@ INDI
+1 NAME Spouse Rule /Candidate/
+1 FAMS @SPOUSE_RULE_FAMILY@
+0 @OLD_SPOUSE@ INDI
+1 NAME Old /Spouse/
+1 BIRT
+2 DATE 1 JAN 1906
+1 FAMS @SPOUSE_RULE_FAMILY@
+0 @SIBLING_RULE_CANDIDATE@ INDI
+1 NAME Sibling Rule /Candidate/
+1 FAMC @SIBLING_RULE_FAMILY@
+0 @OLD_SIBLING@ INDI
+1 NAME Old /Sibling/
+1 BIRT
+2 DATE 1 JAN 1906
+1 FAMC @SIBLING_RULE_FAMILY@
+0 @PARENT_RULE_CANDIDATE@ INDI
+1 NAME Parent Rule /Candidate/
+1 FAMC @PARENT_RULE_FAMILY@
+0 @OLD_PARENT@ INDI
+1 NAME Old /Parent/
+1 BIRT
+2 DATE 1 JAN 1876
+1 FAMS @PARENT_RULE_FAMILY@
+0 @AUNT_RULE_CANDIDATE@ INDI
+1 NAME Aunt Rule /Candidate/
+1 FAMC @AUNT_RULE_FAMILY@
+0 @AUNT_RULE_PARENT@ INDI
+1 NAME Aunt Rule /Parent/
+1 FAMC @EXTENDED_FAMILY@
+1 FAMS @AUNT_RULE_FAMILY@
+0 @OLD_AUNT@ INDI
+1 NAME Old /Aunt/
+1 BIRT
+2 DATE 1 JAN 1876
+1 FAMC @EXTENDED_FAMILY@
+0 @CHILD_RULE_FAMILY@ FAM
+1 HUSB @CHILD_RULE_CANDIDATE@
+1 CHIL @OLD_CHILD@
+0 @SPOUSE_RULE_FAMILY@ FAM
+1 HUSB @SPOUSE_RULE_CANDIDATE@
+1 WIFE @OLD_SPOUSE@
+0 @SIBLING_RULE_FAMILY@ FAM
+1 CHIL @SIBLING_RULE_CANDIDATE@
+1 CHIL @OLD_SIBLING@
+0 @PARENT_RULE_FAMILY@ FAM
+1 HUSB @OLD_PARENT@
+1 CHIL @PARENT_RULE_CANDIDATE@
+0 @EXTENDED_FAMILY@ FAM
+1 CHIL @AUNT_RULE_PARENT@
+1 CHIL @OLD_AUNT@
+0 @AUNT_RULE_FAMILY@ FAM
+1 HUSB @AUNT_RULE_PARENT@
+1 CHIL @AUNT_RULE_CANDIDATE@
+0 TRLR
+`;
+
 const ANCESTOR_INFERENCE_FIXTURE = `0 HEAD
 1 SOUR Test suite
 1 GEDC
@@ -325,6 +399,102 @@ describe("genealogy generation", () => {
 		assert.equal(
 			generateGenealogyData(nonCoupleFamilyEvent, 2026).data.people.SPOUSE
 				?.isLiving,
+			true,
+		);
+	});
+
+	test("infers undated people from relatives at conservative age thresholds", () => {
+		const { data } = generateGenealogyData(
+			RELATIONSHIP_AGE_INFERENCE_FIXTURE,
+			2026,
+		);
+
+		for (const personId of [
+			"CHILD_RULE_CANDIDATE",
+			"SPOUSE_RULE_CANDIDATE",
+			"SIBLING_RULE_CANDIDATE",
+			"PARENT_RULE_CANDIDATE",
+			"AUNT_RULE_CANDIDATE",
+		]) {
+			assert.equal(data.people[personId]?.isLiving, false);
+		}
+
+		const belowThresholds = RELATIONSHIP_AGE_INFERENCE_FIXTURE.replaceAll(
+			"1926",
+			"1927",
+		)
+			.replaceAll("1906", "1907")
+			.replaceAll("1876", "1877");
+		const belowThresholdData = generateGenealogyData(
+			belowThresholds,
+			2026,
+		).data;
+		for (const personId of [
+			"CHILD_RULE_CANDIDATE",
+			"SPOUSE_RULE_CANDIDATE",
+			"SIBLING_RULE_CANDIDATE",
+			"PARENT_RULE_CANDIDATE",
+			"AUNT_RULE_CANDIDATE",
+		]) {
+			assert.equal(belowThresholdData.people[personId]?.isLiving, true);
+		}
+
+		const candidateWithBirth = RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+			"1 NAME Child Rule /Candidate/",
+			"1 NAME Child Rule /Candidate/\n1 BIRT\n2 DATE 1 JAN 2000",
+		);
+		assert.equal(
+			generateGenealogyData(candidateWithBirth, 2026).data.people
+				.CHILD_RULE_CANDIDATE?.isLiving,
+			true,
+		);
+
+		for (const uncertainChildBirth of [
+			RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+				"2 DATE 1 JAN 1926",
+				"2 DATE ABT 1926",
+			),
+			RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+				"2 DATE 1 JAN 1926",
+				"2 DATE BET 1900 AND 1926",
+			),
+			RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+				"2 DATE 1 JAN 1926",
+				"2 DATE 1926 (?)",
+			),
+			RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+				"2 DATE 1 JAN 1926",
+				"2 DATE probably 1926",
+			),
+			RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+				"2 DATE 1 JAN 1926",
+				"2 DATE @#DFRENCH R@ 1 VEND 234",
+			),
+		]) {
+			assert.equal(
+				generateGenealogyData(uncertainChildBirth, 2026).data.people
+					.CHILD_RULE_CANDIDATE?.isLiving,
+				true,
+			);
+		}
+
+		const explicitGregorianBirth = RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+			"2 DATE 1 JAN 1926",
+			"2 DATE @#DGREGORIAN@ 1 JAN 1926",
+		);
+		assert.equal(
+			generateGenealogyData(explicitGregorianBirth, 2026).data.people
+				.CHILD_RULE_CANDIDATE?.isLiving,
+			false,
+		);
+
+		const conflictingSpouseBirths = RELATIONSHIP_AGE_INFERENCE_FIXTURE.replace(
+			"2 DATE 1 JAN 1906\n1 FAMS @SPOUSE_RULE_FAMILY@",
+			"2 DATE 1 JAN 1906\n1 BIRT\n2 DATE 1 JAN 1905\n1 FAMS @SPOUSE_RULE_FAMILY@",
+		);
+		assert.equal(
+			generateGenealogyData(conflictingSpouseBirths, 2026).data.people
+				.SPOUSE_RULE_CANDIDATE?.isLiving,
 			true,
 		);
 	});
