@@ -68,6 +68,7 @@ const EVENT_LABELS: Record<string, string> = {
 };
 
 const EVENT_TAGS = new Set(Object.keys(EVENT_LABELS));
+const FAMILY_COUPLE_EVENT_TAGS = new Set(["MARR"]);
 const POINTER_PATTERN = /^@[^@\s]+@$/;
 const YEAR_PATTERN = /(?<!\d)(\d{3,4})(?!\d)/g;
 
@@ -417,21 +418,35 @@ function extractYears(date: string | undefined): number[] {
 	}).filter((year) => Number.isFinite(year));
 }
 
-function hasBirthAtLeast120YearsAgo(
-	personNode: GedcomNode,
+function datesAreAtLeast120YearsAgo(
+	dates: string[],
 	referenceYear: number,
 ): boolean {
-	const birthDates = children(personNode, "BIRT")
-		.map((birth) => nodeText(child(birth, "DATE")))
-		.filter((birthDate) => birthDate !== undefined);
-	if (
-		birthDates.length === 0 ||
-		birthDates.some((birthDate) => /^AFT\b/i.test(birthDate))
-	) {
+	if (dates.length === 0 || dates.some((date) => /^AFT\b/i.test(date))) {
 		return false;
 	}
-	const years = birthDates.flatMap(extractYears);
+	const years = dates.flatMap(extractYears);
 	return years.length > 0 && Math.max(...years) <= referenceYear - 120;
+}
+
+function recordedBirthDates(personNode: GedcomNode): string[] {
+	return children(personNode, "BIRT")
+		.map((birth) => nodeText(child(birth, "DATE")))
+		.filter((birthDate) => birthDate !== undefined);
+}
+
+function hasNonBirthEventAtLeast120YearsAgo(
+	node: GedcomNode,
+	referenceYear: number,
+	eventTags = EVENT_TAGS,
+): boolean {
+	return node.children.some((event) => {
+		if (event.tag === "BIRT" || !eventTags.has(event.tag)) {
+			return false;
+		}
+		const date = nodeText(child(event, "DATE"));
+		return date ? datesAreAtLeast120YearsAgo([date], referenceYear) : false;
+	});
 }
 
 function inferDeceasedPersonIds(
@@ -439,7 +454,8 @@ function inferDeceasedPersonIds(
 	referenceYear: number,
 ): Set<string> {
 	const deceasedPersonIds = new Set<string>();
-	const ancestorsOfOldPeople = new Set<string>();
+	const peopleKnownAtLeast120YearsAgo = new Set<string>();
+	const peopleWithPotentiallyRecentBirth = new Set<string>();
 	const ancestorIdsByChildId = new Map<string, Set<string>>();
 
 	for (const personNode of roots.filter((root) => root.tag === "INDI")) {
@@ -449,8 +465,17 @@ function inferDeceasedPersonIds(
 		if (child(personNode, "DEAT")) {
 			deceasedPersonIds.add(personNode.xref);
 		}
-		if (hasBirthAtLeast120YearsAgo(personNode, referenceYear)) {
-			ancestorsOfOldPeople.add(personNode.xref);
+		const birthDates = recordedBirthDates(personNode);
+		const hasOldBirth = datesAreAtLeast120YearsAgo(birthDates, referenceYear);
+		if (birthDates.length > 0 && !hasOldBirth) {
+			peopleWithPotentiallyRecentBirth.add(personNode.xref);
+		}
+		if (
+			hasOldBirth ||
+			(birthDates.length === 0 &&
+				hasNonBirthEventAtLeast120YearsAgo(personNode, referenceYear))
+		) {
+			peopleKnownAtLeast120YearsAgo.add(personNode.xref);
 		}
 	}
 
@@ -458,6 +483,19 @@ function inferDeceasedPersonIds(
 		const ancestorIds = [child(familyNode, "HUSB"), child(familyNode, "WIFE")]
 			.map((partner) => pointerId(partner?.value))
 			.filter((personId) => personId !== undefined);
+		if (
+			hasNonBirthEventAtLeast120YearsAgo(
+				familyNode,
+				referenceYear,
+				FAMILY_COUPLE_EVENT_TAGS,
+			)
+		) {
+			for (const partnerId of ancestorIds) {
+				if (!peopleWithPotentiallyRecentBirth.has(partnerId)) {
+					peopleKnownAtLeast120YearsAgo.add(partnerId);
+				}
+			}
+		}
 		for (const childNode of children(familyNode, "CHIL")) {
 			const childId = pointerId(childNode.value);
 			if (!childId) {
@@ -472,22 +510,25 @@ function inferDeceasedPersonIds(
 		}
 	}
 
-	const pendingDescendantIds = [...ancestorsOfOldPeople];
+	const pendingDescendantIds = [...peopleKnownAtLeast120YearsAgo];
 	for (let index = 0; index < pendingDescendantIds.length; index += 1) {
 		const descendantId = pendingDescendantIds[index];
 		if (!descendantId) {
 			continue;
 		}
 		for (const ancestorId of ancestorIdsByChildId.get(descendantId) ?? []) {
-			if (ancestorsOfOldPeople.has(ancestorId)) {
+			if (
+				peopleKnownAtLeast120YearsAgo.has(ancestorId) ||
+				peopleWithPotentiallyRecentBirth.has(ancestorId)
+			) {
 				continue;
 			}
-			ancestorsOfOldPeople.add(ancestorId);
+			peopleKnownAtLeast120YearsAgo.add(ancestorId);
 			pendingDescendantIds.push(ancestorId);
 		}
 	}
 
-	for (const ancestorId of ancestorsOfOldPeople) {
+	for (const ancestorId of peopleKnownAtLeast120YearsAgo) {
 		deceasedPersonIds.add(ancestorId);
 	}
 	return deceasedPersonIds;
@@ -861,7 +902,7 @@ export function generateGenealogyData(
 		},
 		privacy: {
 			livingPersonRule:
-				"A person is presumed deceased when a death record exists, their latest recorded birth year is at least 120 years before the build year, or they are an ancestor of someone meeting that 120-year birth threshold.",
+				"A person is presumed deceased when a death record exists, a recorded life or family event proves they lived at least 120 years before the build year, or they are an ancestor of someone meeting that threshold.",
 			livingPersonLabel: "Living person",
 		},
 		defaultPersonId: oldestPersonId(people),

@@ -6,7 +6,7 @@
 		"producer": "DiLoretoConsolidation"
 	},
 	"privacy": {
-		"livingPersonRule": "A person is presumed deceased when a death record exists, their latest recorded birth year is at least 120 years before the build year, or they are an ancestor of someone meeting that 120-year birth threshold.",
+		"livingPersonRule": "A person is presumed deceased when a death record exists, a recorded life or family event proves they lived at least 120 years before the build year, or they are an ancestor of someone meeting that threshold.",
 		"livingPersonLabel": "Living person"
 	},
 	"defaultPersonId": "I848",
@@ -21496,11 +21496,24 @@
 		},
 		"I783": {
 			"id": "I783",
-			"isLiving": true,
+			"isLiving": false,
 			"name": {
-				"display": "Living person"
+				"id": "name-8696",
+				"display": "Cesidio Antonio D'Ascenzo",
+				"given": "Cesidio Antonio",
+				"surname": "D'Ascenzo",
+				"citations": [
+					{
+						"id": "citation-8697",
+						"sourceId": "S1358227969",
+						"notes": [
+							"Ancestry APID: 1,9907::174"
+						]
+					}
+				]
 			},
 			"alternateNames": [],
+			"sex": "M",
 			"events": [],
 			"citations": [],
 			"media": [],
@@ -26779,13 +26792,23 @@
 		},
 		"I907": {
 			"id": "I907",
-			"isLiving": true,
+			"isLiving": false,
 			"name": {
-				"display": "Living person"
+				"id": "name-10065",
+				"display": "Rosa Adriano",
+				"given": "Rosa",
+				"surname": "Adriano"
 			},
 			"alternateNames": [],
+			"sex": "F",
 			"events": [],
-			"citations": [],
+			"citations": [
+				{
+					"id": "citation-10067",
+					"sourceId": "S9014",
+					"notes": []
+				}
+			],
 			"media": [],
 			"notes": [],
 			"familyAsChildIds": [],
@@ -32778,7 +32801,25 @@
 				"I778"
 			],
 			"children": [],
-			"events": [],
+			"events": [
+				{
+					"id": "event-12359",
+					"type": "Marriage",
+					"date": "30 JAN 1840",
+					"place": "Vittorito, L'Aquila, Italy",
+					"phones": [],
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-12362",
+							"sourceId": "S1358227969",
+							"notes": [
+								"Ancestry APID: 1,9907::174"
+							]
+						}
+					]
+				}
+			],
 			"notes": [],
 			"citations": []
 		},
@@ -33735,9 +33776,31 @@
 				"I907"
 			],
 			"children": [],
-			"events": [],
+			"events": [
+				{
+					"id": "event-12650",
+					"type": "Marriage",
+					"date": "21 SEP 1765",
+					"place": "Cortino",
+					"phones": [],
+					"notes": [],
+					"citations": [
+						{
+							"id": "citation-12653",
+							"sourceId": "S9014",
+							"notes": []
+						}
+					]
+				}
+			],
 			"notes": [],
-			"citations": []
+			"citations": [
+				{
+					"id": "citation-12649",
+					"sourceId": "S9014",
+					"notes": []
+				}
+			]
 		},
 		"F289": {
 			"id": "F289",
@@ -36648,7 +36711,7 @@
 	"stats": {
 		"people": 942,
 		"families": 296,
-		"livingPeopleRedacted": 682,
-		"deceasedPeople": 260
+		"livingPeopleRedacted": 680,
+		"deceasedPeople": 262
 	}
 }

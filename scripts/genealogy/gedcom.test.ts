@@ -87,6 +87,43 @@ const LIVING_CHILD_FIXTURE = `0 HEAD
 0 TRLR
 `;
 
+const OLD_EVENT_INFERENCE_FIXTURE = `0 HEAD
+1 SOUR Test suite
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+0 @ANCESTOR@ INDI
+1 NAME Undated /Ancestor/
+1 FAMS @ANCESTOR_FAMILY@
+0 @MARRIED_PERSON@ INDI
+1 NAME Undated /Married Person/
+1 FAMC @ANCESTOR_FAMILY@
+1 FAMS @OLD_MARRIAGE@
+0 @SPOUSE@ INDI
+1 NAME Undated /Spouse/
+1 FAMS @OLD_MARRIAGE@
+0 @OLD_DEATH_PARENT@ INDI
+1 NAME Old Death /Parent/
+1 FAMS @OLD_DEATH_FAMILY@
+0 @OLD_DEATH_CHILD@ INDI
+1 NAME Old Death /Child/
+1 DEAT
+2 DATE 1 JAN 1900
+1 FAMC @OLD_DEATH_FAMILY@
+0 @ANCESTOR_FAMILY@ FAM
+1 HUSB @ANCESTOR@
+1 CHIL @MARRIED_PERSON@
+0 @OLD_MARRIAGE@ FAM
+1 HUSB @MARRIED_PERSON@
+1 WIFE @SPOUSE@
+1 MARR
+2 DATE 1 JAN 1840
+0 @OLD_DEATH_FAMILY@ FAM
+1 HUSB @OLD_DEATH_PARENT@
+1 CHIL @OLD_DEATH_CHILD@
+0 TRLR
+`;
+
 const ANCESTOR_INFERENCE_FIXTURE = `0 HEAD
 1 SOUR Test suite
 1 GEDC
@@ -250,6 +287,46 @@ describe("genealogy generation", () => {
 		assert.equal(data.people.GRANDPARENT?.isLiving, false);
 		assert.equal(data.people.RECENTLY_DECEASED_CHILD?.isLiving, false);
 		assert.equal(data.people.RECENT_PARENT?.isLiving, true);
+	});
+
+	test("infers people and ancestors from life events over 120 years ago", () => {
+		const { data } = generateGenealogyData(OLD_EVENT_INFERENCE_FIXTURE, 2026);
+
+		assert.equal(data.people.MARRIED_PERSON?.isLiving, false);
+		assert.equal(data.people.SPOUSE?.isLiving, false);
+		assert.equal(data.people.ANCESTOR?.isLiving, false);
+		assert.equal(data.people.OLD_DEATH_CHILD?.isLiving, false);
+		assert.equal(data.people.OLD_DEATH_PARENT?.isLiving, false);
+
+		const uncertainMarriage = OLD_EVENT_INFERENCE_FIXTURE.replace(
+			"2 DATE 1 JAN 1840",
+			"2 DATE AFT 1 JAN 1840",
+		);
+		assert.equal(
+			generateGenealogyData(uncertainMarriage, 2026).data.people.SPOUSE
+				?.isLiving,
+			true,
+		);
+
+		const conflictingBirth = OLD_EVENT_INFERENCE_FIXTURE.replace(
+			"1 NAME Undated /Spouse/",
+			"1 NAME Undated /Spouse/\n1 BIRT\n2 DATE 1 JAN 1990",
+		);
+		assert.equal(
+			generateGenealogyData(conflictingBirth, 2026).data.people.SPOUSE
+				?.isLiving,
+			true,
+		);
+
+		const nonCoupleFamilyEvent = OLD_EVENT_INFERENCE_FIXTURE.replace(
+			"1 MARR\n2 DATE 1 JAN 1840",
+			"1 RESI\n2 DATE 1 JAN 1840",
+		);
+		assert.equal(
+			generateGenealogyData(nonCoupleFamilyEvent, 2026).data.people.SPOUSE
+				?.isLiving,
+			true,
+		);
 	});
 
 	test("fails on dangling person and family references", () => {
