@@ -228,6 +228,10 @@
 	font-family: var(--font-sans);
 }
 
+.family-tree-flow-container {
+	height: 100%;
+}
+
 .family-tree-flow {
 	background:
 		radial-gradient(circle at center, rgb(255 255 255 / 78%), transparent 55%),
@@ -331,11 +335,7 @@
 }
 
 .family-tree-details {
-	position: sticky;
-	top: 6.5rem;
-	max-height: min(78vh, 52rem);
-	overflow-y: auto;
-	scrollbar-color: #bbb7aa transparent;
+	overflow: hidden;
 }
 
 .family-tree-details-heading {
@@ -605,11 +605,6 @@
 
 	.family-tree-workspace {
 		grid-template-columns: 1fr;
-	}
-
-	.family-tree-details {
-		position: static;
-		max-height: none;
 	}
 
 	.family-tree-graph {

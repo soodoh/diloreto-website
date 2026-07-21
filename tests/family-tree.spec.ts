@@ -1,5 +1,49 @@
 import { expect, expectSuccessfulNavigation, test } from "./support/smoke";
 
+test("query-selected family records are focused and fully page-scrollable", async ({
+	page,
+}) => {
+	await expectSuccessfulNavigation(page, "/familytree?person=I103");
+
+	const flow = page.getByRole("application", {
+		name: "Interactive family relationship chart",
+	});
+	const framing = await flow.evaluate((element) => {
+		const selectedNode = element.querySelector(".family-tree-node-focus");
+		if (!selectedNode) {
+			return null;
+		}
+		const flowBounds = element.getBoundingClientRect();
+		const selectedBounds = selectedNode.getBoundingClientRect();
+		return {
+			relativeTop: (selectedBounds.top - flowBounds.top) / flowBounds.height,
+			zoom: new DOMMatrixReadOnly(
+				getComputedStyle(
+					element.querySelector(".react-flow__viewport") ?? element,
+				).transform,
+			).a,
+		};
+	});
+	expect(framing).not.toBeNull();
+	if (!framing) {
+		throw new Error("The selected family-tree node was not rendered");
+	}
+	expect(framing.relativeTop).toBeGreaterThanOrEqual(0.08);
+	expect(framing.relativeTop).toBeLessThanOrEqual(0.25);
+	expect(framing.zoom).toBeGreaterThanOrEqual(0.7);
+
+	const details = page.locator(".family-tree-details");
+	const detailsSize = await details.evaluate((element) => ({
+		clientHeight: element.clientHeight,
+		scrollHeight: element.scrollHeight,
+	}));
+	expect(detailsSize.clientHeight).toBe(detailsSize.scrollHeight);
+	await page.evaluate(() =>
+		window.scrollTo(0, document.documentElement.scrollHeight),
+	);
+	await expect(details.locator(":scope > :last-child")).toBeInViewport();
+});
+
 test("family tree supports private, searchable, shareable exploration", async ({
 	page,
 }) => {

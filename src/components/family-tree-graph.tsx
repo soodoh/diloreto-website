@@ -9,8 +9,9 @@ import {
 	type NodeProps,
 	Position,
 	ReactFlow,
+	type ReactFlowInstance,
 } from "@xyflow/react";
-import { memo, useMemo } from "react";
+import { memo, useCallback, useMemo, useRef } from "react";
 import type { GenealogyData, GenealogyPerson } from "~/content/genealogy";
 import "@xyflow/react/dist/style.css";
 
@@ -32,6 +33,8 @@ type FamilyTreeGraphProps = {
 };
 
 const NODE_WIDTH = 216;
+const FOCUS_ZOOM = 0.9;
+const MOBILE_FOCUS_ZOOM = 0.75;
 const COLUMN_GAP = 64;
 const ROW_GAP = 168;
 const COMPONENT_GAP = 480;
@@ -274,7 +277,6 @@ function buildGraph(
 ): {
 	nodes: PersonFlowNode[];
 	edges: Edge[];
-	initialNodes: { id: string }[];
 } {
 	const initialPersonIds = collectInitialPersonIds(data, selectedPersonId);
 	const visitedPersonIds = new Set<string>();
@@ -407,11 +409,7 @@ function buildGraph(
 			}
 		}
 	}
-	return {
-		nodes,
-		edges,
-		initialNodes: [...initialPersonIds].map((id) => ({ id })),
-	};
+	return { nodes, edges };
 }
 
 export default function FamilyTreeGraph({
@@ -423,35 +421,55 @@ export default function FamilyTreeGraph({
 		() => buildGraph(data, selectedPersonId, onSelect),
 		[data, selectedPersonId, onSelect],
 	);
+	const flowContainerRef = useRef<HTMLDivElement>(null);
+	const focusSelectedPerson = useCallback(
+		(instance: ReactFlowInstance<PersonFlowNode, Edge>) => {
+			const container = flowContainerRef.current;
+			const selectedNode = graph.nodes.find(
+				(node) => node.id === selectedPersonId,
+			);
+			if (!container || !selectedNode) {
+				return;
+			}
+
+			const { width, height } = container.getBoundingClientRect();
+			const zoom = width <= 560 ? MOBILE_FOCUS_ZOOM : FOCUS_ZOOM;
+			const selectedCenterX = selectedNode.position.x + NODE_WIDTH / 2;
+			const selectedTop = Math.max(48, Math.min(120, height * 0.15));
+			void instance.setViewport({
+				x: width / 2 - selectedCenterX * zoom,
+				y: selectedTop - selectedNode.position.y * zoom,
+				zoom,
+			});
+		},
+		[graph.nodes, selectedPersonId],
+	);
 
 	return (
-		<ReactFlow
-			key={selectedPersonId}
-			nodes={graph.nodes}
-			edges={graph.edges}
-			nodeTypes={nodeTypes}
-			fitView
-			fitViewOptions={{
-				nodes: graph.initialNodes,
-				padding: 0.2,
-				maxZoom: 1.05,
-			}}
-			minZoom={0.02}
-			maxZoom={1.5}
-			nodesDraggable={false}
-			nodesConnectable={false}
-			elementsSelectable={false}
-			nodesFocusable={false}
-			className="family-tree-flow"
-			aria-label="Interactive family relationship chart"
-		>
-			<Background
-				variant={BackgroundVariant.Dots}
-				gap={24}
-				size={1}
-				color="rgba(73, 79, 63, 0.16)"
-			/>
-			<Controls showInteractive={false} position="bottom-left" />
-		</ReactFlow>
+		<div ref={flowContainerRef} className="family-tree-flow-container">
+			<ReactFlow
+				key={selectedPersonId}
+				nodes={graph.nodes}
+				edges={graph.edges}
+				nodeTypes={nodeTypes}
+				onInit={focusSelectedPerson}
+				minZoom={0.02}
+				maxZoom={1.5}
+				nodesDraggable={false}
+				nodesConnectable={false}
+				elementsSelectable={false}
+				nodesFocusable={false}
+				className="family-tree-flow"
+				aria-label="Interactive family relationship chart"
+			>
+				<Background
+					variant={BackgroundVariant.Dots}
+					gap={24}
+					size={1}
+					color="rgba(73, 79, 63, 0.16)"
+				/>
+				<Controls showInteractive={false} position="bottom-left" />
+			</ReactFlow>
+		</div>
 	);
 }
