@@ -34,6 +34,7 @@ type FamilyTreeGraphProps = {
 const NODE_WIDTH = 216;
 const COLUMN_GAP = 64;
 const ROW_GAP = 168;
+const COMPONENT_GAP = 480;
 
 function eventYear(person: GenealogyPerson, type: string): string | undefined {
 	const event = person.events.find((candidate) => candidate.type === type);
@@ -154,19 +155,19 @@ function partnerIds(data: GenealogyData, personId: string): string[] {
 	return [...partners];
 }
 
-function collectGenerations(
+function collectInitialPersonIds(
 	data: GenealogyData,
 	selectedPersonId: string,
-): Map<string, number> {
-	const generations = new Map<string, number>([[selectedPersonId, 0]]);
+): Set<string> {
+	const personIds = new Set<string>([selectedPersonId]);
 
 	let ancestors = [selectedPersonId];
 	for (let depth = 1; depth <= 2; depth += 1) {
 		const next: string[] = [];
 		for (const personId of ancestors) {
 			for (const parentId of parentIds(data, personId)) {
-				if (!generations.has(parentId)) {
-					generations.set(parentId, -depth);
+				if (!personIds.has(parentId)) {
+					personIds.add(parentId);
 					next.push(parentId);
 				}
 			}
@@ -179,8 +180,8 @@ function collectGenerations(
 		const next: string[] = [];
 		for (const personId of descendants) {
 			for (const childId of childIds(data, personId)) {
-				if (!generations.has(childId)) {
-					generations.set(childId, depth);
+				if (!personIds.has(childId)) {
+					personIds.add(childId);
 					next.push(childId);
 				}
 			}
@@ -189,62 +190,182 @@ function collectGenerations(
 	}
 
 	for (const partnerId of partnerIds(data, selectedPersonId)) {
-		if (!generations.has(partnerId)) {
-			generations.set(partnerId, 0);
+		personIds.add(partnerId);
+	}
+	return personIds;
+}
+
+type ComponentPerson = {
+	person: GenealogyPerson;
+	generation: number;
+	distance: number;
+};
+
+function collectComponent(
+	data: GenealogyData,
+	startPersonId: string,
+	visitedPersonIds: Set<string>,
+): ComponentPerson[] {
+	const positions = new Map<string, { generation: number; distance: number }>([
+		[startPersonId, { generation: 0, distance: 0 }],
+	]);
+	const queue = [startPersonId];
+	visitedPersonIds.add(startPersonId);
+
+	for (let index = 0; index < queue.length; index += 1) {
+		const personId = queue[index];
+		const person = personId ? data.people[personId] : undefined;
+		const position = personId ? positions.get(personId) : undefined;
+		if (!person || !position) {
+			continue;
+		}
+
+		const addPerson = (relatedPersonId: string, generation: number) => {
+			if (visitedPersonIds.has(relatedPersonId)) {
+				return;
+			}
+			visitedPersonIds.add(relatedPersonId);
+			positions.set(relatedPersonId, {
+				generation,
+				distance: position.distance + 1,
+			});
+			queue.push(relatedPersonId);
+		};
+
+		for (const familyId of person.familyAsChildIds) {
+			const family = data.families[familyId];
+			for (const parentId of family?.partnerIds ?? []) {
+				addPerson(parentId, position.generation - 1);
+			}
+			for (const child of family?.children ?? []) {
+				addPerson(child.personId, position.generation);
+			}
+		}
+
+		for (const familyId of person.familyAsPartnerIds) {
+			const family = data.families[familyId];
+			for (const partnerId of family?.partnerIds ?? []) {
+				addPerson(partnerId, position.generation);
+			}
+			for (const child of family?.children ?? []) {
+				addPerson(child.personId, position.generation + 1);
+			}
 		}
 	}
-	return generations;
+
+	return [...positions].flatMap(([personId, position]) => {
+		const person = data.people[personId];
+		return person ? [{ person, ...position }] : [];
+	});
+}
+
+function centeredColumn(index: number): number {
+	if (index === 0) {
+		return 0;
+	}
+	const distanceFromCenter = Math.ceil(index / 2);
+	return index % 2 === 0 ? distanceFromCenter : -distanceFromCenter;
 }
 
 function buildGraph(
 	data: GenealogyData,
 	selectedPersonId: string,
 	onSelect: (personId: string) => void,
-): { nodes: PersonFlowNode[]; edges: Edge[] } {
-	const generations = collectGenerations(data, selectedPersonId);
-	const rows = new Map<number, GenealogyPerson[]>();
-	for (const [personId, generation] of generations) {
-		const person = data.people[personId];
-		if (!person) {
-			continue;
+): {
+	nodes: PersonFlowNode[];
+	edges: Edge[];
+	initialNodes: { id: string }[];
+} {
+	const initialPersonIds = collectInitialPersonIds(data, selectedPersonId);
+	const visitedPersonIds = new Set<string>();
+	const components = [
+		collectComponent(data, selectedPersonId, visitedPersonIds),
+	];
+	for (const personId of Object.keys(data.people)) {
+		if (!visitedPersonIds.has(personId)) {
+			components.push(collectComponent(data, personId, visitedPersonIds));
 		}
-		const row = rows.get(generation) ?? [];
-		row.push(person);
-		rows.set(generation, row);
+	}
+
+	const componentWidths = components.map((component) => {
+		const generationCounts = new Map<number, number>();
+		for (const { generation } of component) {
+			generationCounts.set(
+				generation,
+				(generationCounts.get(generation) ?? 0) + 1,
+			);
+		}
+		const widestGeneration = Math.max(1, ...generationCounts.values());
+		return (
+			widestGeneration * NODE_WIDTH +
+			Math.max(0, widestGeneration - 1) * COLUMN_GAP
+		);
+	});
+
+	const componentCenters = [0];
+	let nextComponentX = (componentWidths[0] ?? NODE_WIDTH) / 2 + COMPONENT_GAP;
+	for (let index = 1; index < components.length; index += 1) {
+		const width = componentWidths[index] ?? NODE_WIDTH;
+		componentCenters.push(nextComponentX + width / 2);
+		nextComponentX += width + COMPONENT_GAP;
 	}
 
 	const nodes: PersonFlowNode[] = [];
-	for (const [generation, people] of rows) {
-		people.sort((first, second) =>
-			first.name.display.localeCompare(second.name.display),
-		);
-		const rowWidth =
-			people.length * NODE_WIDTH + Math.max(0, people.length - 1) * COLUMN_GAP;
-		for (let index = 0; index < people.length; index += 1) {
-			const person = people[index];
-			if (!person) {
-				continue;
-			}
-			nodes.push({
-				id: person.id,
-				type: "person",
-				position: {
-					x: -rowWidth / 2 + index * (NODE_WIDTH + COLUMN_GAP),
-					y: (generation + 2) * ROW_GAP,
-				},
-				data: {
-					label: person.name.display,
-					...(lifespan(person) ? { lifespan: lifespan(person) } : {}),
-					isFocus: person.id === selectedPersonId,
-					isLiving: person.isLiving,
-					onSelect,
-					personId: person.id,
-				},
+	for (
+		let componentIndex = 0;
+		componentIndex < components.length;
+		componentIndex += 1
+	) {
+		const component = components[componentIndex] ?? [];
+		const rows = new Map<number, ComponentPerson[]>();
+		for (const person of component) {
+			const row = rows.get(person.generation) ?? [];
+			row.push(person);
+			rows.set(person.generation, row);
+		}
+
+		for (const [generation, people] of rows) {
+			people.sort((first, second) => {
+				const firstIsInitial = initialPersonIds.has(first.person.id);
+				const secondIsInitial = initialPersonIds.has(second.person.id);
+				if (firstIsInitial !== secondIsInitial) {
+					return firstIsInitial ? -1 : 1;
+				}
+				return (
+					first.distance - second.distance ||
+					first.person.name.display.localeCompare(second.person.name.display)
+				);
 			});
+			for (let index = 0; index < people.length; index += 1) {
+				const componentPerson = people[index];
+				if (!componentPerson) {
+					continue;
+				}
+				const { person } = componentPerson;
+				nodes.push({
+					id: person.id,
+					type: "person",
+					position: {
+						x:
+							(componentCenters[componentIndex] ?? 0) +
+							centeredColumn(index) * (NODE_WIDTH + COLUMN_GAP) -
+							NODE_WIDTH / 2,
+						y: generation * ROW_GAP,
+					},
+					data: {
+						label: person.name.display,
+						...(lifespan(person) ? { lifespan: lifespan(person) } : {}),
+						isFocus: person.id === selectedPersonId,
+						isLiving: person.isLiving,
+						onSelect,
+						personId: person.id,
+					},
+				});
+			}
 		}
 	}
 
-	const visibleIds = new Set(generations.keys());
+	const visibleIds = new Set(nodes.map((node) => node.id));
 	const edges: Edge[] = [];
 	for (const family of Object.values(data.families)) {
 		for (const parentId of family.partnerIds) {
@@ -286,7 +407,11 @@ function buildGraph(
 			}
 		}
 	}
-	return { nodes, edges };
+	return {
+		nodes,
+		edges,
+		initialNodes: [...initialPersonIds].map((id) => ({ id })),
+	};
 }
 
 export default function FamilyTreeGraph({
@@ -306,8 +431,12 @@ export default function FamilyTreeGraph({
 			edges={graph.edges}
 			nodeTypes={nodeTypes}
 			fitView
-			fitViewOptions={{ padding: 0.2, maxZoom: 1.05 }}
-			minZoom={0.25}
+			fitViewOptions={{
+				nodes: graph.initialNodes,
+				padding: 0.2,
+				maxZoom: 1.05,
+			}}
+			minZoom={0.02}
 			maxZoom={1.5}
 			nodesDraggable={false}
 			nodesConnectable={false}

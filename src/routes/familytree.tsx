@@ -6,6 +6,7 @@ import {
 	GitBranch,
 	LockKeyhole,
 	MapPin,
+	Phone,
 	Search,
 	Users,
 } from "lucide-react";
@@ -21,6 +22,7 @@ import {
 import type {
 	GenealogyCitation,
 	GenealogyEvent,
+	GenealogyNote,
 	GenealogyPerson,
 } from "~/content/genealogy";
 import { genealogy } from "~/content/genealogy";
@@ -118,7 +120,13 @@ function sourceLabel(url: string): string {
 		: `Visit ${hostname}`;
 }
 
-function CitationDetails({ citation }: { citation: GenealogyCitation }) {
+function CitationDetails({
+	citation,
+	showSourceNotes,
+}: {
+	citation: GenealogyCitation;
+	showSourceNotes: boolean;
+}) {
 	const source = citation.sourceId
 		? genealogy.sources[citation.sourceId]
 		: undefined;
@@ -147,6 +155,12 @@ function CitationDetails({ citation }: { citation: GenealogyCitation }) {
 			{citation.text ? <p>{citation.text}</p> : null}
 			{citation.dataText ? <p>{citation.dataText}</p> : null}
 			{source?.text ? <p>{source.text}</p> : null}
+			{citation.notes.map((note) => (
+				<p key={note}>{note}</p>
+			))}
+			{showSourceNotes ? (
+				<Notes notes={source?.notes ?? []} showSourceNotes={false} />
+			) : null}
 			{repositories.map((repository) => (
 				<div key={repository.id} className="family-tree-repository">
 					{repository.name ? <p>{repository.name}</p> : null}
@@ -173,7 +187,13 @@ function CitationDetails({ citation }: { citation: GenealogyCitation }) {
 	);
 }
 
-function Citations({ citations }: { citations: GenealogyCitation[] }) {
+function Citations({
+	citations,
+	showSourceNotes = true,
+}: {
+	citations: GenealogyCitation[];
+	showSourceNotes?: boolean;
+}) {
 	if (citations.length === 0) {
 		return null;
 	}
@@ -185,11 +205,33 @@ function Citations({ citations }: { citations: GenealogyCitation[] }) {
 			</summary>
 			<ul>
 				{citations.map((citation) => (
-					<CitationDetails key={citation.id} citation={citation} />
+					<CitationDetails
+						key={citation.id}
+						citation={citation}
+						showSourceNotes={showSourceNotes}
+					/>
 				))}
 			</ul>
 		</details>
 	);
+}
+
+function Notes({
+	notes,
+	showSourceNotes = true,
+}: {
+	notes: GenealogyNote[];
+	showSourceNotes?: boolean;
+}) {
+	if (notes.length === 0) {
+		return null;
+	}
+	return notes.map((note) => (
+		<div key={note.id} className="family-tree-note">
+			<p>{note.text}</p>
+			<Citations citations={note.citations} showSourceNotes={showSourceNotes} />
+		</div>
+	));
 }
 
 function EventCard({
@@ -217,12 +259,15 @@ function EventCard({
 			) : null}
 			{event.value ? <p>{event.value}</p> : null}
 			{event.address ? <p>{event.address}</p> : null}
+			{event.phones.map((phone) => (
+				<p key={phone}>
+					<Phone aria-hidden="true" size={15} /> {phone}
+				</p>
+			))}
 			{event.agency ? <p>{event.agency}</p> : null}
 			{event.cause ? <p>Cause: {event.cause}</p> : null}
 			{event.description ? <p>{event.description}</p> : null}
-			{event.notes.map((note) => (
-				<p key={note}>{note}</p>
-			))}
+			<Notes notes={event.notes} />
 			<Citations citations={event.citations} />
 		</li>
 	);
@@ -283,6 +328,17 @@ function PersonDetails({
 			partnerNames.length > 0 ? `with ${partnerNames.join(" & ")}` : undefined;
 		return family.events.map((event) => ({ event, context }));
 	});
+	const familyRecords = person.familyAsPartnerIds
+		.map((familyId) => genealogy.families[familyId])
+		.filter(
+			(family) =>
+				family !== undefined &&
+				(family.notes.length > 0 || family.citations.length > 0),
+		);
+	const recordCitations = [
+		...person.citations,
+		...(person.name.citations ?? []),
+	];
 	const mediaLinks = person.media.filter(
 		(media) => media.file && validatedLinks([media.file]).length > 0,
 	);
@@ -294,6 +350,21 @@ function PersonDetails({
 				<h2>{person.name.display}</h2>
 				{lifespan(person) ? <span>{lifespan(person)}</span> : null}
 			</div>
+
+			{person.alternateNames.length > 0 ? (
+				<section className="family-tree-details-section">
+					<h3>Also known as</h3>
+					<ul className="family-tree-alternate-names">
+						{person.alternateNames.map((name) => (
+							<li key={name.id ?? name.display}>
+								<span>{name.display}</span>
+								{name.type ? <small>{name.type}</small> : null}
+								<Citations citations={name.citations ?? []} />
+							</li>
+						))}
+					</ul>
+				</section>
+			) : null}
 
 			<div className="family-tree-relationships">
 				<RelationshipGroup
@@ -327,19 +398,38 @@ function PersonDetails({
 				</section>
 			) : null}
 
-			{person.notes.length > 0 ? (
+			{familyRecords.length > 0 ? (
 				<section className="family-tree-details-section">
-					<h3>Notes</h3>
-					{person.notes.map((note) => (
-						<p key={note}>{note}</p>
-					))}
+					<h3>Family records</h3>
+					{familyRecords.map((family) => {
+						const partnerNames = family.partnerIds
+							.filter((partnerId) => partnerId !== person.id)
+							.map((partnerId) => genealogy.people[partnerId]?.name.display)
+							.filter((name) => name !== undefined);
+						return (
+							<div key={family.id} className="family-tree-family-record">
+								{partnerNames.length > 0 ? (
+									<h4>With {partnerNames.join(" & ")}</h4>
+								) : null}
+								<Notes notes={family.notes} />
+								<Citations citations={family.citations} />
+							</div>
+						);
+					})}
 				</section>
 			) : null}
 
-			{person.citations.length > 0 ? (
+			{person.notes.length > 0 ? (
+				<section className="family-tree-details-section">
+					<h3>Notes</h3>
+					<Notes notes={person.notes} />
+				</section>
+			) : null}
+
+			{recordCitations.length > 0 ? (
 				<section className="family-tree-details-section">
 					<h3>Record sources</h3>
-					<Citations citations={person.citations} />
+					<Citations citations={recordCitations} />
 				</section>
 			) : null}
 
@@ -396,7 +486,9 @@ function FamilyTreePage(): JSX.Element {
 			.filter(
 				(person) =>
 					!person.isLiving &&
-					person.name.display.toLocaleLowerCase().includes(deferredQuery),
+					[person.name, ...person.alternateNames].some((name) =>
+						name.display.toLocaleLowerCase().includes(deferredQuery),
+					),
 			)
 			.sort((first, second) =>
 				first.name.display.localeCompare(second.name.display),
@@ -483,12 +575,12 @@ function FamilyTreePage(): JSX.Element {
 				>
 					<div className="family-tree-canvas-heading">
 						<div>
-							<p>Two-generation view</p>
+							<p>Full family tree</p>
 							<h2 id="tree-view-heading">
 								{selectedPerson.name.display}’s branch
 							</h2>
 						</div>
-						<span>Drag to pan · Scroll to zoom</span>
+						<span>Drag to explore · Scroll to zoom</span>
 					</div>
 					<div className="family-tree-graph">
 						<Suspense fallback={<GraphFallback />}>

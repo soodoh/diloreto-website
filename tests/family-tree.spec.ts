@@ -11,32 +11,53 @@ test("family tree supports private, searchable, shareable exploration", async ({
 		page.getByRole("link", { name: "DiLoreto Family Tree" }),
 	).toHaveAttribute("href", "/familytree");
 
-	await expectSuccessfulNavigation(page, "/familytree?person=P1");
+	await expectSuccessfulNavigation(page, "/familytree?person=I790");
 	await expect(page).toHaveTitle("DiLoreto Family Tree");
 	await expect(
 		page.getByRole("heading", { name: "Explore the family tree" }),
 	).toBeVisible();
+	const fullTreeChart = page.getByRole("application", {
+		name: "Interactive family relationship chart",
+	});
+	await expect(fullTreeChart).toBeVisible();
+	const initialScale = await fullTreeChart
+		.locator(".react-flow__viewport")
+		.evaluate(
+			(viewport) =>
+				new DOMMatrixReadOnly(getComputedStyle(viewport).transform).a,
+		);
+	expect(initialScale).toBeGreaterThan(0.1);
 	await expect(
-		page.getByRole("application", {
-			name: "Interactive family relationship chart",
-		}),
+		page.getByText("Full family tree", { exact: true }),
 	).toBeVisible();
+	await expect(
+		fullTreeChart.getByRole("button", { name: /Lucrezia Farina/ }),
+	).toBeAttached();
 	await expect(
 		page.getByRole("heading", { name: "Biagio di Loreto", exact: true }),
 	).toBeVisible();
 	const search = page.getByRole("searchbox", {
 		name: "Find a family member",
 	});
-	await search.fill("Pasquale");
+	await expect(
+		page.getByRole("heading", { name: "Family records" }),
+	).toBeVisible();
+	await search.fill("Otto Di-Loreto");
 	const results = page.locator(".family-tree-search-results");
-	await results.getByRole("button", { name: /Pasquale di Loreto/ }).click();
-	await expect(page).toHaveURL(/\/familytree\?person=P87$/);
+	await results
+		.getByRole("button", { name: /Ottorino Antonio Angelo DiLoreto/ })
+		.click();
+	await expect(page).toHaveURL(/\/familytree\?person=I103$/);
 	await expect(search).toHaveValue("");
 	await expect(
-		page.getByRole("heading", { name: "Pasquale di Loreto", exact: true }),
+		page.getByRole("heading", {
+			name: "Ottorino Antonio Angelo DiLoreto",
+			exact: true,
+		}),
 	).toBeVisible();
+	await expect(page.getByText("Otto Di-Loreto", { exact: true })).toBeVisible();
 
-	await expectSuccessfulNavigation(page, "/familytree?person=P72");
+	await expectSuccessfulNavigation(page, "/familytree?person=I775");
 	const panfiloChart = page.getByRole("application", {
 		name: "Interactive family relationship chart",
 	});

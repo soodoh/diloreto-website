@@ -1,7 +1,8 @@
-import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
+import { mkdir, realpath, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { generateGenealogyData } from "./genealogy/gedcom";
+import { readGenealogySource } from "./genealogy/input";
 
 const projectRoot = path.resolve(
 	path.dirname(fileURLToPath(import.meta.url)),
@@ -10,7 +11,7 @@ const projectRoot = path.resolve(
 const configuredInputPath = process.env.GENEALOGY_GEDCOM_PATH?.trim();
 if (!configuredInputPath) {
 	throw new Error(
-		"GENEALOGY_GEDCOM_PATH must point to a private GEDCOM file outside this repository.",
+		"GENEALOGY_GEDCOM_PATH must point to a private GEDCOM or GEDCOM 7 .gdz file outside this repository.",
 	);
 }
 
@@ -35,7 +36,7 @@ const outputPath = path.join(
 	"src/content/genealogy/generated.json",
 );
 
-const source = await readFile(inputPath, "utf8");
+const source = await readGenealogySource(inputPath);
 const referenceYear = new Date().getUTCFullYear();
 const { data, warnings } = generateGenealogyData(source, referenceYear);
 
@@ -46,6 +47,7 @@ for (const person of Object.values(data.people)) {
 	const hasPrivateFields =
 		person.name.display !== data.privacy.livingPersonLabel ||
 		Object.keys(person.name).length !== 1 ||
+		person.alternateNames.length > 0 ||
 		person.sex !== undefined ||
 		person.events.length > 0 ||
 		person.citations.length > 0 ||
@@ -59,17 +61,18 @@ for (const person of Object.values(data.people)) {
 }
 
 for (const family of Object.values(data.families)) {
-	const hasLivingPartner = family.partnerIds.some(
-		(personId) => data.people[personId]?.isLiving === true,
-	);
+	const hasLivingPerson = [
+		...family.partnerIds,
+		...family.children.map((child) => child.personId),
+	].some((personId) => data.people[personId]?.isLiving === true);
 	if (
-		hasLivingPartner &&
+		hasLivingPerson &&
 		(family.events.length > 0 ||
 			family.citations.length > 0 ||
 			family.notes.length > 0)
 	) {
 		throw new Error(
-			`Privacy validation failed for family @${family.id}@ with a living partner`,
+			`Privacy validation failed for family @${family.id}@ with a living person`,
 		);
 	}
 }

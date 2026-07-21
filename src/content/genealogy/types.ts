@@ -5,7 +5,14 @@ export type GenealogyCitation = {
 	text?: string;
 	dataText?: string;
 	quality?: string;
+	notes: string[];
 	extensions?: Record<string, string[]>;
+};
+
+export type GenealogyNote = {
+	id: string;
+	text: string;
+	citations: GenealogyCitation[];
 };
 
 export type GenealogyEvent = {
@@ -18,11 +25,13 @@ export type GenealogyEvent = {
 	agency?: string;
 	cause?: string;
 	description?: string;
-	notes: string[];
+	phones: string[];
+	notes: GenealogyNote[];
 	citations: GenealogyCitation[];
 };
 
 export type GenealogyName = {
+	id?: string;
 	display: string;
 	given?: string;
 	surname?: string;
@@ -30,6 +39,7 @@ export type GenealogyName = {
 	suffix?: string;
 	nickname?: string;
 	type?: string;
+	citations?: GenealogyCitation[];
 };
 
 export type GenealogyMedia = {
@@ -43,11 +53,12 @@ export type GenealogyPerson = {
 	id: string;
 	isLiving: boolean;
 	name: GenealogyName;
+	alternateNames: GenealogyName[];
 	sex?: string;
 	events: GenealogyEvent[];
 	citations: GenealogyCitation[];
 	media: GenealogyMedia[];
-	notes: string[];
+	notes: GenealogyNote[];
 	familyAsChildIds: string[];
 	familyAsPartnerIds: string[];
 };
@@ -63,7 +74,7 @@ export type GenealogyFamily = {
 	partnerIds: string[];
 	children: GenealogyChild[];
 	events: GenealogyEvent[];
-	notes: string[];
+	notes: GenealogyNote[];
 	citations: GenealogyCitation[];
 };
 
@@ -74,7 +85,7 @@ export type GenealogySource = {
 	publication?: string;
 	abbreviation?: string;
 	text?: string;
-	notes: string[];
+	notes: GenealogyNote[];
 	repositoryIds: string[];
 };
 

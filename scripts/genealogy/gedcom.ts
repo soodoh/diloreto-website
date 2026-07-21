@@ -6,6 +6,7 @@ import type {
 	GenealogyFamily,
 	GenealogyMedia,
 	GenealogyName,
+	GenealogyNote,
 	GenealogyPerson,
 	GenealogyRepository,
 	GenealogySource,
@@ -111,9 +112,51 @@ function childText(node: GedcomNode, tag: string): string | undefined {
 	return nodeText(child(node, tag));
 }
 
-function noteTexts(node: GedcomNode): string[] {
-	return children(node, "NOTE")
-		.map((note) => nodeText(note))
+function dateText(node: GedcomNode | undefined): string | undefined {
+	return node ? (childText(node, "PHRASE") ?? nodeText(node)) : undefined;
+}
+
+function resolvedNoteNode(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GedcomNode | undefined {
+	const referencedId = pointerId(node.value);
+	return referencedId ? noteRecords.get(referencedId) : node;
+}
+
+function plainNoteTexts(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): string[] {
+	return node.children
+		.filter(
+			(candidate) => candidate.tag === "NOTE" || candidate.tag === "SNOTE",
+		)
+		.map((note) => nodeText(resolvedNoteNode(note, noteRecords)))
+		.filter((note) => note !== undefined);
+}
+
+function parseNotes(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GenealogyNote[] {
+	return node.children
+		.filter(
+			(candidate) => candidate.tag === "NOTE" || candidate.tag === "SNOTE",
+		)
+		.map((note) => {
+			const referencedId = pointerId(note.value);
+			const resolved = resolvedNoteNode(note, noteRecords);
+			const text = nodeText(resolved);
+			if (!resolved || !text) {
+				return undefined;
+			}
+			return {
+				id: referencedId ?? `note-${note.line}`,
+				text,
+				citations: parseCitations(resolved, noteRecords),
+			};
+		})
 		.filter((note) => note !== undefined);
 }
 
@@ -216,7 +259,10 @@ export function parseGedcom(text: string): GedcomParseResult {
 	return { roots, warnings };
 }
 
-function parseCitation(node: GedcomNode): GenealogyCitation {
+function parseCitation(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GenealogyCitation {
 	const data = child(node, "DATA");
 	const extensions: Record<string, string[]> = {};
 	for (const citationChild of node.children) {
@@ -241,21 +287,31 @@ function parseCitation(node: GedcomNode): GenealogyCitation {
 			? { dataText: childText(data, "TEXT") }
 			: {}),
 		...(childText(node, "QUAY") ? { quality: childText(node, "QUAY") } : {}),
+		notes: plainNoteTexts(node, noteRecords),
 		...(Object.keys(extensions).length > 0 ? { extensions } : {}),
 	};
 }
 
-function parseCitations(node: GedcomNode): GenealogyCitation[] {
-	return children(node, "SOUR").map(parseCitation);
+function parseCitations(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GenealogyCitation[] {
+	return children(node, "SOUR").map((citation) =>
+		parseCitation(citation, noteRecords),
+	);
 }
 
-function parseEvent(node: GedcomNode): GenealogyEvent {
+function parseEvent(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GenealogyEvent {
 	const explicitType = childText(node, "TYPE");
+	const date = dateText(child(node, "DATE"));
 	return {
 		id: `event-${node.line}`,
 		type: explicitType ?? EVENT_LABELS[node.tag] ?? node.tag,
 		...(node.value && node.value !== "Y" ? { value: node.value } : {}),
-		...(childText(node, "DATE") ? { date: childText(node, "DATE") } : {}),
+		...(date ? { date } : {}),
 		...(childText(node, "PLAC") ? { place: childText(node, "PLAC") } : {}),
 		...(joinAddress(child(node, "ADDR"))
 			? { address: joinAddress(child(node, "ADDR")) }
@@ -265,18 +321,27 @@ function parseEvent(node: GedcomNode): GenealogyEvent {
 		...(childText(node, "DESC")
 			? { description: childText(node, "DESC") }
 			: {}),
-		notes: noteTexts(node),
-		citations: parseCitations(node),
+		phones: children(node, "PHON")
+			.map((phone) => nodeText(phone))
+			.filter((phone) => phone !== undefined),
+		notes: parseNotes(node, noteRecords),
+		citations: parseCitations(node, noteRecords),
 	};
 }
 
-function parseEvents(node: GedcomNode): GenealogyEvent[] {
+function parseEvents(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GenealogyEvent[] {
 	return node.children
 		.filter((candidate) => EVENT_TAGS.has(candidate.tag))
-		.map(parseEvent);
+		.map((event) => parseEvent(event, noteRecords));
 }
 
-function parseName(node: GedcomNode): GenealogyName {
+function parseName(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GenealogyName {
 	const rawName = nodeText(node) ?? "Unnamed person";
 	const firstSlash = rawName.indexOf("/");
 	const secondSlash =
@@ -288,8 +353,10 @@ function parseName(node: GedcomNode): GenealogyName {
 			? cleanValue(rawName.slice(firstSlash + 1, secondSlash))
 			: undefined;
 	const display = rawName.replaceAll("/", "").replace(/\s+/g, " ").trim();
+	const citations = parseCitations(node, noteRecords);
 
 	return {
+		id: `name-${node.line}`,
 		display: display || "Unnamed person",
 		...((childText(node, "GIVN") ?? inferredGiven)
 			? { given: childText(node, "GIVN") ?? inferredGiven }
@@ -301,6 +368,7 @@ function parseName(node: GedcomNode): GenealogyName {
 		...(childText(node, "NSFX") ? { suffix: childText(node, "NSFX") } : {}),
 		...(childText(node, "NICK") ? { nickname: childText(node, "NICK") } : {}),
 		...(childText(node, "TYPE") ? { type: childText(node, "TYPE") } : {}),
+		...(citations.length > 0 ? { citations } : {}),
 	};
 }
 
@@ -353,11 +421,16 @@ function hasBirthAtLeast120YearsAgo(
 	personNode: GedcomNode,
 	referenceYear: number,
 ): boolean {
-	const birthDate = childText(child(personNode, "BIRT") ?? personNode, "DATE");
-	if (!birthDate || /^AFT\b/i.test(birthDate)) {
+	const birthDates = children(personNode, "BIRT")
+		.map((birth) => nodeText(child(birth, "DATE")))
+		.filter((birthDate) => birthDate !== undefined);
+	if (
+		birthDates.length === 0 ||
+		birthDates.some((birthDate) => /^AFT\b/i.test(birthDate))
+	) {
 		return false;
 	}
-	const years = extractYears(birthDate);
+	const years = birthDates.flatMap(extractYears);
 	return years.length > 0 && Math.max(...years) <= referenceYear - 120;
 }
 
@@ -423,6 +496,7 @@ function inferDeceasedPersonIds(
 function parsePerson(
 	node: GedcomNode,
 	mediaRecords: Map<string, GedcomNode>,
+	noteRecords: Map<string, GedcomNode>,
 	deceasedPersonIds: Set<string>,
 ): GenealogyPerson {
 	if (!node.xref) {
@@ -434,6 +508,7 @@ function parsePerson(
 			id: node.xref,
 			isLiving: true,
 			name: { display: "Living person" },
+			alternateNames: [],
 			events: [],
 			citations: [],
 			media: [],
@@ -447,16 +522,22 @@ function parsePerson(
 		};
 	}
 
-	const nameNode = child(node, "NAME");
+	const nameNodes = children(node, "NAME");
+	const nameNode = nameNodes[0];
 	return {
 		id: node.xref,
 		isLiving: false,
-		name: nameNode ? parseName(nameNode) : { display: "Unnamed person" },
+		name: nameNode
+			? parseName(nameNode, noteRecords)
+			: { display: "Unnamed person" },
+		alternateNames: nameNodes
+			.slice(1)
+			.map((alternateName) => parseName(alternateName, noteRecords)),
 		...(childText(node, "SEX") ? { sex: childText(node, "SEX") } : {}),
-		events: parseEvents(node),
-		citations: parseCitations(node),
+		events: parseEvents(node, noteRecords),
+		citations: parseCitations(node, noteRecords),
 		media: parseMedia(node, mediaRecords),
-		notes: noteTexts(node),
+		notes: parseNotes(node, noteRecords),
 		familyAsChildIds: children(node, "FAMC")
 			.map((family) => pointerId(family.value))
 			.filter((familyId) => familyId !== undefined),
@@ -485,6 +566,7 @@ function parseChild(node: GedcomNode): GenealogyChild | undefined {
 function parseFamily(
 	node: GedcomNode,
 	people: Record<string, GenealogyPerson>,
+	noteRecords: Map<string, GedcomNode>,
 ): GenealogyFamily {
 	if (!node.xref) {
 		throw new Error(`Family record at line ${node.line} has no identifier`);
@@ -492,22 +574,27 @@ function parseFamily(
 	const partnerIds = [child(node, "HUSB"), child(node, "WIFE")]
 		.map((partner) => pointerId(partner?.value))
 		.filter((personId) => personId !== undefined);
-	const includesLivingPartner = partnerIds.some(
-		(personId) => people[personId]?.isLiving === true,
-	);
+	const childRecords = children(node, "CHIL")
+		.map(parseChild)
+		.filter((familyChild) => familyChild !== undefined);
+	const includesLivingPerson = [
+		...partnerIds,
+		...childRecords.map((child) => child.personId),
+	].some((personId) => people[personId]?.isLiving === true);
 	return {
 		id: node.xref,
 		partnerIds,
-		children: children(node, "CHIL")
-			.map(parseChild)
-			.filter((familyChild) => familyChild !== undefined),
-		events: includesLivingPartner ? [] : parseEvents(node),
-		notes: includesLivingPartner ? [] : noteTexts(node),
-		citations: includesLivingPartner ? [] : parseCitations(node),
+		children: childRecords,
+		events: includesLivingPerson ? [] : parseEvents(node, noteRecords),
+		notes: includesLivingPerson ? [] : parseNotes(node, noteRecords),
+		citations: includesLivingPerson ? [] : parseCitations(node, noteRecords),
 	};
 }
 
-function parseSource(node: GedcomNode): GenealogySource {
+function parseSource(
+	node: GedcomNode,
+	noteRecords: Map<string, GedcomNode>,
+): GenealogySource {
 	if (!node.xref) {
 		throw new Error(`Source record at line ${node.line} has no identifier`);
 	}
@@ -527,7 +614,7 @@ function parseSource(node: GedcomNode): GenealogySource {
 			: data && childText(data, "TEXT")
 				? { text: childText(data, "TEXT") }
 				: {}),
-		notes: noteTexts(node),
+		notes: parseNotes(node, noteRecords),
 		repositoryIds: children(node, "REPO")
 			.map((repository) => pointerId(repository.value))
 			.filter((repositoryId) => repositoryId !== undefined),
@@ -548,6 +635,32 @@ function parseRepository(node: GedcomNode): GenealogyRepository {
 		...(childText(node, "EMAIL") ? { email: childText(node, "EMAIL") } : {}),
 		...(childText(node, "WWW") ? { website: childText(node, "WWW") } : {}),
 	};
+}
+
+function collectCitations(
+	people: Record<string, GenealogyPerson>,
+	families: Record<string, GenealogyFamily>,
+): GenealogyCitation[] {
+	return [
+		...Object.values(people).flatMap((person) => [
+			...person.citations,
+			...(person.name.citations ?? []),
+			...person.alternateNames.flatMap((name) => name.citations ?? []),
+			...person.notes.flatMap((note) => note.citations),
+			...person.events.flatMap((event) => [
+				...event.citations,
+				...event.notes.flatMap((note) => note.citations),
+			]),
+		]),
+		...Object.values(families).flatMap((family) => [
+			...family.citations,
+			...family.notes.flatMap((note) => note.citations),
+			...family.events.flatMap((event) => [
+				...event.citations,
+				...event.notes.flatMap((note) => note.citations),
+			]),
+		]),
+	];
 }
 
 function validateReferences(
@@ -582,17 +695,7 @@ function validateReferences(
 		}
 	}
 
-	const citations = [
-		...Object.values(people).flatMap((person) => [
-			...person.citations,
-			...person.events.flatMap((event) => event.citations),
-		]),
-		...Object.values(families).flatMap((family) => [
-			...family.citations,
-			...family.events.flatMap((event) => event.citations),
-		]),
-	];
-	for (const citation of citations) {
+	for (const citation of collectCitations(people, families)) {
 		if (citation.sourceId && !sources[citation.sourceId]) {
 			errors.push(`Citation references missing source @${citation.sourceId}@`);
 		}
@@ -664,29 +767,80 @@ export function generateGenealogyData(
 			.filter((root) => root.tag === "OBJE" && root.xref !== undefined)
 			.map((root) => [root.xref ?? "", root]),
 	);
+	const noteRecords = new Map(
+		parsed.roots
+			.filter((root) => root.tag === "SNOTE" && root.xref !== undefined)
+			.map((root) => [root.xref ?? "", root]),
+	);
 
 	const deceasedPersonIds = inferDeceasedPersonIds(parsed.roots, referenceYear);
 	const people: Record<string, GenealogyPerson> = {};
 	for (const node of parsed.roots.filter((root) => root.tag === "INDI")) {
-		const person = parsePerson(node, mediaRecords, deceasedPersonIds);
+		const person = parsePerson(
+			node,
+			mediaRecords,
+			noteRecords,
+			deceasedPersonIds,
+		);
 		people[person.id] = person;
 	}
 	const families: Record<string, GenealogyFamily> = {};
 	for (const node of parsed.roots.filter((root) => root.tag === "FAM")) {
-		const family = parseFamily(node, people);
+		const family = parseFamily(node, people, noteRecords);
 		families[family.id] = family;
 	}
-	const sources: Record<string, GenealogySource> = {};
+	const allSources: Record<string, GenealogySource> = {};
 	for (const node of parsed.roots.filter((root) => root.tag === "SOUR")) {
-		const source = parseSource(node);
-		sources[source.id] = source;
+		const source = parseSource(node, noteRecords);
+		allSources[source.id] = source;
 	}
-	const repositories: Record<string, GenealogyRepository> = {};
+	const allRepositories: Record<string, GenealogyRepository> = {};
 	for (const node of parsed.roots.filter((root) => root.tag === "REPO")) {
 		const repository = parseRepository(node);
-		repositories[repository.id] = repository;
+		allRepositories[repository.id] = repository;
 	}
-	validateReferences(people, families, sources, repositories);
+	validateReferences(people, families, allSources, allRepositories);
+
+	const referencedSourceIds = new Set(
+		collectCitations(people, families)
+			.map((citation) => citation.sourceId)
+			.filter((sourceId) => sourceId !== undefined),
+	);
+	const pendingSourceIds = [...referencedSourceIds];
+	for (let index = 0; index < pendingSourceIds.length; index += 1) {
+		const sourceId = pendingSourceIds[index];
+		const source = sourceId ? allSources[sourceId] : undefined;
+		if (!source) {
+			continue;
+		}
+		for (const referencedSourceId of source.notes
+			.flatMap((note) => note.citations)
+			.map((citation) => citation.sourceId)
+			.filter((nestedSourceId) => nestedSourceId !== undefined)) {
+			if (referencedSourceIds.has(referencedSourceId)) {
+				continue;
+			}
+			referencedSourceIds.add(referencedSourceId);
+			pendingSourceIds.push(referencedSourceId);
+		}
+	}
+	const sources: Record<string, GenealogySource> = {};
+	for (const sourceId of referencedSourceIds) {
+		const source = allSources[sourceId];
+		if (source) {
+			sources[sourceId] = source;
+		}
+	}
+	const referencedRepositoryIds = new Set(
+		Object.values(sources).flatMap((source) => source.repositoryIds),
+	);
+	const repositories: Record<string, GenealogyRepository> = {};
+	for (const repositoryId of referencedRepositoryIds) {
+		const repository = allRepositories[repositoryId];
+		if (repository) {
+			repositories[repositoryId] = repository;
+		}
+	}
 
 	const livingPeopleRedacted = Object.values(people).filter(
 		(person) => person.isLiving,
@@ -695,7 +849,7 @@ export function generateGenealogyData(
 	const gedcom = head ? child(head, "GEDC") : undefined;
 	const producer = head ? childText(head, "SOUR") : undefined;
 	const data: GenealogyData = {
-		schemaVersion: 1,
+		schemaVersion: 2,
 		source: {
 			format: gedcom
 				? (childText(gedcom, "FORM") ?? "LINEAGE-LINKED")
@@ -730,6 +884,7 @@ export function generateGenealogyData(
 		"INDI",
 		"OBJE",
 		"REPO",
+		"SNOTE",
 		"SOUR",
 		"SUBM",
 		"TRLR",

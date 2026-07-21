@@ -33,6 +33,60 @@ const GEDCOM_FIXTURE = `0 HEAD
 0 TRLR
 `;
 
+const GEDCOM_7_FIXTURE = `﻿0 HEAD
+1 SOUR Test suite
+1 GEDC
+2 VERS 7.0
+0 @P1@ INDI
+1 NAME Ada /Ancestor/
+2 SOUR @SOURCE@
+1 NAME Ada Jane /Ancestor/
+2 TYPE Birth name
+1 BIRT
+2 DATE ABT 1880
+3 PHRASE About 1880
+2 PHON 555-0100
+1 SNOTE @NOTE@
+0 @NOTE@ SNOTE Biographical detail
+1 CONT Second line
+1 SOUR @SOURCE@
+0 @SOURCE@ SOUR
+1 TITL Public source
+1 NOTE Source detail
+2 SOUR @NESTED@
+0 @NESTED@ SOUR
+1 TITL Nested source
+0 @UNUSED@ SOUR
+1 TITL Private unused source
+0 TRLR
+`;
+
+const LIVING_CHILD_FIXTURE = `0 HEAD
+1 GEDC
+2 VERS 7.0
+0 @PARENT1@ INDI
+1 NAME First /Parent/
+1 BIRT
+2 DATE 1800
+1 FAMS @FAMILY@
+0 @PARENT2@ INDI
+1 NAME Second /Parent/
+1 BIRT
+2 DATE 1800
+1 FAMS @FAMILY@
+0 @CHILD@ INDI
+1 NAME Private /Child/
+1 BIRT
+2 DATE 1990
+1 FAMC @FAMILY@
+0 @FAMILY@ FAM
+1 HUSB @PARENT1@
+1 WIFE @PARENT2@
+1 CHIL @CHILD@
+1 NOTE Private family detail
+0 TRLR
+`;
+
 const ANCESTOR_INFERENCE_FIXTURE = `0 HEAD
 1 SOUR Test suite
 1 GEDC
@@ -107,6 +161,7 @@ describe("genealogy generation", () => {
 			id: "LIVING",
 			isLiving: true,
 			name: { display: "Living person" },
+			alternateNames: [],
 			events: [],
 			citations: [],
 			media: [],
@@ -118,6 +173,36 @@ describe("genealogy generation", () => {
 		assert.equal(deceased?.events[0]?.place, "Alfedena, Italy");
 		assert.deepEqual(family?.events, []);
 		assert.equal(data.defaultPersonId, "OLD");
+	});
+
+	test("supports GEDCOM 7 names, shared notes, phrases, and citation details", () => {
+		const { data, warnings } = generateGenealogyData(GEDCOM_7_FIXTURE, 2026);
+		const person = data.people.P1;
+
+		assert.equal(data.schemaVersion, 2);
+		assert.equal(data.source.version, "7.0");
+		assert.equal(person?.events[0]?.date, "About 1880");
+		assert.deepEqual(person?.events[0]?.phones, ["555-0100"]);
+		assert.equal(person?.alternateNames[0]?.display, "Ada Jane Ancestor");
+		assert.equal(person?.alternateNames[0]?.type, "Birth name");
+		assert.equal(person?.name.citations?.[0]?.sourceId, "SOURCE");
+		assert.equal(person?.notes[0]?.text, "Biographical detail\nSecond line");
+		assert.equal(person?.notes[0]?.citations[0]?.sourceId, "SOURCE");
+		assert.equal(data.sources.SOURCE?.notes[0]?.text, "Source detail");
+		assert.equal(
+			data.sources.SOURCE?.notes[0]?.citations[0]?.sourceId,
+			"NESTED",
+		);
+		assert.equal(data.sources.NESTED?.title, "Nested source");
+		assert.equal(data.sources.UNUSED, undefined);
+		assert.deepEqual(warnings, []);
+	});
+
+	test("redacts family details when any family member is living", () => {
+		const { data } = generateGenealogyData(LIVING_CHILD_FIXTURE, 2026);
+
+		assert.equal(data.people.CHILD?.isLiving, true);
+		assert.deepEqual(data.families.FAMILY?.notes, []);
 	});
 
 	test("uses the conservative 120-year living rule", () => {
@@ -132,6 +217,26 @@ describe("genealogy generation", () => {
 		);
 		assert.equal(
 			generateGenealogyData(newerThanBoundary, 2026).data.people.LIVING
+				?.isLiving,
+			true,
+		);
+
+		const misleadingPhrase = GEDCOM_FIXTURE.replace(
+			"2 DATE 1 JAN 1990",
+			"2 DATE 1 JAN 1990\n3 PHRASE Copied from an 1800 register",
+		);
+		assert.equal(
+			generateGenealogyData(misleadingPhrase, 2026).data.people.LIVING
+				?.isLiving,
+			true,
+		);
+
+		const conflictingBirths = onBoundary.replace(
+			"2 DATE 1 JAN 1906\n1 FAMS @FAMILY@",
+			"2 DATE 1 JAN 1906\n1 BIRT\n2 DATE 1 JAN 1907\n1 FAMS @FAMILY@",
+		);
+		assert.equal(
+			generateGenealogyData(conflictingBirths, 2026).data.people.LIVING
 				?.isLiving,
 			true,
 		);

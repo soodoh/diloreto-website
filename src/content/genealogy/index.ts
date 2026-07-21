@@ -7,6 +7,7 @@ export type {
 	GenealogyData,
 	GenealogyEvent,
 	GenealogyFamily,
+	GenealogyNote,
 	GenealogyPerson,
 	GenealogyRepository,
 	GenealogySource,
